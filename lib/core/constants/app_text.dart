@@ -51,4 +51,13 @@ abstract final class AppText {
   static const String networkError =
       "Something went wrong. Please check your internet connection.";
   static const String anUnknownErrorOccurred = "An unknown error occurred.";
+  static const String enter6DigitCode = "Please enter the 6-digit code.";
+  static const String resendAvaiableStatement = "Resend available in ";
+  static const String emailVerificationTitle = 'Email verification';
+  static const String emailVerificationSubTitle =
+      'Please enter your code that send to your email address';
+  static const String invalidCode = 'Invalid Code';
+  static const String didntRecieveCodeStatement = 'Didn\'t receive code?';
+  static const String otpResendedSuccessfully = "OTP Resented successfully.";
+  static const String verificationSuccess = "Verification Success";
 }

@@ -10,13 +10,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+
   await ScreenUtil.ensureScreenSize();
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+
   Bloc.observer = MyBlocObserver();
-  configureDependencies();
+
+  await configureDependencies();
+
   FlutterNativeSplash.remove();
   runApp(const FloweryApp());
 }

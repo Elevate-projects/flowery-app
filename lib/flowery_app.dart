@@ -19,7 +19,8 @@ class FloweryApp extends StatelessWidget {
         theme: AppTheme.lightTheme,
         themeMode: ThemeMode.light,
         onGenerateRoute: AppRoutes.onGenerateRoute,
-        initialRoute: RouteNames.login,
+        initialRoute: RouteNames.verification,
+        home: child,
       ),
     );
   }

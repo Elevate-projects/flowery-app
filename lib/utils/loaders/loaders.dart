@@ -13,7 +13,9 @@ abstract class Loaders {
       titleText: title,
       messageText: Text(
         message,
-        style: Theme.of(context).textTheme.bodyLarge,
+        style: Theme.of(
+          context,
+        ).textTheme.bodyLarge?.copyWith(color: Colors.black),
         textAlign: TextAlign.start,
       ),
       icon: Icon(Icons.info_outline_rounded, color: Colors.white, size: 28.r),
