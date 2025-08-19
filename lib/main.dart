@@ -1,4 +1,5 @@
 import 'package:flowery_app/core/di/di.dart';
+import 'package:flowery_app/core/global_cubit/global_cubit.dart';
 import 'package:flowery_app/flowery_app.dart';
 import 'package:flowery_app/my_bloc_observer.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,11 @@ void main() async {
   ]);
   Bloc.observer = MyBlocObserver();
   configureDependencies();
-  FlutterNativeSplash.remove();
-  runApp(const FloweryApp());
+
+  runApp(
+    BlocProvider<GlobalCubit>(
+      create: (context) => getIt.get<GlobalCubit>()..onInit(),
+      child: const FloweryApp(),
+    ),
+  );
 }

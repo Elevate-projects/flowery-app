@@ -15,6 +15,7 @@ abstract class AppTheme {
       shadow: AppColors.gray,
       onSurface: AppColors.green,
       error: AppColors.red,
+      onSurfaceVariant: AppColors.darkGray,
       seedColor: Colors.deepPurple,
       brightness: Brightness.light,
     ),
