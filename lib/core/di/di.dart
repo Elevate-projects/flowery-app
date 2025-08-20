@@ -10,4 +10,4 @@ final getIt = GetIt.instance;
   preferRelativeImports: true,
   asExtension: true,
 )
-Future<void> configureDependencies() => getIt.init();
+void configureDependencies() => getIt.init();

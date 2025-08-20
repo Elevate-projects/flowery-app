@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../utils/common_widgets/loading_dialog.dart';
+import '../views_model/verification_screen_intent.dart';
 
 class EmailVerification extends StatefulWidget {
   const EmailVerification({super.key});
@@ -18,61 +19,87 @@ class EmailVerification extends StatefulWidget {
 }
 
 class _EmailVerificationState extends State<EmailVerification> {
-  bool isError = false;
+  @override
+  void initState() {
+    BlocProvider.of<VerificationScreenCubit>(context).doIntent(OnStartTimer());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(AppText.password)),
-      body: BlocListener<VerificationScreenCubit, VerificationScreenState>(
-        listener: (context, state) {
-          switch (state.resendCodeStatus) {
-            case Status.initial:
-              break;
-            case Status.loading:
-              showLoadingDialog(
-                context,
-                color: Theme.of(context).colorScheme.primary,
-              );
-            case Status.success:
-              Navigator.pop(context);
-              Loaders.showSuccessMessage(
-                message: AppText.otpResendedSuccessfully,
-                context: context,
-              );
-            case Status.error:
-              Navigator.pop(context);
-              Loaders.showErrorMessage(
-                message: state.resendCodeError?.message ?? AppText.error,
-                context: context,
-              );
-          }
-          switch (state.verifyCodeStatus) {
-            case Status.initial:
-              break;
-            case Status.loading:
-              showLoadingDialog(
-                context,
-                color: Theme.of(context).colorScheme.primary,
-              );
-            case Status.success:
-              Navigator.pop(context);
-              setState(() => isError = false);
-              Loaders.showSuccessMessage(
-                message: AppText.verificationSuccess,
-                context: context,
-              );
-            case Status.error:
-              Navigator.pop(context);
-              setState(() => isError = true);
-              Loaders.showErrorMessage(
-                message: state.verifyCodeError?.message ?? AppText.error,
-                context: context,
-              );
-
-          }
-        },
-        child: BuildVerificationForm(email: widget.email, isError: isError),
+      body: MultiBlocListener(
+        listeners: [
+          BlocListener<VerificationScreenCubit, VerificationScreenState>(
+            listenWhen: (prev, curr) =>
+                prev.resendCodeStatus != curr.resendCodeStatus,
+            listener: (context, state) {
+              switch (state.resendCodeStatus) {
+                case Status.initial:
+                  break;
+                case Status.loading:
+                  showLoadingDialog(
+                    context,
+                    color: Theme.of(context).colorScheme.primary,
+                  );
+                  break;
+                case Status.success:
+                  Navigator.pop(context);
+                  Loaders.showSuccessMessage(
+                    message: AppText.otpResendedSuccessfully,
+                    context: context,
+                  );
+                  break;
+                case Status.error:
+                  Navigator.pop(context);
+                  Loaders.showErrorMessage(
+                    message: state.resendCodeError?.message ?? AppText.error,
+                    context: context,
+                  );
+                  break;
+              }
+            },
+          ),
+          BlocListener<VerificationScreenCubit, VerificationScreenState>(
+            listenWhen: (prev, curr) =>
+                prev.verifyCodeStatus != curr.verifyCodeStatus,
+            listener: (context, state) {
+              switch (state.verifyCodeStatus) {
+                case Status.initial:
+                  break;
+                case Status.loading:
+                  showLoadingDialog(
+                    context,
+                    color: Theme.of(context).colorScheme.primary,
+                  );
+                  break;
+                case Status.success:
+                  Navigator.pop(context);
+                  Loaders.showSuccessMessage(
+                    message: AppText.verificationSuccess,
+                    context: context,
+                  );
+                  break;
+                case Status.error:
+                  Navigator.pop(context);
+                  Loaders.showErrorMessage(
+                    message: state.verifyCodeError?.message ?? AppText.error,
+                    context: context,
+                  );
+                  break;
+              }
+            },
+          ),
+        ],
+        child: BlocBuilder<VerificationScreenCubit, VerificationScreenState>(
+          builder: (context, state) {
+            return BuildVerificationForm(
+              email: widget.email,
+              isError: state.isError,
+            );
+          },
+        ),
       ),
     );
   }

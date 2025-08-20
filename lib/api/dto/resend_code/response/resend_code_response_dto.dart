@@ -1,8 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../../../domain/entities/resend_code/response/resend_code_response.dart';
-
 part 'resend_code_response_dto.g.dart';
 
 @JsonSerializable()
@@ -20,10 +18,6 @@ class ResendCodeResponseDto extends Equatable {
 
   Map<String, dynamic> toJson() {
     return _$ResendCodeResponseDtoToJson(this);
-  }
-
-  static ResendCodeResponseEntity toEntity(ResendCodeResponseDto dto) {
-    return ResendCodeResponseEntity(message: dto.message, info: dto.info);
   }
 
   @override

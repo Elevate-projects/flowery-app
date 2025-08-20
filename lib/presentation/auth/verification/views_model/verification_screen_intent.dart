@@ -14,3 +14,5 @@ class OnVerificationIntent extends VerificationScreenIntent {
 
   OnVerificationIntent({required this.request});
 }
+
+class OnStartTimer extends VerificationScreenIntent {}

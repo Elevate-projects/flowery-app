@@ -17,9 +17,7 @@ class VerifyRequestDto extends Equatable {
 
   Map<String, dynamic> toJson() => _$VerifyRequestDtoToJson(this);
 
-  static VerifyRequestDto toDto(VerifyRequsetEntity entity) {
-    return VerifyRequestDto(resetCode: entity.resetCode);
-  }
+
 
   @override
   List<Object?> get props => [resetCode];

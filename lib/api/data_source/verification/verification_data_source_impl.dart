@@ -6,7 +6,7 @@ import '../../../domain/entities/verification/request/verify_requset.dart';
 import '../../../domain/entities/verification/response/verify_response.dart';
 import '../../client/api_client.dart';
 import '../../client/api_result.dart';
-import '../../dto/verification/request/verify_request_dto.dart';
+import '../../dto/mapper/mapper.dart';
 
 @Injectable(as: VerificationDataSource)
 class VreificationDataSourceImpl implements VerificationDataSource {
@@ -20,11 +20,11 @@ class VreificationDataSourceImpl implements VerificationDataSource {
     VerifyRequsetEntity request,
   ) async {
     var res = await executeApi(
-      () => apiClient.verificationCode(VerifyRequestDto.toDto(request)),
+      () => apiClient.verificationCode(Mapper.verifyToDto(request)),
     );
     switch (res) {
       case Success<VerifyResponseDto>():
-        return Success(VerifyResponseDto.toEntity(res.data));
+        return Success(Mapper.verifyToEntity(res.data));
       case Failure<VerifyResponseDto>():
         return Failure(responseException: res.responseException);
     }

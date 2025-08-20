@@ -24,13 +24,7 @@ class VerifyResponseDto extends Equatable {
     return _$VerifyResponseDtoToJson(this);
   }
 
-  static VerifyResponseEntity toEntity(VerifyResponseDto dto) {
-    return VerifyResponseEntity(
-      status: dto.status,
-      message: dto.message,
-      code: dto.code,
-    );
-  }
+
 
   @override
   List<Object?> get props => [status, message, code];

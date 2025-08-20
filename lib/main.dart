@@ -19,7 +19,7 @@ void main() async {
 
   Bloc.observer = MyBlocObserver();
 
-  await configureDependencies();
+   configureDependencies();
 
   FlutterNativeSplash.remove();
   runApp(const FloweryApp());

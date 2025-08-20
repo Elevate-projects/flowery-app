@@ -8,12 +8,16 @@ class VerificationScreenState extends Equatable {
   final Status verifyCodeStatus;
   final ResponseException? resendCodeError;
   final ResponseException? verifyCodeError;
+  final int secondsRemaining;
+  final bool isError;
 
   const VerificationScreenState({
     this.resendCodeStatus = Status.initial,
     this.verifyCodeStatus = Status.initial,
     this.resendCodeError,
     this.verifyCodeError,
+    this.secondsRemaining = 0,
+    this.isError = false,
   });
 
   VerificationScreenState copyWith({
@@ -21,12 +25,16 @@ class VerificationScreenState extends Equatable {
     Status? verifyCodeStatus,
     ResponseException? resendCodeError,
     ResponseException? verifyCodeError,
+    int? secondsRemaining,
+    bool? isError,
   }) {
     return VerificationScreenState(
       resendCodeStatus: resendCodeStatus ?? this.resendCodeStatus,
       verifyCodeStatus: verifyCodeStatus ?? this.verifyCodeStatus,
       resendCodeError: resendCodeError ?? this.resendCodeError,
       verifyCodeError: verifyCodeError ?? this.verifyCodeError,
+      secondsRemaining: secondsRemaining ?? this.secondsRemaining,
+      isError: isError ?? this.isError,
     );
   }
 
@@ -36,5 +44,7 @@ class VerificationScreenState extends Equatable {
     verifyCodeStatus,
     resendCodeError,
     verifyCodeError,
+    secondsRemaining,
+    isError,
   ];
 }

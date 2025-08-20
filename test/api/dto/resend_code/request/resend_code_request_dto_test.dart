@@ -1,3 +1,4 @@
+import 'package:flowery_app/api/dto/mapper/mapper.dart';
 import 'package:flowery_app/api/dto/resend_code/request/resend_code_request_dto.dart';
 import 'package:flowery_app/domain/entities/resend_code/request/resend_code_request.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -5,7 +6,7 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   test('when call toDto with null values it should return null values', () {
     ResendCodeRequestEntity entity = ResendCodeRequestEntity(email: null);
-    ResendCodeRequestDto dto = ResendCodeRequestDto.toDto(entity);
+    ResendCodeRequestDto dto = Mapper.resendCodeToDto(entity);
     expect(dto.email, isNull);
   });
   test(
@@ -14,7 +15,7 @@ void main() {
       ResendCodeRequestEntity entity = ResendCodeRequestEntity(
         email: 'moaazhassan559@gmail.com',
       );
-      ResendCodeRequestDto dto = ResendCodeRequestDto.toDto(entity);
+      ResendCodeRequestDto dto = Mapper.resendCodeToDto(entity);
       expect(dto.email, equals(entity.email));
     },
   );

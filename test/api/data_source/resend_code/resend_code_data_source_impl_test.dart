@@ -2,7 +2,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flowery_app/api/client/api_client.dart';
 import 'package:flowery_app/api/client/api_result.dart';
 import 'package:flowery_app/api/data_source/resend_code/resend_code_data_source_impl.dart';
-import 'package:flowery_app/api/dto/resend_code/request/resend_code_request_dto.dart';
+import 'package:flowery_app/api/dto/mapper/mapper.dart';
 import 'package:flowery_app/api/dto/resend_code/response/resend_code_response_dto.dart';
 import 'package:flowery_app/core/connection_manager/connection_manager.dart';
 import 'package:flowery_app/domain/entities/resend_code/request/resend_code_request.dart';
@@ -38,13 +38,13 @@ void main() {
     ).thenAnswer((_) async => [ConnectivityResult.wifi]);
 
     when(
-      mockApiClient.resendCode(ResendCodeRequestDto.toDto(resendCodeRequest)),
+      mockApiClient.resendCode(Mapper.resendCodeToDto(resendCodeRequest)),
     ).thenAnswer((_) async => expectedResponse);
 
     var result = await dataSource.resendCode(resendCodeRequest);
 
     verify(
-      mockApiClient.resendCode(ResendCodeRequestDto.toDto(resendCodeRequest)),
+      mockApiClient.resendCode(Mapper.resendCodeToDto(resendCodeRequest)),
     ).called(1);
 
     expect(result, isA<Success<ResendCodeResponseEntity>>());

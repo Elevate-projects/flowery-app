@@ -20,9 +20,6 @@ class ResendCodeRequestDto extends Equatable {
     return _$ResendCodeRequestDtoToJson(this);
   }
 
-  static ResendCodeRequestDto toDto(ResendCodeRequestEntity entity) {
-    return ResendCodeRequestDto(email: entity.email);
-  }
 
   @override
   List<Object?> get props => [email];

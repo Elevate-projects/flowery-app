@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flowery_app/api/client/api_result.dart';
 import 'package:flowery_app/domain/entities/resend_code/response/resend_code_response.dart';
 import 'package:flowery_app/domain/entities/verification/response/verify_response.dart';
@@ -16,6 +18,8 @@ class VerificationScreenCubit extends Cubit<VerificationScreenState> {
   final GetResendCodeUsecase _getResendCodeUsecase;
   final GetVerificationUsecase _getVerificationUsecase;
 
+  Timer? _timer;
+
   VerificationScreenCubit(
     this._getResendCodeUsecase,
     this._getVerificationUsecase,
@@ -27,6 +31,8 @@ class VerificationScreenCubit extends Cubit<VerificationScreenState> {
         return _resendCode(intent.request);
       case OnVerificationIntent():
         return _verify(intent.request);
+      case OnStartTimer():
+        return _startTimer();
     }
   }
 
@@ -35,6 +41,7 @@ class VerificationScreenCubit extends Cubit<VerificationScreenState> {
     var res = await _getResendCodeUsecase.execute(request);
     switch (res) {
       case Success<ResendCodeResponseEntity>():
+        _startTimer();
         emit(state.copyWith(resendCodeStatus: Status.success));
       case Failure<ResendCodeResponseEntity>():
         emit(
@@ -51,14 +58,35 @@ class VerificationScreenCubit extends Cubit<VerificationScreenState> {
     var res = await _getVerificationUsecase.execute(request);
     switch (res) {
       case Success<VerifyResponseEntity>():
-        emit(state.copyWith(verifyCodeStatus: Status.success));
+        emit(state.copyWith(verifyCodeStatus: Status.success, isError: false));
       case Failure<VerifyResponseEntity>():
         emit(
           state.copyWith(
             verifyCodeStatus: Status.error,
             verifyCodeError: res.responseException,
+            isError: true,
           ),
         );
     }
+  }
+
+  void _startTimer() {
+    _timer?.cancel();
+    int seconds = 30;
+    emit(state.copyWith(secondsRemaining: seconds));
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (seconds > 0) {
+        seconds--;
+        emit(state.copyWith(secondsRemaining: seconds));
+      } else {
+        timer.cancel();
+      }
+    });
+  }
+
+  @override
+  Future<void> close() {
+    _timer?.cancel();
+    return super.close();
   }
 }

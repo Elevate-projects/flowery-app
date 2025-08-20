@@ -2,7 +2,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flowery_app/api/client/api_client.dart';
 import 'package:flowery_app/api/client/api_result.dart';
 import 'package:flowery_app/api/data_source/verification/verification_data_source_impl.dart';
-import 'package:flowery_app/api/dto/verification/request/verify_request_dto.dart';
+import 'package:flowery_app/api/dto/mapper/mapper.dart';
 import 'package:flowery_app/api/dto/verification/response/verify_response_dto.dart';
 import 'package:flowery_app/core/connection_manager/connection_manager.dart';
 import 'package:flowery_app/domain/entities/verification/request/verify_requset.dart';
@@ -12,11 +12,6 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import 'verification_data_source_impl_test.mocks.dart';
-
-
-
-
-
 
 @GenerateMocks([ApiClient, Connectivity])
 void main() {
@@ -42,13 +37,13 @@ void main() {
     ).thenAnswer((_) async => [ConnectivityResult.wifi]);
 
     when(
-      mockApiClient.verificationCode(VerifyRequestDto.toDto(verifyRequest)),
+      mockApiClient.verificationCode(Mapper.verifyToDto(verifyRequest)),
     ).thenAnswer((_) async => expectedResponse);
 
     var result = await dataSource.verify(verifyRequest);
 
     verify(
-      mockApiClient.verificationCode(VerifyRequestDto.toDto(verifyRequest)),
+      mockApiClient.verificationCode(Mapper.verifyToDto(verifyRequest)),
     ).called(1);
 
     expect(result, isA<Success<VerifyResponseEntity>>());
