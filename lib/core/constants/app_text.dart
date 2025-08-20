@@ -11,6 +11,10 @@ abstract final class AppText {
   static const String signup = "Sign up";
   static const String continueAsGuest = "Continue as guest";
 
+  // Splash
+  static const String tryAgain = "Try again";
+  static const String reLogin = "Re-login";
+
   // Validations
   static const String userNameValidation = "This user name is not valid";
   static const String emptyTextValidation = 'This field is required';

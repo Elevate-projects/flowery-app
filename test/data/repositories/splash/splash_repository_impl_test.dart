@@ -1,28 +1,23 @@
 import 'package:flowery_app/api/client/api_result.dart';
-import 'package:flowery_app/api/requests/login_request/login_request.dart';
+import 'package:flowery_app/data/data_source/splash/remote_data_source/splash_remote_data_source.dart';
+import 'package:flowery_app/data/repositories/splash/splash_repository_impl.dart';
 import 'package:flowery_app/domain/entities/user_data/user_data_entity.dart';
-import 'package:flowery_app/domain/repositories/login/login_repository.dart';
-import 'package:flowery_app/domain/use_cases/login/login_with_email_and_password_use_case.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import 'login_with_email_and_password_use_case_test.mocks.dart';
+import 'splash_repository_impl_test.mocks.dart';
 
-@GenerateMocks([LoginRepository])
+@GenerateMocks([SplashRemoteDataSource])
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
   test(
-    'when call invoke it should be called successfully from LoginRepository and return UserDataEntity',
+    'when call getUserData it should be called successfully from SplashRemoteDataSource and return UserDataEntity',
     () async {
-      //Arrange
-      final mockedLoginRepository = MockLoginRepository();
-      final loginUseCase = LoginWithEmailAndPasswordUseCase(
-        mockedLoginRepository,
-      );
-      final request = LoginRequest(
-        email: "ahmed@gmail.com",
-        password: "Ahmed\$123",
+      // Arrange
+      final mockedSplashRemoteDataSource = MockSplashRemoteDataSource();
+      final splashRepositoryImpl = SplashRepositoryImpl(
+        mockedSplashRemoteDataSource,
       );
       final userDataEntity = UserDataEntity(
         id: "1",
@@ -39,15 +34,15 @@ void main() {
       final expectedUserDataEntityResult = Success(userDataEntity);
       provideDummy<Result<UserDataEntity?>>(expectedUserDataEntityResult);
       when(
-        mockedLoginRepository.login(request: request),
+        mockedSplashRemoteDataSource.getUserData(),
       ).thenAnswer((_) async => expectedUserDataEntityResult);
 
       // Act
-      final result = await loginUseCase.invoke(request: request);
+      final result = await splashRepositoryImpl.getUserData();
       final successResult = result as Success<UserDataEntity?>;
 
       // Assert
-      verify(mockedLoginRepository.login(request: request)).called(1);
+      verify(mockedSplashRemoteDataSource.getUserData()).called(1);
       expect(result, isA<Success<UserDataEntity?>>());
       expect(userDataEntity.id, equals(successResult.data?.id));
       expect(userDataEntity.photo, equals(successResult.data?.photo));
