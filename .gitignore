@@ -32,6 +32,8 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
+.packages
+pubspec.lock
 
 # Symbolication related
 app.*.symbols
@@ -49,3 +51,12 @@ app.*.map.json
 **/*.freezed.dart
 **/*.gen.dart
 lib/api/client/api_client.g.dart
+**/*.config.dart
+**/*.mocks.dart
+**/*.gr.dart
+**/*.gql.dart
+
+# Flutter generated files
+ios/Runner/GeneratedPluginRegistrant.*
+android/app/src/main/java/**/GeneratedPluginRegistrant.java
+lib/generated_plugin_registrant.dart

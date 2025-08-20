@@ -16,8 +16,18 @@ import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
 import '../../api/client/api_client.dart' as _i508;
 import '../../api/client/api_module.dart' as _i272;
+import '../../api/data_source/login/remote_data_source/login_remote_data_source_impl.dart'
+    as _i221;
+import '../../data/data_source/login/remote_data_source/login_remote_data_source.dart'
+    as _i684;
+import '../../data/repositories/login/login_repository_impl.dart' as _i722;
+import '../../domain/repositories/login/login_repository.dart' as _i300;
+import '../../domain/use_cases/login/login_with_email_and_password_use_case.dart'
+    as _i197;
+import '../../presentation/auth/login/views_model/login_cubit.dart' as _i512;
 import '../cache/shared_preferences_helper.dart' as _i686;
 import '../cache/shared_preferences_module.dart' as _i912;
+import '../global_cubit/global_cubit.dart' as _i209;
 import '../secure_storage/secure_storage.dart' as _i23;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -38,6 +48,30 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i508.ApiClient>(() => _i508.ApiClient(gh<_i361.Dio>()));
     gh.singleton<_i686.SharedPreferencesHelper>(
       () => _i686.SharedPreferencesHelper(gh<_i460.SharedPreferences>()),
+    );
+    gh.factory<_i209.GlobalCubit>(
+      () => _i209.GlobalCubit(gh<_i23.SecureStorage>()),
+    );
+    gh.factory<_i684.LoginRemoteDataSource>(
+      () => _i221.LoginRemoteDataSourceImpl(
+        gh<_i508.ApiClient>(),
+        gh<_i23.SecureStorage>(),
+      ),
+    );
+    gh.factory<_i300.LoginRepository>(
+      () => _i722.LoginRepositoryImpl(
+        loginRemoteDataSource: gh<_i684.LoginRemoteDataSource>(),
+      ),
+    );
+    gh.factory<_i197.LoginWithEmailAndPasswordUseCase>(
+      () => _i197.LoginWithEmailAndPasswordUseCase(gh<_i300.LoginRepository>()),
+    );
+    gh.factory<_i512.LoginCubit>(
+      () => _i512.LoginCubit(
+        gh<_i197.LoginWithEmailAndPasswordUseCase>(),
+        gh<_i23.SecureStorage>(),
+        gh<_i686.SharedPreferencesHelper>(),
+      ),
     );
     return this;
   }
