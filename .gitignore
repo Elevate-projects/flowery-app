@@ -49,3 +49,5 @@ app.*.map.json
 **/*.freezed.dart
 **/*.gen.dart
 lib/api/client/api_client.g.dart
+lib/core/di/di.config.dart
+
