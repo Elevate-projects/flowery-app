@@ -9,6 +9,11 @@ abstract final class AppText {
   static const String forgetPassword = "Forget password?";
   static const String donNotHaveAccount = "Don't have an account?";
   static const String signup = "Sign up";
+  static const String continueAsGuest = "Continue as guest";
+
+  // Splash
+  static const String tryAgain = "Try again";
+  static const String reLogin = "Re-login";
 
   // Validations
   static const String userNameValidation = "This user name is not valid";
@@ -16,9 +21,9 @@ abstract final class AppText {
   static const String phoneNumberValidation = "Phone number field is required";
   static const String phoneNumberValidation2 =
       "Phone Number should consist of 11 digits";
-  static const String emailValidation = "Email field is required";
+  static const String emailValidation = "This Email is not valid";
   static const String emailValidation2 = "Enter a valid email";
-  static const String passwordValidation = "Password field is required";
+  static const String passwordValidation = "Invalid password";
   static const String passwordValidation2 =
       "Password field should contain at least 8 characters";
   static const String confirmPasswordValidation =
@@ -30,6 +35,10 @@ abstract final class AppText {
       "Password must contain at least one number";
   static const String passwordValidation5 =
       "Password must not exceed 20 characters";
+  static const String passwordValidation6 =
+      "Password must contain a capital letter";
+  static const String passwordValidation7 =
+      "Password must contain a special character";
   static const String otpValidation =
       "The code sent to your email address is required";
   static const String otpValidation2 = "You have to enter the 6-digit code";
