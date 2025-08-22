@@ -49,6 +49,10 @@ abstract class Validations {
       return AppText.passwordValidation3;
     } else if (!RegExp(r'\d').hasMatch(password)) {
       return AppText.passwordValidation4;
+    } else if (!RegExp(r'[A-Z]').hasMatch(password)) {
+      return AppText.passwordValidation6;
+    } else if (!RegExp(r'[!@#$%^&*(),.?":{}|<>]').hasMatch(password)) {
+      return AppText.passwordValidation7;
     } else if (password.length > 20) {
       return AppText.passwordValidation5;
     }

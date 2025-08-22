@@ -10,6 +10,34 @@ abstract final class AppText {
   static const String donNotHaveAccount = "Don't have an account?";
   static const String signup = "Sign up";
 
+  // Signup
+  static const String firstName = "First Name";
+  static const String firstNameHint = "Enter your first name";
+  static const String lastName = "Last Name";
+  static const String lastNameHint = "Enter your last name";
+  static const String confirmPassword = "Confirm Password";
+  static const String confirmPasswordHint = "Confirm your password";
+  static const String phoneNumber = "Phone Number";
+  static const String phoneNumberHint = "Enter your phone number";
+
+   // Gender constants
+  static const String genderMale = 'male';
+  static const String genderFemale = 'female';
+  
+  // Display Names
+  static const String genderMaleDisplay = 'Male';
+  static const String genderFemaleDisplay = 'Female';
+  
+  // Labels
+  static const String genderLabel = 'Gender';
+  // static const String genderRequired ="PLease select a gender";
+  // Terms and Conditions
+  static const String createAnAccountYouAgree = "Creating an account, you agree to our ";
+  static const String termsAndConditions = "Terms and Conditions";
+
+  // already have an account?
+  static const String alreadyHaveAnAccount = "Already have an account?";
+
   // Validations
   static const String userNameValidation = "This user name is not valid";
   static const String emptyTextValidation = 'This field is required';
@@ -30,6 +58,10 @@ abstract final class AppText {
       "Password must contain at least one number";
   static const String passwordValidation5 =
       "Password must not exceed 20 characters";
+      static const String passwordValidation6 =
+      "Password must contain a capital letter";
+  static const String passwordValidation7 =
+      "Password must contain a special character";
   static const String otpValidation =
       "The code sent to your email address is required";
   static const String otpValidation2 = "You have to enter the 6-digit code";
