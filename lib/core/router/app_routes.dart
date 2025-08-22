@@ -6,6 +6,9 @@ import 'package:flowery_app/presentation/auth/verification/views_model/verificat
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../presentation/auth/reset_password/view_model/reset_password_cubit.dart';
+import '../../presentation/auth/reset_password/views/reset_password.dart';
+
 abstract class AppRoutes {
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -16,7 +19,14 @@ abstract class AppRoutes {
           builder: (context) => BlocProvider(
             create: (context) => getIt<VerificationScreenCubit>(),
             child: EmailVerification(),
-          ), // Replace with actual verification view
+          ),
+        );
+      case RouteNames.resetPassword:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<ResetPasswordCubit>(),
+            child: ResetPassword(email: settings.arguments as String),
+          ),
         );
       default:
         return null;

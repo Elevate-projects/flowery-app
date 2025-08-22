@@ -1,4 +1,5 @@
 import 'package:flowery_app/core/constants/app_text.dart';
+import 'package:flowery_app/core/router/route_names.dart';
 import 'package:flowery_app/presentation/auth/verification/views/widgets/build_verification_form.dart';
 import 'package:flowery_app/presentation/auth/verification/views_model/verification_screen_cubit.dart';
 import 'package:flowery_app/presentation/auth/verification/views_model/verification_screen_state.dart';
@@ -80,6 +81,13 @@ class _EmailVerificationState extends State<EmailVerification> {
                     message: AppText.verificationSuccess,
                     context: context,
                   );
+                  Future.delayed(const Duration(milliseconds: 1000), () {
+                    Navigator.pushReplacementNamed(
+                      context,
+                      RouteNames.resetPassword,
+                      arguments: widget.email,
+                    );
+                  });
                   break;
                 case Status.error:
                   Navigator.pop(context);

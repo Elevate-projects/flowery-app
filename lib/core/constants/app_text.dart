@@ -60,4 +60,11 @@ abstract final class AppText {
   static const String didntRecieveCodeStatement = 'Didn\'t receive code?';
   static const String otpResendedSuccessfully = "OTP Resented successfully.";
   static const String verificationSuccess = "Verification Success";
+  static const String resetPasswordTitle = 'Reset password';
+  static const String resetPasswordSubTitle =
+      'Password must not be empty and must contain 6 characters with upper case letter and one number at least ';
+  static const String confirmPassword = "confirm password";
+  static const String confirmPasswordHint = "Enter your confirm password";
+  static const String continueWord = "Continue";
+  static const String passwordReseted = "Password Reseted Successfully";
 }

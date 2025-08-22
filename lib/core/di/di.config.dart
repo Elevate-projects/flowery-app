@@ -18,21 +18,33 @@ import '../../api/client/api_client.dart' as _i508;
 import '../../api/client/api_module.dart' as _i272;
 import '../../api/data_source/resend_code/resend_code_data_source_impl.dart'
     as _i53;
+import '../../api/data_source/reset_password/reset_password_data_source_impl.dart'
+    as _i783;
 import '../../api/data_source/verification/verification_data_source_impl.dart'
     as _i15;
 import '../../data/data_source/resend_code/resend_code_data_source.dart'
     as _i523;
+import '../../data/data_source/reset_password/reset_password_data_source.dart'
+    as _i926;
 import '../../data/data_source/verification/verification_data_source.dart'
     as _i14;
 import '../../data/repositories/resend_code/resend_code_repository_impl.dart'
     as _i622;
+import '../../data/repositories/reset_password/reset_password_repository_impl.dart'
+    as _i50;
 import '../../data/repositories/verification/verification_repository_impl.dart'
     as _i1003;
 import '../../domain/repositories/resend_code/resend_code.dart' as _i673;
+import '../../domain/repositories/reset_password/reset_password_repository.dart'
+    as _i189;
 import '../../domain/repositories/verification/verification_repository.dart'
     as _i550;
 import '../../domain/use_cases/resend_code/resend_code_usecase.dart' as _i335;
+import '../../domain/use_cases/reset_password/reset_password_usecase.dart'
+    as _i963;
 import '../../domain/use_cases/verification/verification_usecase.dart' as _i510;
+import '../../presentation/auth/reset_password/view_model/reset_password_cubit.dart'
+    as _i349;
 import '../../presentation/auth/verification/views_model/verification_screen_cubit.dart'
     as _i988;
 import '../cache/shared_preferences_helper.dart' as _i686;
@@ -64,6 +76,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i14.VerificationDataSource>(
       () => _i15.VreificationDataSourceImpl(gh<_i508.ApiClient>()),
     );
+    gh.factory<_i926.ResetPasswordDataSource>(
+      () => _i783.ResetPasswordDataSourceImpl(gh<_i508.ApiClient>()),
+    );
     gh.factory<_i673.ResendCodeRepository>(
       () => _i622.ResendCodeRepositoryImpl(gh<_i523.ResendCodeDataSource>()),
     );
@@ -74,8 +89,18 @@ extension GetItInjectableX on _i174.GetIt {
       () =>
           _i1003.VreificationRepositoryImpl(gh<_i14.VerificationDataSource>()),
     );
+    gh.factory<_i189.ResetPasswordRepository>(
+      () =>
+          _i50.ResetPasswordRepositoryImpl(gh<_i926.ResetPasswordDataSource>()),
+    );
     gh.factory<_i510.GetVerificationUsecase>(
       () => _i510.GetVerificationUsecase(gh<_i550.VerificationRepository>()),
+    );
+    gh.factory<_i963.GetResetPasswordUsecase>(
+      () => _i963.GetResetPasswordUsecase(gh<_i189.ResetPasswordRepository>()),
+    );
+    gh.factory<_i349.ResetPasswordCubit>(
+      () => _i349.ResetPasswordCubit(gh<_i963.GetResetPasswordUsecase>()),
     );
     gh.factory<_i988.VerificationScreenCubit>(
       () => _i988.VerificationScreenCubit(
