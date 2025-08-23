@@ -16,7 +16,7 @@ void main() async {
     DeviceOrientation.portraitDown,
   ]);
   Bloc.observer = MyBlocObserver();
-  configureDependencies();
+  await configureDependencies();
   FlutterNativeSplash.remove();
   runApp(const FloweryApp());
 }
