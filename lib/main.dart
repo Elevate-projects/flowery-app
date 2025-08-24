@@ -21,8 +21,8 @@ void main() async {
   // bloc observer for debugging, logging, tracking
   Bloc.observer = MyBlocObserver();
   // get_it dependency injection
-  configureDependencies();
-  // remove splash screen after app is loaded
+  await configureDependencies();
+   // remove splash screen after app is loaded
   FlutterNativeSplash.remove();
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
