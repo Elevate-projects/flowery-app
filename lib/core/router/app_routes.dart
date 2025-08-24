@@ -8,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../presentation/auth/reset_password/view_model/reset_password_cubit.dart';
 import '../../presentation/auth/reset_password/views/reset_password.dart';
+import '../../presentation/home/best_seller/view/best_seller_view.dart';
 
 abstract class AppRoutes {
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
@@ -28,6 +29,8 @@ abstract class AppRoutes {
             child: ResetPassword(email: settings.arguments as String),
           ),
         );
+      case RouteNames.bestSeller:
+        return MaterialPageRoute(builder: (_) => BestSellerView());
       default:
         return null;
     }

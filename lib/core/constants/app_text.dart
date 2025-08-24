@@ -71,4 +71,7 @@ abstract final class AppText {
   static const String confirmPasswordHint = "Enter your confirm password";
   static const String continueWord = "Continue";
   static const String passwordReseted = "Password Reseted Successfully";
+  static const String bestSellerAppbar = "Best Seller";
+  static const String bestSellerAppbarHint =
+      "Bloom with our exquisite best sellers";
 }
