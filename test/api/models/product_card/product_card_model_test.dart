@@ -1,4 +1,4 @@
-import 'package:flowery_app/api/dto/product_card/product_card_dto.dart';
+import 'package:flowery_app/api/models/product_card/product_card_model.dart';
 import 'package:flowery_app/domain/entities/product_card/product_card_entity.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -8,7 +8,7 @@ void main() {
       "when call toProductCardEntity with null values it should return ProductCardEntity with null values",
       () {
         //Arrange
-        ProductCardDto productCardData = ProductCardDto(
+        ProductCardModel productCardData = ProductCardModel(
           rateAvg: null,
           rateCount: null,
           id: null,
@@ -55,7 +55,7 @@ void main() {
       "when call toProductCardEntity with non-nullable values it should return ProductCardEntity with correct values",
       () {
         //Arrange
-        ProductCardDto productCardData = ProductCardDto(
+        ProductCardModel productCardData = ProductCardModel(
           rateAvg: 4,
           rateCount: 10,
           id: "1",
