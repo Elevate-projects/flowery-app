@@ -90,10 +90,19 @@ void main() {
       },
       act: (cubit) => cubit.doIntent(intent: LoginWithEmailAndPasswordIntent()),
       expect: () => [
-        isA<LoginLoadingState>(),
-        isA<LoginSuccessState>()
+        isA<LoginState>().having(
+          (state) => state.loginStatus.isLoading,
+          "Is Loading State",
+          equals(true),
+        ),
+        isA<LoginState>()
             .having(
-              (_) => FloweryMethodHelper.userData?.email,
+              (state) => state.loginStatus.isSuccess,
+              "Is Success State",
+              equals(true),
+            )
+            .having(
+              (state) => FloweryMethodHelper.userData?.email,
               "check if the userData saved correctly and equals to the expected",
               equals(
                 (expectedSuccessResult as Success<UserDataEntity?>).data?.email,
@@ -138,12 +147,22 @@ void main() {
       },
       act: (cubit) => cubit.doIntent(intent: LoginWithEmailAndPasswordIntent()),
       expect: () => [
-        isA<LoginLoadingState>(),
-        isA<LoginFailureState>().having(
-          (state) => state.errorData.message,
-          'responseException.message',
-          expectedFailureResult.responseException.message,
+        isA<LoginState>().having(
+          (state) => state.loginStatus.isLoading,
+          "Is Loading State",
+          equals(true),
         ),
+        isA<LoginState>()
+            .having(
+              (state) => state.loginStatus.isFailure,
+              "Is Failure State",
+              equals(true),
+            )
+            .having(
+              (state) => state.loginStatus.error?.message,
+              'responseException.message',
+              expectedFailureResult.responseException.message,
+            ),
       ],
       verify: (_) {
         verify(
@@ -172,14 +191,26 @@ void main() {
       build: () => cubit,
       act: (cubit) async =>
           await cubit.doIntent(intent: ToggleRememberMeIntent()),
-      expect: () => [isA<ToggleRememberMeState>()],
+      expect: () => [
+        isA<ToggleRememberMeState>().having(
+          (state) => state.rememberMe,
+          "Is remember me value changed",
+          equals(true),
+        ),
+      ],
     );
 
     blocTest<LoginCubit, LoginState>(
       'emits LoginAsGuestState when Login As Guest',
       build: () => cubit,
       act: (cubit) => cubit.doIntent(intent: LoginAsGuestIntent()),
-      expect: () => [isA<LoginAsGuestState>()],
+      expect: () => [
+        isA<LoginState>().having(
+          (state) => state.loginStatus.isSuccess,
+          "Is Success State",
+          equals(true),
+        ),
+      ],
     );
   });
 }

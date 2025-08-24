@@ -17,18 +17,14 @@ class LoginViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<LoginCubit, LoginState>(
       listenWhen: (previous, current) =>
-          current is LoginFailureState ||
-          current is LoginSuccessState ||
-          current is LoginAsGuestState,
+          current.loginStatus.isFailure || current.loginStatus.isSuccess,
       listener: (context, state) {
-        if (state is LoginFailureState) {
+        if (state.loginStatus.isFailure) {
           Loaders.showErrorMessage(
-            message: state.errorData.message,
+            message: state.loginStatus.error?.message ?? "",
             context: context,
           );
-        } else if (state is LoginSuccessState) {
-          // Navigate to the home screen
-        } else if (state is LoginAsGuestState) {
+        } else if (state.loginStatus.isSuccess) {
           // Navigate to the home screen
         }
       },
@@ -37,9 +33,9 @@ class LoginViewBody extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: BlocBuilder<LoginCubit, LoginState>(
             buildWhen: (previous, current) =>
-                current is LoginLoadingState || current is LoginFailureState,
+                current.loginStatus.isLoading || current.loginStatus.isFailure,
             builder: (context, state) => AbsorbPointer(
-              absorbing: state is LoginLoadingState,
+              absorbing: state.loginStatus.isLoading,
               child: const Column(
                 children: [
                   RSizedBox(height: 12),

@@ -3,10 +3,10 @@ import 'package:flowery_app/api/client/api_client.dart';
 import 'package:flowery_app/api/client/api_result.dart';
 import 'package:flowery_app/api/data_source/login/remote_data_source/login_remote_data_source_impl.dart';
 import 'package:flowery_app/api/models/user_data/user_data_model.dart';
-import 'package:flowery_app/api/requests/login_request/login_request.dart';
 import 'package:flowery_app/api/responses/login_response/login_response.dart';
 import 'package:flowery_app/core/connection_manager/connection_manager.dart';
 import 'package:flowery_app/core/secure_storage/secure_storage.dart';
+import 'package:flowery_app/domain/entities/requests/login_request/login_request_entity.dart';
 import 'package:flowery_app/domain/entities/user_data/user_data_entity.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -42,7 +42,7 @@ void main() {
         createdAt: "2020-01-01",
         role: "developer",
       );
-      final LoginRequest request = LoginRequest(
+      final LoginRequestEntity requestEntity = LoginRequestEntity(
         email: "ahmed@gmail.com",
         password: "Ahmed\$123",
       );
@@ -59,16 +59,16 @@ void main() {
         mockedConnectivity.checkConnectivity(),
       ).thenAnswer((_) async => [ConnectivityResult.wifi]);
       when(
-        mockApiClient.login(request: request),
+        mockApiClient.login(request: anyNamed("request")),
       ).thenAnswer((_) async => expectedLoginResponse);
 
       // Act
-      final result = await loginRemoteDataSource.login(request: request);
+      final result = await loginRemoteDataSource.login(request: requestEntity);
       final successResult = result as Success<UserDataEntity?>;
 
       // Assert
       expect(result, isA<Success<UserDataEntity?>>());
-      verify(mockApiClient.login(request: request)).called(1);
+      verify(mockApiClient.login(request: anyNamed("request"))).called(1);
       expect(
         expectedUserDataEntityResult.data.id,
         equals(successResult.data?.id),

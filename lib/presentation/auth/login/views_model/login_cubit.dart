@@ -1,8 +1,9 @@
 import 'package:flowery_app/api/client/api_result.dart';
-import 'package:flowery_app/api/requests/login_request/login_request.dart';
 import 'package:flowery_app/core/cache/shared_preferences_helper.dart';
 import 'package:flowery_app/core/constants/const_keys.dart';
 import 'package:flowery_app/core/secure_storage/secure_storage.dart';
+import 'package:flowery_app/core/state_status/state_status.dart';
+import 'package:flowery_app/domain/entities/requests/login_request/login_request_entity.dart';
 import 'package:flowery_app/domain/entities/user_data/user_data_entity.dart';
 import 'package:flowery_app/domain/use_cases/login/login_with_email_and_password_use_case.dart';
 import 'package:flowery_app/presentation/auth/login/views_model/login_intent.dart';
@@ -22,14 +23,14 @@ class LoginCubit extends Cubit<LoginState> {
     this._loginWithEmailAndPasswordUseCase,
     this._secureStorage,
     this._sharedPreferencesHelper,
-  ) : super(LoginInitial());
+  ) : super(const LoginState());
 
   late final TextEditingController emailController;
   late final TextEditingController passwordController;
   late AutovalidateMode autoValidateMode;
   late GlobalKey<FormState> loginFormKey;
-  late bool rememberMe;
   ChangeObscureState _obscurePasswordState = ChangeObscureState();
+  ToggleRememberMeState _toggleRememberMeState = ToggleRememberMeState();
 
   Future<void> doIntent({required LoginIntent intent}) async {
     switch (intent) {
@@ -57,7 +58,7 @@ class LoginCubit extends Cubit<LoginState> {
     passwordController = TextEditingController();
     autoValidateMode = AutovalidateMode.disabled;
     _getRememberMeValue();
-    if (rememberMe) await _getRememberedUserData();
+    if (_toggleRememberMeState.rememberMe) await _getRememberedUserData();
   }
 
   void _enableAutoValidateMode() {
@@ -66,24 +67,32 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   void _toggleObscure() {
-    _obscurePasswordState = _obscurePasswordState.copyWith(
+    _obscurePasswordState = _obscurePasswordState.copyWith2(
       isObscurePassword: _obscurePasswordState.isObscure,
     );
     emit(_obscurePasswordState);
   }
 
   void _getRememberMeValue() {
-    rememberMe = _sharedPreferencesHelper.getBool(key: ConstKeys.rememberMe);
+    final bool isRemembered = _sharedPreferencesHelper.getBool(
+      key: ConstKeys.rememberMe,
+    );
+    _toggleRememberMeState = _toggleRememberMeState.copyWith2(
+      isRememberMe: !isRemembered,
+    );
+    emit(_toggleRememberMeState);
   }
 
   Future<void> _toggleRememberMe() async {
-    rememberMe = !rememberMe;
+    _toggleRememberMeState = _toggleRememberMeState.copyWith2(
+      isRememberMe: _toggleRememberMeState.rememberMe,
+    );
     await _sharedPreferencesHelper.saveBool(
       key: ConstKeys.rememberMe,
-      value: rememberMe,
+      value: _toggleRememberMeState.rememberMe,
     );
     await _forgetUserData();
-    emit(ToggleRememberMeState());
+    emit(_toggleRememberMeState);
   }
 
   Future<void> _rememberUserData() async {
@@ -111,9 +120,9 @@ class LoginCubit extends Cubit<LoginState> {
 
   Future<void> _login() async {
     if (loginFormKey.currentState!.validate()) {
-      emit(LoginLoadingState());
+      emit(state.copyWith(loginStatus: const StateStatus.loading()));
       var userData = await _loginWithEmailAndPasswordUseCase.invoke(
-        request: LoginRequest(
+        request: LoginRequestEntity(
           email: emailController.text,
           password: passwordController.text,
         ),
@@ -122,12 +131,16 @@ class LoginCubit extends Cubit<LoginState> {
         case Success<UserDataEntity?>():
           {
             FloweryMethodHelper.userData = userData.data;
-            if (rememberMe) await _rememberUserData();
-            emit(LoginSuccessState());
+            if (_toggleRememberMeState.rememberMe) await _rememberUserData();
+            emit(state.copyWith(loginStatus: const StateStatus.success(null)));
             break;
           }
         case Failure<UserDataEntity?>():
-          emit(LoginFailureState(errorData: userData.responseException));
+          emit(
+            state.copyWith(
+              loginStatus: StateStatus.failure(userData.responseException),
+            ),
+          );
           break;
       }
     } else {
@@ -136,7 +149,7 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   void _loginAsGuest() {
-    emit(LoginAsGuestState());
+    emit(state.copyWith(loginStatus: const StateStatus.success(null)));
   }
 
   @override

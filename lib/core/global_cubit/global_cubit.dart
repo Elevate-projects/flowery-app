@@ -1,3 +1,4 @@
+import 'package:flowery_app/core/cache/shared_preferences_helper.dart';
 import 'package:flowery_app/core/constants/const_keys.dart';
 import 'package:flowery_app/core/global_cubit/global_state.dart';
 import 'package:flowery_app/core/router/route_names.dart';
@@ -10,7 +11,9 @@ import 'package:injectable/injectable.dart';
 @injectable
 class GlobalCubit extends Cubit<GlobalState> {
   final SecureStorage _secureStorage;
-  GlobalCubit(this._secureStorage) : super(GlobalInitial());
+  final SharedPreferencesHelper _sharedPreferencesHelper;
+  GlobalCubit(this._secureStorage, this._sharedPreferencesHelper)
+    : super(GlobalInitial());
   late final String redirectedScreen;
 
   Future<void> onInit() async {
@@ -19,10 +22,13 @@ class GlobalCubit extends Cubit<GlobalState> {
 
   Future<void> setRedirectedScreen() async {
     final userToken = await _secureStorage.getData(key: ConstKeys.tokenKey);
+    final isRemembered = _sharedPreferencesHelper.getBool(
+      key: ConstKeys.rememberMe,
+    );
     FlutterNativeSplash.remove();
-    if (userToken != null) {
+    if (userToken != null && isRemembered) {
       FloweryMethodHelper.currentUserToken = userToken;
-      // redirectedScreen = RouteNames.splash;
+      // redirectedScreen = RouteNames.homeScreen;
       redirectedScreen = RouteNames.login;
     } else {
       redirectedScreen = RouteNames.login;

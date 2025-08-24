@@ -1,7 +1,7 @@
 import 'package:flowery_app/api/client/api_result.dart';
-import 'package:flowery_app/api/requests/login_request/login_request.dart';
 import 'package:flowery_app/data/data_source/login/remote_data_source/login_remote_data_source.dart';
 import 'package:flowery_app/data/repositories/login/login_repository_impl.dart';
+import 'package:flowery_app/domain/entities/requests/login_request/login_request_entity.dart';
 import 'package:flowery_app/domain/entities/user_data/user_data_entity.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -20,7 +20,7 @@ void main() {
       final loginRepositoryImpl = LoginRepositoryImpl(
         loginRemoteDataSource: mockedLoginRemoteDataSource,
       );
-      final request = LoginRequest(
+      final request = LoginRequestEntity(
         email: "ahmed@gmail.com",
         password: "Ahmed\$123",
       );

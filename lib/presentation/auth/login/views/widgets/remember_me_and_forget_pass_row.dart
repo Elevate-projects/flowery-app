@@ -12,7 +12,7 @@ class RememberMeAndForgetPassRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = BlocProvider.of<LoginCubit>(context);
+    final loginCubit = BlocProvider.of<LoginCubit>(context);
     return Row(
       children: [
         Expanded(
@@ -22,8 +22,10 @@ class RememberMeAndForgetPassRow extends StatelessWidget {
                 buildWhen: (previous, current) =>
                     current is ToggleRememberMeState,
                 builder: (context, state) => Checkbox(
-                  value: controller.rememberMe,
-                  onChanged: (_) async => await controller.doIntent(
+                  value: state is ToggleRememberMeState
+                      ? state.rememberMe
+                      : false,
+                  onChanged: (_) async => await loginCubit.doIntent(
                     intent: ToggleRememberMeIntent(),
                   ),
                   shape: RoundedRectangleBorder(
@@ -37,7 +39,7 @@ class RememberMeAndForgetPassRow extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () async =>
-                    await controller.doIntent(intent: ToggleRememberMeIntent()),
+                    await loginCubit.doIntent(intent: ToggleRememberMeIntent()),
                 child: Text(
                   AppText.rememberMe,
                   style: Theme.of(context).textTheme.bodyMedium,

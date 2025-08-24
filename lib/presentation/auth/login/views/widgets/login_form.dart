@@ -13,35 +13,35 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = BlocProvider.of<LoginCubit>(context);
+    final loginCubit = BlocProvider.of<LoginCubit>(context);
     return BlocBuilder<LoginCubit, LoginState>(
       buildWhen: (previous, current) =>
           current is EnableAutoValidateModeState ||
-          current is LoginLoadingState ||
-          current is LoginFailureState ||
+          current.loginStatus.isLoading ||
+          current.loginStatus.isFailure ||
           current is ChangeObscureState,
       builder: (context, state) => Form(
-        key: controller.loginFormKey,
-        autovalidateMode: controller.autoValidateMode,
+        key: loginCubit.loginFormKey,
+        autovalidateMode: loginCubit.autoValidateMode,
         child: Column(
           children: [
             CustomTextFormField(
-              controller: controller.emailController,
+              controller: loginCubit.emailController,
               label: AppText.email,
               hintText: AppText.emailHint,
               keyboardType: TextInputType.emailAddress,
               textInputAction: TextInputAction.next,
               validator: (value) => Validations.emailValidation(email: value),
-              enabled: state is! LoginLoadingState,
+              enabled: !state.loginStatus.isLoading,
             ),
             const RSizedBox(height: 24),
             CustomTextFormField(
-              controller: controller.passwordController,
+              controller: loginCubit.passwordController,
               label: AppText.password,
               hintText: AppText.passwordHint,
               suffixIcon: IconButton(
                 onPressed: () {
-                  controller.doIntent(intent: ToggleObscurePasswordIntent());
+                  loginCubit.doIntent(intent: ToggleObscurePasswordIntent());
                 },
                 icon: Icon(
                   (state is ChangeObscureState ? state.isObscure : true)
@@ -59,7 +59,7 @@ class LoginForm extends StatelessWidget {
               keyboardType: TextInputType.visiblePassword,
               validator: (value) =>
                   Validations.passwordValidation(password: value),
-              enabled: state is! LoginLoadingState,
+              enabled: !state.loginStatus.isLoading,
             ),
           ],
         ),

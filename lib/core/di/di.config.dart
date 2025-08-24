@@ -49,13 +49,16 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i686.SharedPreferencesHelper>(
       () => _i686.SharedPreferencesHelper(gh<_i460.SharedPreferences>()),
     );
-    gh.factory<_i209.GlobalCubit>(
-      () => _i209.GlobalCubit(gh<_i23.SecureStorage>()),
-    );
     gh.factory<_i684.LoginRemoteDataSource>(
       () => _i221.LoginRemoteDataSourceImpl(
         gh<_i508.ApiClient>(),
         gh<_i23.SecureStorage>(),
+      ),
+    );
+    gh.factory<_i209.GlobalCubit>(
+      () => _i209.GlobalCubit(
+        gh<_i23.SecureStorage>(),
+        gh<_i686.SharedPreferencesHelper>(),
       ),
     );
     gh.factory<_i300.LoginRepository>(

@@ -1,5 +1,5 @@
 import 'package:flowery_app/api/client/api_result.dart';
-import 'package:flowery_app/api/requests/login_request/login_request.dart';
+import 'package:flowery_app/domain/entities/requests/login_request/login_request_entity.dart';
 import 'package:flowery_app/domain/entities/user_data/user_data_entity.dart';
 import 'package:flowery_app/domain/repositories/login/login_repository.dart';
 import 'package:flowery_app/domain/use_cases/login/login_with_email_and_password_use_case.dart';
@@ -20,7 +20,7 @@ void main() {
       final loginUseCase = LoginWithEmailAndPasswordUseCase(
         mockedLoginRepository,
       );
-      final request = LoginRequest(
+      final request = LoginRequestEntity(
         email: "ahmed@gmail.com",
         password: "Ahmed\$123",
       );

@@ -1,30 +1,47 @@
-import 'package:flowery_app/core/exceptions/response_exception.dart';
+import 'package:equatable/equatable.dart';
+import 'package:flowery_app/api/client/api_result.dart';
+import 'package:flowery_app/core/state_status/state_status.dart';
+import 'package:flowery_app/domain/entities/user_data/user_data_entity.dart';
 
-sealed class LoginState {}
+class LoginState extends Equatable {
+  final StateStatus<Result<UserDataEntity>?> loginStatus;
+  const LoginState({this.loginStatus = const StateStatus.initial()});
 
-final class LoginInitial extends LoginState {}
+  @override
+  List<Object?> get props => [loginStatus];
 
-final class EnableAutoValidateModeState extends LoginState {}
+  LoginState copyWith({StateStatus<Result<UserDataEntity>?>? loginStatus}) {
+    return LoginState(loginStatus: loginStatus ?? this.loginStatus);
+  }
+}
+
+final class EnableAutoValidateModeState extends LoginState {
+  @override
+  List<Object?> get props => [];
+}
 
 final class ChangeObscureState extends LoginState {
   ChangeObscureState({this.isObscure = true});
   bool isObscure;
 
-  ChangeObscureState copyWith({required bool isObscurePassword}) {
+  ChangeObscureState copyWith2({required bool isObscurePassword}) {
     isObscurePassword = !isObscurePassword;
     return ChangeObscureState(isObscure: isObscurePassword);
   }
+
+  @override
+  List<Object?> get props => [isObscure];
 }
 
-final class LoginSuccessState extends LoginState {}
+final class ToggleRememberMeState extends LoginState {
+  ToggleRememberMeState({this.rememberMe = false});
+  bool rememberMe;
 
-final class LoginFailureState extends LoginState {
-  LoginFailureState({required this.errorData});
-  final ResponseException errorData;
+  ToggleRememberMeState copyWith2({required bool isRememberMe}) {
+    isRememberMe = !isRememberMe;
+    return ToggleRememberMeState(rememberMe: isRememberMe);
+  }
+
+  @override
+  List<Object?> get props => [rememberMe];
 }
-
-final class LoginLoadingState extends LoginState {}
-
-final class ToggleRememberMeState extends LoginState {}
-
-final class LoginAsGuestState extends LoginState {}
