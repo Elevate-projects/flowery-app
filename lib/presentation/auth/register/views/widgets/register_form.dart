@@ -17,8 +17,8 @@ class RegisterForm extends StatelessWidget {
     final controller = BlocProvider.of<RegisterCubit>(context);
     return BlocBuilder<RegisterCubit, RegisterState>(
       buildWhen: (previous, current) {
-        return current is RegisterLoadingState ||
-            current is RegisterFailureState ||
+        return current.registerState.isLoading ||
+            current.registerState.isFailure ||
             current is EnableAutoValidateModeState ||
             current is ChangePasswordObscureState ||
             current is ChangeConfirmPasswordObscureState;
@@ -93,7 +93,7 @@ class RegisterForm extends StatelessWidget {
                                   : true)
                               ? Icons.visibility_off
                               : Icons.visibility,
-                          color: Theme.of(context).colorScheme.onSecondary,
+                          color: theme.colorScheme.onSecondary,
                           size: 22.r,
                         ),
                       ),
@@ -124,7 +124,7 @@ class RegisterForm extends StatelessWidget {
                                   : true)
                               ? Icons.visibility_off
                               : Icons.visibility,
-                          color: Theme.of(context).colorScheme.onSecondary,
+                          color: theme.colorScheme.onSecondary,
                           size: 22.r,
                         ),
                       ),

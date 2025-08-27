@@ -1,43 +1,59 @@
+import 'package:equatable/equatable.dart';
+import 'package:flowery_app/api/client/api_result.dart';
 import 'package:flowery_app/core/enum/gender.dart';
-import 'package:flowery_app/core/exceptions/response_exception.dart';
+import 'package:flowery_app/core/state_status/state_status.dart';
+import 'package:flowery_app/domain/entities/user_data/user_data_entity.dart';
 
-sealed class RegisterState {}
+class RegisterState extends Equatable{
+  final StateStatus<Result<UserDataEntity>?> registerState;
+  const RegisterState({this.registerState = const StateStatus.initial()});
 
-class RegisterInitial extends RegisterState {
-  final Gender selectedGender;
-  RegisterInitial({this.selectedGender = Gender.male});
+  @override
+  List<Object?> get props => [registerState];
+
+  RegisterState copyWith({StateStatus<Result<UserDataEntity>?>? registerState}) {
+    return RegisterState(
+      registerState: registerState ?? this.registerState
+    );
+  }
 }
-class RegisterLoadingState extends RegisterState {}
-class RegisterSuccessState extends RegisterState {}
-class RegisterFailureState extends RegisterState {
-  final ResponseException  error;
 
-  RegisterFailureState({required this.error});
-}
-class EnableAutoValidateModeState extends RegisterState {}
+final class EnableAutoValidateModeState extends RegisterState {
+    @override
+      List<Object?> get props => [];
+ }
 
-class ChangePasswordObscureState extends RegisterState {
-  bool isObscure;
-  ChangePasswordObscureState({this.isObscure= true});
-  ChangePasswordObscureState copyWith({ required bool isObscurePass}){
+final class ChangePasswordObscureState extends RegisterState {
+  final bool isObscure;
+  const ChangePasswordObscureState({this.isObscure= true});
+  ChangePasswordObscureState copyWith2({ required bool isObscurePass}){
     isObscurePass = !isObscurePass;
     return ChangePasswordObscureState(isObscure: isObscurePass); 
   }
+    @override
+  List<Object?> get props => [isObscure];
 }
 
-class ChangeConfirmPasswordObscureState extends RegisterState {
-  bool isObscure;
-  ChangeConfirmPasswordObscureState({this.isObscure= true});
+final class ChangeConfirmPasswordObscureState extends RegisterState {
+  final bool isObscure;
+  const ChangeConfirmPasswordObscureState({this.isObscure= true});
 
-  ChangeConfirmPasswordObscureState  copyWith({required bool isObscurePass}) {
+  ChangeConfirmPasswordObscureState  copyWith2({required bool isObscurePass}) {
     isObscurePass = !isObscurePass;
     return ChangeConfirmPasswordObscureState(isObscure: isObscurePass);
   }
+    @override
+  List<Object?> get props => [isObscure];
 }
 
-class GenderChangedState extends RegisterState {
+final class GenderChangedState extends RegisterState {
   final Gender selectedGender;
-  GenderChangedState({required this.selectedGender});
+  const GenderChangedState({required this.selectedGender});
+    @override
+  List<Object?> get props => [selectedGender];
 }
 
-class AlreadyHaveAccountState extends RegisterState {}
+final class AlreadyHaveAccountState extends RegisterState {
+    @override
+  List<Object?> get props => [];
+}

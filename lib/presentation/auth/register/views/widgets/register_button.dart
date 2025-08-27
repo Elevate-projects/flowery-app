@@ -15,11 +15,11 @@ class RegisterButton extends StatelessWidget {
     final controller = BlocProvider.of<RegisterCubit>(context);
     return BlocBuilder<RegisterCubit, RegisterState>(
       buildWhen: (previous, current) {
-        return current is RegisterLoadingState ||
-            current is RegisterFailureState;
+        return current.registerState.isLoading ||
+            current.registerState.isFailure;
       },
       builder: (context, state) {
-        if (state is RegisterLoadingState) {
+        if (state.registerState.isLoading) {
           return const LoadingButton();
         } else {
           return CustomElevatedButton(

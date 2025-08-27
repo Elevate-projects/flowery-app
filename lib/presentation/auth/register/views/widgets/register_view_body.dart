@@ -24,18 +24,18 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
     // final controller = BlocProvider.of<RegisterCubit>(context);
     return BlocListener<RegisterCubit, RegisterState>(
       listenWhen: (previous, current) {
-        return current is RegisterLoadingState ||
-            current is RegisterSuccessState ||
-            current is RegisterFailureState ||
+        return
+            current.registerState.isSuccess ||
+            current.registerState.isFailure ||
             current is AlreadyHaveAccountState;
       },
       listener: (context, state) {
-        if (state is RegisterFailureState) {
+        if (state.registerState.isFailure) {
           Loaders.showErrorMessage(
-            message: state.error.message,
+            message: state.registerState.error?.message ?? "",
             context: context,
           );
-        } else if (state is RegisterSuccessState) {
+        } else if (state.registerState.isSuccess) {
           // navigate to homescreen
           //nav to login
           Navigator.pushReplacementNamed(context, '/login');
@@ -52,8 +52,8 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: BlocBuilder<RegisterCubit, RegisterState>(
             buildWhen: (previous, current) {
-              return current is RegisterLoadingState ||
-                     current is RegisterFailureState;
+              return current.registerState.isLoading ||
+                     current.registerState.isFailure;
             },
             builder: (context, state) {
               return const Column(

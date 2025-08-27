@@ -21,7 +21,7 @@ class RegisterGenderRadioButton extends StatelessWidget {
       builder: (context, state) {
         final selectedGender = state is GenderChangedState 
             ? state.selectedGender 
-            : Gender.male;
+            : null;
 
         return Row(
           children: [

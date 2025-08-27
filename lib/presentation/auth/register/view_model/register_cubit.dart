@@ -1,8 +1,9 @@
 import 'dart:developer';
 
 import 'package:flowery_app/api/client/api_result.dart';
-import 'package:flowery_app/api/requests/register_request/register_request.dart';
 import 'package:flowery_app/core/enum/gender.dart';
+import 'package:flowery_app/core/state_status/state_status.dart';
+import 'package:flowery_app/domain/entities/request/register_request_entity.dart';
 import 'package:flowery_app/domain/entities/user_data/user_data_entity.dart';
 import 'package:flowery_app/domain/use_cases/register/register_use_case.dart';
 import 'package:flowery_app/presentation/auth/register/view_model/register_intent.dart';
@@ -15,9 +16,9 @@ import 'package:injectable/injectable.dart';
 @injectable
 class RegisterCubit extends Cubit<RegisterState> {
   final RegisterUseCase _registerUseCase;
-  RegisterCubit(this._registerUseCase) : super(RegisterInitial());
+  RegisterCubit(this._registerUseCase) : super(const RegisterState());
 
-  late final GlobalKey<FormState> registerFormKey;
+  late GlobalKey<FormState> registerFormKey;
   late final TextEditingController firstNameController;
   late final TextEditingController lastNameController;
   late final TextEditingController emailController;
@@ -25,8 +26,7 @@ class RegisterCubit extends Cubit<RegisterState> {
   late final TextEditingController confirmPasswordController;
   late final TextEditingController phoneNumberController;
   late AutovalidateMode autoValidateMode;
-  Gender _selectedGender = Gender.male;
-  Gender get selectedGender => _selectedGender; 
+  late Gender _selectedGender; 
   ChangeConfirmPasswordObscureState _changeConfirmPasswordObscureState =
       ChangeConfirmPasswordObscureState();
   ChangePasswordObscureState _changePasswordObscureState =
@@ -72,7 +72,7 @@ class RegisterCubit extends Cubit<RegisterState> {
   }
 
   void _togglePasswordVisiblity() {
-    _changePasswordObscureState = _changePasswordObscureState.copyWith(
+    _changePasswordObscureState = _changePasswordObscureState.copyWith2(
       isObscurePass: _changePasswordObscureState.isObscure,
     );
     log('statepass${_changeConfirmPasswordObscureState.isObscure}');
@@ -81,15 +81,15 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   void _toggleConfirmPasswordVisiblity() {
     _changeConfirmPasswordObscureState = _changeConfirmPasswordObscureState
-        .copyWith(isObscurePass: _changeConfirmPasswordObscureState.isObscure);
+        .copyWith2(isObscurePass: _changeConfirmPasswordObscureState.isObscure);
     emit(_changeConfirmPasswordObscureState);
   }
 
   Future<void> _register() async {
     if (registerFormKey.currentState!.validate()) {
-      emit(RegisterLoadingState());
+      emit(state.copyWith(registerState: const StateStatus.loading()));
       final userData = await _registerUseCase.invoke(
-        request: RegisterRequest(
+        request: RegisterRequestEntity(
           firstName: firstNameController.text,
           lastName: lastNameController.text,
           email: emailController.text,
@@ -102,11 +102,11 @@ class RegisterCubit extends Cubit<RegisterState> {
       switch (userData) {
         case Success<UserDataEntity?>():
           FloweryMethodHelper.userData = userData.data;
-          emit(RegisterSuccessState());
+          emit(state.copyWith(registerState: const StateStatus.success(null)));
           break;
 
         case Failure<UserDataEntity?>():
-          emit(RegisterFailureState(error: userData.responseException));
+          emit(state.copyWith(registerState: StateStatus.failure(userData.responseException)));
           break;
       }
     } else {
