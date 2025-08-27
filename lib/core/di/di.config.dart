@@ -47,6 +47,8 @@ import '../../presentation/auth/reset_password/view_model/reset_password_cubit.d
     as _i349;
 import '../../presentation/auth/verification/views_model/verification_screen_cubit.dart'
     as _i988;
+import '../../presentation/home/best_seller/view_model/best_seller_cubit.dart'
+    as _i94;
 import '../cache/shared_preferences_helper.dart' as _i686;
 import '../cache/shared_preferences_module.dart' as _i912;
 import '../secure_storage/secure_storage.dart' as _i23;
@@ -64,6 +66,7 @@ extension GetItInjectableX on _i174.GetIt {
       () => sharedPreferencesModule.prefs,
       preResolve: true,
     );
+    gh.factory<_i94.BestSellerCubit>(() => _i94.BestSellerCubit());
     gh.singleton<_i361.Dio>(() => apiModule.provideDio());
     gh.singleton<_i23.SecureStorage>(() => _i23.SecureStorage());
     gh.factory<_i508.ApiClient>(() => _i508.ApiClient(gh<_i361.Dio>()));
