@@ -32,7 +32,7 @@ class CustomHomeCategoryItem extends StatelessWidget {
                   progressIndicatorBuilder: (context, url, progress) =>
                       ShimmerEffect(width: 24.r, height: 24.r),
                   errorWidget: (context, url, error) => const Icon(Icons.info),
-                  fit: BoxFit.scaleDown,
+                  fit: BoxFit.cover,
                 ),
               ),
             ),

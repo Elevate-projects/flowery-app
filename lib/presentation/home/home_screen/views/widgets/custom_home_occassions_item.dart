@@ -1,10 +1,13 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flowery_app/core/constants/app_colors.dart';
+import 'package:flowery_app/domain/entities/home_products/occasions_entity.dart';
+import 'package:flowery_app/utils/common_widgets/shimmer_effect.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomHomeOccasionsItem extends StatelessWidget {
-  const CustomHomeOccasionsItem({super.key});
-
+  const CustomHomeOccasionsItem({super.key, required this.occasionsEntity});
+  final OccasionEntity occasionsEntity;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -13,20 +16,32 @@ class CustomHomeOccasionsItem extends StatelessWidget {
      children: [
        Padding(
          padding: const EdgeInsets.symmetric(horizontal: 16),
-         child: SizedBox(
+         child: RSizedBox(
            width: 131.w,
            height: 151.h,
-           child: const Image(
-             image: AssetImage("assets/images/flowery_logo.png"),
+           child: CachedNetworkImage(
+             imageUrl: occasionsEntity.image ?? "",
+              progressIndicatorBuilder: (context, url, progress) =>
+                      ShimmerEffect(width: 131.w, height: 151.h),
+                  errorWidget: (context, url, error) => const Icon(Icons.info),
+                  fit: BoxFit.fill,
            ),
          ),
        ),
-       const RSizedBox(height: 8),
-       Text(
-         "Category",
-         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-           color: AppColors.black,
-           fontWeight: FontWeight.w500
+        const RSizedBox(height: 8),
+       Padding(
+         padding:  REdgeInsetsDirectional.only(start: 14.0),
+         child: RSizedBox(
+          width: 130,
+           child: Text(
+            overflow: TextOverflow.ellipsis,
+            maxLines: 1,
+             occasionsEntity.name ?? "",
+             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+               color: AppColors.black,
+               fontWeight: FontWeight.w500
+             ),
+           ),
          ),
        ),
      ],
