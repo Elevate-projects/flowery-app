@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flowery_app/api/responses/home_products/products_response_model.dart';
 import 'package:flowery_app/core/constants/endpoints.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
@@ -13,4 +14,8 @@ abstract class ApiClient {
 
   // @POST(Endpoints.login)
   // Future<LoginResponse> login({@Body() required LoginRequest request});
+
+@GET(Endpoints.home)
+Future<ProductsResponseModel> getHomeData({@Header("Authorization") required String token});
+
 }
