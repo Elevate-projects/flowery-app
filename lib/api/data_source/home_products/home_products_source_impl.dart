@@ -3,17 +3,19 @@ import 'package:flowery_app/api/client/api_result.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/data/data_source/home_products/home_products_data_source.dart';
 import 'package:flowery_app/domain/entities/home_products/products_response_entity.dart';
+import 'package:injectable/injectable.dart';
 
+@Injectable(as: HomeProductsDataSource)
 class HomeProductsSourceImpl implements HomeProductsDataSource {
-  final ApiClient apiClient;
+  final ApiClient _apiClient;
 
-  HomeProductsSourceImpl({required this.apiClient});
+  const HomeProductsSourceImpl(this._apiClient);
 
   @override
   Future<Result<ProductsResponseEntity>> getHomeProducts() async {
-     return await executeApi(() async {
-       final response = await apiClient.getHomeData(token: AppText.bearerToken);
-       return response.toEntity();
-     });
+    return await executeApi(() async {
+      final response = await _apiClient.getHomeData(token: AppText.bearerToken);
+      return response.toEntity();
+    });
   }
 }
