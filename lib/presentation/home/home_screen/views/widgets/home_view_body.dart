@@ -3,6 +3,7 @@ import 'package:flowery_app/presentation/home/home_screen/views/widgets/home_bes
 import 'package:flowery_app/presentation/home/home_screen/views/widgets/home_category_list_view_body.dart';
 import 'package:flowery_app/presentation/home/home_screen/views/widgets/home_occassions_list_view_body.dart';
 import 'package:flowery_app/presentation/home/home_screen/views/widgets/location_selector.dart';
+import 'package:flowery_app/utils/common_widgets/loading_circle.dart';
 import 'package:flowery_app/utils/loaders/loaders.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,11 +14,9 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return BlocListener<HomeProductsCubit, HomeProductsState>(
       listenWhen: (previous, current) {
-         return current.homeState.isSuccess ||
-            current.homeState.isFailure ;
+        return current.homeState.isSuccess || current.homeState.isFailure;
       },
       listener: (context, state) {
         if (state.homeState.isFailure) {
@@ -25,29 +24,31 @@ class HomeViewBody extends StatelessWidget {
             message: state.homeState.error?.message ?? "",
             context: context,
           );
-        } 
+        }
       },
       child: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16),
-          child: BlocBuilder<HomeProductsCubit, HomeProductsState>(
-            buildWhen: (previous, current) {
-              return current.homeState.isLoading || current.homeState.isFailure;
-            },
-            builder: (context, state) {
-              return  Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const LocationSelector(),
-                  const RSizedBox(height: 16),
-                  //HomeCategoryListViewBody(state.homeState.data),
-                  const RSizedBox(height: 24),
-                  HomeBestSellerListViewBody(),
-                  const RSizedBox(height: 24),
-                  HomeOccassionsListViewBody(),
-                ],
-              );
-            },
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const LocationSelector(),
+              const RSizedBox(height: 16),
+              BlocBuilder<HomeProductsCubit, HomeProductsState>(
+                builder: (context, state) => state.homeState.isLoading
+                    ? const Center(child: LoadingCircle())
+                    : const Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          HomeCategoryListViewBody(),
+                          RSizedBox(height: 24),
+                          HomeBestSellerListViewBody(),
+                          RSizedBox(height: 24),
+                          HomeOccassionsListViewBody(),
+                        ],
+                      ),
+              ),
+            ],
           ),
         ),
       ),

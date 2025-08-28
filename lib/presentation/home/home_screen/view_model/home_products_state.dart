@@ -1,19 +1,15 @@
 part of 'home_products_cubit.dart';
 
 class HomeProductsState extends Equatable {
-  final StateStatus<Result<ProductsResponseEntity>?> homeState; 
+  final StateStatus<ProductsResponseEntity> homeState;
   const HomeProductsState({this.homeState = const StateStatus.initial()});
+
+  HomeProductsState copyWith({StateStatus<ProductsResponseEntity>? homeState}) {
+    return HomeProductsState(homeState: homeState ?? this.homeState);
+  }
 
   @override
   List<Object?> get props => [homeState];
-
-  HomeProductsState copyWith({
-    StateStatus<Result<ProductsResponseEntity>?>?homeState,
-  }) {
-    return HomeProductsState(
-      homeState: homeState ?? this.homeState,
-    );
-  }
 }
 
 final class CategoriesViewAllState extends HomeProductsState {
@@ -22,8 +18,8 @@ final class CategoriesViewAllState extends HomeProductsState {
 }
 
 final class BestSellersViewAllState extends HomeProductsState {
- @override
-      List<Object?> get props => [];
+  @override
+  List<Object?> get props => [];
 }
 
 final class OccasionsViewAllState extends HomeProductsState {

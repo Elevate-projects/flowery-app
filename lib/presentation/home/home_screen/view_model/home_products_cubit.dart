@@ -41,7 +41,9 @@ class HomeProductsCubit extends Cubit<HomeProductsState> {
     switch (homeProducts) {
       case Success<ProductsResponseEntity>():
         {
-          emit(state.copyWith(homeState: StateStatus.success(homeProducts)));
+          emit(
+            state.copyWith(homeState: StateStatus.success(homeProducts.data)),
+          );
           break;
         }
       case Failure<ProductsResponseEntity>():
