@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 
+import '../../../../core/constants/app_icons.dart';
+import '../../../../core/constants/app_text.dart';
 import '../../../../domain/entities/product_card/product_card_entity.dart';
 import '../../../../utils/common_widgets/custom_elevated_button.dart';
 
@@ -11,6 +14,8 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Card(
         child: SizedBox(height: 230.h,child: Padding(
           padding:   EdgeInsets.all(10.w),
@@ -35,7 +40,26 @@ class ProductCard extends StatelessWidget {
 
 
                 ],),Spacer(),
-              CustomElevatedButton(child: Icon(Icons.shopping_cart,),onPressed: (){}, buttonTitle:'add to cart',width: 147,height: 40,)
+          CustomElevatedButton(
+            onPressed: () {},
+            buttonTitle: AppText.addToCart,
+            height: 30.h,
+            isText: false,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SvgPicture.asset(AppIcons.cart, fit: BoxFit.scaleDown),
+                const RSizedBox(width: 8),
+                Text(
+                  AppText.addToCart,
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    fontWeight: FontWeight.w500,
+                    color: theme.colorScheme.secondary,
+                  ),
+                ),
+              ],
+            ),
+          )
             ],
           ),
         ),)

@@ -11,10 +11,10 @@ class OccasionsViewModel extends Cubit<StateStatus<List<ProductCardEntity>>> {
 
    void doIntent(OccasionIntent intent) {
      if (intent is LoadOccasionProducts) {
-       _loadOccasionProducts(intent.occasionName);
+       _loadOccasionProducts(intent.occasionId);
      }
    }
-   void _loadOccasionProducts(String occasionName ) async {
+   void _loadOccasionProducts(String occasionId ) async {
      emit(const StateStatus.loading());
 
      await Future.delayed(const Duration(seconds: 1));

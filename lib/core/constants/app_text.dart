@@ -55,4 +55,8 @@ abstract final class AppText {
   static const String networkError =
       "Something went wrong. Please check your internet connection.";
   static const String anUnknownErrorOccurred = "An unknown error occurred.";
+
+  static const String occasion = "Occasion";
+  static const String titleBar = "Bloom with our exquisite best sellers";
+
 }

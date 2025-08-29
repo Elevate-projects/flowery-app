@@ -1,82 +1,127 @@
 import 'package:flowery_app/core/constants/app_colors.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/core/state_status/state_status.dart';
-import 'package:flowery_app/presentation/home/occasion/view_model/occasion_cubit.dart';
- import 'package:flutter/material.dart';
+import 'package:flowery_app/domain/entities/arguments/occasion_arguments_entitiy.dart';
+import 'package:flowery_app/domain/entities/product_card/product_card_entity.dart';
+ import 'package:flowery_app/presentation/home/occasion/view_model/occasion_cubit.dart';
+import 'package:flowery_app/presentation/home/occasion/widgets/product_cart.dart';
+import 'package:flowery_app/utils/common_widgets/product_card_item/product_card_item.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../domain/entities/product_card/product_card_entity.dart';
-import '../view_model/occasion_intent.dart';
- import '../widgets/product_cart.dart';
+ import '../view_model/occasion_intent.dart';
 
 class OccasionView extends StatelessWidget {
-  OccasionView({super.key});
+  final OccasionArgumentsEntity occasionArguments;
 
-  final List<String> tabList = [
-    "Wedding",
-    "Graduation",
-    "Birthday",
-    "Katb Ketab",
-  ];
+  OccasionView({super.key, required this.occasionArguments});
+
+
 
   @override
   Widget build(BuildContext context) {
-    return
-      BlocProvider(
-        create: (BuildContext context) =>
-    OccasionsViewModel()..doIntent(LoadOccasionProducts(tabList[0])),
-          child: DefaultTabController(
-            length: tabList.length,
+   final tabList = occasionArguments.listOfOccasions.map((e) => e.name!).toList();
+
+    return BlocProvider(
+      create: (BuildContext context) => OccasionsViewModel()
+        ..doIntent(
+          LoadOccasionProducts(occasionArguments.listOfOccasions[0].id!),
+        ),
+      child: DefaultTabController(
+        length: tabList.length,
         child: Scaffold(
-        appBar: AppBar(
-          leading: const BackButton(color: AppColors.black),
-          title: const Text('Occasion'),
-          bottom: TabBar(tabs: tabList.map((e) => Tab(text: e)).toList(),
-              onTap: (index) {
-                context.read<OccasionsViewModel>().doIntent(LoadOccasionProducts("Wedding"));
+          appBar: AppBar(
+            titleSpacing: 0,
+            leadingWidth: 35,
+            toolbarHeight: 85,
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back_ios, color: AppColors.black),
+              onPressed: () => Navigator.pop(context),
+            ),
 
-              },
-            labelColor: Colors.pinkAccent,
-            isScrollable: true,
-          ),),
-
-        body: TabBarView(
-        children: tabList.map((e) {
-          return   BlocBuilder<OccasionsViewModel,
-              StateStatus<List<ProductCardEntity>>>(
-            builder: (context, state) {
-              if (state.isLoading) {
-                return const Center(child: CircularProgressIndicator());
-              } else if (state.isSuccess) {
-                final products = state.data!;
-                return GridView.builder(
-                  padding: const EdgeInsets.all(12),
-                  gridDelegate:
-                  const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: 0.7,
-                    mainAxisSpacing: 12,
-                    crossAxisSpacing: 12,
+            title: Padding(
+              padding: const EdgeInsets.only(top: 5),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 20),
+                  Text(
+                    AppText.occasion,
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
                   ),
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
-                    final product = products[0];
-                    return ProductCard(product: product);
-                  },
+                  SizedBox(height: 5),
+
+                  Text(
+                    AppText.titleBar,
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.grey[700],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            bottom: TabBar(
+              tabs: occasionArguments.listOfOccasions
+                  .map((e) => Tab(text: e.name))
+                  .toList(),
+              onTap: (index) {
+                context.read<OccasionsViewModel>().doIntent(
+                  LoadOccasionProducts(
+                    occasionArguments.listOfOccasions[index].id!,
+                  ),
                 );
-              } else if (state.isFailure) {
-                return Center(
-                    child: Text("${AppText.error}${state.error}"));
-              }
-              return const SizedBox.shrink();
-            },
-          );
-        }).toList(),
-        ),
-        ),
+              },
+              labelColor: Colors.pinkAccent,
+              isScrollable: true,
+            ),
           ),
-      );
+
+          body: TabBarView(
+            children: tabList.map((e) {
+              return BlocBuilder<
+                OccasionsViewModel,
+                StateStatus<List<ProductCardEntity>>>(
+                builder: (context, state) {
+                  if(state.isLoading) {
+                  return  Center(child:CircularProgressIndicator(),);
+
+                  }else if(state.isSuccess){
+                    final products = state.data;
+
+                    return GridView.builder(
+                    padding: const EdgeInsets.all(12),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          childAspectRatio: 1 / 1.44,
+                          mainAxisSpacing: 17,
+                          crossAxisSpacing: 17,
+                        ),
+                    itemCount: products?.length,
+                    itemBuilder: (context, index) {
+                      return ProductCardItem(productCardData: occasionArguments.listOfProducts[index]);
+                    },
+                  );}else if (state.isFailure) {
+                    return Center(child: Text(state.error as String  ));
+                  }
+
+                  return const SizedBox.shrink();
+
+
+
+                },
+              );
+            }).toList(),
+          ),
+        ),
+      ),
+    );
   }
-
 }
-
