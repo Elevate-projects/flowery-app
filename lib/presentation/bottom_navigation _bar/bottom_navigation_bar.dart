@@ -14,7 +14,6 @@ class MyBottomNavBar extends StatefulWidget {
   @override
   State<MyBottomNavBar> createState() => _MyBottomNavBarState();
 }
-
 class _MyBottomNavBarState extends State<MyBottomNavBar> {
   final List<Widget> _pages = [
     const HomePage(),
@@ -29,6 +28,8 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
         return Scaffold(
           body: _pages[state.currentIndex],
           bottomNavigationBar: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            unselectedItemColor: Colors.grey,
             currentIndex: state.currentIndex,
             onTap: (index){
               context.read<BottomCubit>().onIntent(ChangeIntent(index));
@@ -37,29 +38,41 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   'assets/icons/active_home.svg',
+                  colorFilter: ColorFilter.mode(
+                    state.currentIndex == 0 ? Colors.pinkAccent : Colors.grey,
+                    BlendMode.srcIn,
+                  ),
                 ),
                 label: 'Home',
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   'assets/icons/active_categories.svg',
+                  colorFilter: ColorFilter.mode(
+                    state.currentIndex == 1 ? Colors.pinkAccent : Colors.grey
+                  , BlendMode.srcIn),
                 ),
                 label: 'Categories',
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
-                    'assets/icons/active_cart.svg'
+                    'assets/icons/active_cart.svg',
+                  colorFilter: ColorFilter.mode(
+                    state.currentIndex == 2 ? Colors.pinkAccent : Colors.grey
+                  , BlendMode.srcIn),
                 ),
                 label: 'Cart',
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   'assets/icons/active_profile.svg',
+                  colorFilter: ColorFilter.mode(
+                    state.currentIndex == 3 ? Colors.pinkAccent : Colors.grey
+                  , BlendMode.srcIn),
                 ),
                 label: 'Profile',
               ),
             ],
-
           )
         );
       },

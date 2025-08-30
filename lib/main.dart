@@ -1,5 +1,4 @@
 import 'package:flowery_app/core/di/di.dart';
-import 'package:flowery_app/flowery_app.dart';
 import 'package:flowery_app/my_bloc_observer.dart';
 import 'package:flowery_app/presentation/bottom_navigation%20_bar/bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
