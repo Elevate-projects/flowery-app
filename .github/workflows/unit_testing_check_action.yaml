@@ -20,5 +20,7 @@ jobs:
       - run: flutter  --version
       - name: Install packages
         run: flutter pub get
+      - name: Run generator
+        run: flutter pub run build_runner build
       - name: Run test
         run: flutter test
