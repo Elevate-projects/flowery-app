@@ -9,6 +9,8 @@ abstract final class AppText {
   static const String forgetPassword = "Forget password?";
   static const String donNotHaveAccount = "Don't have an account?";
   static const String signup = "Sign up";
+  //// AppSection
+  static const String home = "Home";
 
   // Validations
   static const String userNameValidation = "This user name is not valid";
