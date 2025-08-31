@@ -18,7 +18,12 @@ jobs:
 
       - name: Validate branch name
         run: |
-           BRANCH_NAME="${GITHUB_REF#refs/heads/}"
+           if [ -n "$GITHUB_HEAD_REF" ]; then
+            BRANCH_NAME="$GITHUB_HEAD_REF"
+          else
+            BRANCH_NAME="${GITHUB_REF#refs/heads/}"
+          fi
+
           echo "Current branch: $BRANCH_NAME"
 
            if [[ ! "$BRANCH_NAME" =~ ^(feature|bugfix|hotfix|release)\/[A-Za-z0-9]+-[0-9]+-[a-z0-9-]+$ ]]; then
