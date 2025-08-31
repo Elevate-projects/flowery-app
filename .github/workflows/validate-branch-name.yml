@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - "*"
-  pull_request:
-    branches:
-      - "*"
 
 jobs:
   validate-branch:
@@ -18,11 +15,8 @@ jobs:
 
       - name: Validate branch name
         run: |
-          echo "Current branch: ${{ github.ref_name }}"
-          
-           if [[ ! "${{ github.ref_name }}" =~ ^(feature|bugfix|hotfix|release)\/[A-Z0-9]+-[0-9]+-[a-z0-9-]+$ ]]; then
-            echo "❌ Branch name '${{ github.ref_name }}' is invalid!"
-            echo "✅ Use format: feature/ABC-123-description"
-            exit 1
-          fi
-          echo "✅ Branch name '${{ github.ref_name }}' is valid."
+          echo "Branch name: ${{ github.head_ref }}"
+                  if [[ ! "${{ github.head_ref }}" =~ ^(feature|fix|release|hotfix|build|test)\/(FAT1-[0-9]+|[A-Z]+-[0-9]+)(-[A-Za-z0-9]+)*$ ]]; then
+                    echo "❌ Branch name does not follow the required convention!"
+                    exit 1
+                  fi
