@@ -18,9 +18,7 @@ jobs:
             hotfix
             build
             test
-          scopes: |
-            JIRA-\d+
-            [A-Z]+-\d+
+          scopeValidationPattern: ^(JIRA-[0-9]+|[A-Z]+-[0-9]+)$
           subjectPattern: ^[A-Z0-9].+ # task name must start with uppercase/number
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
