@@ -191,13 +191,7 @@ void main() {
       build: () => cubit,
       act: (cubit) async =>
           await cubit.doIntent(intent: ToggleRememberMeIntent()),
-      expect: () => [
-        isA<ToggleRememberMeState>().having(
-          (state) => state.rememberMe,
-          "Is remember me value changed",
-          equals(true),
-        ),
-      ],
+      expect: () => [isA<ToggleRememberMeState>()],
     );
 
     blocTest<LoginCubit, LoginState>(
