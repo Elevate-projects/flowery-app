@@ -12,13 +12,13 @@ jobs:
         uses: pragmatic-tools/pr-title-validator@1.0.0
         with:
           pattern: |
-            ^((fix|release|feat|hotfix|build|test))\((FAT-[0-9]+|[A-Z]+-[0-9]+)\):\s?.+$
+            ^((fix|release|feat|hotfix|build|test))\((FAT1-[0-9]+|[A-Z]+-[0-9]+)\):\s?.+$
 
 
       - name: Validate Branch Name
         run: |
           echo "Branch name: ${{ github.head_ref }}"
-          if [[ ! "${{ github.head_ref }}" =~ ^(feature|fix|release|hotfix|build|test)\/(JIRA-[0-9]+|[A-Z]+-[0-9]+)(-[A-Za-z0-9]+)*$ ]]; then
+          if [[ ! "${{ github.head_ref }}" =~ ^(feature|fix|release|hotfix|build|test)\/(FAT1-[0-9]+|[A-Z]+-[0-9]+)(-[A-Za-z0-9]+)*$ ]]; then
             echo "❌ Branch name does not follow the required convention!"
             exit 1
           fi
@@ -29,8 +29,8 @@ jobs:
           BRANCH="${{ github.head_ref }}"
 
           # Extract ticket IDs (e.g. JIRA-1234, ECOM-27)
-          TITLE_TICKET=$(echo "$TITLE" | grep -oE '(JIRA-[0-9]+|[A-Z]+-[0-9]+)' | head -1)
-          BRANCH_TICKET=$(echo "$BRANCH" | grep -oE '(JIRA-[0-9]+|[A-Z]+-[0-9]+)' | head -1)
+          TITLE_TICKET=$(echo "$TITLE" | grep -oE '(FAT1-[0-9]+|[A-Z]+-[0-9]+)' | head -1)
+          BRANCH_TICKET=$(echo "$BRANCH" | grep -oE '(FAT1-[0-9]+|[A-Z]+-[0-9]+)' | head -1)
 
           echo "PR Title Ticket: $TITLE_TICKET"
           echo "Branch Ticket: $BRANCH_TICKET"
