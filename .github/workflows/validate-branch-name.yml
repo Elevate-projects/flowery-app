@@ -1,0 +1,29 @@
+name: "Validate Branch Name"
+
+on:
+  push:
+    branches:
+      - "*"
+  pull_request:
+    branches:
+      - "*"
+
+jobs:
+  validate-branch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Validate branch name
+        run: |
+          echo "Current branch: ${{ github.ref_name }}"
+          
+           if [[ ! "${{ github.ref_name }}" =~ ^(feature|bugfix|hotfix|release)\/[A-Z0-9]+-[0-9]+-[a-z0-9-]+$ ]]; then
+            echo "❌ Branch name '${{ github.ref_name }}' is invalid!"
+            echo "✅ Use format: feature/ABC-123-description"
+            exit 1
+          fi
+
+          echo "✅ Branch name '${{ github.ref_name }}' is valid."
