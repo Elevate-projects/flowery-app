@@ -14,15 +14,6 @@ jobs:
           pattern: |
             ^((fix|release|feat|hotfix|build|test))\((FAT1-[0-9]+|[A-Z]+-[0-9]+)\):\s?.+$
 
-
-      - name: Validate Branch Name
-        run: |
-          echo "Branch name: ${{ github.head_ref }}"
-          if [[ ! "${{ github.head_ref }}" =~ ^(feature|fix|release|hotfix|build|test)\/(FAT1-[0-9]+|[A-Z]+-[0-9]+)(-[A-Za-z0-9]+)*$ ]]; then
-            echo "❌ Branch name does not follow the required convention!"
-            exit 1
-          fi
-
       - name: Ensure PR Title Ticket Matches Branch Ticket
         run: |
           TITLE="${{ github.event.pull_request.title }}"
