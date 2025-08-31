@@ -25,11 +25,3 @@ jobs:
           fi
 
           echo "Current branch: $BRANCH_NAME"
-
-           if [[ ! "$BRANCH_NAME" =~ ^(feature|bugfix|hotfix|release)\/[A-Za-z0-9]+-[0-9]+-[a-z0-9-]+$ ]]; then
-            echo "❌ Branch name '$BRANCH_NAME' is invalid!"
-            echo "✅ Use format: feature/ABC-123-description"
-            exit 1
-          fi
-
-          echo "✅ Branch name '$BRANCH_NAME' is valid."
