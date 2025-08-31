@@ -12,7 +12,8 @@ class CustomBackArrow extends StatelessWidget {
       },
       child: Icon(
         Icons.arrow_back_ios,
-        color: Theme.of(context).colorScheme.onSecondary,
+        color: Colors.black,
+        // color: Theme.of(context).colorScheme.onSecondary,
         size: 26.r,
       ),
     );

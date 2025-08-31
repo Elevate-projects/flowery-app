@@ -23,11 +23,20 @@ void main() async {
   await configureDependencies();
    // remove splash screen after app is loaded
   FlutterNativeSplash.remove();
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: MyBottomNavBar(),
-  ),
+  runApp(
+    ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return const MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: MyBottomNavBar(),
+        );
+      },
+    )
   );
+
 }
 
 
