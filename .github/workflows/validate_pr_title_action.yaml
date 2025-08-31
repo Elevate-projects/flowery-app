@@ -18,8 +18,8 @@ jobs:
             hotfix
             build
             test
-          scopeValidationPattern: ^(JIRA-[0-9]+|[A-Z]+-[0-9]+)$
-          subjectPattern: ^[A-Z0-9].+ # task name must start with uppercase/number
+          headerPattern: '^([a-z]+)\(([A-Z]+-\d+|JIRA-\d+)\):\s(.+)$'
+          headerPatternCorrespondence: type,scope,subject
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -49,7 +49,7 @@ jobs:
           fi
 
           if [[ "$TITLE_TICKET" != "$BRANCH_TICKET" ]]; then
-            echo "❌ Ticket ID in PR title does not match ticket ID in branch name!"
+            echo "::error file=pr-title::❌ Ticket ID in PR title does not match ticket ID in branch name!"
             exit 1
           fi
 
