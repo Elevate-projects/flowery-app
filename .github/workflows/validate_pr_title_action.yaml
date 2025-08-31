@@ -12,6 +12,7 @@ jobs:
         uses: pragmatic-tools/pr-title-validator@1.0.0
         with:
           pattern: '^((fix|release|feat|hotfix|build|test))\((JIRA-[0-9]+|[A-Z]+-[0-9]+)\):\s?.+$'
+          
 
       - name: Validate Branch Name
         run: |
