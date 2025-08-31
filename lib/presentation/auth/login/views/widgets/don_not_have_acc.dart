@@ -26,7 +26,7 @@ class DonNotHaveAcc extends StatelessWidget {
         Flexible(
           child: InkWell(
             onTap: () {
-              // Navigate to the signup screen
+              // Navigator.of(context).pushNamed(RouteNames.register);
             },
             borderRadius: BorderRadius.circular(30.r),
             highlightColor: Theme.of(

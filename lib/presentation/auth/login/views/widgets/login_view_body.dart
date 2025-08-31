@@ -25,7 +25,9 @@ class LoginViewBody extends StatelessWidget {
             context: context,
           );
         } else if (state.loginStatus.isSuccess) {
-          // Navigate to the home screen
+          // Navigator.of(
+          //   context,
+          // ).pushReplacementNamed(RouteNames.homeBottomNavigation);
         }
       },
       child: SingleChildScrollView(
