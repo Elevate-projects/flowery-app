@@ -27,6 +27,12 @@ class UserDataModel {
   final List<String>? addresses;
   @JsonKey(name: "createdAt")
   final String? createdAt;
+  @JsonKey(name: "passwordResetCode")
+  final String? passwordResetCode;
+  @JsonKey(name: "passwordResetExpires")
+  final String? passwordResetExpires;
+  @JsonKey(name: "resetCodeVerified")
+  final bool? resetCodeVerified;
 
   UserDataModel({
     this.id,
@@ -40,6 +46,9 @@ class UserDataModel {
     this.wishlist,
     this.addresses,
     this.createdAt,
+    this.passwordResetCode,
+    this.passwordResetExpires,
+    this.resetCodeVerified,
   });
 
   factory UserDataModel.fromJson(Map<String, dynamic> json) {
@@ -62,6 +71,7 @@ class UserDataModel {
       role: role,
       wishlist: wishlist,
       addresses: addresses,
+      passwordResetCode: passwordResetCode,
     );
   }
 }

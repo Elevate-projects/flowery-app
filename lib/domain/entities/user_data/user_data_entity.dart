@@ -10,6 +10,7 @@ class UserDataEntity {
     this.role,
     this.wishlist,
     this.addresses,
+    this.passwordResetCode,
   });
 
   String? id;
@@ -22,4 +23,5 @@ class UserDataEntity {
   String? role;
   List<String>? wishlist;
   List<String>? addresses;
+  String? passwordResetCode;
 }
