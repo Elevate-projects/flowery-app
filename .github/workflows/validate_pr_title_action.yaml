@@ -9,12 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Validate PR Title
-        uses: amannn/action-semantic-pull-request@v5
+        uses: pragmatic-tools/pr-title-validator@1.0.0
         with:
-          headerPattern: '^((fix|release|feat|hotfix|build|test))\(([A-Z]+-[0-9]+|JIRA-[0-9]+)\):\s(.+)$'
-          headerPatternCorrespondence: type,scope,subject
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          pattern: '^((fix|release|feat|hotfix|build|test))\((JIRA-[0-9]+|[A-Z]+-[0-9]+)\):\s.+$'
 
       - name: Validate Branch Name
         run: |
