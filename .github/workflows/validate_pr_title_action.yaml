@@ -1,0 +1,58 @@
+name: Pull Request Title & Branch Name Validator
+
+on:
+  pull_request:
+    types: [ opened, reopened, synchronize, edited ]
+
+jobs:
+  validate-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate PR Title
+        uses: amannn/action-semantic-pull-request@v5
+        with:
+          types: |
+            fix
+            release
+            feat
+            hotfix
+            build
+            test
+          scopes: |
+            JIRA-\d+
+            [A-Z]+-\d+
+          subjectPattern: ^[A-Z0-9].+ # task name must start with uppercase/number
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Validate Branch Name
+        run: |
+          echo "Branch name: ${{ github.head_ref }}"
+          if [[ ! "${{ github.head_ref }}" =~ ^(feature|fix|release|hotfix|build|test)\/(JIRA-[0-9]+|[A-Z]+-[0-9]+)(-[A-Za-z0-9]+)*$ ]]; then
+            echo "❌ Branch name does not follow the required convention!"
+            exit 1
+          fi
+
+      - name: Ensure PR Title Ticket Matches Branch Ticket
+        run: |
+          TITLE="${{ github.event.pull_request.title }}"
+          BRANCH="${{ github.head_ref }}"
+
+          # Extract ticket IDs (e.g. JIRA-1234, ECOM-27)
+          TITLE_TICKET=$(echo "$TITLE" | grep -oE '(JIRA-[0-9]+|[A-Z]+-[0-9]+)' | head -1)
+          BRANCH_TICKET=$(echo "$BRANCH" | grep -oE '(JIRA-[0-9]+|[A-Z]+-[0-9]+)' | head -1)
+
+          echo "PR Title Ticket: $TITLE_TICKET"
+          echo "Branch Ticket: $BRANCH_TICKET"
+
+          if [[ -z "$TITLE_TICKET" || -z "$BRANCH_TICKET" ]]; then
+            echo "❌ Could not extract ticket ID from PR title or branch name!"
+            exit 1
+          fi
+
+          if [[ "$TITLE_TICKET" != "$BRANCH_TICKET" ]]; then
+            echo "❌ Ticket ID in PR title does not match ticket ID in branch name!"
+            exit 1
+          fi
+
+          echo "✅ Ticket ID in PR title matches branch name."
