@@ -11,14 +11,7 @@ jobs:
       - name: Validate PR Title
         uses: amannn/action-semantic-pull-request@v5
         with:
-          types: |
-            fix
-            release
-            feat
-            hotfix
-            build
-            test
-          headerPattern: '^([a-z]+)\(([A-Z]+-\d+|JIRA-\d+)\):\s(.+)$'
+          headerPattern: '^((fix|release|feat|hotfix|build|test))\(([A-Z]+-[0-9]+|JIRA-[0-9]+)\):\s(.+)$'
           headerPatternCorrespondence: type,scope,subject
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
