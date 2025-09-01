@@ -55,8 +55,15 @@ flutter:
     - assets/icons/
     - assets/images/
     - assets/animations/
+    - assets/json_screens/
 
   fonts:
+    - family: IM Fell English
+      fonts:
+        - asset: assets/fonts/im_fell_english/IMFellEnglish-Italic.ttf
+          weight: 400
+        - asset: assets/fonts/im_fell_english/IMFellEnglish-Regular.ttf
+          weight: 700
     - family: Inter
       fonts:
         - asset: assets/fonts/inter/Inter_18pt-Thin.ttf
