@@ -16,6 +16,15 @@ import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
 import '../../api/client/api_client.dart' as _i508;
 import '../../api/client/api_module.dart' as _i272;
+import '../../api/data_source/register/remote_data_source/register_remote_data_source_impl.dart'
+    as _i281;
+import '../../data/data_source/register/remote_data_source/register_remote_data_source.dart'
+    as _i233;
+import '../../data/repositories/register/register_repository_impl.dart' as _i40;
+import '../../domain/repositories/register/register_repository.dart' as _i638;
+import '../../domain/use_cases/register/register_use_case.dart' as _i950;
+import '../../presentation/auth/register/view_model/register_cubit.dart'
+    as _i536;
 import '../cache/shared_preferences_helper.dart' as _i686;
 import '../cache/shared_preferences_module.dart' as _i912;
 import '../secure_storage/secure_storage.dart' as _i23;
@@ -38,6 +47,21 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i508.ApiClient>(() => _i508.ApiClient(gh<_i361.Dio>()));
     gh.singleton<_i686.SharedPreferencesHelper>(
       () => _i686.SharedPreferencesHelper(gh<_i460.SharedPreferences>()),
+    );
+    gh.factory<_i233.RegisterRemoteDataSource>(
+      () => _i281.RegisterRemoteDataSourceImpl(
+        gh<_i508.ApiClient>(),
+        gh<_i23.SecureStorage>(),
+      ),
+    );
+    gh.factory<_i638.RegisterRepository>(
+      () => _i40.RegisterRepositoryImpl(gh<_i233.RegisterRemoteDataSource>()),
+    );
+    gh.factory<_i950.RegisterUseCase>(
+      () => _i950.RegisterUseCase(gh<_i638.RegisterRepository>()),
+    );
+    gh.factory<_i536.RegisterCubit>(
+      () => _i536.RegisterCubit(gh<_i950.RegisterUseCase>()),
     );
     return this;
   }
