@@ -7,7 +7,7 @@ class RegisterAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CustomAppBar(centerTitle: true, title: AppText.signup);
+    return const CustomAppBar(centerTitle: false, title: AppText.signup,automaticallyImplyLeading: true,);
   }
 
   @override

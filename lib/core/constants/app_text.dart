@@ -19,23 +19,13 @@ abstract final class AppText {
   static const String confirmPasswordHint = "Confirm your password";
   static const String phoneNumber = "Phone Number";
   static const String phoneNumberHint = "Enter your phone number";
-
-   // Gender constants
   static const String genderMale = 'male';
   static const String genderFemale = 'female';
-  
-  // Display Names
   static const String genderMaleDisplay = 'Male';
   static const String genderFemaleDisplay = 'Female';
-  
-  // Labels
   static const String genderLabel = 'Gender';
-  // static const String genderRequired ="PLease select a gender";
-  // Terms and Conditions
   static const String createAnAccountYouAgree = "Creating an account, you agree to our ";
   static const String termsAndConditions = "Terms and Conditions";
-
-  // already have an account?
   static const String alreadyHaveAnAccount = "Already have an account?";
 
   // Validations

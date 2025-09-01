@@ -14,7 +14,6 @@ class RegisterGenderRow extends StatelessWidget {
     final theme = Theme.of(context);
     return Row(
         mainAxisAlignment: MainAxisAlignment.start,
-        //crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
             AppText.genderLabel,

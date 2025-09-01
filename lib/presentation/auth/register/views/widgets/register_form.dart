@@ -141,7 +141,7 @@ class RegisterForm extends StatelessWidget {
                 label: AppText.phoneNumber,
                 hintText: AppText.phoneNumberHint,
                 keyboardType: TextInputType.phone,
-                textInputAction: TextInputAction.next,
+                textInputAction: TextInputAction.done,
                 validator: (value) =>
                     Validations.phoneValidation(phoneNumber: value),
               ),

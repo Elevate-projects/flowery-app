@@ -66,5 +66,4 @@ class UserRegisterModel {
     );
   }
 }
-//huh
 

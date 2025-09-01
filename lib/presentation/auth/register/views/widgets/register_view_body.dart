@@ -20,8 +20,6 @@ class RegisterViewBody extends StatefulWidget {
 class _RegisterViewBodyState extends State<RegisterViewBody> {
   @override
   Widget build(BuildContext context) {
-    // final theme = Theme.of(context);
-    // final controller = BlocProvider.of<RegisterCubit>(context);
     return BlocListener<RegisterCubit, RegisterState>(
       listenWhen: (previous, current) {
         return
@@ -36,15 +34,17 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
             context: context,
           );
         } else if (state.registerState.isSuccess) {
-          // navigate to homescreen
-          //nav to login
+//           Navigator.of(context).pushReplacementNamed(RouteNames.login);
+// Loaders.showSuccessMessage(
+// message: "Your account has been created successfully",
+// context: context,
+// );
           Navigator.pushReplacementNamed(context, '/login');
         } else if (state is AlreadyHaveAccountState) {
           // navigate to login screen
-          Loaders.showSuccessMessage(
-            message: "You already have an account",
-            context: context,
-          );
+//           Navigator.of(
+// context,
+// ).pushNamedAndRemoveUntil(RouteNames.login, (route) => false);
         }
       },
       child:  SingleChildScrollView(

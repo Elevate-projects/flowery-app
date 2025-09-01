@@ -39,14 +39,6 @@ abstract class AppTheme {
         fontWeight: FontWeight.w400,
         color: AppColors.black,
       ),
-      titleSmall: TextStyle(
-    fontSize: 12.sp,
-    fontWeight: FontWeight.w500,
-    color: AppColors.black,
-    decoration: TextDecoration.underline,
-    decorationColor: AppColors.black, // black underline text span
-  ),
-
       labelLarge: TextStyle(
         fontSize: 16.sp,
         fontWeight: FontWeight.w500,
