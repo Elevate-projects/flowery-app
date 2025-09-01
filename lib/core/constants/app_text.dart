@@ -10,6 +10,30 @@ abstract final class AppText {
   static const String donNotHaveAccount = "Don't have an account?";
   static const String signup = "Sign up";
   static const String continueAsGuest = "Continue as guest";
+  //// AppSection
+  static const String home = "Home";
+  static const String categories = "Categories";
+  static const String cart = "Cart";
+  static const String profile = "Profile";
+
+  // Signup
+  static const String firstName = "First Name";
+  static const String firstNameHint = "Enter your first name";
+  static const String lastName = "Last Name";
+  static const String lastNameHint = "Enter your last name";
+  static const String confirmPassword = "Confirm Password";
+  static const String confirmPasswordHint = "Confirm your password";
+  static const String phoneNumber = "Phone Number";
+  static const String phoneNumberHint = "Enter your phone number";
+  static const String genderMale = 'male';
+  static const String genderFemale = 'female';
+  static const String genderMaleDisplay = 'Male';
+  static const String genderFemaleDisplay = 'Female';
+  static const String genderLabel = 'Gender';
+  static const String createAnAccountYouAgree =
+      "Creating an account, you agree to our ";
+  static const String termsAndConditions = "Terms and Conditions";
+  static const String alreadyHaveAnAccount = "Already have an account?";
 
   // Validations
   static const String userNameValidation = "This user name is not valid";

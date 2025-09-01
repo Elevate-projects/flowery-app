@@ -35,6 +35,11 @@ abstract class AppTheme {
         fontWeight: FontWeight.w500,
         color: AppColors.black,
       ),
+       labelMedium: TextStyle(
+        fontSize: 12.sp,
+        fontWeight: FontWeight.w400,
+        color: AppColors.black,
+      ),
       labelLarge: TextStyle(
         fontSize: 16.sp,
         fontWeight: FontWeight.w500,
@@ -89,6 +94,17 @@ abstract class AppTheme {
         fontWeight: FontWeight.w400,
         color: AppColors.white[80],
       ),
+    ),
+    radioTheme: RadioThemeData(
+      fillColor: WidgetStateProperty.resolveWith<Color>((states) {
+        if (states.contains(WidgetState.selected)) {
+          return AppColors.pink; // Selected color
+        }
+        return AppColors.gray; // Unselected color
+      }),
+      overlayColor: WidgetStateProperty.all(AppColors.pink.withValues(alpha: 0.1)),
+      visualDensity: VisualDensity.compact,
+      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
     ),
   );
 }

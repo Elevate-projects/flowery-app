@@ -1,6 +1,4 @@
 import 'package:flowery_app/core/app_theme.dart';
-import 'package:flowery_app/core/global_cubit/global_cubit.dart';
-import 'package:flowery_app/core/global_cubit/global_state.dart';
 import 'package:flowery_app/core/router/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

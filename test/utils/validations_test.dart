@@ -170,5 +170,55 @@ void main() {
       expect(invalidPasswordResult8, isNotNull);
       expect(invalidPasswordResult9, isNotNull);
     });
+
+    test("testing user name (first/last name) validation cases", () {
+      // Arrange
+      String validName1 = "Ahmed";
+      String validName2 = "Omar Elsadany";
+
+      String invalidName1 = "";
+      String invalidName2 = "   ";
+
+      // Act
+      final validResult1 = Validations.userNameValidation(name: validName1);
+      final validResult2 = Validations.userNameValidation(name: validName2);
+
+      final invalidResult1 = Validations.userNameValidation(name: invalidName1);
+      final invalidResult2 = Validations.userNameValidation(name: invalidName2);
+
+
+      // Assert
+      expect(validResult1, isNull);
+      expect(validResult2, isNull);
+
+      expect(invalidResult1, isNotNull);
+      expect(invalidResult2, isNotNull);
+    });
+
+    test("testing phone number validation cases", () {
+      // Arrange
+      String validPhone1 = "01155027741";
+      String validPhone2 = "01234567890";
+
+      String invalidPhone1 = "";
+      String invalidPhone2 = "   ";
+      String invalidPhone3 = "12345"; // too short
+
+      // Act
+      final validResult1 = Validations.phoneValidation(phoneNumber: validPhone1);
+      final validResult2 = Validations.phoneValidation(phoneNumber: validPhone2);
+
+      final invalidResult1 = Validations.phoneValidation(phoneNumber: invalidPhone1);
+      final invalidResult2 = Validations.phoneValidation(phoneNumber: invalidPhone2);
+      final invalidResult3 = Validations.phoneValidation(phoneNumber: invalidPhone3);
+
+      // Assert
+      expect(validResult1, isNull);
+      expect(validResult2, isNull);
+
+      expect(invalidResult1, isNotNull);
+      expect(invalidResult2, isNotNull);
+      expect(invalidResult3, isNotNull);
+    });
   });
 }
