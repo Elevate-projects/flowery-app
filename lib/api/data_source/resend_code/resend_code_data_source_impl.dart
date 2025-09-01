@@ -1,5 +1,4 @@
 import 'package:flowery_app/api/dto/mapper/mapper.dart';
-import 'package:flowery_app/api/dto/resend_code/response/resend_code_response_dto.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../data/data_source/resend_code/resend_code_data_source.dart';
@@ -19,14 +18,9 @@ class ResendCodeDataSourceImpl implements ResendCodeDataSource {
   Future<Result<ResendCodeResponseEntity>> resendCode(
     ResendCodeRequestEntity request,
   ) async {
-    var res = await executeApi(
-      () => _apiClient.resendCode(Mapper.resendCodeToDto(request)),
-    );
-    switch (res) {
-      case Success<ResendCodeResponseDto>():
-        return Success(Mapper.resendCodeToEntity(res.data));
-      case Failure<ResendCodeResponseDto>():
-        return Failure(responseException: res.responseException);
-    }
+    return executeApi(() async {
+      var res = await _apiClient.resendCode(Mapper.resendCodeToDto(request));
+      return Mapper.resendCodeToEntity(res);
+    });
   }
 }

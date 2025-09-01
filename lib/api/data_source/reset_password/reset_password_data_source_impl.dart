@@ -1,5 +1,4 @@
 import 'package:flowery_app/api/dto/mapper/mapper.dart';
-import 'package:flowery_app/api/dto/reset_password/response/reset_password_response_dto.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../data/data_source/reset_password/reset_password_data_source.dart';
@@ -19,14 +18,11 @@ class ResetPasswordDataSourceImpl implements ResetPasswordDataSource {
   Future<Result<ResetPasswordResponseEntity>> resetPassword(
     ResetPasswordRequestEntity request,
   ) async {
-    var res = await executeApi(
-      () => apiClient.resetPassword(Mapper.resetPasswordToDto(request)),
-    );
-    switch (res) {
-      case Success<ResetPasswordResponseDto>():
-        return Success(Mapper.resetPasswordToEntity(res.data));
-      case Failure<ResetPasswordResponseDto>():
-        return Failure(responseException: res.responseException);
-    }
+    return executeApi(() async {
+      var res = await apiClient.resetPassword(
+        Mapper.resetPasswordToDto(request),
+      );
+      return Mapper.resetPasswordToEntity(res);
+    });
   }
 }

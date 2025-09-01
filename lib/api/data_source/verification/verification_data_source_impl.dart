@@ -19,14 +19,9 @@ class VreificationDataSourceImpl implements VerificationDataSource {
   Future<Result<VerifyResponseEntity>> verify(
     VerifyRequsetEntity request,
   ) async {
-    var res = await executeApi(
-      () => apiClient.verificationCode(Mapper.verifyToDto(request)),
-    );
-    switch (res) {
-      case Success<VerifyResponseDto>():
-        return Success(Mapper.verifyToEntity(res.data));
-      case Failure<VerifyResponseDto>():
-        return Failure(responseException: res.responseException);
-    }
+    return executeApi(() async {
+      var res = await apiClient.verificationCode(Mapper.verifyToDto(request));
+      return Mapper.verifyToEntity(VerifyResponseDto());
+    });
   }
 }
