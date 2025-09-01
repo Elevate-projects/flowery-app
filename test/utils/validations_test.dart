@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group("validations test", () {
-     test("testing email validation cases", () {
+    test("testing email validation cases", () {
       // Arrange
 
       // Valid emails

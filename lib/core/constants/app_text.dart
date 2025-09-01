@@ -9,7 +9,9 @@ abstract final class AppText {
   static const String forgetPassword = "Forget password?";
   static const String donNotHaveAccount = "Don't have an account?";
   static const String signup = "Sign up";
-  //// AppSection
+  static const String continueAsGuest = "Continue as guest";
+
+  // AppSection
   static const String home = "Home";
   static const String categories = "Categories";
   static const String cart = "Cart";
@@ -40,9 +42,9 @@ abstract final class AppText {
   static const String phoneNumberValidation = "Phone number field is required";
   static const String phoneNumberValidation2 =
       "Phone Number should consist of 11 digits";
-  static const String emailValidation = "Email field is required";
+  static const String emailValidation = "This Email is not valid";
   static const String emailValidation2 = "Enter a valid email";
-  static const String passwordValidation = "Password field is required";
+  static const String passwordValidation = "Invalid password";
   static const String passwordValidation2 =
       "Password field should contain at least 8 characters";
   static const String confirmPasswordValidation =

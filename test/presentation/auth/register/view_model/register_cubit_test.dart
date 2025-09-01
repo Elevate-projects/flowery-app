@@ -28,7 +28,7 @@ void main() {
       responseException: const ResponseException(message: "failed to register"),
     );
     userDataEntity = UserDataEntity(
-      userId: "1",
+      id: "1",
       email: "sadany@gmail.com",
       phone: "01155027741",
       firstName: "omar",
@@ -37,7 +37,6 @@ void main() {
       photo: "profilePic",
       addresses: ["address1", "address2"],
       wishlist: ["item1", "item2"],
-      createdAt: "2025-01-01",
       role: "user",
     );
     expectedSuccessResult = Success<UserDataEntity?>(userDataEntity);
@@ -62,7 +61,7 @@ void main() {
       act: (cubit) {
         cubit.doIntent(intent: RegisterWithDataIntent());
       },
-      expect: () =>[
+      expect: () => [
         isA<RegisterState>().having(
           (state) => state.registerState.isLoading,
           "loading",
@@ -82,14 +81,18 @@ void main() {
                     .data
                     ?.firstName,
               ),
-            ).having((state) => FloweryMethodHelper.userData?.lastName,
+            )
+            .having(
+              (state) => FloweryMethodHelper.userData?.lastName,
               "check if userdata saved successfully and eqauls to the excpeted data",
               equals(
                 (expectedSuccessResult as Success<UserDataEntity?>)
                     .data
                     ?.lastName,
               ),
-            ).having((state) => FloweryMethodHelper.userData?.gender,
+            )
+            .having(
+              (state) => FloweryMethodHelper.userData?.gender,
               "check if userdata saved successfully and eqauls to the excpeted data",
               equals(
                 (expectedSuccessResult as Success<UserDataEntity?>)
@@ -98,11 +101,13 @@ void main() {
               ),
             ),
       ],
-      verify: (_){
-        verify(mockRegisterUseCase.invoke(request: anyNamed("request"))).called(1);
-      }
+      verify: (_) {
+        verify(
+          mockRegisterUseCase.invoke(request: anyNamed("request")),
+        ).called(1);
+      },
     );
-     blocTest<RegisterCubit, RegisterState>(
+    blocTest<RegisterCubit, RegisterState>(
       "emits [loading, failure] when register fails",
       build: () {
         when(
@@ -113,7 +118,7 @@ void main() {
       act: (cubit) {
         cubit.doIntent(intent: RegisterWithDataIntent());
       },
-      expect: () =>[
+      expect: () => [
         isA<RegisterState>().having(
           (state) => state.registerState.isLoading,
           "loading",
@@ -131,9 +136,11 @@ void main() {
               equals((expectedFailureResult).responseException.message),
             ),
       ],
-      verify: (_){ 
-        verify(mockRegisterUseCase.invoke(request: anyNamed("request"))).called(1);
-      }
+      verify: (_) {
+        verify(
+          mockRegisterUseCase.invoke(request: anyNamed("request")),
+        ).called(1);
+      },
     );
 
     blocTest<RegisterCubit, RegisterState>(

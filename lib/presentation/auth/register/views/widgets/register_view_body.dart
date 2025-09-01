@@ -1,3 +1,4 @@
+import 'package:flowery_app/core/router/route_names.dart';
 import 'package:flowery_app/presentation/auth/register/view_model/register_cubit.dart';
 import 'package:flowery_app/presentation/auth/register/view_model/register_state.dart';
 import 'package:flowery_app/presentation/auth/register/views/widgets/have_account_login_text.dart';
@@ -22,8 +23,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
   Widget build(BuildContext context) {
     return BlocListener<RegisterCubit, RegisterState>(
       listenWhen: (previous, current) {
-        return
-            current.registerState.isSuccess ||
+        return current.registerState.isSuccess ||
             current.registerState.isFailure ||
             current is AlreadyHaveAccountState;
       },
@@ -34,30 +34,28 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
             context: context,
           );
         } else if (state.registerState.isSuccess) {
-//           Navigator.of(context).pushReplacementNamed(RouteNames.login);
-// Loaders.showSuccessMessage(
-// message: "Your account has been created successfully",
-// context: context,
-// );
-          Navigator.pushReplacementNamed(context, '/login');
+          Navigator.of(context).pushReplacementNamed(RouteNames.login);
+          Loaders.showSuccessMessage(
+            message: "Your account has been created successfully",
+            context: context,
+          );
         } else if (state is AlreadyHaveAccountState) {
-          // navigate to login screen
-//           Navigator.of(
-// context,
-// ).pushNamedAndRemoveUntil(RouteNames.login, (route) => false);
+          Navigator.of(
+            context,
+          ).pushNamedAndRemoveUntil(RouteNames.login, (route) => false);
         }
       },
-      child:  SingleChildScrollView(
+      child: SingleChildScrollView(
         child: RPadding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: BlocBuilder<RegisterCubit, RegisterState>(
             buildWhen: (previous, current) {
               return current.registerState.isLoading ||
-                     current.registerState.isFailure;
+                  current.registerState.isFailure;
             },
             builder: (context, state) {
               return const Column(
-                children:  [
+                children: [
                   RSizedBox(height: 24),
                   RegisterForm(),
                   RegisterGenderRow(),

@@ -1,4 +1,3 @@
-
 import 'package:flowery_app/core/exceptions/response_exception.dart';
 
 enum Status { initial, loading, success, failure }

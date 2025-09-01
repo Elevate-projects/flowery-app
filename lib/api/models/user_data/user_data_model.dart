@@ -1,10 +1,12 @@
 import 'package:flowery_app/domain/entities/user_data/user_data_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'user_register_model.g.dart';
+part 'user_data_model.g.dart';
 
 @JsonSerializable()
-class UserRegisterModel {
+class UserDataModel {
+  @JsonKey(name: "_id")
+  final String? id;
   @JsonKey(name: "firstName")
   final String? firstName;
   @JsonKey(name: "lastName")
@@ -21,14 +23,19 @@ class UserRegisterModel {
   final String? role;
   @JsonKey(name: "wishlist")
   final List<String>? wishlist;
-  @JsonKey(name: "_id")
-  final String? id;
   @JsonKey(name: "addresses")
   final List<String>? addresses;
   @JsonKey(name: "createdAt")
   final String? createdAt;
+  @JsonKey(name: "passwordResetCode")
+  final String? passwordResetCode;
+  @JsonKey(name: "passwordResetExpires")
+  final String? passwordResetExpires;
+  @JsonKey(name: "resetCodeVerified")
+  final bool? resetCodeVerified;
 
-  UserRegisterModel({
+  UserDataModel({
+    this.id,
     this.firstName,
     this.lastName,
     this.email,
@@ -37,33 +44,34 @@ class UserRegisterModel {
     this.photo,
     this.role,
     this.wishlist,
-    this.id,
     this.addresses,
     this.createdAt,
+    this.passwordResetCode,
+    this.passwordResetExpires,
+    this.resetCodeVerified,
   });
 
-  factory UserRegisterModel.fromJson(Map<String, dynamic> json) {
-    return _$UserRegisterModelFromJson(json);
+  factory UserDataModel.fromJson(Map<String, dynamic> json) {
+    return _$UserDataModelFromJson(json);
   }
 
   Map<String, dynamic> toJson() {
-    return _$UserRegisterModelToJson(this);
+    return _$UserDataModelToJson(this);
   }
 
-    UserDataEntity toUserDataEntity() {
+  UserDataEntity toUserDataEntity() {
     return UserDataEntity(
-      userId: id,
+      id: id,
       firstName: firstName,
       lastName: lastName,
       email: email,
+      gender: gender,
       phone: phone,
       photo: photo,
-      gender: gender,
       role: role,
-      createdAt: createdAt,
       wishlist: wishlist,
       addresses: addresses,
+      passwordResetCode: passwordResetCode,
     );
   }
 }
-
