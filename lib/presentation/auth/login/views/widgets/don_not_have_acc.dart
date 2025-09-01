@@ -1,4 +1,5 @@
 import 'package:flowery_app/core/constants/app_text.dart';
+import 'package:flowery_app/core/router/route_names.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -26,7 +27,7 @@ class DonNotHaveAcc extends StatelessWidget {
         Flexible(
           child: InkWell(
             onTap: () {
-              // Navigator.of(context).pushNamed(RouteNames.register);
+              Navigator.of(context).pushNamed(RouteNames.register);
             },
             borderRadius: BorderRadius.circular(30.r),
             highlightColor: Theme.of(

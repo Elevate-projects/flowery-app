@@ -1,3 +1,4 @@
+import 'package:flowery_app/core/router/route_names.dart';
 import 'package:flowery_app/presentation/auth/login/views/widgets/continue_as_guest_button.dart';
 import 'package:flowery_app/presentation/auth/login/views/widgets/don_not_have_acc.dart';
 import 'package:flowery_app/presentation/auth/login/views/widgets/login_button.dart';
@@ -25,9 +26,9 @@ class LoginViewBody extends StatelessWidget {
             context: context,
           );
         } else if (state.loginStatus.isSuccess) {
-          // Navigator.of(
-          //   context,
-          // ).pushReplacementNamed(RouteNames.homeBottomNavigation);
+          Navigator.of(
+            context,
+          ).pushReplacementNamed(RouteNames.floweryBottomNavigation);
         }
       },
       child: SingleChildScrollView(

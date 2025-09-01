@@ -20,6 +20,9 @@ void main() {
           wishlist: null,
           createdAt: null,
           role: null,
+          passwordResetExpires: null,
+          passwordResetCode: null,
+          resetCodeVerified: null,
         );
 
         //Act
@@ -36,6 +39,7 @@ void main() {
         expect(actualResult.role, isNull);
         expect(actualResult.wishlist, isNull);
         expect(actualResult.addresses, isNull);
+        expect(actualResult.passwordResetCode, isNull);
       },
     );
     test(
@@ -54,6 +58,9 @@ void main() {
           wishlist: ["item1", "item2"],
           createdAt: "2020-01-01",
           role: "developer",
+          passwordResetCode: "code1",
+          passwordResetExpires: "At 2001",
+          resetCodeVerified: true,
         );
 
         //Act
@@ -70,6 +77,10 @@ void main() {
         expect(actualResult.role, equals(userData.role));
         expect(actualResult.wishlist, equals(userData.wishlist));
         expect(actualResult.addresses, equals(userData.addresses));
+        expect(
+          actualResult.passwordResetCode,
+          equals(userData.passwordResetCode),
+        );
       },
     );
   });

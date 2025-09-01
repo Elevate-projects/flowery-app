@@ -10,7 +10,8 @@ abstract final class AppText {
   static const String donNotHaveAccount = "Don't have an account?";
   static const String signup = "Sign up";
   static const String continueAsGuest = "Continue as guest";
-  //// AppSection
+
+  // AppSection
   static const String home = "Home";
   static const String categories = "Categories";
   static const String cart = "Cart";

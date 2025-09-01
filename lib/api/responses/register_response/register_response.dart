@@ -1,4 +1,4 @@
-import 'package:flowery_app/api/models/register/user_register_model.dart';
+import 'package:flowery_app/api/models/user_data/user_data_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'register_response.g.dart';
@@ -8,7 +8,7 @@ class RegisterResponse {
   @JsonKey(name: "message")
   final String? message;
   @JsonKey(name: "user")
-  final UserRegisterModel? userRegisterModel;
+  final UserDataModel? userRegisterModel;
   @JsonKey(name: "token")
   final String? token;
 
@@ -22,5 +22,3 @@ class RegisterResponse {
     return _$RegisterResponseToJson(this);
   }
 }
-
-
