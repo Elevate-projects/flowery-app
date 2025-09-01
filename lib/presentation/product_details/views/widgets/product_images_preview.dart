@@ -29,61 +29,60 @@ class ProductImagesPreview extends StatelessWidget {
             visible: state.productImages != null,
             child: SafeArea(
               child: Stack(
+                alignment: Alignment.center,
                 children: [
-                  Column(
-                    children: [
-                      RSizedBox(
-                        height: 380.h,
-                        child: PageView(
-                          physics: const BouncingScrollPhysics(),
-                          controller: productDetailsCubit.imagesPageController,
-                          children: state.productImages!
-                              .map(
-                                (image) => Center(
-                                  child: CachedNetworkImage(
-                                    imageUrl: image,
-                                    fit: BoxFit.cover,
-                                    width: ScreenUtil().screenWidth,
-                                    height: 380.h,
-                                    progressIndicatorBuilder:
-                                        (context, url, progress) =>
-                                            ShimmerEffect(
-                                              width: ScreenUtil().screenWidth,
-                                              height: 380.h,
-                                              radius: 0,
-                                            ),
-                                    errorWidget: (context, url, error) => Icon(
-                                      Icons.info_outline,
-                                      color: theme.colorScheme.error,
+                  RSizedBox(
+                    height: 398.h,
+                    child: PageView(
+                      physics: const BouncingScrollPhysics(),
+                      controller: productDetailsCubit.imagesPageController,
+                      children: state.productImages!
+                          .map(
+                            (image) => Center(
+                              child: CachedNetworkImage(
+                                imageUrl: image,
+                                fit: BoxFit.cover,
+                                width: ScreenUtil().screenWidth,
+                                height: 398.h,
+                                progressIndicatorBuilder:
+                                    (context, url, progress) => ShimmerEffect(
+                                      width: ScreenUtil().screenWidth,
+                                      height: 398.h,
+                                      radius: 0,
                                     ),
-                                  ),
+                                errorWidget: (context, url, error) => Icon(
+                                  Icons.info_outline,
+                                  color: theme.colorScheme.error,
                                 ),
-                              )
-                              .toList(),
-                        ),
-                      ),
-                      SmoothPageIndicator(
-                        controller: productDetailsCubit.imagesPageController,
-                        count: state.productImages!.length,
-                        effect: SwapEffect(
-                          activeDotColor: theme.colorScheme.primary,
-                          dotColor: AppColors.white[70]!,
-                          dotWidth: 10.r,
-                          dotHeight: 10.r,
-                          spacing: 8.r,
-                        ),
-                        onDotClicked: (index) => productDetailsCubit.doIntent(
-                          intent: NavigateToSelectedImageIntent(
-                            selectedImageIndex: index,
-                          ),
-                        ),
-                      ),
-                    ],
+                              ),
+                            ),
+                          )
+                          .toList(),
+                    ),
                   ),
                   PositionedDirectional(
-                    top: 16.r,
-                    start: 0,
+                    top: 30.r,
+                    start: 6.w,
                     child: const CustomBackArrow(),
+                  ),
+                  PositionedDirectional(
+                    bottom: 8.h,
+                    child: SmoothPageIndicator(
+                      controller: productDetailsCubit.imagesPageController,
+                      count: state.productImages!.length,
+                      effect: SwapEffect(
+                        activeDotColor: theme.colorScheme.primary,
+                        dotColor: AppColors.white[70]!,
+                        dotWidth: 10.r,
+                        dotHeight: 10.r,
+                        spacing: 8.r,
+                      ),
+                      onDotClicked: (index) => productDetailsCubit.doIntent(
+                        intent: NavigateToSelectedImageIntent(
+                          selectedImageIndex: index,
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               ),
