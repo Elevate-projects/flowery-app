@@ -9,6 +9,11 @@ abstract final class AppText {
   static const String forgetPassword = "Forget password?";
   static const String donNotHaveAccount = "Don't have an account?";
   static const String signup = "Sign up";
+  //// AppSection
+  static const String home = "Home";
+  static const String categories = "Categories";
+  static const String cart = "Cart";
+  static const String profile = "Profile";
 
   // Signup
   static const String firstName = "First Name";
@@ -24,7 +29,8 @@ abstract final class AppText {
   static const String genderMaleDisplay = 'Male';
   static const String genderFemaleDisplay = 'Female';
   static const String genderLabel = 'Gender';
-  static const String createAnAccountYouAgree = "Creating an account, you agree to our ";
+  static const String createAnAccountYouAgree =
+      "Creating an account, you agree to our ";
   static const String termsAndConditions = "Terms and Conditions";
   static const String alreadyHaveAnAccount = "Already have an account?";
 
@@ -48,7 +54,7 @@ abstract final class AppText {
       "Password must contain at least one number";
   static const String passwordValidation5 =
       "Password must not exceed 20 characters";
-      static const String passwordValidation6 =
+  static const String passwordValidation6 =
       "Password must contain a capital letter";
   static const String passwordValidation7 =
       "Password must contain a special character";
