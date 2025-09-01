@@ -28,11 +28,14 @@ abstract class Validations {
 
   static String? emailValidation({required String? email}) {
     final emailRegex = RegExp(
-      r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
+      r'^[a-zA-Z0-9](?:[a-zA-Z0-9._%+-]{0,62}[a-zA-Z0-9])?@[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?(?:\.[a-zA-Z]{2,})+$',
     );
     if (email?.trim() == "" || (email?.isEmpty ?? true) || email == null) {
       return AppText.emailValidation;
-    } else if (!emailRegex.hasMatch(email)) {
+    } else if (!emailRegex.hasMatch(email) ||
+        email.contains("..") ||
+        email.contains(".-") ||
+        email.contains("-.")) {
       return AppText.emailValidation2;
     }
     return null;
@@ -49,6 +52,10 @@ abstract class Validations {
       return AppText.passwordValidation3;
     } else if (!RegExp(r'\d').hasMatch(password)) {
       return AppText.passwordValidation4;
+    } else if (!RegExp(r'[A-Z]').hasMatch(password)) {
+      return AppText.passwordValidation6;
+    } else if (!RegExp(r'[!@#$%^&*(),.?":{}|<>]').hasMatch(password)) {
+      return AppText.passwordValidation7;
     } else if (password.length > 20) {
       return AppText.passwordValidation5;
     }
@@ -79,8 +86,4 @@ abstract class Validations {
     }
     return null;
   }
-
-
-
-
 }
