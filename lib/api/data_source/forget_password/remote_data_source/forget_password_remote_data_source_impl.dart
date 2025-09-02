@@ -17,9 +17,9 @@ class ForgetPasswordRemoteDataSourceImpl implements ForgetPasswordRemoteDataSour
   Future<Result<ForgetPasswordEntity>> forgetPassword(ForgetPasswordRequestEntity request,)
   async {
     return await executeApi(()async {
-      var response = await _apiClient.forgetPassword(
+      final response = await _apiClient.forgetPassword(
         request: RequestMapper.toForgetPasswordRequestModel(
-            ForgetPasswordRequestEntity: request),
+            forgetPasswordRequestEntity: request),
       );
       return response.toForgetPasswordEntity();
     });

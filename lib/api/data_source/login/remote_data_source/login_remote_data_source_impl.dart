@@ -18,12 +18,12 @@ class LoginRemoteDataSourceImpl implements LoginRemoteDataSource {
     required LoginRequestEntity request,
   }) async {
     return executeApi(() async {
-      var response = await _apiClient.login(
+      final response = await _apiClient.login(
         request: RequestMapper.toLoginRequestModel(loginRequestEntity: request),
       );
       await _secureStorage.saveUserToken(token: response.token);
       FloweryMethodHelper.currentUserToken = response.token;
-      var userData = response.userData?.toUserDataEntity();
+      final userData = response.userData?.toUserDataEntity();
       return userData;
     });
   }

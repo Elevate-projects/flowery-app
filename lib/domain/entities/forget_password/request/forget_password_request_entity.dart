@@ -1,9 +1,9 @@
 import 'package:equatable/equatable.dart';
 
 class ForgetPasswordRequestEntity extends Equatable {
-  String email;
+  final String email;
 
-  ForgetPasswordRequestEntity({
+  const ForgetPasswordRequestEntity({
     required this.email,
   });
 

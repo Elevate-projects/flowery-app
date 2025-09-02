@@ -28,9 +28,9 @@ class RegisterCubit extends Cubit<RegisterState> {
   late AutovalidateMode autoValidateMode;
   late Gender _selectedGender; 
   ChangeConfirmPasswordObscureState _changeConfirmPasswordObscureState =
-      ChangeConfirmPasswordObscureState();
+      const ChangeConfirmPasswordObscureState();
   ChangePasswordObscureState _changePasswordObscureState =
-      ChangePasswordObscureState();
+      const ChangePasswordObscureState();
 
   Future<void> doIntent({required RegisterIntent intent}) async {
     switch (intent) {

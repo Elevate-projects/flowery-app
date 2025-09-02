@@ -22,8 +22,6 @@ abstract class ApiClient {
 
   @POST(Endpoints.register)
   Future<RegisterResponse> register({@Body() required RegisterRequest request});
-  // @POST(Endpoints.login)
-// Future<LoginResponse> login({@Body() required LoginRequest request});
 
   @POST(Endpoints.forgetPassword)
   Future<ForgetPasswordResponseModel> forgetPassword( {@Body() required ForgetPasswordRequestDto request});
