@@ -14,11 +14,10 @@ abstract class RequestMapper {
   }
 
   static ForgetPasswordRequestDto toForgetPasswordRequestModel({
-    required ForgetPasswordRequestEntity ForgetPasswordRequestEntity,
+    required ForgetPasswordRequestEntity forgetPasswordRequestEntity,
 }){
     return ForgetPasswordRequestDto(
-      email: ForgetPasswordRequestEntity.email,
-
+      email: forgetPasswordRequestEntity.email,
     );
   }
 }

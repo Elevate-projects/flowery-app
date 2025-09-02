@@ -29,8 +29,8 @@ class LoginCubit extends Cubit<LoginState> {
   late final TextEditingController passwordController;
   late AutovalidateMode autoValidateMode;
   late GlobalKey<FormState> loginFormKey;
-  ChangeObscureState _obscurePasswordState = ChangeObscureState();
-  ToggleRememberMeState _toggleRememberMeState = ToggleRememberMeState();
+  ChangeObscureState _obscurePasswordState = const ChangeObscureState();
+  ToggleRememberMeState _toggleRememberMeState = const ToggleRememberMeState();
 
   Future<void> doIntent({required LoginIntent intent}) async {
     switch (intent) {
@@ -68,7 +68,7 @@ class LoginCubit extends Cubit<LoginState> {
 
   void _toggleObscure() {
     _obscurePasswordState = _obscurePasswordState.copyWith2(
-      isObscurePassword: _obscurePasswordState.isObscure,
+      isObscure: _obscurePasswordState.isObscure,
     );
     emit(_obscurePasswordState);
   }
@@ -78,14 +78,14 @@ class LoginCubit extends Cubit<LoginState> {
       key: ConstKeys.rememberMe,
     );
     _toggleRememberMeState = _toggleRememberMeState.copyWith2(
-      isRememberMe: !isRemembered,
+      rememberMe: !isRemembered,
     );
     emit(_toggleRememberMeState);
   }
 
   Future<void> _toggleRememberMe() async {
     _toggleRememberMeState = _toggleRememberMeState.copyWith2(
-      isRememberMe: _toggleRememberMeState.rememberMe,
+      rememberMe: _toggleRememberMeState.rememberMe,
     );
     await _sharedPreferencesHelper.saveBool(
       key: ConstKeys.rememberMe,

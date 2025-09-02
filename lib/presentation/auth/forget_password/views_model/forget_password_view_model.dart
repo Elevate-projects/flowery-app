@@ -44,7 +44,7 @@ class ForgetPasswordViewModel extends Cubit<ForgetPasswordState>{
      case Success<ForgetPasswordEntity>(:final data):
        emit(ForgetPasswordSuccess( message:  data.message ?? 'Password reset link sent'));
      case Failure<ForgetPasswordEntity>(:final responseException):
-       emit(ForgetPasswordFailure(error:  responseException.message ?? 'Something went wrong'));
+       emit(ForgetPasswordFailure(error:  responseException.message));
    }
  }
 }

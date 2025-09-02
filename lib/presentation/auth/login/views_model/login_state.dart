@@ -21,26 +21,27 @@ final class EnableAutoValidateModeState extends LoginState {
 }
 
 final class ChangeObscureState extends LoginState {
-  ChangeObscureState({this.isObscure = true});
-  bool isObscure;
+  const ChangeObscureState({this.isObscure = true});
+  final bool isObscure;
 
-  ChangeObscureState copyWith2({required bool isObscurePassword}) {
-    isObscurePassword = !isObscurePassword;
-    return ChangeObscureState(isObscure: isObscurePassword);
+  ChangeObscureState copyWith2({bool? isObscure}) {
+    return ChangeObscureState(isObscure: isObscure ?? this.isObscure);
   }
+
+  ChangeObscureState toggle() => ChangeObscureState(isObscure: !isObscure);
 
   @override
   List<Object?> get props => [isObscure];
 }
-
 final class ToggleRememberMeState extends LoginState {
-  ToggleRememberMeState({this.rememberMe = false});
-  bool rememberMe;
+  const ToggleRememberMeState({this.rememberMe = false});
+  final bool rememberMe;
 
-  ToggleRememberMeState copyWith2({required bool isRememberMe}) {
-    isRememberMe = !isRememberMe;
-    return ToggleRememberMeState(rememberMe: isRememberMe);
+  ToggleRememberMeState copyWith2({bool? rememberMe}) {
+    return ToggleRememberMeState(rememberMe: rememberMe ?? this.rememberMe);
   }
+
+  ToggleRememberMeState toggle() => ToggleRememberMeState(rememberMe: !rememberMe);
 
   @override
   List<Object?> get props => [rememberMe];
