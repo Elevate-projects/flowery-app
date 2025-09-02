@@ -8,7 +8,7 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 abstract class ApiModule {
   @singleton
   Dio provideDio() {
-    var dio = Dio(
+    final dio = Dio(
       BaseOptions(baseUrl: Endpoints.baseUrl, receiveDataWhenStatusError: true),
     );
     dio.interceptors.add(

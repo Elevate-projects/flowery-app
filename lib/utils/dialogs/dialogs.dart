@@ -2,7 +2,7 @@ import 'package:flowery_app/utils/dialogs/custom_dialog_content.dart';
 import 'package:flutter/material.dart';
 
 abstract class Dialogs {
-  static customDialog({
+  static Future customDialog({
     required BuildContext context,
     List<Widget>? actions,
     Widget? content,
