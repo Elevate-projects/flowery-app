@@ -20,28 +20,29 @@ final class EnableAutoValidateModeState extends LoginState {
   List<Object?> get props => [];
 }
 
+// ignore: must_be_immutable
 final class ChangeObscureState extends LoginState {
-  const ChangeObscureState({this.isObscure = true});
-  final bool isObscure;
+  ChangeObscureState({this.isObscure = true});
+  bool isObscure;
 
-  ChangeObscureState copyWith2({bool? isObscure}) {
-    return ChangeObscureState(isObscure: isObscure ?? this.isObscure);
+  ChangeObscureState copyWith2({required bool isObscurePassword}) {
+    isObscurePassword = !isObscurePassword;
+    return ChangeObscureState(isObscure: isObscurePassword);
   }
-
-  ChangeObscureState toggle() => ChangeObscureState(isObscure: !isObscure);
 
   @override
   List<Object?> get props => [isObscure];
 }
+
+// ignore: must_be_immutable
 final class ToggleRememberMeState extends LoginState {
-  const ToggleRememberMeState({this.rememberMe = false});
-  final bool rememberMe;
+  ToggleRememberMeState({this.rememberMe = false});
+  bool rememberMe;
 
-  ToggleRememberMeState copyWith2({bool? rememberMe}) {
-    return ToggleRememberMeState(rememberMe: rememberMe ?? this.rememberMe);
+  ToggleRememberMeState copyWith2({required bool isRememberMe}) {
+    isRememberMe = !isRememberMe;
+    return ToggleRememberMeState(rememberMe: isRememberMe);
   }
-
-  ToggleRememberMeState toggle() => ToggleRememberMeState(rememberMe: !rememberMe);
 
   @override
   List<Object?> get props => [rememberMe];
