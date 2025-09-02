@@ -8,7 +8,7 @@ void main() {
       "when call toProductCardEntity with null values it should return ProductCardEntity with null values",
       () {
         //Arrange
-        ProductCardModel productCardData = ProductCardModel(
+        final ProductCardModel productCardData = ProductCardModel(
           rateAvg: null,
           rateCount: null,
           id: null,
@@ -31,7 +31,7 @@ void main() {
         );
 
         //Act
-        ProductCardEntity actualResult = productCardData.toProductCardEntity();
+        final ProductCardEntity actualResult = productCardData.toProductCardEntity();
 
         //Assert
         expect(actualResult.productId, equals(productCardData.productId));
@@ -55,7 +55,7 @@ void main() {
       "when call toProductCardEntity with non-nullable values it should return ProductCardEntity with correct values",
       () {
         //Arrange
-        ProductCardModel productCardData = ProductCardModel(
+        final ProductCardModel productCardData = ProductCardModel(
           rateAvg: 4,
           rateCount: 10,
           id: "1",
@@ -78,7 +78,7 @@ void main() {
         );
 
         //Act
-        ProductCardEntity actualResult = productCardData.toProductCardEntity();
+        final ProductCardEntity actualResult = productCardData.toProductCardEntity();
 
         //Assert
         expect(actualResult.productId, equals(productCardData.productId));

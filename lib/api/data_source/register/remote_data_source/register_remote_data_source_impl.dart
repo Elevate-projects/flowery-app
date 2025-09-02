@@ -16,10 +16,10 @@ RegisterRemoteDataSourceImpl(this._apiClient,this._secureStorage);
   @override
   Future<Result<UserDataEntity?>> register({required RegisterRequestEntity request}) {
     return executeApi(()async {
-      var response = await _apiClient.register(request: RegisterRequestMapper.toRegisterRequest(entity: request));
+      final response = await _apiClient.register(request: RegisterRequestMapper.toRegisterRequest(entity: request));
       await _secureStorage.saveUserToken(token: response.token);
       FloweryMethodHelper.currentUserToken = response.token; 
-      var userData= response.userRegisterModel?.toUserDataEntity();
+      final userData= response.userRegisterModel?.toUserDataEntity();
       FloweryMethodHelper.userData = userData;
       return userData;
     },);

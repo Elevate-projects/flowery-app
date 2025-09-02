@@ -4,7 +4,7 @@ class ForgetPasswordEntity extends Equatable {
   final String? message;
   final String? info;
 
-  ForgetPasswordEntity({
+  const ForgetPasswordEntity({
     this.message,
     this.info,
   });

@@ -121,7 +121,7 @@ class LoginCubit extends Cubit<LoginState> {
   Future<void> _login() async {
     if (loginFormKey.currentState!.validate()) {
       emit(state.copyWith(loginStatus: const StateStatus.loading()));
-      var userData = await _loginWithEmailAndPasswordUseCase.invoke(
+      final userData = await _loginWithEmailAndPasswordUseCase.invoke(
         request: LoginRequestEntity(
           email: emailController.text,
           password: passwordController.text,

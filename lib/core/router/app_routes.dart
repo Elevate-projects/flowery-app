@@ -22,7 +22,7 @@ abstract class AppRoutes {
           ),
         );
       case RouteNames.forgetPassword:
-        return MaterialPageRoute(builder: (_) =>   ForgetPasswordScreen());
+        return MaterialPageRoute(builder: (_) =>   const ForgetPasswordScreen());
       default:
         return null;
     }

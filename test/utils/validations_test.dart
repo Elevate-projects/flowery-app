@@ -7,23 +7,23 @@ void main() {
       // Arrange
 
       // Valid emails
-      String validEmailCase1 = "ahmedtarek@gmail.com";
-      String validEmailCase2 = "ahmed.tarek@gmail.com";
-      String validEmailCase3 = "ahmed_tarek123@gmail.co.uk";
-      String validEmailCase4 = "a-tarek+123@gmail.com";
+      final String validEmailCase1 = "ahmedtarek@gmail.com";
+      final String validEmailCase2 = "ahmed.tarek@gmail.com";
+      final String validEmailCase3 = "ahmed_tarek123@gmail.co.uk";
+      final String validEmailCase4 = "a-tarek+123@gmail.com";
 
       //Invalid emails
-      String invalidEmailCase1 = "ahmedtarek@gmail";
-      String invalidEmailCase2 = "ahmedtarek@.com";
-      String invalidEmailCase3 = "ahmed.-tarek@gmail.com";
-      String invalidEmailCase4 = "ahmedtarek@gmail..com";
-      String invalidEmailCase5 = "ahmedtarek@gmail.c";
-      String invalidEmailCase6 = "";
-      String invalidEmailCase7 = "ahmedtarek@gmail.c@om";
-      String invalidEmailCase8 = "ahmedtarek@gmail.c om";
-      String invalidEmailCase9 = "ahmed..tarek@gmail.com";
-      String invalidEmailCase10 = "-ahmed@gmail.com";
-      String invalidEmailCase11 = ".ahmed@gmail.com";
+      final String invalidEmailCase1 = "ahmedtarek@gmail";
+      final String invalidEmailCase2 = "ahmedtarek@.com";
+      final String invalidEmailCase3 = "ahmed.-tarek@gmail.com";
+      final String invalidEmailCase4 = "ahmedtarek@gmail..com";
+      final String invalidEmailCase5 = "ahmedtarek@gmail.c";
+      final String invalidEmailCase6 = "";
+      final String invalidEmailCase7 = "ahmedtarek@gmail.c@om";
+      final String invalidEmailCase8 = "ahmedtarek@gmail.c om";
+      final String invalidEmailCase9 = "ahmed..tarek@gmail.com";
+      final String invalidEmailCase10 = "-ahmed@gmail.com";
+      final String invalidEmailCase11 = ".ahmed@gmail.com";
 
       // Act
 
@@ -98,20 +98,20 @@ void main() {
       // Arrange
 
       // Valid passwords
-      String validPasswordCase1 = "Ahmed\$123";
-      String validPasswordCase2 = "StrongPass#99";
-      String validPasswordCase3 = "Xyz@2024";
+      final String validPasswordCase1 = "Ahmed\$123";
+      final String validPasswordCase2 = "StrongPass#99";
+      final String validPasswordCase3 = "Xyz@2024";
 
       // Invalid passwords
-      String invalidPasswordCase1 = "";
-      String invalidPasswordCase2 = "    ";
-      String invalidPasswordCase3 = "abc";
-      String invalidPasswordCase4 = "thisIsWayTooLongPassword123!";
-      String invalidPasswordCase5 = "abcdefgh";
-      String invalidPasswordCase6 = "abcdefgh1";
-      String invalidPasswordCase7 = "abcdefghA";
-      String invalidPasswordCase8 = "abcdefg1A";
-      String invalidPasswordCase9 = "Valid 123A\$";
+      final String invalidPasswordCase1 = "";
+      final String invalidPasswordCase2 = "    ";
+      final String invalidPasswordCase3 = "abc";
+      final String invalidPasswordCase4 = "thisIsWayTooLongPassword123!";
+      final String invalidPasswordCase5 = "abcdefgh";
+      final String invalidPasswordCase6 = "abcdefgh1";
+      final String invalidPasswordCase7 = "abcdefghA";
+      final String invalidPasswordCase8 = "abcdefg1A";
+      final String invalidPasswordCase9 = "Valid 123A\$";
 
       // Act
 
@@ -173,11 +173,11 @@ void main() {
 
     test("testing user name (first/last name) validation cases", () {
       // Arrange
-      String validName1 = "Ahmed";
-      String validName2 = "Omar Elsadany";
+      final String validName1 = "Ahmed";
+      final String validName2 = "Omar Elsadany";
 
-      String invalidName1 = "";
-      String invalidName2 = "   ";
+      final String invalidName1 = "";
+      final String invalidName2 = "   ";
 
       // Act
       final validResult1 = Validations.userNameValidation(name: validName1);
@@ -197,12 +197,12 @@ void main() {
 
     test("testing phone number validation cases", () {
       // Arrange
-      String validPhone1 = "01155027741";
-      String validPhone2 = "01234567890";
+      final String validPhone1 = "01155027741";
+      final String validPhone2 = "01234567890";
 
-      String invalidPhone1 = "";
-      String invalidPhone2 = "   ";
-      String invalidPhone3 = "12345"; // too short
+      final String invalidPhone1 = "";
+      final String invalidPhone2 = "   ";
+      final String invalidPhone3 = "12345"; // too short
 
       // Act
       final validResult1 = Validations.phoneValidation(phoneNumber: validPhone1);

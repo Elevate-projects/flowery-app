@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../../utils/validations.dart';
-import 'forget_password_intent.dart';
-import 'forget_password_states.dart';
+import 'package:flowery_app/utils/validations.dart';
+import 'package:flowery_app/presentation/auth/forget_password/views_model/forget_password_intent.dart';
+import 'package:flowery_app/presentation/auth/forget_password/views_model/forget_password_states.dart';
  @injectable
 class ForgetPasswordViewModel extends Cubit<ForgetPasswordState>{
  final ForgetPasswordUseCase _forgetPasswordUseCase;
@@ -39,7 +39,7 @@ class ForgetPasswordViewModel extends Cubit<ForgetPasswordState>{
      return;
    }
    emit(ForgetPasswordLoading());
-   var res = await _forgetPasswordUseCase.call(request );
+   final res = await _forgetPasswordUseCase.call(request );
    switch (res) {
      case Success<ForgetPasswordEntity>(:final data):
        emit(ForgetPasswordSuccess( message:  data.message ?? 'Password reset link sent'));
