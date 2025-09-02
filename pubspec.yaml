@@ -14,8 +14,8 @@ dependencies:
 
   cupertino_icons: ^1.0.8
   flutter_screenutil: ^5.9.3
-  flutter_bloc:
-  flutter_svg:
+  flutter_bloc: ^9.1.0
+  flutter_svg: ^2.1.0
   shared_preferences: ^2.5.3
   flutter_secure_storage: ^9.2.4
   iconsax_flutter: ^1.0.0
@@ -53,6 +53,7 @@ flutter:
 
   assets:
     - assets/icons/
+    - assets/images/
     - assets/animations/
 
   fonts:

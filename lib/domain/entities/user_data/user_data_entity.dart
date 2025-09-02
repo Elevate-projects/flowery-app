@@ -1,17 +1,27 @@
-// class UserDataEntity {
-//   UserDataEntity({
-//     this.userId,
-//     this.username,
-//     this.firstName,
-//     this.lastName,
-//     this.email,
-//     this.phone,
-//   });
-//
-//   final String? userId;
-//   final String? username;
-//   final String? firstName;
-//   final String? lastName;
-//   final String? email;
-//   final String? phone;
-// }
+class UserDataEntity {
+  UserDataEntity({
+    this.id,
+    this.firstName,
+    this.lastName,
+    this.email,
+    this.gender,
+    this.phone,
+    this.photo,
+    this.role,
+    this.wishlist,
+    this.addresses,
+    this.passwordResetCode,
+  });
+
+  String? id;
+  String? firstName;
+  String? lastName;
+  String? email;
+  String? gender;
+  String? phone;
+  String? photo;
+  String? role;
+  List<String>? wishlist;
+  List<String>? addresses;
+  String? passwordResetCode;
+}

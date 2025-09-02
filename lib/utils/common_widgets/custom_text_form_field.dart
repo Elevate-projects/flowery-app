@@ -1,3 +1,4 @@
+import 'package:flowery_app/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -57,7 +58,7 @@ class CustomTextFormField extends StatelessWidget {
       onTap: onTap,
       style:
           style ??
-          Theme.of(context).textTheme.bodyMedium?.copyWith(
+          Theme.of(context).textTheme.bodyLarge?.copyWith(
             color: Theme.of(context).colorScheme.onSecondary,
           ),
       controller: controller,
@@ -77,14 +78,18 @@ class CustomTextFormField extends StatelessWidget {
                 color: Theme.of(context).colorScheme.onSecondary,
               ),
         ),
-        hintStyle: hintStyle ?? Theme.of(context).textTheme.bodyLarge,
+        hintStyle:
+            hintStyle ??
+            Theme.of(
+              context,
+            ).textTheme.bodyLarge?.copyWith(color: AppColors.white[70]),
         hintText: hintText,
         focusedBorder: buildOutlinedBorder(
           borderColor: Theme.of(context).colorScheme.primary,
           borderRadius: borderRadius,
         ),
         enabledBorder: buildOutlinedBorder(
-          borderColor: Theme.of(context).colorScheme.shadow,
+          borderColor: Theme.of(context).colorScheme.onSecondary,
           borderRadius: borderRadius,
         ),
         focusedErrorBorder: buildOutlinedBorder(
@@ -92,7 +97,7 @@ class CustomTextFormField extends StatelessWidget {
           borderRadius: borderRadius,
         ),
         errorBorder: buildOutlinedBorder(
-          borderColor: Theme.of(context).colorScheme.primaryContainer,
+          borderColor: Theme.of(context).colorScheme.error,
           borderRadius: borderRadius,
         ),
         disabledBorder: buildOutlinedBorder(
