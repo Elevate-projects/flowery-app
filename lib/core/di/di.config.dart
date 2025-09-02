@@ -34,6 +34,48 @@ import '../../domain/use_cases/register/register_use_case.dart' as _i950;
 import '../../presentation/auth/login/views_model/login_cubit.dart' as _i512;
 import '../../presentation/auth/register/view_model/register_cubit.dart'
     as _i536;
+import '../../api/data_source/forget_password/remote_data_source/forget_password_remote_data_source_impl.dart'
+    as _i428;
+import '../../data/data_source/forget_password/forget_password_remote_data_source.dart'
+    as _i849;
+import '../../data/repositories/forget_password_repo_impl/forget_password_repo_impl.dart'
+    as _i1030;
+import '../../domain/repositories/forget_password/forget_password_repo.dart'
+    as _i72;
+import '../../domain/use_cases/forget_password/forget_password_use_case.dart'
+    as _i150;
+import '../../presentation/auth/forget_password/views_model/forget_password_view_model.dart'
+    as _i457;
+import '../../api/data_source/forget_password/remote_data_source/forget_password_remote_data_source_impl.dart'
+    as _i428;
+import '../../api/data_source/login/remote_data_source/login_remote_data_source_impl.dart'
+    as _i221;
+import '../../api/data_source/register/remote_data_source/register_remote_data_source_impl.dart'
+    as _i281;
+import '../../data/data_source/forget_password/forget_password_remote_data_source.dart'
+    as _i849;
+import '../../data/data_source/login/remote_data_source/login_remote_data_source.dart'
+    as _i684;
+import '../../data/data_source/register/remote_data_source/register_remote_data_source.dart'
+    as _i233;
+import '../../data/repositories/forget_password_repo_impl/forget_password_repo_impl.dart'
+    as _i1030;
+import '../../data/repositories/login/login_repository_impl.dart' as _i722;
+import '../../data/repositories/register/register_repository_impl.dart' as _i40;
+import '../../domain/repositories/forget_password/forget_password_repo.dart'
+    as _i72;
+import '../../domain/repositories/login/login_repository.dart' as _i300;
+import '../../domain/repositories/register/register_repository.dart' as _i638;
+import '../../domain/use_cases/forget_password/forget_password_use_case.dart'
+    as _i150;
+import '../../domain/use_cases/login/login_with_email_and_password_use_case.dart'
+    as _i197;
+import '../../domain/use_cases/register/register_use_case.dart' as _i950;
+import '../../presentation/auth/forget_password/views_model/forget_password_view_model.dart'
+    as _i457;
+import '../../presentation/auth/login/views_model/login_cubit.dart' as _i512;
+import '../../presentation/auth/register/view_model/register_cubit.dart'
+    as _i536;
 import '../cache/shared_preferences_helper.dart' as _i686;
 import '../cache/shared_preferences_module.dart' as _i912;
 import '../global_cubit/global_cubit.dart' as _i209;
@@ -76,6 +118,63 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i686.SharedPreferencesHelper>(),
       ),
     );
+    gh.factory<_i849.ForgetPasswordRemoteDataSource>(
+      () => _i428.ForgetPasswordRemoteDataSourceImpl(gh<_i508.ApiClient>()),
+    );
+    gh.factory<_i638.RegisterRepository>(
+      () => _i40.RegisterRepositoryImpl(gh<_i233.RegisterRemoteDataSource>()),
+    );
+    gh.factory<_i72.ForgetPasswordRepo>(
+      () => _i1030.ForgetPasswordRepoImpl(
+        gh<_i849.ForgetPasswordRemoteDataSource>(),
+      ),
+    );
+    gh.factory<_i300.LoginRepository>(
+      () => _i722.LoginRepositoryImpl(
+        loginRemoteDataSource: gh<_i684.LoginRemoteDataSource>(),
+      ),
+    );
+    gh.factory<_i197.LoginWithEmailAndPasswordUseCase>(
+      () => _i197.LoginWithEmailAndPasswordUseCase(gh<_i300.LoginRepository>()),
+    );
+    gh.factory<_i950.RegisterUseCase>(
+      () => _i950.RegisterUseCase(gh<_i638.RegisterRepository>()),
+    );
+    gh.factory<_i150.ForgetPasswordUseCase>(
+      () => _i150.ForgetPasswordUseCase(gh<_i72.ForgetPasswordRepo>()),
+    );
+    gh.factory<_i512.LoginCubit>(
+      () => _i512.LoginCubit(
+        gh<_i197.LoginWithEmailAndPasswordUseCase>(),
+        gh<_i23.SecureStorage>(),
+        gh<_i686.SharedPreferencesHelper>(),
+      ),
+    );
+    gh.factory<_i536.RegisterCubit>(
+      () => _i536.RegisterCubit(gh<_i950.RegisterUseCase>()),
+    );
+    gh.factory<_i457.ForgetPasswordViewModel>(
+      () => _i457.ForgetPasswordViewModel(gh<_i150.ForgetPasswordUseCase>()),
+import '../global_cubit/global_cubit.dart' as _i209;
+    );
+    gh.factory<_i233.RegisterRemoteDataSource>(
+      () => _i281.RegisterRemoteDataSourceImpl(
+        gh<_i508.ApiClient>(),
+        gh<_i23.SecureStorage>(),
+      ),
+    );
+    gh.factory<_i684.LoginRemoteDataSource>(
+      () => _i221.LoginRemoteDataSourceImpl(
+        gh<_i508.ApiClient>(),
+        gh<_i23.SecureStorage>(),
+      ),
+    );
+    gh.factory<_i209.GlobalCubit>(
+      () => _i209.GlobalCubit(
+        gh<_i23.SecureStorage>(),
+        gh<_i686.SharedPreferencesHelper>(),
+      ),
+    );
     gh.factory<_i638.RegisterRepository>(
       () => _i40.RegisterRepositoryImpl(gh<_i233.RegisterRemoteDataSource>()),
     );
@@ -99,6 +198,20 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i536.RegisterCubit>(
       () => _i536.RegisterCubit(gh<_i950.RegisterUseCase>()),
+    );
+    gh.factory<_i849.ForgetPasswordRemoteDataSource>(
+      () => _i428.ForgetPasswordRemoteDataSourceImpl(gh<_i508.ApiClient>()),
+    );
+    gh.factory<_i72.ForgetPasswordRepo>(
+      () => _i1030.ForgetPasswordRepoImpl(
+        gh<_i849.ForgetPasswordRemoteDataSource>(),
+      ),
+    );
+    gh.factory<_i150.ForgetPasswordUseCase>(
+      () => _i150.ForgetPasswordUseCase(gh<_i72.ForgetPasswordRepo>()),
+    );
+    gh.factory<_i457.ForgetPasswordViewModel>(
+      () => _i457.ForgetPasswordViewModel(gh<_i150.ForgetPasswordUseCase>()),
     );
     return this;
   }
