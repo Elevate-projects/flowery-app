@@ -9,4 +9,5 @@ abstract final class AppIcons {
   static const String inactiveCart = "assets/icons/inactive_cart.svg";
   static const String inactiveProfile = "assets/icons/inactive_profile.svg";
   static const String search = "assets/icons/search.svg";
+  static const String cart = "assets/icons/cart.svg";
 }

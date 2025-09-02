@@ -64,6 +64,10 @@ abstract final class AppText {
       "The code sent to your email address is required";
   static const String otpValidation2 = "You have to enter the 6-digit code";
 
+  // Product Item
+  static const String egp = "EGP";
+  static const String addToCart = "Add to cart";
+
   //Exceptions
   static const String connectionError =
       "Please check your internet connection and try again";
