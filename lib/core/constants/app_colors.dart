@@ -46,4 +46,6 @@ abstract final class AppColors {
     90: Color(0xff040507),
     100: Color(0xff020304),
   });
+
+  static const Color darkGray = Color(0xff49454F);
 }
