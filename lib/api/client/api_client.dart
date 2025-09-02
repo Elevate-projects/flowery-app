@@ -26,6 +26,6 @@ abstract class ApiClient {
 // Future<LoginResponse> login({@Body() required LoginRequest request});
 
   @POST(Endpoints.forgetPassword)
-  Future<ForgetPasswordResponseDto> forgetPassword( {@Body() required ForgetPasswordRequestDto request});
+  Future<ForgetPasswordResponseModel> forgetPassword( {@Body() required ForgetPasswordRequestDto request});
 
 }

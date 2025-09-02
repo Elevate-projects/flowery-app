@@ -9,8 +9,8 @@ import 'package:flowery_app/domain/repositories/forget_password/forget_password_
 class ForgetPasswordUseCase{
   final ForgetPasswordRepo _forgetPasswordRepo;
   ForgetPasswordUseCase(this._forgetPasswordRepo);
-  Future<Result<ForgetPasswordResponseEntity>>call(ForgetPasswordRequestEntity request)   {
-    return   _forgetPasswordRepo.getForgetPassword(request);
+  Future<Result<ForgetPasswordEntity>>call(ForgetPasswordRequestEntity request)   {
+    return   _forgetPasswordRepo.forgetPassword(request);
   }
 
 }

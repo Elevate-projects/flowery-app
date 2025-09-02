@@ -7,11 +7,11 @@ import 'package:flowery_app/domain/entities/forget_password/response/forget_pass
 import 'package:injectable/injectable.dart';
 
 @Injectable(as:ForgetPasswordRepo )
-class ForgetPasswordRepoImpl extends ForgetPasswordRepo{
-  ForgetPasswordRemoteDataSource   _forgetPasswordRemoteDataSource;
+class ForgetPasswordRepoImpl implements ForgetPasswordRepo{
+  final ForgetPasswordRemoteDataSource   _forgetPasswordRemoteDataSource;
   ForgetPasswordRepoImpl(this._forgetPasswordRemoteDataSource);
   @override
-  Future<Result<ForgetPasswordResponseEntity>> getForgetPassword(ForgetPasswordRequestEntity request) {
-     return _forgetPasswordRemoteDataSource.getForgetPassword(request);
+  Future<Result<ForgetPasswordEntity>> forgetPassword(ForgetPasswordRequestEntity request) {
+     return _forgetPasswordRemoteDataSource.forgetPassword(request);
   }
 }

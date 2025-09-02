@@ -4,4 +4,5 @@ abstract class RouteNames {
 
   static const String register = "/registerView";
   static const String floweryBottomNavigation = "/floweryBottomNavigation";
+  static const String verification = '/verification';
 }

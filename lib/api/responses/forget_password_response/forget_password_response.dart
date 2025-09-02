@@ -4,30 +4,31 @@ import 'package:json_annotation/json_annotation.dart';
 part 'forget_password_response.g.dart';
 
 @JsonSerializable()
-class ForgetPasswordResponseDto {
+class ForgetPasswordResponseModel {
   @JsonKey(name: "message")
   final String? message;
   @JsonKey(name: "info")
   final String? info;
 
-  ForgetPasswordResponseDto ({
+  ForgetPasswordResponseModel ({
     this.message,
     this.info,
   });
 
-  factory ForgetPasswordResponseDto.fromJson(Map<String, dynamic> json) {
-    return _$ForgetPasswordResponseDtoFromJson(json);
+  factory ForgetPasswordResponseModel.fromJson(Map<String, dynamic> json) {
+    return _$ForgetPasswordResponseModelFromJson(json);
   }
 
   Map<String, dynamic> toJson() {
-    return _$ForgetPasswordResponseDtoToJson(this);
+    return _$ForgetPasswordResponseModelToJson(this);
   }
-  static ForgetPasswordResponseEntity toEntity(ForgetPasswordResponseDto dto) {
-    return ForgetPasswordResponseEntity(
-      message: dto.message,
-      info: dto.info,
+  ForgetPasswordEntity toForgetPasswordEntity(){
+    return ForgetPasswordEntity(
+      message: message,
+      info: info ,
     );
   }
+
 }
 
 
