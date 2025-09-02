@@ -51,7 +51,7 @@ class FakeCategories {
     Category(
       description: "All categories, wfjwefipj43t5454ytgty",
       name: "All",
-      imageUrl: "https://www.bigfootdigital.co.uk/wp-content/uploads/2020/07/image-optimisation-scaled.jpg",
+      imageUrl: "https://media.istockphoto.com/id/2216481617/photo/ai-coding-assistant-interface-with-vibe-coding-aesthetics.jpg?s=1024x1024&w=is&k=20&c=Ep6IzWap247shXrMuCxeNIgSf27jrDTEkJY7b7ABL70=",
     ),
     Category(
       description: "All categories, wfjwefipj43t5454ytgty",

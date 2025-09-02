@@ -11,6 +11,7 @@ class CategoriesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return BlocProvider(
       create: (_) => CategoriesCubit(),
       child: BlocBuilder<CategoriesCubit, CategoriesState>(
@@ -22,7 +23,7 @@ class CategoriesPage extends StatelessWidget {
               body: Column(
                 children: [
                   SizedBox(height: 50),
-                  Row(
+                  const Row(
                     children: [
                       Expanded(
                         flex: 3,
@@ -39,9 +40,11 @@ class CategoriesPage extends StatelessWidget {
                   TabBar(
                     padding: EdgeInsets.zero,
                     indicatorSize: TabBarIndicatorSize.label,
-                    indicatorColor: Colors.black,
-                    labelColor: Colors.black,
+                    indicatorColor: theme.primaryColor,
+                    labelColor: theme.primaryColor,
                     unselectedLabelColor: Colors.grey,
+                    labelStyle: theme.textTheme.bodyLarge,
+                    unselectedLabelStyle: theme.textTheme.bodyLarge,
                     isScrollable: true,
                     tabs: categories.map((c) => Tab(text: c.name)).toList(),
                     onTap: (index) {
@@ -54,64 +57,17 @@ class CategoriesPage extends StatelessWidget {
                     child: TabBarView(
                       children: categories.map((c) {
                         return GridView.count(
-                          shrinkWrap: true,
                           crossAxisCount: 2,
-                          childAspectRatio: 0.9,
-                          children: List.generate(state.categories.length, (index) {
-                            return Container(
-                              margin: const EdgeInsets.all(8),
-                              decoration: BoxDecoration(
-                                border: Border.all(color: Colors.black),
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.white,
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Expanded(
-                                    child: ClipRRect(
-                                      borderRadius: const BorderRadius.vertical(top: Radius.circular(10)),
-                                      child: Image.network(
-                                        c.imageUrl,
-                                        width: double.infinity,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      c.description,
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: const TextStyle(fontSize: 14),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-                                    child: ElevatedButton(
-                                      onPressed: () {
-                                        // action
-                                      },
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor: Colors.red,
-                                        elevation: 0,
-                                        minimumSize: const Size(double.infinity, 40),
-                                      ),
-                                      child: const Text(
-                                        'Add to Cart',
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            );
-                          }),
+                          childAspectRatio: 0.65,
+                          children: const [
+                            ProductCard(
+                              name: "Red roses",
+                              imageUrl: "https://media.istockphoto.com/id/2216481617/photo/ai-coding-assistant-interface-with-vibe-coding-aesthetics.jpg?s=1024x1024&w=is&k=20&c=Ep6IzWap247shXrMuCxeNIgSf27jrDTEkJY7b7ABL70=",
+                              price: 600,
+                              oldPrice: 800,
+                              discount: 20,
+                            ),
+                          ],
                         );
                       }).toList(),
                     ),
@@ -125,3 +81,104 @@ class CategoriesPage extends StatelessWidget {
     );
   }
 }
+class ProductCard extends StatelessWidget {
+  final String name;
+  final String imageUrl;
+  final double price;
+  final double oldPrice;
+  final int discount;
+
+  const ProductCard({
+    super.key,
+    required this.name,
+    required this.imageUrl,
+    required this.price,
+    required this.oldPrice,
+    required this.discount,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Container(
+      margin: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Colors.grey.shade300),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ClipRRect(
+              child: Container(
+                color: const Color(0xFFFFF0F5),
+                child: Image.network(
+                  imageUrl,
+                  height: 170,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            SizedBox(height: 5),
+            Text(
+              name,
+              style: theme.textTheme.bodyLarge?.copyWith(
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+            const SizedBox(height: 3),
+            Row(
+              children: [
+                Text(
+                  "EGP $price",
+                  style: theme.textTheme.bodyLarge?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+                const SizedBox(width: 6),
+                Text(
+                  "$oldPrice",
+                  style: const TextStyle(
+                    color: Colors.grey,
+                    decoration: TextDecoration.lineThrough,
+                  ),
+                ),
+                const SizedBox(width: 3),
+                Text(
+                  "$discount%",
+                  style: const TextStyle(color: Colors.green),
+                ),
+              ],
+            ),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton.icon(
+                onPressed: () {},
+                icon: const Icon(Icons.shopping_cart_outlined, size: 18, color: Colors.white,),
+                label: const Text("Add to cart", style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
+                ),),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.pink,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
