@@ -1,0 +1,24 @@
+name: "Validate Branch Name"
+
+on:
+  push:
+    branches:
+      - "*"
+  pull_request:
+    branches:
+      - "*"
+jobs:
+  validate-branch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Validate branch name
+        run: |
+          echo "Branch name: ${{ github.head_ref }}"
+                  if [[ ! "${{ github.head_ref }}" =~ ^(feature|fix|release|hotfix|build|test)\/(FAT1-[0-9]+|[A-Z]+-[0-9]+)(-[A-Za-z0-9]+)*$ ]]; then
+                    echo "❌ Branch name does not follow the required convention!"
+                    exit 1
+                  fi

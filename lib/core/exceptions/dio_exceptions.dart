@@ -11,17 +11,17 @@ class DioExceptions extends Failure {
       switch (error.type) {
         case DioExceptionType.connectionTimeout:
           return DioExceptions(
-            responseException: ResponseException(
+            responseException: const ResponseException(
               message: AppText.connectionTimeout,
             ),
           );
         case DioExceptionType.sendTimeout:
           return DioExceptions(
-            responseException: ResponseException(message: AppText.sendTimeout),
+            responseException: const ResponseException(message: AppText.sendTimeout),
           );
         case DioExceptionType.receiveTimeout:
           return DioExceptions(
-            responseException: ResponseException(
+            responseException: const ResponseException(
               message: AppText.receiveTimeout,
             ),
           );
@@ -29,23 +29,23 @@ class DioExceptions extends Failure {
           return _handleBadResponse(error.response);
         case DioExceptionType.cancel:
           return DioExceptions(
-            responseException: ResponseException(
+            responseException: const ResponseException(
               message: AppText.requestCancelled,
             ),
           );
         case DioExceptionType.unknown:
           return DioExceptions(
-            responseException: ResponseException(message: AppText.networkError),
+            responseException: const ResponseException(message: AppText.networkError),
           );
         case DioExceptionType.connectionError:
           return DioExceptions(
-            responseException: ResponseException(
+            responseException: const ResponseException(
               message: AppText.connectionError,
             ),
           );
         default:
           return DioExceptions(
-            responseException: ResponseException(
+            responseException: const ResponseException(
               message: AppText.unexpectedErrorOccurred,
             ),
           );
