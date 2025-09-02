@@ -15,27 +15,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../views_model/forget_password_states.dart';
 
-class ForgetPasswordScreen extends StatefulWidget {
+class ForgetPasswordScreen extends StatelessWidget {
   ForgetPasswordScreen({super.key});
 
   @override
-  State<ForgetPasswordScreen> createState() => _ForgetPasswordScreenState();
-}
-
-class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
-  final _formKey = GlobalKey<FormState>();
-
-  final TextEditingController emailController = TextEditingController();
-
-  @override
-  void dispose() {
-    emailController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return BlocProvider(
+     return BlocProvider (
       create: (context) => getIt.get<ForgetPasswordViewModel>(),
       child: Scaffold(
         appBar: AppBar(
@@ -51,7 +36,9 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
               case ForgetPasswordSuccess():
                 ScaffoldMessenger.of(
                   context,
-                ).showSnackBar(SnackBar(content: Text(state.message)));
+                ).showSnackBar(SnackBar(content: Text(state.message)),);
+               Navigator.of(context).pushNamed(RouteNames.verification);
+               break;
               case ForgetPasswordFailure():
                 ScaffoldMessenger.of(
                   context,
@@ -62,13 +49,15 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
           },
 
           builder: (context, state) {
-            if (State is ForgetPasswordLoading) {
+            final viewModel = context.read<ForgetPasswordViewModel>();
+
+            if (state is ForgetPasswordLoading) {
               return const Center(child: CircularProgressIndicator());
             }
             return Padding(
               padding: const EdgeInsets.all(20),
               child: Form(
-                key: _formKey,
+                key:viewModel.formKey,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -90,7 +79,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                     CustomTextFormField(
                       label: AppText.email,
                       hintText: AppText.emailHint,
-                      controller: emailController,
+                      controller:viewModel.emailController,
                       validator: (value) =>
                           Validations.emailValidation(email: value),
                     ),
@@ -98,18 +87,17 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
 
                     CustomElevatedButton(
                       onPressed: () {
-                        if (_formKey.currentState!.validate()) {
+                        if (viewModel.formKey.currentState!.validate()) {
                           context.read<ForgetPasswordViewModel>().doIntent(
                             OnConfirmEmailForgetPasswordClickIntent(
                               request: ForgetPasswordRequestEntity(
-                                email: emailController.text,
+                                email: viewModel.emailController.text,
                               ),
                             ),
                           );
                         }
-                        Navigator.of(
-                          context,
-                        ).pushNamed(RouteNames.verification);
+
+
                       },
                       buttonTitle: AppText.confirmButton,
                     ),

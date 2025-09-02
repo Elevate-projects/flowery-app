@@ -2,6 +2,7 @@
  import 'package:flowery_app/domain/entities/forget_password/request/forget_password_request_entity.dart';
 import 'package:flowery_app/domain/entities/forget_password/response/forget_password_response_entity.dart';
 import 'package:flowery_app/domain/use_cases/forget_password/forget_password_use_case.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
@@ -19,6 +20,15 @@ class ForgetPasswordViewModel extends Cubit<ForgetPasswordState>{
      case OnConfirmEmailForgetPasswordClickIntent():
        _forgetPassword(intent.request);
    }
+ }
+
+ final formKey = GlobalKey<FormState>();
+ final emailController = TextEditingController();
+
+ @override
+ Future<void> close() {
+   emailController.dispose();
+   return super.close();
  }
 
 
