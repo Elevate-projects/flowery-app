@@ -23,7 +23,7 @@ class NotificationSwitch extends StatelessWidget {
                 value: true,
                 onChanged: (value) {},
                 padding: EdgeInsets.zero,
-                activeColor: theme.colorScheme.secondary,
+                activeThumbColor: theme.colorScheme.secondary,
                 activeTrackColor: theme.colorScheme.primary,
               ),
             ),
