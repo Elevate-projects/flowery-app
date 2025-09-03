@@ -1,12 +1,22 @@
 
+import 'dart:developer';
+
+
 import 'package:flutter/material.dart';
 import '../../utils/common_widgets/custom_back_arrow.dart';
 import '../../utils/common_widgets/custom_cart_details.dart';
+import '../../utils/flowery_method_helper.dart';
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    log(
+      'userData: ${FloweryMethodHelper.currentUserToken}',
+    );
+    log(
+      'userinfo: ${FloweryMethodHelper.userData}',
+    );
     return  Scaffold(
       appBar: AppBar(
         titleSpacing: 0,
@@ -46,3 +56,4 @@ class CartPage extends StatelessWidget {
 }
 // to do in that branch
 // Edit in CustomBackArrow in color
+// id return 3 dentifrice categories

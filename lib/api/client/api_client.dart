@@ -7,6 +7,9 @@ import 'package:flowery_app/core/constants/endpoints.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
+import '../requests/cart_request/cart_request.dart';
+import '../responses/cart_response/cart_response.dart';
+
 part 'api_client.g.dart';
 
 @injectable
@@ -20,4 +23,9 @@ abstract class ApiClient {
 
   @POST(Endpoints.register)
   Future<RegisterResponse> register({@Body() required RegisterRequest request});
+  @POST(Endpoints.cartPage)
+  Future<CartResponse> cartPage({
+    @Header("Authorization") required String token,
+    @Body() required CartRequest request});
+  @GET(Endpoints.getLoggedUserCart)
 }
