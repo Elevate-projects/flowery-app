@@ -17,6 +17,10 @@ abstract final class AppText {
   static const String cart = "Cart";
   static const String profile = "Profile";
 
+  // Categories
+  static const String search = "Search";
+  static const String notProvided = "Not Provided";
+
   // Signup
   static const String firstName = "First Name";
   static const String firstNameHint = "Enter your first name";
@@ -35,6 +39,13 @@ abstract final class AppText {
       "Creating an account, you agree to our ";
   static const String termsAndConditions = "Terms and Conditions";
   static const String alreadyHaveAnAccount = "Already have an account?";
+
+  // Product Details
+  static const String status = "Status: ";
+  static const String inStock = "In stock";
+  static const String outStock = "Out stock";
+  static const String taxIncludedMessage = "All prices include tax";
+  static const String description = "Description";
 
   // Validations
   static const String userNameValidation = "This user name is not valid";
@@ -64,6 +75,10 @@ abstract final class AppText {
       "The code sent to your email address is required";
   static const String otpValidation2 = "You have to enter the 6-digit code";
 
+  // Product Item
+  static const String egp = "EGP";
+  static const String addToCart = "Add to cart";
+
   //Exceptions
   static const String connectionError =
       "Please check your internet connection and try again";
@@ -81,4 +96,12 @@ abstract final class AppText {
   static const String networkError =
       "Something went wrong. Please check your internet connection.";
   static const String anUnknownErrorOccurred = "An unknown error occurred.";
+//   forgetPassword
+  static const String forgetPassword2 = "Forget password";
+  static const String enterRegisteredEmail = 'Please enter your email associated to your account';
+  static const String confirmButton = "Confirm";
+  static const String success = "success";
+
+
+
 }

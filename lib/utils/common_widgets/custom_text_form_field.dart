@@ -28,6 +28,7 @@ class CustomTextFormField extends StatelessWidget {
     required this.label,
     this.labelStyle,
     this.borderRadius = 4,
+    this.enabledBorderColor,
   });
   final String? hintText;
   final String label;
@@ -52,6 +53,7 @@ class CustomTextFormField extends StatelessWidget {
   final BoxConstraints? prefixIconConstraints;
   final int? maxLength;
   final double borderRadius;
+  final Color? enabledBorderColor;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -69,7 +71,6 @@ class CustomTextFormField extends StatelessWidget {
       decoration: InputDecoration(
         contentPadding: contentPadding ?? REdgeInsets.all(16),
         filled: false,
-        // fillColor: Theme.of(context).colorScheme.shadow,
         label: Text(
           label,
           style:
@@ -89,7 +90,8 @@ class CustomTextFormField extends StatelessWidget {
           borderRadius: borderRadius,
         ),
         enabledBorder: buildOutlinedBorder(
-          borderColor: Theme.of(context).colorScheme.onSecondary,
+          borderColor:
+              enabledBorderColor ?? Theme.of(context).colorScheme.onSecondary,
           borderRadius: borderRadius,
         ),
         focusedErrorBorder: buildOutlinedBorder(
