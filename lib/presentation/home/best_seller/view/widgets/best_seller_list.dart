@@ -1,8 +1,7 @@
+import 'package:flowery_app/domain/entities/product_card/product_card_entity.dart';
+import 'package:flowery_app/utils/common_widgets/product_card_item/product_card_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../../domain/entities/product_card/product_card_entity.dart';
-import '../../../../../utils/common_widgets/product_card_item/product_card_item.dart';
 
 class BestSellerList extends StatelessWidget {
   BestSellerList({super.key});
