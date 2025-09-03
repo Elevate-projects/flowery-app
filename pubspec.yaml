@@ -37,6 +37,7 @@ dependencies:
   equatable: ^2.0.7
   smooth_page_indicator: ^1.2.1
 
+  dio: any
 dev_dependencies:
   flutter_launcher_icons: "^0.14.4"
   injectable_generator: ^2.7.0
@@ -48,13 +49,13 @@ dev_dependencies:
 
   flutter_lints: ^5.0.0
 
+  connectivity_plus_platform_interface: any
 flutter:
 
   uses-material-design: true
 
   assets:
     - assets/icons/
-    - assets/images/
     - assets/animations/
 
   fonts:

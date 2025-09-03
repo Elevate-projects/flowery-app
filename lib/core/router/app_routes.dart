@@ -1,4 +1,5 @@
 import 'package:flowery_app/core/router/route_names.dart';
+import 'package:flowery_app/presentation/auth/forget_password/views/forget_password_screen.dart';
 import 'package:flowery_app/presentation/auth/login/views/login_view.dart';
 import 'package:flowery_app/presentation/auth/register/views/register_view.dart';
 import 'package:flowery_app/presentation/flowery_bottom_navigation/flowery_bottom_navigation.dart';
@@ -23,6 +24,8 @@ abstract class AppRoutes {
             child: const FloweryBottomNavigation(),
           ),
         );
+      case RouteNames.forgetPassword:
+        return MaterialPageRoute(builder: (_) =>   const ForgetPasswordScreen());
       default:
         return null;
     }

@@ -8,7 +8,7 @@ void main() {
       "when call toUserDataEntity with null values it should return UserDataEntity with null values",
       () {
         //Arrange
-        UserDataModel userData = UserDataModel(
+        final UserDataModel userData = UserDataModel(
           id: null,
           email: null,
           phone: null,
@@ -26,7 +26,7 @@ void main() {
         );
 
         //Act
-        UserDataEntity actualResult = userData.toUserDataEntity();
+        final UserDataEntity actualResult = userData.toUserDataEntity();
 
         //Assert
         expect(actualResult.id, isNull);
@@ -46,7 +46,7 @@ void main() {
       "when call toUserDataEntity with non-nullable values it should return UserDataEntity with correct values",
       () {
         //Arrange
-        UserDataModel userData = UserDataModel(
+        final UserDataModel userData = UserDataModel(
           id: "1",
           email: "ahmed@gmail.com",
           phone: "01116811741",
@@ -64,7 +64,7 @@ void main() {
         );
 
         //Act
-        UserDataEntity actualResult = userData.toUserDataEntity();
+        final UserDataEntity actualResult = userData.toUserDataEntity();
 
         //Assert
         expect(actualResult.id, equals(userData.id));
