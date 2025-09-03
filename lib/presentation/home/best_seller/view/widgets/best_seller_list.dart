@@ -5,7 +5,7 @@ import '../../../../../domain/entities/product_card/product_card_entity.dart';
 import '../../../../../utils/common_widgets/product_card_item/product_card_item.dart';
 
 class BestSellerList extends StatelessWidget {
-   BestSellerList({super.key});
+  BestSellerList({super.key});
 
   final List<ProductCardEntity> products = [
     ProductCardEntity(
