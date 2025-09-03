@@ -97,6 +97,9 @@ abstract final class AppText {
   static const String enterRegisteredEmail = 'Please enter your email associated to your account';
   static const String confirmButton = "Confirm";
   static const String success = "success";
+  static const String bestSellerAppbar = "Best Seller";
+  static const String bestSellerAppbarHint =
+      "Bloom with our exquisite best sellers";
 
 
 
