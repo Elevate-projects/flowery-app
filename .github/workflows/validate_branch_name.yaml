@@ -1,30 +1,19 @@
-name: "Validate Branch Name"
+name: Validate Branch Name
 
 on:
-  push:
-    branches:
-      - "*"
   pull_request:
     branches:
-      - "*"
+      - '**'
 
 jobs:
-  validate-branch:
+  validate-branch-name:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Validate branch name
-        shell: bash
+      - name: Validate Branch Name
         run: |
-          branch="${GITHUB_REF##*/}"
-          echo "Branch is: $branch"
-          echo "$branch" | grep -Eq "^(feature|fix|release|hotfix|build|test)/(FAT1-[0-9]+|[A-Z]+-[0-9]+)(-[A-Za-z0-9]+)*$"
-          if [ $? -ne 0 ]; then
-            echo "❌ Branch name does not follow the required convention!"
-            exit 1
-          else
-            echo "✅ Branch name is valid."
-          fi
+          chmod +x ./validate_branch_name.sh
+          ./validate_branch_name.sh "${{ github.head_ref }}"
