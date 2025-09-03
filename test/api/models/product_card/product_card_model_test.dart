@@ -31,7 +31,8 @@ void main() {
         );
 
         //Act
-        final ProductCardEntity actualResult = productCardData.toProductCardEntity();
+        final ProductCardEntity actualResult = productCardData
+            .toProductCardEntity();
 
         //Assert
         expect(actualResult.productId, equals(productCardData.productId));
@@ -46,8 +47,8 @@ void main() {
           equals(productCardData.priceAfterDiscount),
         );
         expect(actualResult.quantity, equals(productCardData.quantity));
-        expect(actualResult.category, equals(productCardData.category));
-        expect(actualResult.occasion, equals(productCardData.occasion));
+        expect(actualResult.categoryId, equals(productCardData.category));
+        expect(actualResult.occasionId, equals(productCardData.occasion));
         expect(actualResult.discountPercentage, isNull);
       },
     );
@@ -78,7 +79,8 @@ void main() {
         );
 
         //Act
-        final ProductCardEntity actualResult = productCardData.toProductCardEntity();
+        final ProductCardEntity actualResult = productCardData
+            .toProductCardEntity();
 
         //Assert
         expect(actualResult.productId, equals(productCardData.productId));
@@ -93,8 +95,8 @@ void main() {
           equals(productCardData.priceAfterDiscount),
         );
         expect(actualResult.quantity, equals(productCardData.quantity));
-        expect(actualResult.category, equals(productCardData.category));
-        expect(actualResult.occasion, equals(productCardData.occasion));
+        expect(actualResult.categoryId, equals(productCardData.category));
+        expect(actualResult.occasionId, equals(productCardData.occasion));
         expect(actualResult.discountPercentage, isNotNull);
       },
     );

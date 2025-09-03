@@ -85,8 +85,8 @@ class ProductCardModel {
       price: price,
       priceAfterDiscount: priceAfterDiscount,
       quantity: quantity,
-      category: category,
-      occasion: occasion,
+      categoryId: category,
+      occasionId: occasion,
       sold: sold,
       discountPercentage: getDiscountPercentage(),
     );

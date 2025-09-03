@@ -4,4 +4,6 @@ abstract class Endpoints {
   static const String forgetPassword = '/api/v1/auth/forgotPassword';
 
   static const String register = '/api/v1/auth/signup';
+  static const String categories = '/api/v1/categories';
+  static const String products = '/api/v1/products';
 }

@@ -1,4 +1,5 @@
 import 'package:flowery_app/core/router/route_names.dart';
+import 'package:flowery_app/domain/entities/product_card/product_card_entity.dart';
 import 'package:flowery_app/presentation/auth/forget_password/views/forget_password_screen.dart';
 import 'package:flowery_app/presentation/auth/login/views/login_view.dart';
 import 'package:flowery_app/presentation/auth/register/views/register_view.dart';
@@ -16,7 +17,11 @@ abstract class AppRoutes {
       case RouteNames.login:
         return MaterialPageRoute(builder: (_) => const LoginView());
       case RouteNames.productDetails:
-        return MaterialPageRoute(builder: (_) => const ProductDetailsView());
+        return MaterialPageRoute(
+          builder: (_) => ProductDetailsView(
+            productCardData: settings.arguments as ProductCardEntity,
+          ),
+        );
       case RouteNames.floweryBottomNavigation:
         return MaterialPageRoute(
           builder: (_) => BlocProvider<FloweryBottomNavigationCubit>(
@@ -25,7 +30,7 @@ abstract class AppRoutes {
           ),
         );
       case RouteNames.forgetPassword:
-        return MaterialPageRoute(builder: (_) =>   const ForgetPasswordScreen());
+        return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen());
       default:
         return null;
     }
