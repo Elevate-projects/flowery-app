@@ -17,4 +17,5 @@ abstract final class AppIcons {
   static const String language = "assets/icons/language.svg";
   static const String rightArrow = "assets/icons/right_arrow.svg";
   static const String cart = "assets/icons/cart.svg";
+  static const String filter = "assets/icons/filter.svg";
 }

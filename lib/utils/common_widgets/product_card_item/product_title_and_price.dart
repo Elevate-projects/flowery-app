@@ -19,6 +19,8 @@ class ProductTitleAndPrice extends StatelessWidget {
             style: theme.textTheme.bodySmall?.copyWith(
               color: theme.colorScheme.onSecondary,
             ),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
           ),
           const RSizedBox(height: 4),
           Row(

@@ -18,6 +18,10 @@ abstract final class AppText {
   static const String confirmButton = "Confirm";
   static const String success = "success";
 
+  // Categories
+  static const String search = "Search";
+  static const String notProvided = "Not Provided";
+
   // Signup
   static const String firstName = "First Name";
   static const String firstNameHint = "Enter your first name";

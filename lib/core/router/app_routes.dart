@@ -1,4 +1,5 @@
 import 'package:flowery_app/core/router/route_names.dart';
+import 'package:flowery_app/domain/entities/product_card/product_card_entity.dart';
 import 'package:flowery_app/presentation/about_us/views/about_us_view.dart';
 import 'package:flowery_app/presentation/auth/forget_password/views/forget_password_screen.dart';
 import 'package:flowery_app/presentation/auth/login/views/login_view.dart';
@@ -24,7 +25,11 @@ abstract class AppRoutes {
           builder: (_) => const TermsAndConditionsView(),
         );
       case RouteNames.productDetails:
-        return MaterialPageRoute(builder: (_) => const ProductDetailsView());
+        return MaterialPageRoute(
+          builder: (_) => ProductDetailsView(
+            productCardData: settings.arguments as ProductCardEntity,
+          ),
+        );
       case RouteNames.floweryBottomNavigation:
         return MaterialPageRoute(
           builder: (_) => BlocProvider<FloweryBottomNavigationCubit>(
