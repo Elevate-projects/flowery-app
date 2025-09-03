@@ -13,7 +13,8 @@ abstract final class AppText {
 
   //   forgetPassword
   static const String forgetPassword2 = "Forget password";
-  static const String enterRegisteredEmail = 'Please enter your email associated to your account';
+  static const String enterRegisteredEmail =
+      'Please enter your email associated to your account';
   static const String confirmButton = "Confirm";
   static const String success = "success";
 
@@ -110,8 +111,4 @@ abstract final class AppText {
   static const String networkError =
       "Something went wrong. Please check your internet connection.";
   static const String anUnknownErrorOccurred = "An unknown error occurred.";
-
-
-
-
 }

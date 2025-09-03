@@ -35,8 +35,8 @@ void main() {
       lastName: "elsadany",
       gender: "male",
       photo: "profilePic",
-      addresses: ["address1", "address2"],
-      wishlist: ["item1", "item2"],
+      addresses: const ["address1", "address2"],
+      wishlist: const ["item1", "item2"],
       role: "user",
     );
     expectedSuccessResult = Success<UserDataEntity?>(userDataEntity);

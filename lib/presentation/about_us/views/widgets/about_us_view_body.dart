@@ -11,7 +11,7 @@ class AboutUsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool isArabic = false;
+    // final bool isArabic = false;
     final theme = Theme.of(context);
     return BlocConsumer<AboutUsCubit, AboutUsState>(
       listener: (context, state) {
@@ -34,13 +34,15 @@ class AboutUsViewBody extends StatelessWidget {
 
                 final content = section['content'];
                 final text = (content is Map)
-                    ? content[isArabic ? 'ar' : 'en']
+                    // ? content[isArabic ? 'ar' : 'en']
+                    ? content['en']
                     : content.toString();
 
                 final title = section['title'];
                 final titleText = title != null
                     ? (title is Map
-                          ? title[isArabic ? 'ar' : 'en']
+                          // ? title[isArabic ? 'ar' : 'en']
+                          ? title['en']
                           : title.toString())
                     : null;
 
@@ -50,7 +52,8 @@ class AboutUsViewBody extends StatelessWidget {
                 );
                 final align = FloweryMethodHelper.parseAlignment(
                   style,
-                  isArabic,
+                  // isArabic,
+                  false,
                 );
 
                 return Column(
@@ -64,7 +67,8 @@ class AboutUsViewBody extends StatelessWidget {
                         ),
                         textAlign: FloweryMethodHelper.parseAlignment(
                           style?['title'],
-                          isArabic,
+                          // isArabic,
+                          false,
                         ),
                       ),
                     if (text is List)
@@ -78,7 +82,8 @@ class AboutUsViewBody extends StatelessWidget {
                             ),
                             textAlign: FloweryMethodHelper.parseAlignment(
                               style?['content'] ?? style,
-                              isArabic,
+                              // isArabic,
+                              false,
                             ),
                           ),
                         );
