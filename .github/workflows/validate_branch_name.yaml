@@ -16,9 +16,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Validate branch name
+        shell: bash
         run: |
-          echo "Branch name: ${{ github.head_ref }}"
-                  if [[ ! "${{ github.head_ref }}" =~ ^(feature|fix|release|hotfix|build|test)\/(FAT1-[0-9]+|[A-Z]+-[0-9]+)(-[A-Za-z0-9]+)*$ ]]; then
-                    echo "❌ Branch name does not follow the required convention!"
-                    exit 1
-                  fi
+          branch="${GITHUB_REF##*/}"
+          if [[ ! "$branch" =~ ^(feature|fix|release|hotfix|build|test)\/(FAT1-[0-9]+|[A-Z]+-[0-9]+)(-[A-Za-z0-9]+)*$ ]]; then
+            echo "❌ Branch name does not follow the required convention!"
+            exit 1
+          fi
