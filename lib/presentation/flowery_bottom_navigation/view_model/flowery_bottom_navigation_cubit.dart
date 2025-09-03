@@ -10,7 +10,7 @@ class FloweryBottomNavigationCubit extends Cubit<FloweryBottomNavigationState> {
   final List<Widget> pages = [
     const Center(child: Text('Home Page')),
     const Center(child: Text('Categories Page')),
-    const CartPage(),
+    const Center(child: Text('cart Page')),
     const Center(child: Text('Profile Page')),
   ];
   void doIntent({required FloweryBottomNavigationIntent intent}) {

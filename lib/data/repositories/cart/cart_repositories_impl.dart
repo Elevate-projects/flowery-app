@@ -1,27 +1,15 @@
-// import 'package:flowery_app/api/client/api_result.dart';
-// import 'package:flowery_app/api/requests/cart_request/cart_request.dart';
-// import 'package:flowery_app/data/data_source/cart/remote_data_source/cart_remote_data_source.dart';
-// import '../../../domain/entities/cart/cart_entities.dart';
-// import '../../../domain/repositories/cart/cart_repositories.dart';
-//
-//
-// class CartRepositoryImp implements CartRepository {
-//   final CartRemoteDataSource _remoteDataSource;
-//   const CartRepositoryImp(this._remoteDataSource);
-//
-//   @override
-//   Future<Result<CartEntity>> cartPage({
-//     required Cart_request request,
-//     required String token,
-//   }) async {
-//     final result = await _remoteDataSource.cartPage(
-//       request: request,
-//       token: token,
-//     );
-//     if (result is Success) {
-//       return Success(result.data.toCartEntity());
-//     } else {
-//       return Failure(responseException: (result as Failure).responseException);
-//     }
-//   }
-// }
+import 'package:flowery_app/api/client/api_result.dart';
+import 'package:flowery_app/domain/entities/cart/get_logged_user_cart.dart';
+import '../../../domain/repositories/cart/cart_repositories.dart';
+import '../../data_source/cart/remote_data_source_get_logged_user/remote_data_source_get_logged_user.dart';
+
+class CartRepositoryImpl implements CartRepository {
+  final RemoteDataSourceGetLoggedUser remoteDataSource;
+
+  CartRepositoryImpl(this.remoteDataSource);
+
+  @override
+  Future<Result<GetLoggedUserCartEntity>> getLoggedUserCart(String token) async {
+    return await remoteDataSource.getLoggedUserCart(token);
+  }
+}

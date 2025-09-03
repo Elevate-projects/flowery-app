@@ -9,6 +9,7 @@ import 'package:retrofit/retrofit.dart';
 
 import '../requests/cart_request/cart_request.dart';
 import '../responses/cart_response/cart_response.dart';
+import '../responses/cart_response/get_logged_user_cart.dart';
 
 part 'api_client.g.dart';
 
@@ -28,4 +29,7 @@ abstract class ApiClient {
     @Header("Authorization") required String token,
     @Body() required CartRequest request});
   @GET(Endpoints.getLoggedUserCart)
+  Future<GetLoggedUserCart> getLoggedUserCart({
+    @Header("Authorization") required String token,
+});
 }

@@ -1,7 +1,5 @@
   import 'package:json_annotation/json_annotation.dart';
 
-import '../../../domain/entities/cart/cart_entities.dart';
-
   part 'cart_response.g.dart';
 
   @JsonSerializable()
@@ -163,27 +161,5 @@ import '../../../domain/entities/cart/cart_entities.dart';
 
     Map<String, dynamic> toJson() {
       return _$ProductToJson(this);
-    }
-    ProductEntity toProductEntity(){
-      return ProductEntity(
-        rateAvg: rateAvg,
-        rateCount: rateCount,
-        Id: Id,
-        title: title,
-        slug: slug,
-        description: description,
-        imgCover: imgCover,
-        images: images,
-        price: price,
-        priceAfterDiscount: priceAfterDiscount,
-        quantity: quantity,
-        category: category,
-        occasion: occasion,
-        createdAt: createdAt,
-        updatedAt: updatedAt,
-        V: V,
-        isSuperAdmin: isSuperAdmin,
-        sold: sold,
-      );
     }
   }

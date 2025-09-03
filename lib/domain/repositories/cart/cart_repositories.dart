@@ -1,10 +1,7 @@
-// import '../../../api/client/api_result.dart';
-// import '../../../api/requests/cart_request/cart_request.dart';
-// import '../../entities/cart/cart_entities.dart';
-//
-// abstract class CartRepository {
-//   Future<Result<CartEntity>> cartPage({
-//     required Cart_request request,
-//     required String token,
-//   });
-// }
+import 'package:flowery_app/api/client/api_result.dart';
+
+import '../../entities/cart/get_logged_user_cart.dart';
+
+abstract class CartRepository {
+  Future<Result<GetLoggedUserCartEntity>> getLoggedUserCart(String token);
+}
