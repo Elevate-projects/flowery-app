@@ -21,7 +21,8 @@ jobs:
         run: |
           branch="${GITHUB_REF##*/}"
           echo "Branch is: $branch"
-          if [[ ! "$branch" =~ ^(feature|fix|release|hotfix|build|test)\/(FAT1-[0-9]+|[A-Z]+-[0-9]+)(-[A-Za-z0-9]+)*$ ]]; then
+          echo "$branch" | grep -Eq "^(feature|fix|release|hotfix|build|test)/(FAT1-[0-9]+|[A-Z]+-[0-9]+)(-[A-Za-z0-9]+)*$"
+          if [ $? -ne 0 ]; then
             echo "❌ Branch name does not follow the required convention!"
             exit 1
           else
