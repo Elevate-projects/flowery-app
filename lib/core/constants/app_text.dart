@@ -11,11 +11,12 @@ abstract final class AppText {
   static const String signup = "Sign up";
   static const String continueAsGuest = "Continue as guest";
 
-  // AppSection
-  static const String home = "Home";
-  static const String categories = "Categories";
-  static const String cart = "Cart";
-  static const String profile = "Profile";
+  //   forgetPassword
+  static const String forgetPassword2 = "Forget password";
+  static const String enterRegisteredEmail =
+      'Please enter your email associated to your account';
+  static const String confirmButton = "Confirm";
+  static const String success = "success";
 
   // Categories
   static const String search = "Search";
@@ -39,6 +40,24 @@ abstract final class AppText {
       "Creating an account, you agree to our ";
   static const String termsAndConditions = "Terms and Conditions";
   static const String alreadyHaveAnAccount = "Already have an account?";
+
+  // AppSection
+  static const String home = "Home";
+  static const String categories = "Categories";
+  static const String cart = "Cart";
+  static const String profile = "Profile";
+
+  // Profile
+  static const String flowery = "Flowery";
+  static const String myOrders = "My orders";
+  static const String savedAddress = "Saved address";
+  static const String notification = "Notification";
+  static const String language = "Language";
+  static const String english = "English";
+  static const String aboutUs = "About us";
+  static const String termsConditions = "Terms & conditions";
+  static const String logout = "Logout";
+  static const String version = "v 6.3.0 - (446)";
 
   // Product Details
   static const String status = "Status: ";
@@ -96,12 +115,4 @@ abstract final class AppText {
   static const String networkError =
       "Something went wrong. Please check your internet connection.";
   static const String anUnknownErrorOccurred = "An unknown error occurred.";
-//   forgetPassword
-  static const String forgetPassword2 = "Forget password";
-  static const String enterRegisteredEmail = 'Please enter your email associated to your account';
-  static const String confirmButton = "Confirm";
-  static const String success = "success";
-
-
-
 }

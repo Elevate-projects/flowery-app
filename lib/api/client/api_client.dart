@@ -5,6 +5,7 @@ import 'package:flowery_app/api/responses/categories_response/categories_respons
 import 'package:flowery_app/api/responses/login_response/login_response.dart';
 import 'package:flowery_app/api/responses/products_response/products_response.dart';
 import 'package:flowery_app/api/responses/register_response/register_response.dart';
+import 'package:flowery_app/api/responses/profile_response/profile_response.dart';
 import 'package:flowery_app/api/requests/forget_password_request/forget_password_request.dart';
 import 'package:flowery_app/api/responses/forget_password_response/forget_password_response.dart';
 import 'package:flowery_app/core/constants/endpoints.dart';
@@ -34,4 +35,9 @@ abstract class ApiClient {
   @POST(Endpoints.forgetPassword)
   Future<ForgetPasswordResponseModel> forgetPassword( {@Body() required ForgetPasswordRequestDto request});
 
+
+  @GET(Endpoints.loggedUserData)
+  Future<ProfileResponse> getUserData({
+    @Header("Authorization") required String token,
+  });
 }

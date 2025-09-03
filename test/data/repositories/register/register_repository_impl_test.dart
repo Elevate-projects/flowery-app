@@ -1,7 +1,7 @@
 import 'package:flowery_app/api/client/api_result.dart';
 import 'package:flowery_app/data/data_source/register/remote_data_source/register_remote_data_source.dart';
 import 'package:flowery_app/data/repositories/register/register_repository_impl.dart';
-import 'package:flowery_app/domain/entities/request/register_request_entity.dart';
+import 'package:flowery_app/domain/entities/requests/register_request/register_request_entity.dart';
 import 'package:flowery_app/domain/entities/user_data/user_data_entity.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -37,8 +37,8 @@ void main() {
         lastName: "elsadany",
         gender: "male",
         photo: "profilePic",
-        addresses: ["address1", "address2"],
-        wishlist: ["item1", "item2"],
+        addresses: const ["address1", "address2"],
+        wishlist: const ["item1", "item2"],
         role: "user",
       );
       final expectedResult = Success(userDataEntity);

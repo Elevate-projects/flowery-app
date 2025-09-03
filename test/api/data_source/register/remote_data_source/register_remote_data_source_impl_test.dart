@@ -6,7 +6,7 @@ import 'package:flowery_app/api/models/user_data/user_data_model.dart';
 import 'package:flowery_app/api/responses/register_response/register_response.dart';
 import 'package:flowery_app/core/connection_manager/connection_manager.dart';
 import 'package:flowery_app/core/secure_storage/secure_storage.dart';
-import 'package:flowery_app/domain/entities/request/register_request_entity.dart';
+import 'package:flowery_app/domain/entities/requests/register_request/register_request_entity.dart';
 import 'package:flowery_app/domain/entities/user_data/user_data_entity.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';

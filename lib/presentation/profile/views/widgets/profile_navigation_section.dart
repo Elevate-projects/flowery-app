@@ -1,0 +1,88 @@
+import 'package:flowery_app/core/constants/app_colors.dart';
+import 'package:flowery_app/core/constants/app_icons.dart';
+import 'package:flowery_app/core/constants/app_text.dart';
+import 'package:flowery_app/core/router/route_names.dart';
+import 'package:flowery_app/presentation/profile/views/widgets/notification_switch.dart';
+import 'package:flowery_app/presentation/profile/views/widgets/profile_navigation_item.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+class ProfileNavigationSection extends StatelessWidget {
+  const ProfileNavigationSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        ProfileNavigationItem(
+          title: AppText.myOrders,
+          prefixIconPath: AppIcons.orders,
+          onTap: () {},
+        ),
+        ProfileNavigationItem(
+          title: AppText.savedAddress,
+          prefixIconPath: AppIcons.location,
+          onTap: () {},
+        ),
+        Divider(color: AppColors.white[70], height: 32.h),
+        const NotificationSwitch(),
+        Divider(color: AppColors.white[70], height: 32.h),
+        ProfileNavigationItem(
+          title: AppText.language,
+          prefixIconPath: AppIcons.language,
+          isSuffixArrow: false,
+          suffixWidget: Text(
+            AppText.english,
+            style: theme.textTheme.bodySmall?.copyWith(
+              color: theme.colorScheme.primary,
+            ),
+          ),
+          onTap: () {},
+        ),
+        ProfileNavigationItem(
+          isIconWithTitle: false,
+          titleWidget: Text(
+            AppText.aboutUs,
+            style: theme.textTheme.bodyMedium,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+          onTap: () {
+            Navigator.of(context).pushNamed(RouteNames.aboutUs);
+          },
+        ),
+        ProfileNavigationItem(
+          isIconWithTitle: false,
+          titleWidget: Text(
+            AppText.termsConditions,
+            style: theme.textTheme.bodyMedium,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+          onTap: () {
+            Navigator.of(context).pushNamed(RouteNames.termsAndConditions);
+          },
+        ),
+        Divider(color: AppColors.white[70], height: 32.h),
+        ProfileNavigationItem(
+          title: AppText.logout,
+          prefixIconPath: AppIcons.logout,
+          isSuffixArrow: false,
+          suffixWidget: SvgPicture.asset(
+            AppIcons.logout,
+            width: 24.r,
+            height: 24.r,
+            colorFilter: ColorFilter.mode(
+              theme.colorScheme.shadow,
+              BlendMode.srcIn,
+            ),
+          ),
+          onTap: () {},
+        ),
+      ],
+    );
+  }
+}

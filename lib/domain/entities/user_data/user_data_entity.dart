@@ -1,4 +1,7 @@
-class UserDataEntity {
+import 'package:equatable/equatable.dart';
+
+// ignore: must_be_immutable
+class UserDataEntity extends Equatable {
   UserDataEntity({
     this.id,
     this.firstName,
@@ -24,4 +27,19 @@ class UserDataEntity {
   List<String>? wishlist;
   List<String>? addresses;
   String? passwordResetCode;
+
+  @override
+  List<Object?> get props => [
+    id,
+    firstName,
+    lastName,
+    email,
+    gender,
+    phone,
+    photo,
+    role,
+    wishlist,
+    addresses,
+    passwordResetCode,
+  ];
 }

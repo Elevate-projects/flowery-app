@@ -1,0 +1,82 @@
+import 'package:flowery_app/core/constants/app_icons.dart';
+import 'package:flowery_app/core/constants/app_images.dart';
+import 'package:flowery_app/core/constants/app_text.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+class ProfileAppBar extends StatelessWidget {
+  const ProfileAppBar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Row(
+      children: [
+        Expanded(
+          child: Row(
+            children: [
+              Container(
+                width: 20.r,
+                height: 20.r,
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.onPrimary,
+                  shape: BoxShape.circle,
+                ),
+                child: Center(
+                  child: Image.asset(
+                    AppImages.floweryLogo,
+                    fit: BoxFit.cover,
+                    width: 12.r,
+                    height: 12.r,
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Text(
+                  AppText.flowery,
+                  style: theme.textTheme.headlineMedium?.copyWith(
+                    fontWeight: FontWeight.w400,
+                    color: theme.colorScheme.primary,
+                    fontFamily: "IM Fell English",
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ],
+          ),
+        ),
+        Stack(
+          clipBehavior: Clip.none,
+          children: [
+            SvgPicture.asset(AppIcons.notification, width: 24.r, height: 24.r),
+            PositionedDirectional(
+              end: -2,
+              top: -4,
+              child: Container(
+                width: 16.r,
+                height: 16.r,
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.error,
+                  shape: BoxShape.circle,
+                ),
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    "3",
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      fontWeight: FontWeight.w500,
+                      color: theme.colorScheme.secondary,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
