@@ -15,60 +15,58 @@ class RegisterGenderRadioButton extends StatelessWidget {
     final controller = BlocProvider.of<RegisterCubit>(context);
     final theme = Theme.of(context);
     return BlocBuilder<RegisterCubit, RegisterState>(
-      buildWhen: (previous, current) => 
-      current is GenderChangedState,
-      
+      buildWhen: (previous, current) => current is GenderChangedState,
       builder: (context, state) {
-        final selectedGender = state is GenderChangedState 
-            ? state.selectedGender 
-            : null;
+        final selectedGender =
+            state is GenderChangedState ? state.selectedGender : null;
 
         return Row(
           children: [
             Flexible(
-              child: Row(
-                children: [
-                  Radio<Gender>(
-                    value: Gender.female,
-                    groupValue: selectedGender,
-                    onChanged: (Gender? value) {
-                      if (value != null) {
-                        controller.doIntent(
-                          intent: ChangeGenderIntent(gender: value),
-                        );
-                      }
-                    },
-                    activeColor: theme.colorScheme.primary,
-                    visualDensity: VisualDensity.compact,
+              child: RadioMenuButton<Gender>(
+                value: Gender.female,
+                groupValue: selectedGender,
+                onChanged: (value) {
+                  if (value != null) {
+                    controller.doIntent(
+                      intent: ChangeGenderIntent(gender: value),
+                    );
+                  }
+                },
+                style: ButtonStyle(
+                  visualDensity: VisualDensity.compact,
+                  foregroundColor: WidgetStateProperty.all(
+                    theme.colorScheme.onSurface,
                   ),
-                 const RSizedBox(width: 8),
-                  const Text(
-                    AppText.genderFemaleDisplay,
+                  overlayColor: WidgetStateProperty.all(
+                    theme.colorScheme.primary.withValues(alpha: 0.1),
                   ),
-                ],
+                ),
+                child: const Text(AppText.genderFemaleDisplay),
               ),
             ),
+            SizedBox(width: 12.w),
             Flexible(
-              child: Row(
-                children: [
-                  Radio<Gender>(
-                    value: Gender.male,
-                    groupValue: selectedGender,
-                    onChanged: (Gender? value) {
-                      if (value != null) {
-                        controller.doIntent(
-                          intent: ChangeGenderIntent(gender: value),
-                        );
-                      }
-                    },
-                    activeColor: theme.colorScheme.primary,
-                    visualDensity: VisualDensity.compact,
+              child: RadioMenuButton<Gender>(
+                value: Gender.male,
+                groupValue: selectedGender,
+                onChanged: (value) {
+                  if (value != null) {
+                    controller.doIntent(
+                      intent: ChangeGenderIntent(gender: value),
+                    );
+                  }
+                },
+                style: ButtonStyle(
+                  visualDensity: VisualDensity.compact,
+                  foregroundColor: WidgetStateProperty.all(
+                    theme.colorScheme.onSurface,
                   ),
-                 const RSizedBox(width: 8),
-                  const Text(
-                    AppText.genderMaleDisplay,
+                  overlayColor: WidgetStateProperty.all(
+                    theme.colorScheme.primary.withValues(alpha: 0.1),
                   ),
-                ],
+                ),
+                child: const Text(AppText.genderMaleDisplay),
               ),
             ),
           ],

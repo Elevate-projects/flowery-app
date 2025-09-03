@@ -1,4 +1,5 @@
 import 'package:flowery_app/api/requests/login_request/login_request_model.dart';
+import 'package:flowery_app/domain/entities/forget_password/request/forget_password_request_entity.dart';
 import 'package:flowery_app/api/requests/register_request/register_request.dart';
 import 'package:flowery_app/domain/entities/request/register_request_entity.dart';
 import 'package:flowery_app/domain/entities/requests/login_request/login_request_entity.dart';
@@ -26,4 +27,13 @@ abstract class RequestMapper {
       gender: entity.gender,
     );
   }
+  static ForgetPasswordRequestDto toForgetPasswordRequestModel({
+    required ForgetPasswordRequestEntity forgetPasswordRequestEntity,
+}){
+    return ForgetPasswordRequestDto(
+      email: forgetPasswordRequestEntity.email,
+    );
+  }
+
+
 }

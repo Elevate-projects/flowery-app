@@ -18,34 +18,22 @@ import '../../api/client/api_client.dart' as _i508;
 import '../../api/client/api_module.dart' as _i272;
 import '../../api/data_source/login/remote_data_source/login_remote_data_source_impl.dart'
     as _i221;
-import '../../api/data_source/profile/remote_data_source/profile_remote_data_source_impl.dart'
-    as _i913;
 import '../../api/data_source/register/remote_data_source/register_remote_data_source_impl.dart'
     as _i281;
 import '../../data/data_source/login/remote_data_source/login_remote_data_source.dart'
     as _i684;
-import '../../data/data_source/profile/remote_data_source/profile_remote_data_source.dart'
-    as _i470;
 import '../../data/data_source/register/remote_data_source/register_remote_data_source.dart'
     as _i233;
 import '../../data/repositories/login/login_repository_impl.dart' as _i722;
-import '../../data/repositories/profile/profile_repository_impl.dart' as _i770;
 import '../../data/repositories/register/register_repository_impl.dart' as _i40;
 import '../../domain/repositories/login/login_repository.dart' as _i300;
-import '../../domain/repositories/profile/profile_repository.dart' as _i445;
 import '../../domain/repositories/register/register_repository.dart' as _i638;
 import '../../domain/use_cases/login/login_with_email_and_password_use_case.dart'
     as _i197;
-import '../../domain/use_cases/profile/get_user_profile_data_use_case.dart'
-    as _i306;
 import '../../domain/use_cases/register/register_use_case.dart' as _i950;
-import '../../presentation/about_us/views_model/about_us_cubit.dart' as _i225;
 import '../../presentation/auth/login/views_model/login_cubit.dart' as _i512;
 import '../../presentation/auth/register/view_model/register_cubit.dart'
     as _i536;
-import '../../presentation/profile/views_model/profile_cubit.dart' as _i1028;
-import '../../presentation/terms_and_conditions/views_model/terms_and_conditions_cubit.dart'
-    as _i297;
 import '../cache/shared_preferences_helper.dart' as _i686;
 import '../cache/shared_preferences_module.dart' as _i912;
 import '../global_cubit/global_cubit.dart' as _i209;
@@ -63,10 +51,6 @@ extension GetItInjectableX on _i174.GetIt {
     await gh.factoryAsync<_i460.SharedPreferences>(
       () => sharedPreferencesModule.prefs,
       preResolve: true,
-    );
-    gh.factory<_i225.AboutUsCubit>(() => _i225.AboutUsCubit());
-    gh.factory<_i297.TermsAndConditionsCubit>(
-      () => _i297.TermsAndConditionsCubit(),
     );
     gh.singleton<_i361.Dio>(() => apiModule.provideDio());
     gh.singleton<_i23.SecureStorage>(() => _i23.SecureStorage());
@@ -92,17 +76,8 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i686.SharedPreferencesHelper>(),
       ),
     );
-    gh.factory<_i470.ProfileRemoteDataSource>(
-      () => _i913.ProfileRemoteDataSourceImpl(gh<_i508.ApiClient>()),
-    );
     gh.factory<_i638.RegisterRepository>(
       () => _i40.RegisterRepositoryImpl(gh<_i233.RegisterRemoteDataSource>()),
-    );
-    gh.factory<_i445.ProfileRepository>(
-      () => _i770.ProfileRepositoryImpl(gh<_i470.ProfileRemoteDataSource>()),
-    );
-    gh.factory<_i306.GetUserProfileDataUseCase>(
-      () => _i306.GetUserProfileDataUseCase(gh<_i445.ProfileRepository>()),
     );
     gh.factory<_i300.LoginRepository>(
       () => _i722.LoginRepositoryImpl(
@@ -111,9 +86,6 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i197.LoginWithEmailAndPasswordUseCase>(
       () => _i197.LoginWithEmailAndPasswordUseCase(gh<_i300.LoginRepository>()),
-    );
-    gh.factory<_i1028.ProfileCubit>(
-      () => _i1028.ProfileCubit(gh<_i306.GetUserProfileDataUseCase>()),
     );
     gh.factory<_i950.RegisterUseCase>(
       () => _i950.RegisterUseCase(gh<_i638.RegisterRepository>()),

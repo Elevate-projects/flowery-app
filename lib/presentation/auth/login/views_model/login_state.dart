@@ -20,6 +20,7 @@ final class EnableAutoValidateModeState extends LoginState {
   List<Object?> get props => [];
 }
 
+// ignore: must_be_immutable
 final class ChangeObscureState extends LoginState {
   ChangeObscureState({this.isObscure = true});
   bool isObscure;
@@ -33,6 +34,7 @@ final class ChangeObscureState extends LoginState {
   List<Object?> get props => [isObscure];
 }
 
+// ignore: must_be_immutable
 final class ToggleRememberMeState extends LoginState {
   ToggleRememberMeState({this.rememberMe = false});
   bool rememberMe;
