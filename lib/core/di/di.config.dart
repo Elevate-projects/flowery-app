@@ -46,6 +46,8 @@ import '../../presentation/auth/forget_password/views_model/forget_password_view
 import '../../presentation/auth/login/views_model/login_cubit.dart' as _i512;
 import '../../presentation/auth/register/view_model/register_cubit.dart'
     as _i536;
+import '../../presentation/product_details/views_model/product_details_cubit.dart'
+    as _i586;
 import '../cache/shared_preferences_helper.dart' as _i686;
 import '../cache/shared_preferences_module.dart' as _i912;
 import '../global_cubit/global_cubit.dart' as _i209;
@@ -64,6 +66,7 @@ extension GetItInjectableX on _i174.GetIt {
       () => sharedPreferencesModule.prefs,
       preResolve: true,
     );
+    gh.factory<_i586.ProductDetailsCubit>(() => _i586.ProductDetailsCubit());
     gh.singleton<_i361.Dio>(() => apiModule.provideDio());
     gh.singleton<_i23.SecureStorage>(() => _i23.SecureStorage());
     gh.factory<_i508.ApiClient>(() => _i508.ApiClient(gh<_i361.Dio>()));

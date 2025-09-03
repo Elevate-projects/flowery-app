@@ -36,6 +36,13 @@ abstract final class AppText {
   static const String termsAndConditions = "Terms and Conditions";
   static const String alreadyHaveAnAccount = "Already have an account?";
 
+  // Product Details
+  static const String status = "Status: ";
+  static const String inStock = "In stock";
+  static const String outStock = "Out stock";
+  static const String taxIncludedMessage = "All prices include tax";
+  static const String description = "Description";
+
   // Validations
   static const String userNameValidation = "This user name is not valid";
   static const String emptyTextValidation = 'This field is required';
