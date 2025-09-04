@@ -12,8 +12,10 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt.get<HomeProductsCubit>()..doIntent(GetAllProductsIntent()),
-      child: const Scaffold(appBar: HomeAppBar(), body: HomeViewBody()),
+      create: (context) => getIt.get<HomeProductsCubit>()..doIntent(intent:GetAllProductsIntent()),
+      child: const Scaffold(
+        appBar: HomeAppBar(),
+        body: HomeViewBody()),
     );
   }
 }

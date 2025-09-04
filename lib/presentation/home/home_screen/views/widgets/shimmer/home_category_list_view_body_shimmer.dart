@@ -1,12 +1,12 @@
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/presentation/home/home_screen/view_model/home_products_cubit.dart';
-import 'package:flowery_app/presentation/home/home_screen/views/widgets/custom_home_category_item.dart';
+import 'package:flowery_app/presentation/home/home_screen/views/widgets/shimmer/custom_home_categories_item_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class HomeCategoryListViewBody extends StatelessWidget {
-  const HomeCategoryListViewBody({super.key});
+class HomeCategoryListViewBodyShimmer extends StatelessWidget {
+  const HomeCategoryListViewBodyShimmer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,25 +39,13 @@ class HomeCategoryListViewBody extends StatelessWidget {
           Expanded(
             child: BlocBuilder<HomeProductsCubit, HomeProductsState>(
               builder: (context, state) {
-                  return ListView.builder(
+                 return ListView.builder(
                     itemBuilder: (context, index) {
-                      return CustomHomeCategoryItem(
-                        categoryData: state.homeState.data!.categories![index],
-                      );
+                      return const CustomHomeCategoryItemShimmer();
                     },
-                    itemCount: state.homeState.data!.categories!.length,
+                    itemCount: 14,
                     scrollDirection: Axis.horizontal,
                   );
-                
-                 //else {
-                //   return ListView.builder(
-                //     itemBuilder: (context, index) {
-                //       return const CustomHomeCategoryItemShimmer();
-                //     },
-                //     itemCount: 14,
-                //     scrollDirection: Axis.horizontal,
-                //   );
-                // }
               },
             ),
           ),

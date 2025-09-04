@@ -1,18 +1,19 @@
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/presentation/home/home_screen/view_model/home_products_cubit.dart';
-import 'package:flowery_app/presentation/home/home_screen/views/widgets/custom_home_category_item.dart';
+import 'package:flowery_app/presentation/home/home_screen/views/widgets/shimmer/custom_home_occassions_item_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class HomeCategoryListViewBody extends StatelessWidget {
-  const HomeCategoryListViewBody({super.key});
+class HomeOccassionsListViewBodyShimmer extends StatelessWidget {
+  const HomeOccassionsListViewBodyShimmer({super.key});
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
     return RSizedBox(
-      height: 134,
+      height: 232,
       width: 1.sw,
       child: Column(
         children: [
@@ -20,7 +21,7 @@ class HomeCategoryListViewBody extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                AppText.categoriesText,
+                AppText.occassionsText,
                 style: theme.textTheme.headlineSmall,
               ),
               Text(
@@ -39,25 +40,13 @@ class HomeCategoryListViewBody extends StatelessWidget {
           Expanded(
             child: BlocBuilder<HomeProductsCubit, HomeProductsState>(
               builder: (context, state) {
-                  return ListView.builder(
-                    itemBuilder: (context, index) {
-                      return CustomHomeCategoryItem(
-                        categoryData: state.homeState.data!.categories![index],
-                      );
-                    },
-                    itemCount: state.homeState.data!.categories!.length,
-                    scrollDirection: Axis.horizontal,
-                  );
-                
-                 //else {
-                //   return ListView.builder(
-                //     itemBuilder: (context, index) {
-                //       return const CustomHomeCategoryItemShimmer();
-                //     },
-                //     itemCount: 14,
-                //     scrollDirection: Axis.horizontal,
-                //   );
-                // }
+                return ListView.builder(
+                  itemBuilder: (context, index) {
+                    return const CustomHomeOccassionsItemShimmer();
+                  },
+                  itemCount: 14,
+                  scrollDirection: Axis.horizontal,
+                );
               },
             ),
           ),

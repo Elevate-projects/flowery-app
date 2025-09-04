@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flowery_app/core/constants/app_colors.dart';
 import 'package:flowery_app/domain/entities/home_products/occasions_entity.dart';
-import 'package:flowery_app/utils/common_widgets/shimmer_effect.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -20,11 +19,9 @@ class CustomHomeOccasionsItem extends StatelessWidget {
            width: 131.w,
            height: 151.h,
            child: CachedNetworkImage(
-             imageUrl: occasionsEntity.image ?? "",
-              progressIndicatorBuilder: (context, url, progress) =>
-                      ShimmerEffect(width: 131.w, height: 151.h),
-                  errorWidget: (context, url, error) => const Icon(Icons.info),
-                  fit: BoxFit.fill,
+           imageUrl: occasionsEntity.image ?? "",
+           errorWidget: (context, url, error) => const Icon(Icons.info),
+           fit: BoxFit.fill,
            ),
          ),
        ),

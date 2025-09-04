@@ -16,21 +16,13 @@ class HomeProductsCubit extends Cubit<HomeProductsState> {
   HomeProductsCubit(this._homeProductsUseCase)
     : super(const HomeProductsState());
 
-  Future<void> doIntent(HomeProductsIntent intent) async {
+  Future<void> doIntent({required HomeProductsIntent intent}) async {
     if (intent is GetAllProductsIntent) {
       await _getAllProducts();
     } else if (intent is RefreshHomeProductsIntent) {
       // _refreshHomeProducts();
     } else if (intent is RetryLoadingIntent) {
       //_retryLoading();
-    } else if (intent is NavigateToProductDetailsIntent) {
-      // _navigateToProductDetails();
-    } else if (intent is CategoriesViewAll) {
-      _viewAllCategories();
-    } else if (intent is BestSellersViewAll) {
-      _viewAllBestSellers();
-    } else if (intent is OccasionsViewAll) {
-      _viewAllOccasions();
     }
   }
 
@@ -56,17 +48,5 @@ class HomeProductsCubit extends Cubit<HomeProductsState> {
           break;
         }
     }
-  }
-
-  void _viewAllCategories() async {
-    emit(CategoriesViewAllState());
-  }
-
-  void _viewAllBestSellers() async {
-    emit(BestSellersViewAllState());
-  }
-
-  void _viewAllOccasions() async {
-    emit(OccasionsViewAllState());
   }
 }

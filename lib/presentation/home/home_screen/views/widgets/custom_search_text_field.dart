@@ -2,7 +2,6 @@ import 'package:flowery_app/core/constants/app_colors.dart';
 import 'package:flowery_app/utils/common_widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 
 class CustomSearchTextField extends StatelessWidget {
   const CustomSearchTextField({super.key});

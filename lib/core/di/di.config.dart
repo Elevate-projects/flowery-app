@@ -16,7 +16,7 @@ import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
 import '../../api/client/api_client.dart' as _i508;
 import '../../api/client/api_module.dart' as _i272;
-import '../../api/data_source/home_products/home_products_source_impl.dart'
+import '../../api/data_source/home_products/home_products_data_source_impl.dart'
     as _i102;
 import '../../data/data_source/home_products/home_products_data_source.dart'
     as _i950;
@@ -48,11 +48,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i361.Dio>(() => apiModule.provideDio());
     gh.singleton<_i23.SecureStorage>(() => _i23.SecureStorage());
     gh.factory<_i508.ApiClient>(() => _i508.ApiClient(gh<_i361.Dio>()));
+    gh.factory<_i950.HomeProductsDataSource>(
+      () => _i102.HomeProductsDataSourceImpl(gh<_i508.ApiClient>()),
+    );
     gh.singleton<_i686.SharedPreferencesHelper>(
       () => _i686.SharedPreferencesHelper(gh<_i460.SharedPreferences>()),
-    );
-    gh.factory<_i950.HomeProductsDataSource>(
-      () => _i102.HomeProductsSourceImpl(gh<_i508.ApiClient>()),
     );
     gh.factory<_i168.HomeProductsRepository>(
       () =>

@@ -6,10 +6,10 @@ import 'package:flowery_app/domain/entities/home_products/products_response_enti
 import 'package:injectable/injectable.dart';
 
 @Injectable(as: HomeProductsDataSource)
-class HomeProductsSourceImpl implements HomeProductsDataSource {
+class HomeProductsDataSourceImpl implements HomeProductsDataSource {
   final ApiClient _apiClient;
 
-  const HomeProductsSourceImpl(this._apiClient);
+  const HomeProductsDataSourceImpl(this._apiClient);
 
   @override
   Future<Result<ProductsResponseEntity>> getHomeProducts() async {
