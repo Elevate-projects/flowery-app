@@ -58,6 +58,9 @@ abstract final class AppText {
   static const String termsConditions = "Terms & conditions";
   static const String logout = "Logout";
   static const String version = "v 6.3.0 - (446)";
+  static const String logoutCapital = "LOGOUT";
+  static const String confirmLogout = "Confirm logout!!";
+  static const String cancel = "Cancel";
 
   // Product Details
   static const String status = "Status: ";

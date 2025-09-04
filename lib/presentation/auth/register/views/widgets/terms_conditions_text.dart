@@ -3,9 +3,8 @@ import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
 class TermsConditionsText extends StatelessWidget {
-  const TermsConditionsText({super.key,});
+  const TermsConditionsText({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +14,10 @@ class TermsConditionsText extends StatelessWidget {
         text: TextSpan(
           children: [
             TextSpan(
-              text:AppText.createAnAccountYouAgree,
-              style: theme.textTheme.labelMedium
+              text: AppText.createAnAccountYouAgree,
+              style: theme.textTheme.bodySmall?.copyWith(
+                color: theme.colorScheme.onSecondary,
+              ),
             ),
             TextSpan(
               text: AppText.termsAndConditions,

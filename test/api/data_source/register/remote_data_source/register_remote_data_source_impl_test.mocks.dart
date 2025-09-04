@@ -177,6 +177,15 @@ class MockApiClient extends _i1.Mock implements _i9.ApiClient {
             ),
           )
           as _i10.Future<_i7.ProfileResponse>);
+
+  @override
+  _i10.Future<void> logout({required String? token}) =>
+      (super.noSuchMethod(
+            Invocation.method(#logout, [], {#token: token}),
+            returnValue: _i10.Future<void>.value(),
+            returnValueForMissingStub: _i10.Future<void>.value(),
+          )
+          as _i10.Future<void>);
 }
 
 /// A class which mocks [SecureStorage].

@@ -2,11 +2,11 @@ import 'package:flowery_app/core/constants/app_colors.dart';
 import 'package:flowery_app/core/constants/app_icons.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/core/router/route_names.dart';
+import 'package:flowery_app/presentation/profile/views/widgets/logout_section.dart';
 import 'package:flowery_app/presentation/profile/views/widgets/notification_switch.dart';
 import 'package:flowery_app/presentation/profile/views/widgets/profile_navigation_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class ProfileNavigationSection extends StatelessWidget {
   const ProfileNavigationSection({super.key});
@@ -67,21 +67,7 @@ class ProfileNavigationSection extends StatelessWidget {
           },
         ),
         Divider(color: AppColors.white[70], height: 32.h),
-        ProfileNavigationItem(
-          title: AppText.logout,
-          prefixIconPath: AppIcons.logout,
-          isSuffixArrow: false,
-          suffixWidget: SvgPicture.asset(
-            AppIcons.logout,
-            width: 24.r,
-            height: 24.r,
-            colorFilter: ColorFilter.mode(
-              theme.colorScheme.shadow,
-              BlendMode.srcIn,
-            ),
-          ),
-          onTap: () {},
-        ),
+        const LogoutSection(),
       ],
     );
   }
