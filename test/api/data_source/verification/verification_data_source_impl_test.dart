@@ -2,8 +2,9 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flowery_app/api/client/api_client.dart';
 import 'package:flowery_app/api/client/api_result.dart';
 import 'package:flowery_app/api/data_source/verification/verification_data_source_impl.dart';
-import 'package:flowery_app/api/dto/mapper/mapper.dart';
-import 'package:flowery_app/api/dto/verification/response/verify_response_dto.dart';
+import 'package:flowery_app/api/mapper/mapper.dart';
+import 'package:flowery_app/api/responses/verification/verify_response_dto.dart';
+
 import 'package:flowery_app/core/connection_manager/connection_manager.dart';
 import 'package:flowery_app/domain/entities/verification/request/verify_requset.dart';
 import 'package:flowery_app/domain/entities/verification/response/verify_response.dart';

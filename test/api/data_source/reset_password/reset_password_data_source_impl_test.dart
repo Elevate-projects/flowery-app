@@ -2,8 +2,8 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flowery_app/api/client/api_client.dart';
 import 'package:flowery_app/api/client/api_result.dart';
 import 'package:flowery_app/api/data_source/reset_password/reset_password_data_source_impl.dart';
-import 'package:flowery_app/api/dto/mapper/mapper.dart';
-import 'package:flowery_app/api/dto/reset_password/response/reset_password_response_dto.dart';
+import 'package:flowery_app/api/mapper/mapper.dart';
+import 'package:flowery_app/api/responses/reset_password/reset_password_response_dto.dart';
 import 'package:flowery_app/core/connection_manager/connection_manager.dart';
 import 'package:flowery_app/domain/entities/reset_password/request/reset_password_request.dart';
 import 'package:flowery_app/domain/entities/reset_password/response/reset_password_response.dart';
@@ -54,6 +54,5 @@ void main() {
     result as Success<ResetPasswordResponseEntity>;
 
     expect(result.data.message, equals(expectedResponse.message));
-
   });
 }

@@ -1,5 +1,5 @@
-import 'package:flowery_app/api/dto/mapper/mapper.dart';
-import 'package:flowery_app/api/dto/resend_code/request/resend_code_request_dto.dart';
+import 'package:flowery_app/api/mapper/mapper.dart';
+import 'package:flowery_app/api/requests/resend_code/resend_code_request_dto.dart';
 import 'package:flowery_app/domain/entities/resend_code/request/resend_code_request.dart';
 import 'package:flutter_test/flutter_test.dart';
 

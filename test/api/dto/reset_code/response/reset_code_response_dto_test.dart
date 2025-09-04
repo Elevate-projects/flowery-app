@@ -1,5 +1,5 @@
-import 'package:flowery_app/api/dto/mapper/mapper.dart';
-import 'package:flowery_app/api/dto/reset_password/response/reset_password_response_dto.dart';
+import 'package:flowery_app/api/mapper/mapper.dart';
+import 'package:flowery_app/api/responses/reset_password/reset_password_response_dto.dart';
 import 'package:flowery_app/domain/entities/reset_password/response/reset_password_response.dart';
 import 'package:flutter_test/flutter_test.dart';
 
