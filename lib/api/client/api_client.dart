@@ -11,10 +11,6 @@ part 'api_client.g.dart';
 abstract class ApiClient {
   @factoryMethod
   factory ApiClient(Dio dio) = _ApiClient;
-
-  // @POST(Endpoints.login)
-  // Future<LoginResponse> login({@Body() required LoginRequest request});
-
 @GET(Endpoints.home)
 Future<ProductsResponseModel> getHomeData({@Header("Authorization") required String token});
 
