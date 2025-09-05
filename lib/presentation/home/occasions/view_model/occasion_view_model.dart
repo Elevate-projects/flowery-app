@@ -29,7 +29,7 @@ class OccasionsViewModel extends Cubit<StateStatus<List<OccasionArgumentsEntity>
         final mapped = occasions
             .map((occasion) {
           final filteredProducts = products
-              .where((product) => product.occasion == occasion.id)
+              .where((product) => product.occasionId == occasion.id)
               .toList();
 
           return OccasionArgumentsEntity(
