@@ -16,7 +16,7 @@ test("when call homerepository.gethomedata it should return coorects values", ()
   //arrange
   final mockRepository = MockHomeProductsRepository();
   final useCase = HomeProductsUseCase(mockRepository);
-   ProductsResponseEntity homeProductsEntity = const ProductsResponseEntity(
+   final ProductsResponseEntity homeProductsEntity = ProductsResponseEntity(
       message: "Success",
       products: [
         ProductCardEntity(
@@ -25,10 +25,10 @@ test("when call homerepository.gethomedata it should return coorects values", ()
           price: 29,
           imgCover: "https://example.com/rose_bouquet.jpg",
           description: "A beautiful bouquet of red roses.",
-          category: "Bouquets",
+          categoryId: "Bouquets",
         ),
       ],
-      categories: [
+      categories: const [
         CategoryEntity(
           id: '1',
           name: "Bouquets",
@@ -36,7 +36,7 @@ test("when call homerepository.gethomedata it should return coorects values", ()
           createdAt: '2023-01-01T00:00:00Z',
         ),
       ],
-      occasions: [
+      occasions: const [
         OccasionEntity(
           id: '1',
           name: "Wedding",

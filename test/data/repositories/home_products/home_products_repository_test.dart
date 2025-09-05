@@ -16,7 +16,7 @@ void main() {
     //arrange
     final mockDataSource = MockHomeProductsDataSource();
     final repository = HomeProductsRepositoryImpl(mockDataSource);
-    ProductsResponseEntity homeProductsEntity = const ProductsResponseEntity(
+    final ProductsResponseEntity homeProductsEntity = ProductsResponseEntity(
       message: "Success",
       products: [
         ProductCardEntity(
@@ -25,10 +25,10 @@ void main() {
           price: 29,
           imgCover: "https://example.com/rose_bouquet.jpg",
           description: "A beautiful bouquet of red roses.",
-          category: "Bouquets",
+          categoryId: "Bouquets",
         ),
       ],
-      categories: [
+      categories: const [
         CategoryEntity(
           id: '1',
           name: "Bouquets",
@@ -36,7 +36,7 @@ void main() {
           createdAt: '2023-01-01T00:00:00Z',
         ),
       ],
-      occasions: [
+      occasions: const [
         OccasionEntity(
           id: '1',
           name: "Wedding",

@@ -6,7 +6,7 @@ void main(){
   group('occasion model', (){
     test("when call toEntity with null values it should return null",(){
       //arrange
-        OccasionModel occasionModel = const OccasionModel(
+        final OccasionModel occasionModel = const OccasionModel(
        id: null,
         name: null,
         createdAt: null,
@@ -16,7 +16,7 @@ void main(){
         updatedAt: null,
       );
       //act
-      OccasionEntity actualResult = occasionModel.toEntity();
+      final OccasionEntity actualResult = occasionModel.toEntity();
       //assert
       expect(actualResult.id, isNull);
       expect(actualResult.name, isNull);
@@ -29,7 +29,7 @@ void main(){
 
      test("when call toEntity with values it should return correct values",(){
       //arrange
-        OccasionModel occasionModel = const OccasionModel(
+        final OccasionModel occasionModel = const OccasionModel(
        id: '1',
         name: "Birthday",
         createdAt: '2023-10-01T12:00:00Z',
@@ -39,7 +39,7 @@ void main(){
         updatedAt: '2023-10-01T12:00:00Z',
       );
       //act
-      OccasionEntity actualResult = occasionModel.toEntity();
+      final OccasionEntity actualResult = occasionModel.toEntity();
       //assert
       expect(actualResult.id, equals(occasionModel.id));
       expect(actualResult.name, equals(occasionModel.name));

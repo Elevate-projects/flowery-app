@@ -6,7 +6,7 @@ void main(){
   group('category model', (){
     test("when call toEntity with null values it should return null",(){
       //arrange
-        CategoryModel categoryModel = const CategoryModel(
+        final CategoryModel categoryModel = const CategoryModel(
        id: null,
         name: null,
         createdAt: null,
@@ -16,7 +16,7 @@ void main(){
         updatedAt: null,
       );
       //act
-      CategoryEntity actualResult = categoryModel.toEntity();
+      final CategoryEntity actualResult = categoryModel.toEntity();
       //assert
       expect(actualResult.id, isNull);
       expect(actualResult.name, isNull);
@@ -29,7 +29,7 @@ void main(){
 
      test("when call toEntity with values it should return correct values",(){
       //arrange
-        CategoryModel categoryModel = const CategoryModel(
+        final CategoryModel categoryModel = const CategoryModel(
        id: '1',
         name: "Electronics",
         createdAt: '2023-10-01T12:00:00Z',
@@ -39,7 +39,7 @@ void main(){
         updatedAt: '2023-10-01T12:00:00Z',
       );
       //act
-      CategoryEntity actualResult = categoryModel.toEntity();
+      final CategoryEntity actualResult = categoryModel.toEntity();
       //assert
       expect(actualResult.id, equals(categoryModel.id));
       expect(actualResult.name, equals(categoryModel.name));
