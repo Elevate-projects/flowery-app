@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flowery_app/api/requests/login_request/login_request_model.dart';
 import 'package:flowery_app/api/requests/register_request/register_request.dart';
 import 'package:flowery_app/api/responses/categories_response/categories_response.dart';
+import 'package:flowery_app/api/responses/home_products/products_response_model.dart';
 import 'package:flowery_app/api/responses/login_response/login_response.dart';
 import 'package:flowery_app/api/responses/products_response/products_response.dart';
 import 'package:flowery_app/api/responses/register_response/register_response.dart';
@@ -19,6 +20,8 @@ part 'api_client.g.dart';
 abstract class ApiClient {
   @factoryMethod
   factory ApiClient(Dio dio) = _ApiClient;
+@GET(Endpoints.home)
+Future<ProductsResponseModel> getHomeData({@Header("Authorization") required String token});
 
   @POST(Endpoints.login)
   Future<LoginResponse> login({@Body() required LoginRequestModel request});

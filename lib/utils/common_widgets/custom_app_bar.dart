@@ -38,4 +38,5 @@ class CustomAppBar extends StatelessWidget {
       titleSpacing: 0,
     );
   }
+  
 }
