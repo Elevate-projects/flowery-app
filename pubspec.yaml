@@ -38,6 +38,7 @@ dependencies:
   smooth_page_indicator: ^1.2.1
 
   dio: any
+  bloc: ^9.0.0
 dev_dependencies:
   flutter_launcher_icons: "^0.14.4"
   injectable_generator: ^2.7.0
@@ -59,6 +60,12 @@ flutter:
     - assets/animations/
 
   fonts:
+    - family: IM Fell English
+      fonts:
+        - asset: assets/fonts/im_fell_english/IMFellEnglish-Italic.ttf
+          weight: 400
+        - asset: assets/fonts/im_fell_english/IMFellEnglish-Regular.ttf
+          weight: 700
     - family: Inter
       fonts:
         - asset: assets/fonts/inter/Inter_18pt-Thin.ttf
