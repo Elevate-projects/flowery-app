@@ -1,3 +1,4 @@
+import 'package:flowery_app/core/global_cubit/global_cubit.dart';
 import 'package:flowery_app/presentation/terms_and_conditions/views_model/terms_and_conditions_cubit.dart';
 import 'package:flowery_app/presentation/terms_and_conditions/views_model/terms_and_conditions_state.dart';
 import 'package:flowery_app/utils/common_widgets/loading_circle.dart';
@@ -11,7 +12,8 @@ class TermsAndConditionsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final bool isArabic = false;
+    final globalCubit = BlocProvider.of<GlobalCubit>(context);
+    final bool isArabic = globalCubit.isArLanguage;
     final theme = Theme.of(context);
     return BlocConsumer<TermsAndConditionsCubit, TermsAndConditionsState>(
       listener: (context, state) {
@@ -34,15 +36,13 @@ class TermsAndConditionsViewBody extends StatelessWidget {
 
                 final content = section['content'];
                 final text = (content is Map)
-                    // ? content[isArabic ? 'ar' : 'en']
-                    ? content['en']
+                    ? content[isArabic ? 'ar' : 'en']
                     : content.toString();
 
                 final title = section['title'];
                 final titleText = title != null
                     ? (title is Map
-                          // ? title[isArabic ? 'ar' : 'en']
-                          ? title['en']
+                          ? title[isArabic ? 'ar' : 'en']
                           : title.toString())
                     : null;
 
@@ -52,8 +52,7 @@ class TermsAndConditionsViewBody extends StatelessWidget {
                 );
                 final align = FloweryMethodHelper.parseAlignment(
                   style,
-                  // isArabic,
-                  false,
+                  isArabic,
                 );
 
                 return Column(
@@ -67,8 +66,7 @@ class TermsAndConditionsViewBody extends StatelessWidget {
                         ),
                         textAlign: FloweryMethodHelper.parseAlignment(
                           style?['title'],
-                          // isArabic,
-                          false,
+                          isArabic,
                         ),
                       ),
                     if (text is List)
@@ -82,8 +80,7 @@ class TermsAndConditionsViewBody extends StatelessWidget {
                             ),
                             textAlign: FloweryMethodHelper.parseAlignment(
                               style?['content'] ?? style,
-                              // isArabic,
-                              false,
+                              isArabic,
                             ),
                           ),
                         );

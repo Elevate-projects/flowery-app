@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/presentation/home/home_screen/view_model/home_products_cubit.dart';
 import 'package:flowery_app/presentation/home/home_screen/views/widgets/custom_home_best_seller_item.dart';
@@ -14,18 +15,17 @@ class HomeBestSellerListViewBody extends StatelessWidget {
 
     return RSizedBox(
       height: 260,
-      width: 1.sw,
       child: Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                AppText.bestSellerText,
+                AppText.bestSellerText.tr(),
                 style: theme.textTheme.headlineSmall,
               ),
               Text(
-                AppText.viewAll,
+                AppText.viewAll.tr(),
                 style: theme.textTheme.bodySmall?.copyWith(
                   color: Colors.pink,
                   fontWeight: FontWeight.w500,
@@ -43,7 +43,10 @@ class HomeBestSellerListViewBody extends StatelessWidget {
                 width: 344,
                 child: ListView.builder(
                   itemBuilder: (context, index) {
-                    return  CustomHomeBestSellerItem(bestSellerEntity: state.homeState.data!.bestSeller![index]);
+                    return CustomHomeBestSellerItem(
+                      bestSellerEntity:
+                          state.homeState.data!.bestSeller![index],
+                    );
                   },
                   itemCount: state.homeState.data!.bestSeller!.length,
                   scrollDirection: Axis.horizontal,

@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_colors.dart';
 import 'package:flowery_app/core/constants/app_icons.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/core/router/route_names.dart';
+import 'package:flowery_app/presentation/profile/views/widgets/language_section.dart';
 import 'package:flowery_app/presentation/profile/views/widgets/notification_switch.dart';
 import 'package:flowery_app/presentation/profile/views/widgets/profile_navigation_item.dart';
 import 'package:flutter/material.dart';
@@ -30,22 +32,11 @@ class ProfileNavigationSection extends StatelessWidget {
         Divider(color: AppColors.white[70], height: 32.h),
         const NotificationSwitch(),
         Divider(color: AppColors.white[70], height: 32.h),
-        ProfileNavigationItem(
-          title: AppText.language,
-          prefixIconPath: AppIcons.language,
-          isSuffixArrow: false,
-          suffixWidget: Text(
-            AppText.english,
-            style: theme.textTheme.bodySmall?.copyWith(
-              color: theme.colorScheme.primary,
-            ),
-          ),
-          onTap: () {},
-        ),
+        const LanguageSection(),
         ProfileNavigationItem(
           isIconWithTitle: false,
           titleWidget: Text(
-            AppText.aboutUs,
+            AppText.aboutUs.tr(),
             style: theme.textTheme.bodyMedium,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
@@ -57,7 +48,7 @@ class ProfileNavigationSection extends StatelessWidget {
         ProfileNavigationItem(
           isIconWithTitle: false,
           titleWidget: Text(
-            AppText.termsConditions,
+            AppText.termsConditions.tr(),
             style: theme.textTheme.bodyMedium,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
