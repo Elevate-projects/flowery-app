@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/presentation/home/home_screen/view_model/home_products_cubit.dart';
 import 'package:flowery_app/presentation/home/home_screen/views/widgets/shimmer/custom_home_occassions_item_shimmer.dart';
@@ -14,18 +15,18 @@ class HomeOccassionsListViewBodyShimmer extends StatelessWidget {
 
     return RSizedBox(
       height: 232,
-      width: 1,
       child: Column(
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                AppText.occassionsText,
-                style: theme.textTheme.headlineSmall,
+              Expanded(
+                child: Text(
+                  AppText.occasionsText.tr(),
+                  style: theme.textTheme.headlineSmall,
+                ),
               ),
               Text(
-                AppText.viewAll,
+                AppText.viewAll.tr(),
                 style: theme.textTheme.bodySmall?.copyWith(
                   color: Colors.pink,
                   fontWeight: FontWeight.w500,

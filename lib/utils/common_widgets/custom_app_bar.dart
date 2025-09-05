@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -27,7 +28,9 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: isTitleWidget ? titleWidget : Text(title ?? "", style: titleStyle),
+      title: isTitleWidget
+          ? titleWidget
+          : Text(title?.tr() ?? "", style: titleStyle),
       automaticallyImplyLeading: automaticallyImplyLeading,
       centerTitle: centerTitle,
       scrolledUnderElevation: 0,

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/presentation/home/home_screen/view_model/home_products_cubit.dart';
 import 'package:flowery_app/presentation/home/home_screen/views/widgets/custom_home_category_item.dart';
@@ -13,18 +14,17 @@ class HomeCategoryListViewBody extends StatelessWidget {
     final theme = Theme.of(context);
     return RSizedBox(
       height: 134,
-      width: 1,
       child: Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                AppText.categoriesText,
+                AppText.categoriesText.tr(),
                 style: theme.textTheme.headlineSmall,
               ),
               Text(
-                AppText.viewAll,
+                AppText.viewAll.tr(),
                 style: theme.textTheme.bodyMedium?.copyWith(
                   color: Colors.pink,
                   fontSize: 12.sp,
@@ -39,15 +39,15 @@ class HomeCategoryListViewBody extends StatelessWidget {
           Expanded(
             child: BlocBuilder<HomeProductsCubit, HomeProductsState>(
               builder: (context, state) {
-                  return ListView.builder(
-                    itemBuilder: (context, index) {
-                      return CustomHomeCategoryItem(
-                        categoryData: state.homeState.data!.categories![index],
-                      );
-                    },
-                    itemCount: state.homeState.data!.categories!.length,
-                    scrollDirection: Axis.horizontal,
-                  );
+                return ListView.builder(
+                  itemBuilder: (context, index) {
+                    return CustomHomeCategoryItem(
+                      categoryData: state.homeState.data!.categories![index],
+                    );
+                  },
+                  itemCount: state.homeState.data!.categories!.length,
+                  scrollDirection: Axis.horizontal,
+                );
               },
             ),
           ),

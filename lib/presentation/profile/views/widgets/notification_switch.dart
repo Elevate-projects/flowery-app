@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_icons.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/presentation/profile/views/widgets/profile_navigation_item.dart';
@@ -31,7 +32,7 @@ class NotificationSwitch extends StatelessWidget {
           const RSizedBox(width: 8),
           Flexible(
             child: Text(
-              AppText.notification,
+              AppText.notification.tr(),
               style: theme.textTheme.bodyMedium,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,

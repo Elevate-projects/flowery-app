@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/domain/entities/product_card/product_card_entity.dart';
 import 'package:flowery_app/presentation/product_details/views_model/product_details_cubit.dart';
@@ -25,7 +26,7 @@ class ProductDetailsSection extends StatelessWidget {
                   fit: BoxFit.scaleDown,
                   alignment: AlignmentDirectional.centerStart,
                   child: Text(
-                    "${AppText.egp} ${productCardData.priceAfterDiscount.toString()}",
+                    "${AppText.egp.tr()} ${productCardData.priceAfterDiscount.toString()}",
                     style: theme.textTheme.headlineMedium?.copyWith(
                       fontWeight: FontWeight.w700,
                     ),
@@ -41,7 +42,7 @@ class ProductDetailsSection extends StatelessWidget {
                       child: FittedBox(
                         fit: BoxFit.scaleDown,
                         child: Text(
-                          AppText.status,
+                          AppText.status.tr(),
                           style: theme.textTheme.labelLarge?.copyWith(
                             color: theme.colorScheme.onSecondary,
                           ),
@@ -58,8 +59,8 @@ class ProductDetailsSection extends StatelessWidget {
                             >(
                               builder: (context, state) => Text(
                                 state.isInStock!
-                                    ? AppText.inStock
-                                    : AppText.outStock,
+                                    ? AppText.inStock.tr()
+                                    : AppText.outStock.tr(),
                                 style: theme.textTheme.bodyLarge?.copyWith(
                                   color: theme.colorScheme.onSecondary,
                                 ),
@@ -74,7 +75,7 @@ class ProductDetailsSection extends StatelessWidget {
           ),
           const RSizedBox(height: 4),
           Text(
-            AppText.taxIncludedMessage,
+            AppText.taxIncludedMessage.tr(),
             style: theme.textTheme.bodyMedium?.copyWith(
               color: theme.colorScheme.shadow,
             ),
@@ -99,7 +100,7 @@ class ProductDetailsSection extends StatelessWidget {
             children: [
               const RSizedBox(height: 24),
               Text(
-                AppText.description,
+                AppText.description.tr(),
                 style: theme.textTheme.labelLarge?.copyWith(
                   color: theme.colorScheme.onSecondary,
                 ),

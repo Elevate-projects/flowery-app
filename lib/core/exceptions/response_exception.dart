@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 
 class ResponseException {
@@ -6,9 +7,8 @@ class ResponseException {
 
   final String message;
 
-  static ResponseException empty() => const ResponseException(
-    message: AppText.noResponseReceivedMessage,
-  );
+  static ResponseException empty() =>
+      ResponseException(message: AppText.noResponseReceivedMessage.tr());
 
   factory ResponseException.handleException({required Response? response}) {
     if (response != null && response.data is Map<String, dynamic>) {

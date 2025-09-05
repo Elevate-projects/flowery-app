@@ -1,5 +1,6 @@
 import 'package:flowery_app/core/cache/shared_preferences_helper.dart';
 import 'package:flowery_app/core/constants/const_keys.dart';
+import 'package:flowery_app/core/global_cubit/global_intent.dart';
 import 'package:flowery_app/core/global_cubit/global_state.dart';
 import 'package:flowery_app/core/router/route_names.dart';
 import 'package:flowery_app/core/secure_storage/secure_storage.dart';
@@ -14,13 +15,32 @@ class GlobalCubit extends Cubit<GlobalState> {
   final SharedPreferencesHelper _sharedPreferencesHelper;
   GlobalCubit(this._secureStorage, this._sharedPreferencesHelper)
     : super(GlobalInitial());
-  late final String redirectedScreen;
+  String? redirectedScreen;
+  late bool isArLanguage;
+  late int languageSelectedIndex;
 
-  Future<void> onInit() async {
-    await setRedirectedScreen();
+  Future<void> doIntent({required GlobalIntent intent}) async {
+    switch (intent) {
+      case GlobalInitializationIntent():
+        await _onInit();
+      case ChangeLanguageIntent():
+        await _changedLanguageIndex(index: intent.index);
+    }
   }
 
-  Future<void> setRedirectedScreen() async {
+  Future<void> _onInit() async {
+    _getSelectedLanguage();
+    await _setRedirectedScreen();
+  }
+
+  void _getSelectedLanguage() {
+    isArLanguage = _sharedPreferencesHelper.getBool(
+      key: ConstKeys.isArLanguage,
+    );
+    languageSelectedIndex = isArLanguage ? 1 : 0;
+  }
+
+  Future<void> _setRedirectedScreen() async {
     final userToken = await _secureStorage.getData(key: ConstKeys.tokenKey);
     final isRemembered = _sharedPreferencesHelper.getBool(
       key: ConstKeys.rememberMe,
@@ -33,5 +53,25 @@ class GlobalCubit extends Cubit<GlobalState> {
       redirectedScreen = RouteNames.login;
     }
     emit(LoadedRedirectedScreen());
+  }
+
+  Future<void> _changedLanguageIndex({required int index}) async {
+    if (languageSelectedIndex != index && index == 0) {
+      languageSelectedIndex = index;
+      await _sharedPreferencesHelper.saveBool(
+        key: ConstKeys.isArLanguage,
+        value: false,
+      );
+      isArLanguage = false;
+      emit(ChangeLanguageIndexState());
+    } else if (languageSelectedIndex != index && index == 1) {
+      languageSelectedIndex = index;
+      await _sharedPreferencesHelper.saveBool(
+        key: ConstKeys.isArLanguage,
+        value: true,
+      );
+      isArLanguage = true;
+      emit(ChangeLanguageIndexState());
+    }
   }
 }
