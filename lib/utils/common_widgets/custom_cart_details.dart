@@ -120,7 +120,7 @@ class CustomCartDetails extends StatelessWidget {
                             );
                           }
                         },
-                        child: Container(
+                        child: SizedBox(
                           width: 30.w,
                           height: 30.h,
                           child: Center(
@@ -170,7 +170,7 @@ class CustomCartDetails extends StatelessWidget {
                             ),
                           );
                         },
-                        child: Container(
+                        child: SizedBox(
                           width: 30.w,
                           height: 30.h,
                           child: Center(

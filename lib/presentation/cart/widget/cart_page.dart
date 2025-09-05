@@ -4,8 +4,6 @@ import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/presentation/cart/view_model/cart_intent.dart';
 import 'package:flowery_app/presentation/cart/view_model/delete_cubit/delete_cubit.dart';
 import 'package:flowery_app/presentation/cart/view_model/delete_cubit/delete_state.dart';
-import 'package:flowery_app/presentation/cart/view_model/quantity_cubit/quantity_cubit.dart';
-import 'package:flowery_app/presentation/cart/view_model/quantity_cubit/quantity_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flowery_app/presentation/cart/view_model/cart_cubit.dart';

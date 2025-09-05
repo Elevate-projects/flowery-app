@@ -37,7 +37,7 @@ class DeleteItems {
 @JsonSerializable()
 class Cart {
   @JsonKey(name: "_id")
-  final String? Id;
+  final String? id;
   @JsonKey(name: "user")
   final String? user;
   @JsonKey(name: "cartItems")
@@ -54,7 +54,7 @@ class Cart {
   final int? V;
 
   Cart ({
-    this.Id,
+    this.id,
     this.user,
     this.cartItems,
     this.appliedCoupons,
@@ -73,7 +73,7 @@ class Cart {
   }
   CartEntity toEntity() {
     return CartEntity(
-      id: Id,
+      id: id,
       user: user,
       cartItems: cartItems,
       appliedCoupons: appliedCoupons,

@@ -1,4 +1,3 @@
-import 'package:flowery_app/domain/entities/cart/add_product_to_cart/add_product_cart_entity.dart';
 import 'package:flowery_app/domain/use_cases/cart/quantity_use_case/quantity_use_case.dart';
 import 'package:flowery_app/presentation/cart/view_model/quantity_cubit/quantity_intent.dart';
 import 'package:flowery_app/presentation/cart/view_model/quantity_cubit/quantity_state.dart';

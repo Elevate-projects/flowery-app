@@ -38,7 +38,7 @@ class GetLoggedUserCart {
 @JsonSerializable()
 class Cart {
   @JsonKey(name: "_id")
-  final String? Id;
+  final String? id;
   @JsonKey(name: "user")
   final String? user;
   @JsonKey(name: "cartItems")
@@ -55,7 +55,7 @@ class Cart {
   final int? V;
 
   Cart ({
-    this.Id,
+    this.id,
     this.user,
     this.cartItems,
     this.appliedCoupons,
@@ -74,7 +74,7 @@ class Cart {
   }
   CartEntity toEntity() {
     return CartEntity(
-      id: Id,
+      id: id,
       user: user,
       cartItems: cartItems?.map((item) => item.toEntity()).toList(),
       appliedCoupons: appliedCoupons,
@@ -95,13 +95,13 @@ class CartItems {
   @JsonKey(name: "quantity")
   final int? quantity;
   @JsonKey(name: "_id")
-  final String? Id;
+  final String? id;
 
   CartItems ({
     this.product,
     this.price,
     this.quantity,
-    this.Id,
+    this.id,
   });
 
   factory CartItems.fromJson(Map<String, dynamic> json) {
@@ -116,7 +116,7 @@ class CartItems {
       product: product?.toEntity(),
       price: price,
       quantity: quantity,
-      id: Id,
+      id: id,
     );
   }
 }
@@ -128,7 +128,7 @@ class Product {
   @JsonKey(name: "rateCount")
   final int? rateCount;
   @JsonKey(name: "_id")
-  final String? Id;
+  final String? id;
   @JsonKey(name: "title")
   final String? title;
   @JsonKey(name: "slug")
@@ -159,13 +159,10 @@ class Product {
   final bool? isSuperAdmin;
   @JsonKey(name: "sold")
   final int? sold;
-  @JsonKey(name: "id")
-  final String? id;
-
   Product ({
     this.rateAvg,
     this.rateCount,
-    this.Id,
+    this.id,
     this.title,
     this.slug,
     this.description,
@@ -181,7 +178,6 @@ class Product {
     this.V,
     this.isSuperAdmin,
     this.sold,
-    this.id,
   });
 
   factory Product.fromJson(Map<String, dynamic> json) {

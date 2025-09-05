@@ -37,7 +37,7 @@ import 'package:json_annotation/json_annotation.dart';
   @JsonSerializable()
   class Cart {
     @JsonKey(name: "_id")
-    final String? Id;
+    final String? id;
     @JsonKey(name: "user")
     final String? user;
     @JsonKey(name: "cartItems")
@@ -54,7 +54,7 @@ import 'package:json_annotation/json_annotation.dart';
     final int? V;
 
     Cart ({
-      this.Id,
+      this.id,
       this.user,
       this.cartItems,
       this.appliedCoupons,
@@ -80,7 +80,7 @@ import 'package:json_annotation/json_annotation.dart';
         createdAt: createdAt,
         updatedAt: updatedAt,
         v: V,
-        id: Id
+        id: id
       );
     }
   }
@@ -94,13 +94,13 @@ import 'package:json_annotation/json_annotation.dart';
     @JsonKey(name: "quantity")
     final int? quantity;
     @JsonKey(name: "_id")
-    final String? Id;
+    final String? id;
 
     CartItems ({
       this.product,
       this.price,
       this.quantity,
-      this.Id,
+      this.id,
     });
 
     factory CartItems.fromJson(Map<String, dynamic> json) {
@@ -115,7 +115,7 @@ import 'package:json_annotation/json_annotation.dart';
         product: product?.toEntity(),
         price: price,
         quantity: quantity,
-        id: Id,
+        id: id,
       );
     }
   }
@@ -127,7 +127,7 @@ import 'package:json_annotation/json_annotation.dart';
     @JsonKey(name: "rateCount")
     final int? rateCount;
     @JsonKey(name: "_id")
-    final String? Id;
+    final String? id;
     @JsonKey(name: "title")
     final String? title;
     @JsonKey(name: "slug")
@@ -158,13 +158,10 @@ import 'package:json_annotation/json_annotation.dart';
     final bool? isSuperAdmin;
     @JsonKey(name: "sold")
     final int? sold;
-    @JsonKey(name: "id")
-    final String? id;
-
     Product ({
       this.rateAvg,
       this.rateCount,
-      this.Id,
+      this.id,
       this.title,
       this.slug,
       this.description,
@@ -180,7 +177,6 @@ import 'package:json_annotation/json_annotation.dart';
       this.V,
       this.isSuperAdmin,
       this.sold,
-      this.id,
     });
 
     factory Product.fromJson(Map<String, dynamic> json) {
@@ -194,7 +190,7 @@ import 'package:json_annotation/json_annotation.dart';
       return ProductEntity(
         rateAvg: rateAvg,
         rateCount: rateCount,
-        id: Id,
+        id: id,
         title: title,
         slug: slug,
         description: description,
