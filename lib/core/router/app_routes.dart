@@ -1,4 +1,5 @@
 import 'package:flowery_app/core/router/route_names.dart';
+import 'package:flowery_app/domain/entities/arguments/occasion_arguments_entity.dart';
 import 'package:flowery_app/domain/entities/product_card/product_card_entity.dart';
 import 'package:flowery_app/presentation/auth/forget_password/views/forget_password_screen.dart';
 import 'package:flowery_app/presentation/auth/login/views/login_view.dart';
@@ -31,6 +32,16 @@ abstract class AppRoutes {
         );
       case RouteNames.forgetPassword:
         return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen());
+
+      case RouteNames.occasionView:
+        return MaterialPageRoute(
+          builder: (_) => OccasionView(
+            occasionArguments: settings.arguments as OccasionArgumentsEntity,
+          ),
+        );
+
+
+
       default:
         return null;
     }

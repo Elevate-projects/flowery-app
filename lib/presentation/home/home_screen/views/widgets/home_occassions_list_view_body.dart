@@ -1,6 +1,7 @@
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/core/router/app_routes.dart';
 import 'package:flowery_app/core/router/route_names.dart';
+import 'package:flowery_app/domain/entities/arguments/occasion_arguments_entity.dart';
 import 'package:flowery_app/presentation/home/home_screen/view_model/home_products_cubit.dart';
 import 'package:flowery_app/presentation/home/home_screen/views/widgets/custom_home_occassions_item.dart';
 import 'package:flutter/material.dart';
@@ -26,10 +27,16 @@ class HomeOccassionsListViewBody extends StatelessWidget {
                 AppText.occassionsText,
                 style: theme.textTheme.headlineSmall,
               ),
+
               GestureDetector(
-                onTap: (){
-                  Navigator.push(context, RouteNames.);
-                },
+                onTap: () => Navigator.of(context).pushNamed(
+                  RouteNames.occasionView,
+                  arguments: OccasionArgumentsEntity(
+
+                    listOfProducts: state.homeState.data?.products ?? [],
+                    occasion:  state.homeState.data!.occasions!.first   ,
+                  ),
+                ),
                 child: Text(
                   AppText.viewAll,
                   style: theme.textTheme.bodyMedium?.copyWith(
