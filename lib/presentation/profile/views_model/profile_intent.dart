@@ -16,3 +16,5 @@ class ToggleLanguageIntent extends ProfileIntent {
   final GlobalCubit globalCubit;
   final Languages newSelectedLanguage;
 }
+
+class LogoutIntent extends ProfileIntent {}

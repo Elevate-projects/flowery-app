@@ -24,6 +24,8 @@ import '../../api/data_source/home_products/home_products_data_source_impl.dart'
     as _i81;
 import '../../api/data_source/login/remote_data_source/login_remote_data_source_impl.dart'
     as _i221;
+import '../../api/data_source/logout/remote_data_source/logout_remote_data_source_impl.dart'
+    as _i340;
 import '../../api/data_source/profile/remote_data_source/profile_remote_data_source_impl.dart'
     as _i913;
 import '../../api/data_source/register/remote_data_source/register_remote_data_source_impl.dart'
@@ -36,6 +38,8 @@ import '../../data/data_source/home_products/home_products_data_source.dart'
     as _i950;
 import '../../data/data_source/login/remote_data_source/login_remote_data_source.dart'
     as _i684;
+import '../../data/data_source/logout/remote_data_source/logout_remote_data_source.dart'
+    as _i924;
 import '../../data/data_source/profile/remote_data_source/profile_remote_data_source.dart'
     as _i470;
 import '../../data/data_source/register/remote_data_source/register_remote_data_source.dart'
@@ -47,6 +51,7 @@ import '../../data/repositories/forget_password_repo_impl/forget_password_repo_i
 import '../../data/repositories/home_products/home_products_repository_impl_.dart'
     as _i713;
 import '../../data/repositories/login/login_repository_impl.dart' as _i722;
+import '../../data/repositories/logout/logout_repository_impl.dart' as _i463;
 import '../../data/repositories/profile/profile_repository_impl.dart' as _i770;
 import '../../data/repositories/register/register_repository_impl.dart' as _i40;
 import '../../domain/repositories/categories/categories_repository.dart'
@@ -56,6 +61,7 @@ import '../../domain/repositories/forget_password/forget_password_repo.dart'
 import '../../domain/repositories/home_products/home_products_repository.dart'
     as _i168;
 import '../../domain/repositories/login/login_repository.dart' as _i300;
+import '../../domain/repositories/logout/logout_repository.dart' as _i6;
 import '../../domain/repositories/profile/profile_repository.dart' as _i445;
 import '../../domain/repositories/register/register_repository.dart' as _i638;
 import '../../domain/use_cases/categories/get_all_categories_use_case.dart'
@@ -68,6 +74,7 @@ import '../../domain/use_cases/home_products/home_products_use_case.dart'
     as _i627;
 import '../../domain/use_cases/login/login_with_email_and_password_use_case.dart'
     as _i197;
+import '../../domain/use_cases/logout/logout_use_case.dart' as _i242;
 import '../../domain/use_cases/profile/get_user_profile_data_use_case.dart'
     as _i306;
 import '../../domain/use_cases/register/register_use_case.dart' as _i950;
@@ -142,6 +149,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i470.ProfileRemoteDataSource>(
       () => _i913.ProfileRemoteDataSourceImpl(gh<_i508.ApiClient>()),
     );
+    gh.factory<_i924.LogoutRemoteDataSource>(
+      () => _i340.LogoutRemoteDataSourceImpl(gh<_i508.ApiClient>()),
+    );
     gh.factory<_i960.CategoriesRemoteDataSource>(
       () => _i699.CategoriesRemoteDataSourceImpl(gh<_i508.ApiClient>()),
     );
@@ -174,13 +184,13 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i197.LoginWithEmailAndPasswordUseCase>(
       () => _i197.LoginWithEmailAndPasswordUseCase(gh<_i300.LoginRepository>()),
     );
-    gh.factory<_i1028.ProfileCubit>(
-      () => _i1028.ProfileCubit(gh<_i306.GetUserProfileDataUseCase>()),
-    );
     gh.factory<_i660.CategoriesRepository>(
       () => _i940.CategoriesRepositoryImpl(
         gh<_i960.CategoriesRemoteDataSource>(),
       ),
+    );
+    gh.factory<_i6.LogoutRepository>(
+      () => _i463.LogoutRepositoryImpl(gh<_i924.LogoutRemoteDataSource>()),
     );
     gh.factory<_i824.GetAllCategoriesUseCase>(
       () => _i824.GetAllCategoriesUseCase(gh<_i660.CategoriesRepository>()),
@@ -204,6 +214,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i686.SharedPreferencesHelper>(),
       ),
     );
+    gh.factory<_i242.LogoutUseCase>(
+      () => _i242.LogoutUseCase(gh<_i6.LogoutRepository>()),
+    );
     gh.factory<_i200.CategoriesCubit>(
       () => _i200.CategoriesCubit(
         gh<_i824.GetAllCategoriesUseCase>(),
@@ -212,6 +225,13 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i536.RegisterCubit>(
       () => _i536.RegisterCubit(gh<_i950.RegisterUseCase>()),
+    );
+    gh.factory<_i1028.ProfileCubit>(
+      () => _i1028.ProfileCubit(
+        gh<_i306.GetUserProfileDataUseCase>(),
+        gh<_i242.LogoutUseCase>(),
+        gh<_i23.SecureStorage>(),
+      ),
     );
     gh.factory<_i457.ForgetPasswordViewModel>(
       () => _i457.ForgetPasswordViewModel(gh<_i150.ForgetPasswordUseCase>()),

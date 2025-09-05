@@ -56,6 +56,9 @@ abstract final class AppText {
   static const String logout = "logout";
   static const String version = "version";
   static const String changeLanguage = "changeLanguage";
+  static const String logoutCapital = "LOGOUT";
+  static const String confirmLogout = "Confirm logout!!";
+  static const String cancel = "Cancel";
 
   // Product Details
   static const String status = "status";

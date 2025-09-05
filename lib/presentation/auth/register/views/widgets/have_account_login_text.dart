@@ -39,11 +39,3 @@ class HaveAccountLoginText extends StatelessWidget {
     );
   }
 }
-
-// displaySmall: TextStyle(
-//   fontSize: 16.sp,
-//   fontWeight: FontWeight.w500,
-//   color: AppColors.pink,
-//   decoration: TextDecoration.underline,
-//   decorationColor: AppColors.pink, // pink underline text span
-// ),
