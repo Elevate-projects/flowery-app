@@ -6,6 +6,7 @@ abstract class Endpoints {
   static const String register = '/api/v1/auth/signup';
   static const String categories = '/api/v1/categories';
   static const String products = '/api/v1/products';
-  static const String cartPage = '/api/v1/cart';
   static const String getLoggedUserCart = '/api/v1/cart';
+  static const String updateCartQuantity = '/api/v1/cart/{productId}';
+  static const String deleteCartQuantity = '/api/v1/cart/{productId}';
 }

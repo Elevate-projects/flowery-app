@@ -1,6 +1,9 @@
 import 'package:dio/dio.dart';
+import 'package:flowery_app/api/requests/cart_request/quintity_request.dart';
 import 'package:flowery_app/api/requests/login_request/login_request_model.dart';
 import 'package:flowery_app/api/requests/register_request/register_request.dart';
+import 'package:flowery_app/api/responses/cart_response/delete_items.dart';
+import 'package:flowery_app/api/responses/cart_response/quantity_response.dart';
 import 'package:flowery_app/api/responses/categories_response/categories_response.dart';
 import 'package:flowery_app/api/responses/login_response/login_response.dart';
 import 'package:flowery_app/api/responses/products_response/products_response.dart';
@@ -10,11 +13,7 @@ import 'package:flowery_app/api/responses/forget_password_response/forget_passwo
 import 'package:flowery_app/core/constants/endpoints.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
-
-import '../requests/cart_request/cart_request.dart';
-import '../responses/cart_response/cart_response.dart';
-import '../responses/cart_response/get_logged_user_cart.dart';
-
+import 'package:flowery_app/api/responses/cart_response/get_logged_user_cart.dart';
 part 'api_client.g.dart';
 
 @injectable
@@ -38,12 +37,19 @@ abstract class ApiClient {
   @POST(Endpoints.forgetPassword)
   Future<ForgetPasswordResponseModel> forgetPassword( {@Body() required ForgetPasswordRequestDto request});
 
-  @POST(Endpoints.cartPage)
-  Future<CartResponse> cartPage({
-    @Header("Authorization") required String token,
-    @Body() required CartRequest request});
   @GET(Endpoints.getLoggedUserCart)
   Future<GetLoggedUserCart> getLoggedUserCart({
     @Header("Authorization") required String token,
 });
+  @PUT(Endpoints.updateCartQuantity)
+  Future<QuantityResponse> updateCartQuantity({
+    @Path("productId") required String productId,
+    @Header("Authorization") required String token,
+    @Body() required QuantityRequest request,
+  });
+  @DELETE(Endpoints.deleteCartQuantity)
+  Future<DeleteItems> deleteCartQuantity({
+    @Path("productId") required String productId,
+    @Header("Authorization") required String token,
+  });
 }

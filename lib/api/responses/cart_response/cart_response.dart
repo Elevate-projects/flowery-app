@@ -1,4 +1,5 @@
-  import 'package:json_annotation/json_annotation.dart';
+  import 'package:flowery_app/domain/entities/cart/add_product_to_cart/add_product_cart_entity.dart';
+import 'package:json_annotation/json_annotation.dart';
 
   part 'cart_response.g.dart';
 
@@ -23,6 +24,13 @@
 
     Map<String, dynamic> toJson() {
       return _$CartResponseToJson(this);
+    }
+    AddProductCartEntity toEntity() {
+      return AddProductCartEntity(
+        message: message,
+        numOfCartItems: numOfCartItems,
+        cart: cart?.toEntity(),
+      );
     }
   }
 
@@ -63,6 +71,18 @@
     Map<String, dynamic> toJson() {
       return _$CartToJson(this);
     }
+    CartEntity toEntity() {
+      return CartEntity(
+        user: user,
+        cartItems: cartItems?.map((e) => e.toEntity()).toList(),
+        appliedCoupons: appliedCoupons,
+        totalPrice: totalPrice,
+        createdAt: createdAt,
+        updatedAt: updatedAt,
+        v: V,
+        id: Id
+      );
+    }
   }
 
   @JsonSerializable()
@@ -89,6 +109,14 @@
 
     Map<String, dynamic> toJson() {
       return _$CartItemsToJson(this);
+    }
+    CartItemEntity toEntity() {
+      return CartItemEntity(
+        product: product?.toEntity(),
+        price: price,
+        quantity: quantity,
+        id: Id,
+      );
     }
   }
 
@@ -161,5 +189,27 @@
 
     Map<String, dynamic> toJson() {
       return _$ProductToJson(this);
+    }
+    ProductEntity toEntity() {
+      return ProductEntity(
+        rateAvg: rateAvg,
+        rateCount: rateCount,
+        id: Id,
+        title: title,
+        slug: slug,
+        description: description,
+        imgCover: imgCover,
+        images: images,
+        price: price,
+        priceAfterDiscount: priceAfterDiscount,
+        quantity: quantity,
+        category: category,
+        occasion: occasion,
+        createdAt: createdAt,
+        updatedAt: updatedAt,
+        v: V,
+        isSuperAdmin: isSuperAdmin,
+        sold: sold,
+      );
     }
   }

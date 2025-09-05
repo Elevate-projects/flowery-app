@@ -100,8 +100,16 @@ abstract final class AppText {
   static const String forgetPassword2 = "Forget password";
   static const String enterRegisteredEmail = 'Please enter your email associated to your account';
   static const String confirmButton = "Confirm";
-  static const String success = "success";
 
-
-
+  // cart text
+  static const String delivery = "Delivery to ";
+  static const String subTotal = "Sub total";
+  static const String deliveryFee = "Delivery fee";
+  static const String total = "Total";
+  static const String checkOut = "Check Out";
+  static const String emptyCart = "Your cart is empty";
+  static const String noName = "No Name";
+  static const String price = "EGP";
+  static const String noDescription = "No Description";
+  static const String location = "2XVP+XC - Sheikh Zayed.....";
 }

@@ -1,11 +1,10 @@
-import 'package:flowery_app/domain/entities/cart/get_logged_user_cart/get_logged_user_cart.dart';
+import 'package:flowery_app/domain/entities/cart/update_quantity/update_quantity.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-
-part 'get_logged_user_cart.g.dart';
+part 'quantity_response.g.dart';
 
 @JsonSerializable()
-class GetLoggedUserCart {
+class QuantityResponse {
   @JsonKey(name: "message")
   final String? message;
   @JsonKey(name: "numOfCartItems")
@@ -13,24 +12,24 @@ class GetLoggedUserCart {
   @JsonKey(name: "cart")
   final Cart? cart;
 
-  GetLoggedUserCart ({
+  QuantityResponse ({
     this.message,
     this.numOfCartItems,
     this.cart,
   });
 
-  factory GetLoggedUserCart.fromJson(Map<String, dynamic> json) {
-    return _$GetLoggedUserCartFromJson(json);
+  factory QuantityResponse.fromJson(Map<String, dynamic> json) {
+    return _$QuantityResponseFromJson(json);
   }
 
   Map<String, dynamic> toJson() {
-    return _$GetLoggedUserCartToJson(this);
+    return _$QuantityResponseToJson(this);
   }
-  GetLoggedUserCartEntity toEntity() {
-    return GetLoggedUserCartEntity(
+  QuantityEntity toQuantityEntity(){
+    return QuantityEntity(
       message: message,
       numOfCartItems: numOfCartItems,
-      cart: cart?.toEntity(),
+      cart: cart?.toCartEntity(),
     );
   }
 }
@@ -72,11 +71,11 @@ class Cart {
   Map<String, dynamic> toJson() {
     return _$CartToJson(this);
   }
-  CartEntity toEntity() {
+  CartEntity toCartEntity(){
     return CartEntity(
       id: Id,
       user: user,
-      cartItems: cartItems?.map((item) => item.toEntity()).toList(),
+      cartItems: cartItems?.map((e) => e.toCartItemsEntity()).toList(),
       appliedCoupons: appliedCoupons,
       totalPrice: totalPrice,
       createdAt: createdAt,
@@ -111,9 +110,9 @@ class CartItems {
   Map<String, dynamic> toJson() {
     return _$CartItemsToJson(this);
   }
-  CartItemEntity toEntity() {
+  CartItemEntity toCartItemsEntity(){
     return CartItemEntity(
-      product: product?.toEntity(),
+      product: product?.toProductEntity(),
       price: price,
       quantity: quantity,
       id: Id,
@@ -155,10 +154,10 @@ class Product {
   final String? updatedAt;
   @JsonKey(name: "__v")
   final int? V;
-  @JsonKey(name: "isSuperAdmin")
-  final bool? isSuperAdmin;
   @JsonKey(name: "sold")
   final int? sold;
+  @JsonKey(name: "isSuperAdmin")
+  final bool? isSuperAdmin;
   @JsonKey(name: "id")
   final String? id;
 
@@ -179,8 +178,8 @@ class Product {
     this.createdAt,
     this.updatedAt,
     this.V,
-    this.isSuperAdmin,
     this.sold,
+    this.isSuperAdmin,
     this.id,
   });
 
@@ -191,10 +190,11 @@ class Product {
   Map<String, dynamic> toJson() {
     return _$ProductToJson(this);
   }
-  ProductEntity toEntity() {
+  ProductEntity toProductEntity(){
     return ProductEntity(
       rateAvg: rateAvg,
       rateCount: rateCount,
+      id: Id,
       title: title,
       slug: slug,
       description: description,
@@ -208,9 +208,8 @@ class Product {
       createdAt: createdAt,
       updatedAt: updatedAt,
       v: V,
-      isSuperAdmin: isSuperAdmin,
       sold: sold,
-      id: id,
+      isSuperAdmin: isSuperAdmin,
     );
   }
 }
