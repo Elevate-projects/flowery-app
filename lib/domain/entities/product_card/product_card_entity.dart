@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 
 // ignore: must_be_immutable
 class ProductCardEntity extends Equatable {
-  ProductCardEntity({
+  const ProductCardEntity({
     this.productId,
     this.title,
     this.slug,

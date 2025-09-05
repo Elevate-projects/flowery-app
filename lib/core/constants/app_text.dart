@@ -84,7 +84,7 @@ abstract final class AppText {
   static const String categoriesText = "Categories";
   static const String bestSellerText = "Best Seller";
   static const String occassionsText = "Occasion";
-  static const String bearerToken = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjcyZjQ1YmYwOWU4NjkyNzE1YzBkMGY1Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MzE2OTYyMzZ9.evhguCis9LPXLV7ftdnb8rChXYIxSra8ZDAxIJyiXf0";
+  static const String bearerToken = "Bearer ";
 
   //Exceptions
   static const String connectionError =

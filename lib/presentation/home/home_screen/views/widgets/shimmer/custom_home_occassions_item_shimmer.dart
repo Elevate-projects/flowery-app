@@ -20,21 +20,6 @@ class CustomHomeOccassionsItemShimmer extends StatelessWidget {
        ),
         const RSizedBox(height: 8),
         ShimmerEffect(width: 131.w, height: 17.h)
-      //  Padding(
-      //    padding:  REdgeInsetsDirectional.only(start: 14.0),
-      //   //  child: RSizedBox(
-      //   //   width: 130,
-      //   //    child: Text(
-      //   //     overflow: TextOverflow.ellipsis,
-      //   //     maxLines: 1,
-      //   //      occasionsEntity.name ?? "",
-      //   //      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-      //   //        color: AppColors.black,
-      //   //        fontWeight: FontWeight.w500
-      //   //      ),
-      //   //    ),
-      //   //  ),
-      //  ),
      ],
         );
   }

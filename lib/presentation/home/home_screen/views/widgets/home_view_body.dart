@@ -1,9 +1,9 @@
 import 'package:flowery_app/presentation/home/home_screen/view_model/home_products_cubit.dart';
-import 'package:flowery_app/presentation/home/home_screen/views/widgets/home_best_seller_list_View_body.dart';
+import 'package:flowery_app/presentation/home/home_screen/views/widgets/home_best_seller_list_view_body.dart';
 import 'package:flowery_app/presentation/home/home_screen/views/widgets/home_category_list_view_body.dart';
 import 'package:flowery_app/presentation/home/home_screen/views/widgets/home_occassions_list_view_body.dart';
 import 'package:flowery_app/presentation/home/home_screen/views/widgets/location_selector.dart';
-import 'package:flowery_app/presentation/home/home_screen/views/widgets/shimmer/home_best_seller_list_View_body_shimmer.dart';
+import 'package:flowery_app/presentation/home/home_screen/views/widgets/shimmer/home_best_seller_list_view_body_shimmer.dart';
 import 'package:flowery_app/presentation/home/home_screen/views/widgets/shimmer/home_category_list_view_body_shimmer.dart';
 import 'package:flowery_app/presentation/home/home_screen/views/widgets/shimmer/home_occassions_list_view_body_shimmer.dart';
 import 'package:flowery_app/utils/loaders/loaders.dart';

@@ -17,12 +17,16 @@ class HomeProductsCubit extends Cubit<HomeProductsState> {
     : super(const HomeProductsState());
 
   Future<void> doIntent({required HomeProductsIntent intent}) async {
-    if (intent is GetAllProductsIntent) {
-      await _getAllProducts();
-    } else if (intent is RefreshHomeProductsIntent) {
-      // _refreshHomeProducts();
-    } else if (intent is RetryLoadingIntent) {
-      //_retryLoading();
+    switch (intent) {
+      case GetAllProductsIntent():
+        await _getAllProducts();
+        break;
+      case RefreshHomeProductsIntent():
+        // await _refreshHomeProducts();
+        break;
+      case RetryLoadingIntent():
+        // await _retryLoading();
+        break;
     }
   }
 

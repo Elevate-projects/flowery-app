@@ -13,7 +13,7 @@ class HomeCategoryListViewBodyShimmer extends StatelessWidget {
     final theme = Theme.of(context);
     return RSizedBox(
       height: 134,
-      width: 1.sw,
+      width: 1,
       child: Column(
         children: [
           Row(
@@ -25,9 +25,8 @@ class HomeCategoryListViewBodyShimmer extends StatelessWidget {
               ),
               Text(
                 AppText.viewAll,
-                style: theme.textTheme.bodyMedium?.copyWith(
+                style: theme.textTheme.bodySmall?.copyWith(
                   color: Colors.pink,
-                  fontSize: 12.sp,
                   fontWeight: FontWeight.w500,
                   decoration: TextDecoration.underline,
                   decorationColor: Colors.pink,

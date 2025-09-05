@@ -11,18 +11,3 @@ class HomeProductsState extends Equatable {
   @override
   List<Object?> get props => [homeState];
 }
-
-final class CategoriesViewAllState extends HomeProductsState {
-  @override
-  List<Object?> get props => [];
-}
-
-final class BestSellersViewAllState extends HomeProductsState {
-  @override
-  List<Object?> get props => [];
-}
-
-final class OccasionsViewAllState extends HomeProductsState {
-  @override
-  List<Object?> get props => [];
-}

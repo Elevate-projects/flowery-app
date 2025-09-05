@@ -10,6 +10,7 @@ class CustomHomeBestSellerItem extends StatelessWidget {
   final ProductCardEntity bestSellerEntity;
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,7 +41,7 @@ class CustomHomeBestSellerItem extends StatelessWidget {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   bestSellerEntity.title ?? "",
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  style: theme.textTheme.bodyLarge?.copyWith(
                     color: AppColors.black,
                     fontSize: 12.sp,
                   ),
@@ -48,7 +49,7 @@ class CustomHomeBestSellerItem extends StatelessWidget {
               ),
               Text(
                 "${bestSellerEntity.price} egp",
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                style: theme.textTheme.bodyLarge?.copyWith(
                   color: AppColors.black,
                   fontWeight: FontWeight.w500,
                 ),

@@ -26,9 +26,8 @@ class HomeBestSellerListViewBody extends StatelessWidget {
               ),
               Text(
                 AppText.viewAll,
-                style: theme.textTheme.bodyMedium?.copyWith(
+                style: theme.textTheme.bodySmall?.copyWith(
                   color: Colors.pink,
-                  fontSize: 12.sp,
                   fontWeight: FontWeight.w500,
                   decoration: TextDecoration.underline,
                   decorationColor: Colors.pink,

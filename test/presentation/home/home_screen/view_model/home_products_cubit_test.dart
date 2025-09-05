@@ -27,7 +27,7 @@ void main() {
     expectedFailureResult = Failure(
       responseException: const ResponseException(message: 'Error occurred'),
     );
-    productsResponseEntity = ProductsResponseEntity(
+    productsResponseEntity = const ProductsResponseEntity(
       message: "Success",
       products: [
         ProductCardEntity(
@@ -39,7 +39,7 @@ void main() {
           categoryId: "Bouquets",
         ),
       ],
-      categories: const [
+      categories: [
         CategoryEntity(
           id: '1',
           name: "Bouquets",
@@ -47,7 +47,7 @@ void main() {
           createdAt: '2023-01-01T00:00:00Z',
         ),
       ],
-      occasions: const [
+      occasions: [
         OccasionEntity(
           id: '1',
           name: "Wedding",
