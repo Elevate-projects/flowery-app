@@ -16,7 +16,12 @@ import 'package:mockito/mockito.dart';
 
 import 'profile_cubit_test.mocks.dart';
 
-@GenerateMocks([GetUserProfileDataUseCase, GlobalCubit,LogoutUseCase, SecureStorage])
+@GenerateMocks([
+  GetUserProfileDataUseCase,
+  GlobalCubit,
+  LogoutUseCase,
+  SecureStorage,
+])
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -190,11 +195,6 @@ void main() {
       act: (cubit) async => await cubit.doIntent(intent: LogoutIntent()),
       expect: () => [
         isA<ProfileState>().having(
-              (state) => state.selectedLanguage,
-          "selectedLanguage",
-          Languages.english,
-        ),
-        isA<ProfileState>().having(
           (state) => state.logoutStatus.isLoading,
           "Is Loading State",
           equals(true),
@@ -237,11 +237,6 @@ void main() {
       },
       act: (cubit) async => await cubit.doIntent(intent: LogoutIntent()),
       expect: () => [
-        isA<ProfileState>().having(
-              (state) => state.selectedLanguage,
-          "selectedLanguage",
-          Languages.english,
-        ),
         isA<ProfileState>().having(
           (state) => state.logoutStatus.isLoading,
           "Is Loading State",

@@ -1,10 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/presentation/auth/register/view_model/register_cubit.dart';
 import 'package:flowery_app/presentation/auth/register/view_model/register_intent.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HaveAccountLoginText extends StatelessWidget {

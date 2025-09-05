@@ -1,9 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_colors.dart';
 import 'package:flowery_app/core/constants/app_icons.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/core/router/route_names.dart';
-import 'package:flowery_app/presentation/profile/views/widgets/logout_section.dart';
 import 'package:flowery_app/presentation/profile/views/widgets/language_section.dart';
+import 'package:flowery_app/presentation/profile/views/widgets/logout_section.dart';
 import 'package:flowery_app/presentation/profile/views/widgets/notification_switch.dart';
 import 'package:flowery_app/presentation/profile/views/widgets/profile_navigation_item.dart';
 import 'package:flutter/material.dart';
