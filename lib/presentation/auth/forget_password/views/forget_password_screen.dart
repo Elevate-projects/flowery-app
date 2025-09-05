@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_colors.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/core/di/di.dart';
@@ -23,7 +24,7 @@ class ForgetPasswordScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           leading: const BackButton(color: AppColors.black),
-          title: const Text(AppText.password),
+          title: Text(AppText.password.tr()),
         ),
 
         body: BlocConsumer<ForgetPasswordViewModel, ForgetPasswordState>(
@@ -62,14 +63,14 @@ class ForgetPasswordScreen extends StatelessWidget {
                     SizedBox(height: 25.h),
 
                     Text(
-                      AppText.forgetPassword2,
+                      AppText.forgetPassword2.tr(),
                       style: Theme.of(
                         context,
                       ).textTheme.headlineLarge?.copyWith(fontSize: 20.sp),
                     ),
                     SizedBox(height: 15.h),
-                    const Text(
-                      AppText.enterRegisteredEmail,
+                    Text(
+                      AppText.enterRegisteredEmail.tr(),
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.clip,
                     ),

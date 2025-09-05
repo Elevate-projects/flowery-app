@@ -3,6 +3,7 @@ import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+
 class TermsConditionsText extends StatelessWidget {
   const TermsConditionsText({super.key});
 
@@ -14,16 +15,13 @@ class TermsConditionsText extends StatelessWidget {
         text: TextSpan(
           children: [
             TextSpan(
-              text: AppText.createAnAccountYouAgree,
-              style: theme.textTheme.bodySmall?.copyWith(
-                color: theme.colorScheme.onSecondary,
-              ),
+              text: AppText.createAnAccountYouAgree.tr(),
+              style: theme.textTheme.labelMedium,
             ),
             TextSpan(
-              text: AppText.termsAndConditions,
+              text: AppText.termsAndConditions.tr(),
               style: theme.textTheme.bodySmall?.copyWith(
                 fontWeight: FontWeight.bold,
-                fontSize: 12.sp,
                 color: AppColors.black,
                 decoration: TextDecoration.underline,
                 decorationColor: AppColors.black,

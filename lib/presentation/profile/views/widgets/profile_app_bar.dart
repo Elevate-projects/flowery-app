@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_icons.dart';
 import 'package:flowery_app/core/constants/app_images.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
@@ -34,7 +35,7 @@ class ProfileAppBar extends StatelessWidget {
               ),
               Flexible(
                 child: Text(
-                  AppText.flowery,
+                  AppText.flowery.tr(),
                   style: theme.textTheme.headlineMedium?.copyWith(
                     fontWeight: FontWeight.w400,
                     color: theme.colorScheme.primary,

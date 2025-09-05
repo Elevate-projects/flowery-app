@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/connection_manager/connection_manager.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/core/exceptions/dio_exceptions.dart';
@@ -25,8 +26,8 @@ Future<Result<T>> executeApi<T>(Future<T> Function() apiCall) async {
       return Success(data);
     } else {
       return Failure(
-        responseException: const ResponseException(
-          message: AppText.connectionError,
+        responseException: ResponseException(
+          message: AppText.connectionError.tr(),
         ),
       );
     }

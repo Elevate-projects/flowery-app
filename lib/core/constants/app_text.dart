@@ -1,121 +1,111 @@
 abstract final class AppText {
   // Login
-  static const String login = "Login";
-  static const String email = "Email";
-  static const String emailHint = "Enter your email";
-  static const String password = "Password";
-  static const String passwordHint = "Enter your password";
-  static const String rememberMe = "Remember me";
-  static const String forgetPassword = "Forget password?";
-  static const String donNotHaveAccount = "Don't have an account?";
-  static const String signup = "Sign up";
-  static const String continueAsGuest = "Continue as guest";
+  static const String login = "login";
+  static const String email = "email";
+  static const String emailHint = "emailHint";
+  static const String password = "password";
+  static const String passwordHint = "passwordHint";
+  static const String rememberMe = "rememberMe";
+  static const String forgetPassword = "forgetPassword";
+  static const String donNotHaveAccount = "donNotHaveAccount";
+  static const String signup = "signup";
+  static const String continueAsGuest = "continueAsGuest";
 
-  //   forgetPassword
-  static const String forgetPassword2 = "Forget password";
-  static const String enterRegisteredEmail =
-      'Please enter your email associated to your account';
-  static const String confirmButton = "Confirm";
-  static const String success = "success";
+  // forgetPassword
+  static const String forgetPassword2 = "forgetPassword2";
+  static const String enterRegisteredEmail = "enterRegisteredEmail";
+  static const String confirmButton = "confirmButton";
 
   // Categories
-  static const String search = "Search";
-  static const String notProvided = "Not Provided";
+  static const String search = "search";
 
   // Signup
-  static const String firstName = "First Name";
-  static const String firstNameHint = "Enter your first name";
-  static const String lastName = "Last Name";
-  static const String lastNameHint = "Enter your last name";
-  static const String confirmPassword = "Confirm Password";
-  static const String confirmPasswordHint = "Confirm your password";
-  static const String phoneNumber = "Phone Number";
-  static const String phoneNumberHint = "Enter your phone number";
-  static const String genderMale = 'male';
-  static const String genderFemale = 'female';
-  static const String genderMaleDisplay = 'Male';
-  static const String genderFemaleDisplay = 'Female';
-  static const String genderLabel = 'Gender';
-  static const String createAnAccountYouAgree =
-      "Creating an account, you agree to our ";
-  static const String termsAndConditions = "Terms and Conditions";
-  static const String alreadyHaveAnAccount = "Already have an account?";
+  static const String firstName = "firstName";
+  static const String firstNameHint = "firstNameHint";
+  static const String lastName = "lastName";
+  static const String lastNameHint = "lastNameHint";
+  static const String confirmPassword = "confirmPassword";
+  static const String confirmPasswordHint = "confirmPasswordHint";
+  static const String phoneNumber = "phoneNumber";
+  static const String phoneNumberHint = "phoneNumberHint";
+  static const String genderMale = "genderMale";
+  static const String genderFemale = "genderFemale";
+  static const String genderMaleDisplay = "genderMaleDisplay";
+  static const String genderFemaleDisplay = "genderFemaleDisplay";
+  static const String genderLabel = "genderLabel";
+  static const String createAnAccountYouAgree = "createAnAccountYouAgree";
+  static const String termsAndConditions = "termsAndConditions";
+  static const String alreadyHaveAnAccount = "alreadyHaveAnAccount";
 
   // AppSection
-  static const String home = "Home";
-  static const String categories = "Categories";
-  static const String cart = "Cart";
-  static const String profile = "Profile";
+  static const String home = "home";
+  static const String categories = "categories";
+  static const String cart = "cart";
+  static const String profile = "profile";
 
   // Profile
-  static const String flowery = "Flowery";
-  static const String myOrders = "My orders";
-  static const String savedAddress = "Saved address";
-  static const String notification = "Notification";
-  static const String language = "Language";
-  static const String english = "English";
-  static const String aboutUs = "About us";
-  static const String termsConditions = "Terms & conditions";
-  static const String logout = "Logout";
-  static const String version = "v 6.3.0 - (446)";
+  static const String flowery = "flowery";
+  static const String myOrders = "myOrders";
+  static const String savedAddress = "savedAddress";
+  static const String notification = "notification";
+  static const String language = "language";
+  static const String english = "english";
+  static const String arabic = "arabic";
+  static const String aboutUs = "aboutUs";
+  static const String termsConditions = "termsConditions";
+  static const String logout = "logout";
+  static const String version = "version";
+  static const String changeLanguage = "changeLanguage";
   static const String logoutCapital = "LOGOUT";
   static const String confirmLogout = "Confirm logout!!";
   static const String cancel = "Cancel";
 
   // Product Details
-  static const String status = "Status: ";
-  static const String inStock = "In stock";
-  static const String outStock = "Out stock";
-  static const String taxIncludedMessage = "All prices include tax";
-  static const String description = "Description";
+  static const String status = "status";
+  static const String inStock = "inStock";
+  static const String outStock = "outStock";
+  static const String taxIncludedMessage = "taxIncludedMessage";
+  static const String description = "description";
 
   // Validations
-  static const String userNameValidation = "This user name is not valid";
-  static const String emptyTextValidation = 'This field is required';
-  static const String phoneNumberValidation = "Phone number field is required";
-  static const String phoneNumberValidation2 =
-      "Phone Number should consist of 11 digits";
-  static const String emailValidation = "This Email is not valid";
-  static const String emailValidation2 = "Enter a valid email";
-  static const String passwordValidation = "Invalid password";
-  static const String passwordValidation2 =
-      "Password field should contain at least 8 characters";
-  static const String confirmPasswordValidation =
-      "Confirm password field is required";
-  static const String confirmPasswordValidation2 =
-      "Password does not match, please check the entered password";
-  static const String passwordValidation3 = "Password cannot contain spaces";
-  static const String passwordValidation4 =
-      "Password must contain at least one number";
-  static const String passwordValidation5 =
-      "Password must not exceed 20 characters";
-  static const String passwordValidation6 =
-      "Password must contain a capital letter";
-  static const String passwordValidation7 =
-      "Password must contain a special character";
-  static const String otpValidation =
-      "The code sent to your email address is required";
-  static const String otpValidation2 = "You have to enter the 6-digit code";
+  static const String userNameValidation = "userNameValidation";
+  static const String emptyTextValidation = "emptyTextValidation";
+  static const String phoneNumberValidation = "phoneNumberValidation";
+  static const String phoneNumberValidation2 = "phoneNumberValidation2";
+  static const String emailValidation = "emailValidation";
+  static const String emailValidation2 = "emailValidation2";
+  static const String passwordValidation = "passwordValidation";
+  static const String passwordValidation2 = "passwordValidation2";
+  static const String confirmPasswordValidation = "confirmPasswordValidation";
+  static const String confirmPasswordValidation2 = "confirmPasswordValidation2";
+  static const String passwordValidation3 = "passwordValidation3";
+  static const String passwordValidation4 = "passwordValidation4";
+  static const String passwordValidation5 = "passwordValidation5";
+  static const String passwordValidation6 = "passwordValidation6";
+  static const String passwordValidation7 = "passwordValidation7";
+  static const String otpValidation = "otpValidation";
+  static const String otpValidation2 = "otpValidation2";
 
   // Product Item
-  static const String egp = "EGP";
-  static const String addToCart = "Add to cart";
+  static const String egp = "egp";
+  static const String addToCart = "addToCart";
 
-  //Exceptions
-  static const String connectionError =
-      "Please check your internet connection and try again";
-  static const String noResponseReceivedMessage =
-      "No response received or response is not in expected format.";
-  static const String error = "Error";
-  static const String unexpectedError = "Unexpected error:";
-  static const String unexpectedErrorOccurred = "Unexpected error occurred.";
-  static const String requestCancelled = "Request was cancelled.";
-  static const String receiveTimeout =
-      "Receive timeout, please try again later.";
-  static const String sendTimeout = "Send timeout, please try again later.";
-  static const String connectionTimeout =
-      "Connection timeout, please try again later.";
-  static const String networkError =
-      "Something went wrong. Please check your internet connection.";
-  static const String anUnknownErrorOccurred = "An unknown error occurred.";
+  //home screen
+  static const String viewAll = "viewAll";
+  static const String categoriesText = "categoriesText";
+  static const String bestSellerText = "bestSellerText";
+  static const String occasionsText = "occasionsText";
+
+  // Exceptions
+  static const String connectionError = "connectionError";
+  static const String noResponseReceivedMessage = "noResponseReceivedMessage";
+  static const String error = "error";
+  static const String unexpectedError = "unexpectedError";
+  static const String unexpectedErrorOccurred = "unexpectedErrorOccurred";
+  static const String requestCancelled = "requestCancelled";
+  static const String receiveTimeout = "receiveTimeout";
+  static const String sendTimeout = "sendTimeout";
+  static const String connectionTimeout = "connectionTimeout";
+  static const String networkError = "networkError";
+  static const String anUnknownErrorOccurred = "anUnknownErrorOccurred";
 }

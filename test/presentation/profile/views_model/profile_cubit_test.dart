@@ -1,6 +1,7 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flowery_app/api/client/api_result.dart';
 import 'package:flowery_app/core/exceptions/response_exception.dart';
+import 'package:flowery_app/core/global_cubit/global_cubit.dart';
 import 'package:flowery_app/core/secure_storage/secure_storage.dart';
 import 'package:flowery_app/domain/entities/user_data/user_data_entity.dart';
 import 'package:flowery_app/domain/use_cases/logout/logout_use_case.dart';
@@ -15,7 +16,7 @@ import 'package:mockito/mockito.dart';
 
 import 'profile_cubit_test.mocks.dart';
 
-@GenerateMocks([GetUserProfileDataUseCase, LogoutUseCase, SecureStorage])
+@GenerateMocks([GetUserProfileDataUseCase, GlobalCubit,LogoutUseCase, SecureStorage])
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -27,12 +28,15 @@ void main() {
   late Result<void> expectedLogoutSuccessResult;
   late Failure<void> expectedLogoutFailureResult;
   late UserDataEntity userDataEntity;
+  late MockGlobalCubit mockGlobalCubit;
   late ProfileCubit cubit;
 
   setUpAll(() {
     mockGetUserProfileDataUseCase = MockGetUserProfileDataUseCase();
     mockLogoutUseCase = MockLogoutUseCase();
     mockSecureStorage = MockSecureStorage();
+    mockGlobalCubit = MockGlobalCubit();
+    when(mockGlobalCubit.isArLanguage).thenAnswer((_) => false);
 
     userDataEntity = UserDataEntity(
       id: "1",
@@ -69,9 +73,15 @@ void main() {
         ).thenAnswer((_) async => expectedSuccessResult); // success
         return cubit;
       },
-      act: (cubit) async =>
-          await cubit.doIntent(intent: ProfileInitializationIntent()),
+      act: (cubit) async => await cubit.doIntent(
+        intent: ProfileInitializationIntent(globalCubit: mockGlobalCubit),
+      ),
       expect: () => [
+        isA<ProfileState>().having(
+          (state) => state.selectedLanguage,
+          "selectedLanguage",
+          Languages.english,
+        ),
         isA<ProfileState>().having(
           (state) => state.profileStatus.isLoading,
           "Is Loading State",
@@ -136,9 +146,15 @@ void main() {
         ).thenAnswer((_) async => expectedFailureResult);
         return cubit;
       },
-      act: (cubit) async =>
-          await cubit.doIntent(intent: ProfileInitializationIntent()),
+      act: (cubit) async => await cubit.doIntent(
+        intent: ProfileInitializationIntent(globalCubit: mockGlobalCubit),
+      ),
       expect: () => [
+        isA<ProfileState>().having(
+          (state) => state.selectedLanguage,
+          "selectedLanguage",
+          Languages.english,
+        ),
         isA<ProfileState>().having(
           (state) => state.profileStatus.isLoading,
           "Is Loading State",
@@ -173,6 +189,11 @@ void main() {
       },
       act: (cubit) async => await cubit.doIntent(intent: LogoutIntent()),
       expect: () => [
+        isA<ProfileState>().having(
+              (state) => state.selectedLanguage,
+          "selectedLanguage",
+          Languages.english,
+        ),
         isA<ProfileState>().having(
           (state) => state.logoutStatus.isLoading,
           "Is Loading State",
@@ -216,6 +237,11 @@ void main() {
       },
       act: (cubit) async => await cubit.doIntent(intent: LogoutIntent()),
       expect: () => [
+        isA<ProfileState>().having(
+              (state) => state.selectedLanguage,
+          "selectedLanguage",
+          Languages.english,
+        ),
         isA<ProfileState>().having(
           (state) => state.logoutStatus.isLoading,
           "Is Loading State",

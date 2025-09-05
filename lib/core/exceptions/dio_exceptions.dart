@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/api/client/api_result.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/core/exceptions/response_exception.dart';
@@ -11,42 +12,46 @@ class DioExceptions extends Failure {
       switch (error.type) {
         case DioExceptionType.connectionTimeout:
           return DioExceptions(
-            responseException: const ResponseException(
-              message: AppText.connectionTimeout,
+            responseException: ResponseException(
+              message: AppText.connectionTimeout.tr(),
             ),
           );
         case DioExceptionType.sendTimeout:
           return DioExceptions(
-            responseException: const ResponseException(message: AppText.sendTimeout),
+            responseException: ResponseException(
+              message: AppText.sendTimeout.tr(),
+            ),
           );
         case DioExceptionType.receiveTimeout:
           return DioExceptions(
-            responseException: const ResponseException(
-              message: AppText.receiveTimeout,
+            responseException: ResponseException(
+              message: AppText.receiveTimeout.tr(),
             ),
           );
         case DioExceptionType.badResponse:
           return _handleBadResponse(error.response);
         case DioExceptionType.cancel:
           return DioExceptions(
-            responseException: const ResponseException(
-              message: AppText.requestCancelled,
+            responseException: ResponseException(
+              message: AppText.requestCancelled.tr(),
             ),
           );
         case DioExceptionType.unknown:
           return DioExceptions(
-            responseException: const ResponseException(message: AppText.networkError),
+            responseException: ResponseException(
+              message: AppText.networkError.tr(),
+            ),
           );
         case DioExceptionType.connectionError:
           return DioExceptions(
-            responseException: const ResponseException(
-              message: AppText.connectionError,
+            responseException: ResponseException(
+              message: AppText.connectionError.tr(),
             ),
           );
         default:
           return DioExceptions(
-            responseException: const ResponseException(
-              message: AppText.unexpectedErrorOccurred,
+            responseException: ResponseException(
+              message: AppText.unexpectedErrorOccurred.tr(),
             ),
           );
       }

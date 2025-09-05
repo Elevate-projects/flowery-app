@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -43,7 +44,7 @@ class ProfileNavigationItem extends StatelessWidget {
                     const RSizedBox(width: 4),
                     Flexible(
                       child: Text(
-                        title ?? "",
+                        title?.tr() ?? "",
                         style: theme.textTheme.bodyMedium,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/core/router/route_names.dart';
 import 'package:flowery_app/presentation/profile/views/widgets/profile_app_bar.dart';
@@ -53,7 +54,7 @@ class ProfileViewBody extends StatelessWidget {
               const ProfileNavigationSection(),
               const RSizedBox(height: 54),
               Text(
-                AppText.version,
+                AppText.version.tr(),
                 style: theme.textTheme.bodySmall?.copyWith(
                   color: theme.colorScheme.shadow,
                 ),
