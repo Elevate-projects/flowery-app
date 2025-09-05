@@ -11,6 +11,8 @@ class FloweryApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
     final startController = BlocProvider.of<GlobalCubit>(context);
     return ScreenUtilInit(
       designSize: const Size(375, 812),
