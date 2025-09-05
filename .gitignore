@@ -51,6 +51,7 @@ app.*.map.json
 **/*.freezed.dart
 **/*.gen.dart
 lib/api/client/api_client.g.dart
+lib/core/di/di.config.dart
 **/*.config.dart
 **/*.mocks.dart
 **/*.gr.dart
@@ -60,3 +61,6 @@ lib/api/client/api_client.g.dart
 ios/Runner/GeneratedPluginRegistrant.*
 android/app/src/main/java/**/GeneratedPluginRegistrant.java
 lib/generated_plugin_registrant.dart
+
+# Coverage
+coverage/

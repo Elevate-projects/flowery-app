@@ -1,9 +1,10 @@
 import 'package:another_flushbar/flushbar.dart';
+import 'package:flowery_app/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 abstract class Loaders {
-  static showSuccessMessage({
+  static void showSuccessMessage({
     Widget? title,
     required String message,
     int secondsDuration = 3,
@@ -13,7 +14,10 @@ abstract class Loaders {
       titleText: title,
       messageText: Text(
         message,
-        style: Theme.of(context).textTheme.bodyLarge,
+        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+          color: AppColors.white,
+          fontWeight: FontWeight.w600,
+        ),
         textAlign: TextAlign.start,
       ),
       icon: Icon(Icons.info_outline_rounded, color: Colors.white, size: 28.r),
@@ -32,7 +36,7 @@ abstract class Loaders {
     ).show(context);
   }
 
-  static showWarningMessage({
+  static void showWarningMessage({
     Widget? title,
     required String message,
     int secondsDuration = 3,
@@ -42,7 +46,10 @@ abstract class Loaders {
       titleText: title,
       messageText: Text(
         message,
-        style: Theme.of(context).textTheme.bodyLarge,
+        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+          color: AppColors.white,
+          fontWeight: FontWeight.w600,
+        ),
         textAlign: TextAlign.start,
       ),
       icon: Icon(Icons.warning_amber_outlined, color: Colors.white, size: 28.r),
@@ -61,7 +68,7 @@ abstract class Loaders {
     ).show(context);
   }
 
-  static showErrorMessage({
+  static void showErrorMessage({
     Widget? title,
     required String message,
     int secondsDuration = 3,
@@ -71,7 +78,10 @@ abstract class Loaders {
       titleText: title,
       messageText: Text(
         message,
-        style: Theme.of(context).textTheme.bodyLarge,
+        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+          color: AppColors.white,
+          fontWeight: FontWeight.w600,
+        ),
         textAlign: TextAlign.start,
       ),
       icon: Icon(Icons.info_outline_rounded, color: Colors.white, size: 28.r),

@@ -1,22 +1,8 @@
-class ProductCardEntity {
-  final String? productId;
-  final String? title;
-  final String? slug;
-  final String? description;
-  final String? imgCover;
-  final List<String>? images;
-  final int? price;
-  final int? priceAfterDiscount;
-  final int? quantity;
-  final String? category;
-  final String? occasion;
-  final int? sold;
-  final double? rateAvg;
-  final int? rateCount;
-  final String? discountPercentage;
-  final bool isInStock;
+import 'package:equatable/equatable.dart';
 
-  const ProductCardEntity({
+// ignore: must_be_immutable
+class ProductCardEntity extends Equatable {
+  ProductCardEntity({
     this.productId,
     this.title,
     this.slug,
@@ -26,12 +12,42 @@ class ProductCardEntity {
     this.price,
     this.priceAfterDiscount,
     this.quantity,
-    this.category,
-    this.occasion,
+    this.categoryId,
+    this.occasionId,
     this.sold,
     this.rateAvg,
     this.rateCount,
     this.discountPercentage,
-    this.isInStock = false,
   });
+
+  String? productId;
+  String? title;
+  String? slug;
+  String? description;
+  String? imgCover;
+  List<String>? images;
+  num? price;
+  num? priceAfterDiscount;
+  num? quantity;
+  String? categoryId;
+  String? occasionId;
+  num? sold;
+  String? discountPercentage;
+
+  @override
+  List<Object?> get props => [
+    productId,
+    title,
+    slug,
+    description,
+    imgCover,
+    images,
+    price,
+    priceAfterDiscount,
+    quantity,
+    categoryId,
+    occasionId,
+    sold,
+    discountPercentage,
+  ];
 }

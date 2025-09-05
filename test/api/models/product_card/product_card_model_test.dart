@@ -8,7 +8,7 @@ void main() {
       "when call toProductCardEntity with null values it should return ProductCardEntity with null values",
       () {
         //Arrange
-        ProductCardModel productCardData = ProductCardModel(
+        final ProductCardModel productCardData = ProductCardModel(
           rateAvg: null,
           rateCount: null,
           id: null,
@@ -31,7 +31,8 @@ void main() {
         );
 
         //Act
-        ProductCardEntity actualResult = productCardData.toProductCardEntity();
+        final ProductCardEntity actualResult = productCardData
+            .toProductCardEntity();
 
         //Assert
         expect(actualResult.productId, equals(productCardData.productId));
@@ -46,8 +47,8 @@ void main() {
           equals(productCardData.priceAfterDiscount),
         );
         expect(actualResult.quantity, equals(productCardData.quantity));
-        expect(actualResult.category, equals(productCardData.category));
-        expect(actualResult.occasion, equals(productCardData.occasion));
+        expect(actualResult.categoryId, equals(productCardData.category));
+        expect(actualResult.occasionId, equals(productCardData.occasion));
         expect(actualResult.discountPercentage, isNull);
       },
     );
@@ -55,7 +56,7 @@ void main() {
       "when call toProductCardEntity with non-nullable values it should return ProductCardEntity with correct values",
       () {
         //Arrange
-        ProductCardModel productCardData = ProductCardModel(
+        final ProductCardModel productCardData = ProductCardModel(
           rateAvg: 4,
           rateCount: 10,
           id: "1",
@@ -78,7 +79,8 @@ void main() {
         );
 
         //Act
-        ProductCardEntity actualResult = productCardData.toProductCardEntity();
+        final ProductCardEntity actualResult = productCardData
+            .toProductCardEntity();
 
         //Assert
         expect(actualResult.productId, equals(productCardData.productId));
@@ -93,8 +95,8 @@ void main() {
           equals(productCardData.priceAfterDiscount),
         );
         expect(actualResult.quantity, equals(productCardData.quantity));
-        expect(actualResult.category, equals(productCardData.category));
-        expect(actualResult.occasion, equals(productCardData.occasion));
+        expect(actualResult.categoryId, equals(productCardData.category));
+        expect(actualResult.occasionId, equals(productCardData.occasion));
         expect(actualResult.discountPercentage, isNotNull);
       },
     );
