@@ -59,6 +59,11 @@ abstract final class AppText {
   static const String logout = "Logout";
   static const String version = "v 6.3.0 - (446)";
 
+  // Edit Profile
+  static const String editProfile = "Edit Profile";
+  static const String editProfileUpdateButton = "Update";
+  static const String changePassword = "Change";
+
   // Product Details
   static const String status = "Status: ";
   static const String inStock = "In stock";

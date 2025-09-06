@@ -87,3 +87,8 @@ flutter:
           weight: 800
         - asset: assets/fonts/inter/Inter_18pt-Black.ttf
           weight: 900
+
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Italic-VariableFont_wdth,wght.ttf
+        - asset: assets/fonts/Roboto-VariableFont_wdth,wght.ttf
