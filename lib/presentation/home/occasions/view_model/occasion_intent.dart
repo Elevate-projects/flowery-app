@@ -1,7 +1,8 @@
+import 'package:flowery_app/domain/entities/arguments/occasion_arguments_entity.dart';
+
 sealed class OccasionIntent {}
 
 class LoadOccasionProducts extends OccasionIntent {
-  final String occasionId;
-
-  LoadOccasionProducts(this.occasionId);
+  final OccasionArgumentsEntity occasionData;
+  LoadOccasionProducts({required this.occasionData});
 }

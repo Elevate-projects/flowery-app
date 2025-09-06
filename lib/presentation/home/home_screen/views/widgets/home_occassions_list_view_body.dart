@@ -15,7 +15,6 @@ class HomeOccassionsListViewBody extends StatelessWidget {
     final theme = Theme.of(context);
     return RSizedBox(
       height: 232,
-      width: 1.sw,
       child: BlocBuilder<HomeProductsCubit, HomeProductsState>(
         builder: (context, state) => Column(
           children: [
@@ -30,9 +29,8 @@ class HomeOccassionsListViewBody extends StatelessWidget {
                   onTap: () => Navigator.of(context).pushNamed(
                     RouteNames.occasionView,
                     arguments: OccasionArgumentsEntity(
-
                       listOfProducts: state.homeState.data?.products ?? [],
-                      occasion:  state.homeState.data!.occasions!.first   ,
+                      occasions: state.homeState.data?.occasions ?? [],
                     ),
                   ),
                   child: Text(

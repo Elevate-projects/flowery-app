@@ -13,7 +13,6 @@ class HomeCategoryListViewBody extends StatelessWidget {
     final theme = Theme.of(context);
     return RSizedBox(
       height: 134,
-      width: 1,
       child: Column(
         children: [
           Row(
@@ -39,15 +38,15 @@ class HomeCategoryListViewBody extends StatelessWidget {
           Expanded(
             child: BlocBuilder<HomeProductsCubit, HomeProductsState>(
               builder: (context, state) {
-                  return ListView.builder(
-                    itemBuilder: (context, index) {
-                      return CustomHomeCategoryItem(
-                        categoryData: state.homeState.data!.categories![index],
-                      );
-                    },
-                    itemCount: state.homeState.data!.categories!.length,
-                    scrollDirection: Axis.horizontal,
-                  );
+                return ListView.builder(
+                  itemBuilder: (context, index) {
+                    return CustomHomeCategoryItem(
+                      categoryData: state.homeState.data!.categories![index],
+                    );
+                  },
+                  itemCount: state.homeState.data!.categories!.length,
+                  scrollDirection: Axis.horizontal,
+                );
               },
             ),
           ),

@@ -14,7 +14,6 @@ class HomeBestSellerListViewBody extends StatelessWidget {
 
     return RSizedBox(
       height: 260,
-      width: 1.sw,
       child: Column(
         children: [
           Row(
@@ -43,7 +42,10 @@ class HomeBestSellerListViewBody extends StatelessWidget {
                 width: 344,
                 child: ListView.builder(
                   itemBuilder: (context, index) {
-                    return  CustomHomeBestSellerItem(bestSellerEntity: state.homeState.data!.bestSeller![index]);
+                    return CustomHomeBestSellerItem(
+                      bestSellerEntity:
+                          state.homeState.data!.bestSeller![index],
+                    );
                   },
                   itemCount: state.homeState.data!.bestSeller!.length,
                   scrollDirection: Axis.horizontal,

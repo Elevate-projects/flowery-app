@@ -20,6 +20,8 @@ import '../../api/data_source/categories/remote_data_source/categories_remote_da
     as _i699;
 import '../../api/data_source/forget_password/remote_data_source/forget_password_remote_data_source_impl.dart'
     as _i428;
+import '../../api/data_source/home_products/home_products_data_source_impl.dart'
+    as _i81;
 import '../../api/data_source/login/remote_data_source/login_remote_data_source_impl.dart'
     as _i221;
 import '../../api/data_source/register/remote_data_source/register_remote_data_source_impl.dart'
@@ -28,6 +30,8 @@ import '../../data/data_source/categories/remote_data_source/categories_remote_d
     as _i960;
 import '../../data/data_source/forget_password/forget_password_remote_data_source.dart'
     as _i849;
+import '../../data/data_source/home_products/home_products_data_source.dart'
+    as _i950;
 import '../../data/data_source/login/remote_data_source/login_remote_data_source.dart'
     as _i684;
 import '../../data/data_source/register/remote_data_source/register_remote_data_source.dart'
@@ -36,12 +40,16 @@ import '../../data/repositories/categories/categories_repository_impl.dart'
     as _i940;
 import '../../data/repositories/forget_password_repo_impl/forget_password_repo_impl.dart'
     as _i1030;
+import '../../data/repositories/home_products/home_products_repository_impl_.dart'
+    as _i713;
 import '../../data/repositories/login/login_repository_impl.dart' as _i722;
 import '../../data/repositories/register/register_repository_impl.dart' as _i40;
 import '../../domain/repositories/categories/categories_repository.dart'
     as _i660;
 import '../../domain/repositories/forget_password/forget_password_repo.dart'
     as _i72;
+import '../../domain/repositories/home_products/home_products_repository.dart'
+    as _i168;
 import '../../domain/repositories/login/login_repository.dart' as _i300;
 import '../../domain/repositories/register/register_repository.dart' as _i638;
 import '../../domain/use_cases/categories/get_all_categories_use_case.dart'
@@ -50,6 +58,8 @@ import '../../domain/use_cases/categories/get_all_products_use_case.dart'
     as _i969;
 import '../../domain/use_cases/forget_password/forget_password_use_case.dart'
     as _i150;
+import '../../domain/use_cases/home_products/home_products_use_case.dart'
+    as _i627;
 import '../../domain/use_cases/login/login_with_email_and_password_use_case.dart'
     as _i197;
 import '../../domain/use_cases/register/register_use_case.dart' as _i950;
@@ -60,6 +70,10 @@ import '../../presentation/auth/register/view_model/register_cubit.dart'
     as _i536;
 import '../../presentation/categories/views_model/categories_cubit.dart'
     as _i200;
+import '../../presentation/home/home_screen/view_model/home_products_cubit.dart'
+    as _i641;
+import '../../presentation/home/occasions/view_model/occasion_view_model.dart'
+    as _i694;
 import '../../presentation/product_details/views_model/product_details_cubit.dart'
     as _i586;
 import '../cache/shared_preferences_helper.dart' as _i686;
@@ -80,6 +94,7 @@ extension GetItInjectableX on _i174.GetIt {
       () => sharedPreferencesModule.prefs,
       preResolve: true,
     );
+    gh.factory<_i694.OccasionsViewModel>(() => _i694.OccasionsViewModel());
     gh.factory<_i586.ProductDetailsCubit>(() => _i586.ProductDetailsCubit());
     gh.singleton<_i361.Dio>(() => apiModule.provideDio());
     gh.singleton<_i23.SecureStorage>(() => _i23.SecureStorage());
@@ -105,6 +120,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i686.SharedPreferencesHelper>(),
       ),
     );
+    gh.factory<_i950.HomeProductsDataSource>(
+      () => _i81.HomeProductsDataSourceImpl(gh<_i508.ApiClient>()),
+    );
     gh.factory<_i849.ForgetPasswordRemoteDataSource>(
       () => _i428.ForgetPasswordRemoteDataSourceImpl(gh<_i508.ApiClient>()),
     );
@@ -113,6 +131,10 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i638.RegisterRepository>(
       () => _i40.RegisterRepositoryImpl(gh<_i233.RegisterRemoteDataSource>()),
+    );
+    gh.factory<_i168.HomeProductsRepository>(
+      () =>
+          _i713.HomeProductsRepositoryImpl(gh<_i950.HomeProductsDataSource>()),
     );
     gh.factory<_i72.ForgetPasswordRepo>(
       () => _i1030.ForgetPasswordRepoImpl(
@@ -123,6 +145,9 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i722.LoginRepositoryImpl(
         loginRemoteDataSource: gh<_i684.LoginRemoteDataSource>(),
       ),
+    );
+    gh.factory<_i627.HomeProductsUseCase>(
+      () => _i627.HomeProductsUseCase(gh<_i168.HomeProductsRepository>()),
     );
     gh.factory<_i197.LoginWithEmailAndPasswordUseCase>(
       () => _i197.LoginWithEmailAndPasswordUseCase(gh<_i300.LoginRepository>()),
@@ -137,6 +162,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i969.GetAllProductsUseCase>(
       () => _i969.GetAllProductsUseCase(gh<_i660.CategoriesRepository>()),
+    );
+    gh.factory<_i641.HomeProductsCubit>(
+      () => _i641.HomeProductsCubit(gh<_i627.HomeProductsUseCase>()),
     );
     gh.factory<_i950.RegisterUseCase>(
       () => _i950.RegisterUseCase(gh<_i638.RegisterRepository>()),

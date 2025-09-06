@@ -1,11 +1,15 @@
+import 'package:equatable/equatable.dart';
 import 'package:flowery_app/domain/entities/home_products/occasions_entity.dart';
 import 'package:flowery_app/domain/entities/product_card/product_card_entity.dart';
 
-class OccasionArgumentsEntity {
-  const OccasionArgumentsEntity({
+class OccasionProductsEntity extends Equatable {
+  const OccasionProductsEntity({
     required this.listOfProducts,
-    required this.occasions,
+    required this.occasion,
   });
   final List<ProductCardEntity> listOfProducts;
-  final List<OccasionEntity> occasions;
+  final OccasionEntity occasion;
+
+  @override
+  List<Object?> get props => [listOfProducts, occasion];
 }
