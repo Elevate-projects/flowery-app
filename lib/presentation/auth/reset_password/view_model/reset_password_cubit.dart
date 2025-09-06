@@ -10,7 +10,7 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class ResetPasswordCubit extends Cubit<ResetPasswordState> {
-  GetResetPasswordUsecase getResetPasswordUseCase;
+  GetResetPasswordUseCase getResetPasswordUseCase;
 
   @factoryMethod
   ResetPasswordCubit(this.getResetPasswordUseCase)

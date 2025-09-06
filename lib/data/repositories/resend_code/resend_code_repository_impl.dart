@@ -1,14 +1,15 @@
+import 'package:flowery_app/api/client/api_result.dart';
+import 'package:flowery_app/data/data_source/resend_code/resend_code_data_source.dart';
+import 'package:flowery_app/domain/entities/resend_code/request/resend_code_request.dart';
+import 'package:flowery_app/domain/entities/resend_code/response/resend_code_response.dart';
+import 'package:flowery_app/domain/repositories/resend_code/resend_code.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../api/client/api_result.dart';
-import '../../../domain/entities/resend_code/request/resend_code_request.dart';
-import '../../../domain/entities/resend_code/response/resend_code_response.dart';
-import '../../../domain/repositories/resend_code/resend_code.dart';
-import '../../data_source/resend_code/resend_code_data_source.dart';
+
 
 @Injectable(as: ResendCodeRepository)
 class ResendCodeRepositoryImpl implements ResendCodeRepository {
-  ResendCodeDataSource _resendCodeDataSource;
+  final ResendCodeDataSource _resendCodeDataSource;
 
   ResendCodeRepositoryImpl(this._resendCodeDataSource);
 

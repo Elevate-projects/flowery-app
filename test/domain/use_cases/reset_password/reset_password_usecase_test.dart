@@ -14,7 +14,7 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
   test('verify calling  resendCode from dataSource ', () async {
     final mockRepo = MockResetPasswordRepository();
-    final GetResetPasswordUsecase useCase = GetResetPasswordUsecase(mockRepo);
+    final GetResetPasswordUseCase useCase = GetResetPasswordUseCase(mockRepo);
 
     final resetCodeRequest = ResetPasswordRequestEntity(
       email: 'moaazhassan559@gmail.com',

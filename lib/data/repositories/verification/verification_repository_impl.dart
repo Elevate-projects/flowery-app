@@ -1,19 +1,19 @@
+import 'package:flowery_app/api/client/api_result.dart';
+import 'package:flowery_app/data/data_source/verification/verification_data_source.dart';
+import 'package:flowery_app/domain/entities/verification/request/verify_requset.dart';
+import 'package:flowery_app/domain/entities/verification/response/verify_response.dart';
+import 'package:flowery_app/domain/repositories/verification/verification_repository.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../api/client/api_result.dart';
-import '../../../domain/entities/verification/request/verify_requset.dart';
-import '../../../domain/entities/verification/response/verify_response.dart';
-import '../../../domain/repositories/verification/verification_repository.dart';
-import '../../data_source/verification/verification_data_source.dart';
 
 @Injectable(as: VerificationRepository)
-class VreificationRepositoryImpl implements VerificationRepository {
-  VerificationDataSource _verificationDataSource;
+class VerificationRepositoryImpl implements VerificationRepository {
+  final VerificationDataSource _verificationDataSource;
 
-  VreificationRepositoryImpl(this._verificationDataSource);
+  VerificationRepositoryImpl(this._verificationDataSource);
 
   @override
-  Future<Result<VerifyResponseEntity>> verify(VerifyRequsetEntity request) {
+  Future<Result<VerifyResponseEntity>> verify(VerifyRequestEntity request) {
     return _verificationDataSource.verify(request);
   }
 }

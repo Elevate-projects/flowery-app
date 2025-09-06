@@ -20,7 +20,7 @@ void main() {
     final mockApiClient = MockApiClient();
     final mockConnectivity = MockConnectivity();
     ConnectionManager.connectivity = mockConnectivity;
-    final VreificationDataSourceImpl dataSource = VreificationDataSourceImpl(
+    final VerificationDataSourceImpl dataSource = VerificationDataSourceImpl(
       mockApiClient,
     );
 

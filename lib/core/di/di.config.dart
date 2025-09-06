@@ -140,7 +140,7 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i686.SharedPreferencesHelper(gh<_i460.SharedPreferences>()),
     );
     gh.factory<_i14.VerificationDataSource>(
-      () => _i15.VreificationDataSourceImpl(gh<_i508.ApiClient>()),
+      () => _i15.VerificationDataSourceImpl(gh<_i508.ApiClient>()),
     );
     gh.factory<_i233.RegisterRemoteDataSource>(
       () => _i281.RegisterRemoteDataSourceImpl(
@@ -172,12 +172,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i849.ForgetPasswordRemoteDataSource>(
       () => _i428.ForgetPasswordRemoteDataSourceImpl(gh<_i508.ApiClient>()),
     );
-    gh.factory<_i335.GetResendCodeUsecase>(
-      () => _i335.GetResendCodeUsecase(gh<_i673.ResendCodeRepository>()),
+    gh.factory<_i335.GetResendCodeUseCase>(
+      () => _i335.GetResendCodeUseCase(gh<_i673.ResendCodeRepository>()),
     );
     gh.factory<_i550.VerificationRepository>(
       () =>
-          _i1003.VreificationRepositoryImpl(gh<_i14.VerificationDataSource>()),
+          _i1003.VerificationRepositoryImpl(gh<_i14.VerificationDataSource>()),
     );
     gh.factory<_i960.CategoriesRemoteDataSource>(
       () => _i699.CategoriesRemoteDataSourceImpl(gh<_i508.ApiClient>()),
@@ -214,11 +214,11 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i960.CategoriesRemoteDataSource>(),
       ),
     );
-    gh.factory<_i510.GetVerificationUsecase>(
-      () => _i510.GetVerificationUsecase(gh<_i550.VerificationRepository>()),
+    gh.factory<_i510.GetVerificationUseCase>(
+      () => _i510.GetVerificationUseCase(gh<_i550.VerificationRepository>()),
     );
-    gh.factory<_i963.GetResetPasswordUsecase>(
-      () => _i963.GetResetPasswordUsecase(gh<_i189.ResetPasswordRepository>()),
+    gh.factory<_i963.GetResetPasswordUseCase>(
+      () => _i963.GetResetPasswordUseCase(gh<_i189.ResetPasswordRepository>()),
     );
     gh.factory<_i824.GetAllCategoriesUseCase>(
       () => _i824.GetAllCategoriesUseCase(gh<_i660.CategoriesRepository>()),
@@ -234,8 +234,8 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i988.VerificationScreenCubit>(
       () => _i988.VerificationScreenCubit(
-        gh<_i335.GetResendCodeUsecase>(),
-        gh<_i510.GetVerificationUsecase>(),
+        gh<_i335.GetResendCodeUseCase>(),
+        gh<_i510.GetVerificationUseCase>(),
       ),
     );
     gh.factory<_i150.ForgetPasswordUseCase>(
@@ -249,7 +249,7 @@ extension GetItInjectableX on _i174.GetIt {
       ),
     );
     gh.factory<_i349.ResetPasswordCubit>(
-      () => _i349.ResetPasswordCubit(gh<_i963.GetResetPasswordUsecase>()),
+      () => _i349.ResetPasswordCubit(gh<_i963.GetResetPasswordUseCase>()),
     );
     gh.factory<_i200.CategoriesCubit>(
       () => _i200.CategoriesCubit(

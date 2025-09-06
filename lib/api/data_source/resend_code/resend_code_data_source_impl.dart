@@ -8,7 +8,7 @@ import 'package:injectable/injectable.dart';
 
 @Injectable(as: ResendCodeDataSource)
 class ResendCodeDataSourceImpl implements ResendCodeDataSource {
-  ApiClient _apiClient;
+  final ApiClient _apiClient;
 
   @factoryMethod
   ResendCodeDataSourceImpl(this._apiClient);
@@ -18,7 +18,7 @@ class ResendCodeDataSourceImpl implements ResendCodeDataSource {
     ResendCodeRequestEntity request,
   ) async {
     return executeApi(() async {
-      var res = await _apiClient.resendCode(RequestMapper.resendCodeToDto(request));
+      final res = await _apiClient.resendCode(RequestMapper.resendCodeToDto(request));
       return RequestMapper.resendCodeToEntity(res);
     });
   }

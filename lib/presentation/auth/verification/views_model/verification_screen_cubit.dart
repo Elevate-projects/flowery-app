@@ -14,8 +14,8 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class VerificationScreenCubit extends Cubit<VerificationScreenState> {
-  final GetResendCodeUsecase _getResendCodeUseCase;
-  final GetVerificationUsecase _getVerificationUseCase;
+  final GetResendCodeUseCase _getResendCodeUseCase;
+  final GetVerificationUseCase _getVerificationUseCase;
 
   Timer? _timer;
 

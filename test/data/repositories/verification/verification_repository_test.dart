@@ -14,7 +14,7 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
   test('verify calling  verification from dataSource ', () async {
     final mockDataSource = MockVerificationDataSource();
-    final VreificationRepositoryImpl repo = VreificationRepositoryImpl(
+    final VerificationRepositoryImpl repo = VerificationRepositoryImpl(
       mockDataSource,
     );
 

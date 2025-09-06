@@ -15,7 +15,7 @@ import 'package:mockito/mockito.dart';
 
 import 'verification_screen_cubit_test.mocks.dart';
 
-@GenerateMocks([GetResendCodeUsecase, GetVerificationUsecase])
+@GenerateMocks([GetResendCodeUseCase, GetVerificationUseCase])
 void main() {
   late MockGetResendCodeUsecase getResendCodeUseCase;
   late MockGetVerificationUsecase getVerificationUseCase;

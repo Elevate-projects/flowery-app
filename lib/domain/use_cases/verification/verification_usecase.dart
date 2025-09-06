@@ -1,19 +1,17 @@
-
+import 'package:flowery_app/api/client/api_result.dart';
+import 'package:flowery_app/domain/entities/verification/request/verify_requset.dart';
+import 'package:flowery_app/domain/entities/verification/response/verify_response.dart';
+import 'package:flowery_app/domain/repositories/verification/verification_repository.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../api/client/api_result.dart';
-import '../../entities/verification/request/verify_requset.dart';
-import '../../entities/verification/response/verify_response.dart';
-import '../../repositories/verification/verification_repository.dart';
-
 @injectable
-class GetVerificationUsecase {
+class GetVerificationUseCase {
   VerificationRepository verificationRepository;
 
   @factoryMethod
-  GetVerificationUsecase(this.verificationRepository);
+  GetVerificationUseCase(this.verificationRepository);
 
-  Future<Result<VerifyResponseEntity>> execute(VerifyRequsetEntity request) {
+  Future<Result<VerifyResponseEntity>> execute(VerifyRequestEntity request) {
     return verificationRepository.verify(request);
   }
 }

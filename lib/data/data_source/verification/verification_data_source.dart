@@ -1,8 +1,7 @@
-
-import '../../../api/client/api_result.dart';
-import '../../../domain/entities/verification/request/verify_requset.dart';
-import '../../../domain/entities/verification/response/verify_response.dart';
+import 'package:flowery_app/api/client/api_result.dart';
+import 'package:flowery_app/domain/entities/verification/request/verify_requset.dart';
+import 'package:flowery_app/domain/entities/verification/response/verify_response.dart';
 
 abstract interface class VerificationDataSource {
-  Future<Result<VerifyResponseEntity>> verify(VerifyRequsetEntity request);
+  Future<Result<VerifyResponseEntity>> verify(VerifyRequestEntity request);
 }

@@ -1,10 +1,10 @@
+import 'package:flowery_app/api/client/api_result.dart';
+import 'package:flowery_app/data/data_source/reset_password/reset_password_data_source.dart';
+import 'package:flowery_app/domain/entities/reset_password/request/reset_password_request.dart';
+import 'package:flowery_app/domain/entities/reset_password/response/reset_password_response.dart';
+import 'package:flowery_app/domain/repositories/reset_password/reset_password_repository.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../api/client/api_result.dart';
-import '../../../domain/entities/reset_password/request/reset_password_request.dart';
-import '../../../domain/entities/reset_password/response/reset_password_response.dart';
-import '../../../domain/repositories/reset_password/reset_password_repository.dart';
-import '../../data_source/reset_password/reset_password_data_source.dart';
 
 @Injectable(as: ResetPasswordRepository)
 class ResetPasswordRepositoryImpl implements ResetPasswordRepository {

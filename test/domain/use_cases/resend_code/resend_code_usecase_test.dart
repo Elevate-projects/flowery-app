@@ -14,7 +14,7 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
   test('verify calling  resendCode from dataSource ', () async {
     final mockRepo = MockResendCodeRepository();
-    final GetResendCodeUsecase useCase = GetResendCodeUsecase(mockRepo);
+    final GetResendCodeUseCase useCase = GetResendCodeUseCase(mockRepo);
 
     final resendCodeRequest = ResendCodeRequestEntity(
       email: 'moaazhassan559@gmail.com',

@@ -7,11 +7,11 @@ import 'package:flowery_app/domain/entities/verification/response/verify_respons
 import 'package:injectable/injectable.dart';
 
 @Injectable(as: VerificationDataSource)
-class VreificationDataSourceImpl implements VerificationDataSource {
+class VerificationDataSourceImpl implements VerificationDataSource {
   ApiClient apiClient;
 
   @factoryMethod
-  VreificationDataSourceImpl(this.apiClient);
+  VerificationDataSourceImpl(this.apiClient);
 
   @override
   Future<Result<VerifyResponseEntity>> verify(

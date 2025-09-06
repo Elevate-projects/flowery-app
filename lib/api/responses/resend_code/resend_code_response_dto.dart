@@ -10,7 +10,7 @@ class ResendCodeResponseDto extends Equatable {
   @JsonKey(name: "info")
   final String? info;
 
-  ResendCodeResponseDto({this.message, this.info});
+  const ResendCodeResponseDto({this.message, this.info});
 
   factory ResendCodeResponseDto.fromJson(Map<String, dynamic> json) {
     return _$ResendCodeResponseDtoFromJson(json);

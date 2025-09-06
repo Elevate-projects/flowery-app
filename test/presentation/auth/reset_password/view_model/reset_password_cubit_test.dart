@@ -12,7 +12,7 @@ import 'package:mockito/mockito.dart';
 
 import 'reset_password_cubit_test.mocks.dart';
 
-@GenerateMocks([GetResetPasswordUsecase])
+@GenerateMocks([GetResetPasswordUseCase])
 void main() {
   late MockGetResetPasswordUsecase getResetPasswordUseCase;
 

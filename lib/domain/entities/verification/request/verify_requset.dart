@@ -1,8 +1,5 @@
-class VerifyRequsetEntity {
+class VerifyRequestEntity {
   String? resetCode;
 
-  VerifyRequsetEntity({
-    this.resetCode,
-  });
-
+  VerifyRequestEntity({this.resetCode});
 }
