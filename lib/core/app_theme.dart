@@ -15,6 +15,7 @@ abstract class AppTheme {
       shadow: AppColors.gray,
       onSurface: AppColors.green,
       error: AppColors.red,
+      onSurfaceVariant: AppColors.darkGray,
       seedColor: Colors.deepPurple,
       brightness: Brightness.light,
     ),
@@ -32,6 +33,11 @@ abstract class AppTheme {
       headlineSmall: TextStyle(
         fontSize: 18.sp,
         fontWeight: FontWeight.w500,
+        color: AppColors.black,
+      ),
+      labelMedium: TextStyle(
+        fontSize: 12.sp,
+        fontWeight: FontWeight.w400,
         color: AppColors.black,
       ),
       labelLarge: TextStyle(
@@ -65,6 +71,7 @@ abstract class AppTheme {
       ),
       centerTitle: false,
       surfaceTintColor: AppColors.black,
+      foregroundColor: AppColors.black,
     ),
     textSelectionTheme: TextSelectionThemeData(
       cursorColor: AppColors.pink,
@@ -88,6 +95,19 @@ abstract class AppTheme {
         fontWeight: FontWeight.w400,
         color: AppColors.white[80],
       ),
+    ),
+    radioTheme: RadioThemeData(
+      fillColor: WidgetStateProperty.resolveWith<Color>((states) {
+        if (states.contains(WidgetState.selected)) {
+          return AppColors.pink;
+        }
+        return AppColors.gray;
+      }),
+      overlayColor: WidgetStateProperty.all(
+        AppColors.pink.withValues(alpha: 0.1),
+      ),
+      visualDensity: VisualDensity.compact,
+      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
     ),
   );
 }
