@@ -175,15 +175,15 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i335.GetResendCodeUseCase>(
       () => _i335.GetResendCodeUseCase(gh<_i673.ResendCodeRepository>()),
     );
-    gh.factory<_i550.VerificationRepository>(
-      () =>
-          _i1003.VerificationRepositoryImpl(gh<_i14.VerificationDataSource>()),
-    );
     gh.factory<_i960.CategoriesRemoteDataSource>(
       () => _i699.CategoriesRemoteDataSourceImpl(gh<_i508.ApiClient>()),
     );
     gh.factory<_i638.RegisterRepository>(
       () => _i40.RegisterRepositoryImpl(gh<_i233.RegisterRemoteDataSource>()),
+    );
+    gh.factory<_i550.VerificationRepository>(
+      () =>
+          _i1003.VerificationRepositoryImpl(gh<_i14.VerificationDataSource>()),
     );
     gh.factory<_i168.HomeProductsRepository>(
       () =>
@@ -217,6 +217,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i510.GetVerificationUseCase>(
       () => _i510.GetVerificationUseCase(gh<_i550.VerificationRepository>()),
     );
+    gh.factory<_i988.VerificationScreenCubit>(
+      () => _i988.VerificationScreenCubit(
+        gh<_i335.GetResendCodeUseCase>(),
+        gh<_i510.GetVerificationUseCase>(),
+      ),
+    );
     gh.factory<_i963.GetResetPasswordUseCase>(
       () => _i963.GetResetPasswordUseCase(gh<_i189.ResetPasswordRepository>()),
     );
@@ -232,11 +238,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i950.RegisterUseCase>(
       () => _i950.RegisterUseCase(gh<_i638.RegisterRepository>()),
     );
-    gh.factory<_i988.VerificationScreenCubit>(
-      () => _i988.VerificationScreenCubit(
-        gh<_i335.GetResendCodeUseCase>(),
-        gh<_i510.GetVerificationUseCase>(),
-      ),
+    gh.factory<_i349.ResetPasswordCubit>(
+      () => _i349.ResetPasswordCubit(gh<_i963.GetResetPasswordUseCase>()),
     );
     gh.factory<_i150.ForgetPasswordUseCase>(
       () => _i150.ForgetPasswordUseCase(gh<_i72.ForgetPasswordRepo>()),
@@ -247,9 +250,6 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i23.SecureStorage>(),
         gh<_i686.SharedPreferencesHelper>(),
       ),
-    );
-    gh.factory<_i349.ResetPasswordCubit>(
-      () => _i349.ResetPasswordCubit(gh<_i963.GetResetPasswordUseCase>()),
     );
     gh.factory<_i200.CategoriesCubit>(
       () => _i200.CategoriesCubit(

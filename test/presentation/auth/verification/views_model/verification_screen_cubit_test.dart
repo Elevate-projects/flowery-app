@@ -17,8 +17,8 @@ import 'verification_screen_cubit_test.mocks.dart';
 
 @GenerateMocks([GetResendCodeUseCase, GetVerificationUseCase])
 void main() {
-  late MockGetResendCodeUsecase getResendCodeUseCase;
-  late MockGetVerificationUsecase getVerificationUseCase;
+  late MockGetResendCodeUseCase getResendCodeUseCase;
+  late MockGetVerificationUseCase getVerificationUseCase;
 
   final resendCodeRequest = ResendCodeRequestEntity(
     email: 'moaazhassan559@gmail.com',
@@ -41,8 +41,8 @@ void main() {
     verificationExpectedResponse,
   );
   setUp(() {
-    getResendCodeUseCase = MockGetResendCodeUsecase();
-    getVerificationUseCase = MockGetVerificationUsecase();
+    getResendCodeUseCase = MockGetResendCodeUseCase();
+    getVerificationUseCase = MockGetVerificationUseCase();
 
     provideDummy<Result<ResendCodeResponseEntity>>(resendExpectedResult);
     provideDummy<Result<VerifyResponseEntity>>(verificationExpectedResult);

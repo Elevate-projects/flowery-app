@@ -14,7 +14,7 @@ import 'reset_password_cubit_test.mocks.dart';
 
 @GenerateMocks([GetResetPasswordUseCase])
 void main() {
-  late MockGetResetPasswordUsecase getResetPasswordUseCase;
+  late MockGetResetPasswordUseCase getResetPasswordUseCase;
 
   final resetCodeRequest = ResetPasswordRequestEntity(
     email: 'moaazhassan559@gmail.com',
@@ -29,7 +29,7 @@ void main() {
 
   final expectedResult = Success(expectedResponse);
   setUp(() {
-    getResetPasswordUseCase = MockGetResetPasswordUsecase();
+    getResetPasswordUseCase = MockGetResetPasswordUseCase();
     provideDummy<Result<ResetPasswordResponseEntity>>(expectedResult);
 
     when(
