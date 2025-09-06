@@ -8,18 +8,18 @@ import 'package:flowery_app/presentation/auth/forget_password/views_model/forget
 import 'package:flowery_app/presentation/auth/forget_password/views_model/forget_password_view_model.dart';
 import 'package:flowery_app/utils/common_widgets/custom_elevated_button.dart';
 import 'package:flowery_app/utils/common_widgets/custom_text_form_field.dart';
+import 'package:flowery_app/utils/loaders/loaders.dart';
 import 'package:flowery_app/utils/validations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 
 class ForgetPasswordScreen extends StatelessWidget {
   const ForgetPasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-     return BlocProvider (
+    return BlocProvider(
       create: (context) => getIt.get<ForgetPasswordViewModel>(),
       child: Scaffold(
         appBar: AppBar(
@@ -33,15 +33,13 @@ class ForgetPasswordScreen extends StatelessWidget {
               case ForgetPasswordInitial():
                 break;
               case ForgetPasswordSuccess():
-                ScaffoldMessenger.of(
-                  context,
-                ).showSnackBar(SnackBar(content: Text(state.message)),);
-               Navigator.of(context).pushNamed(RouteNames.verification);
-               break;
+                Navigator.of(context).pushNamed(RouteNames.verification);
+                break;
               case ForgetPasswordFailure():
-                ScaffoldMessenger.of(
-                  context,
-                ).showSnackBar(SnackBar(content: Text(state.error)));
+                Loaders.showErrorMessage(
+                  message: state.error,
+                  context: context,
+                );
               default:
                 break;
             }
@@ -56,7 +54,7 @@ class ForgetPasswordScreen extends StatelessWidget {
             return Padding(
               padding: const EdgeInsets.all(20),
               child: Form(
-                key:viewModel.formKey,
+                key: viewModel.formKey,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -78,7 +76,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                     CustomTextFormField(
                       label: AppText.email,
                       hintText: AppText.emailHint,
-                      controller:viewModel.emailController,
+                      controller: viewModel.emailController,
                       validator: (value) =>
                           Validations.emailValidation(email: value),
                     ),
@@ -95,8 +93,6 @@ class ForgetPasswordScreen extends StatelessWidget {
                             ),
                           );
                         }
-
-
                       },
                       buttonTitle: AppText.confirmButton,
                     ),

@@ -53,9 +53,9 @@ abstract final class AppText {
   static const String phoneNumberValidation = "Phone number field is required";
   static const String phoneNumberValidation2 =
       "Phone Number should consist of 11 digits";
-  static const String emailValidation = "This Email is not valid";
+  static const String emailValidation = "Email field is required";
   static const String emailValidation2 = "Enter a valid email";
-  static const String passwordValidation = "Invalid password";
+  static const String passwordValidation = "Password field is required";
   static const String passwordValidation2 =
       "Password field should contain at least 8 characters";
   static const String confirmPasswordValidation =
@@ -114,4 +114,18 @@ abstract final class AppText {
 
 
 
+  static const String enter6DigitCode = "Please enter the 6-digit code.";
+  static const String resendAvaiableStatement = "Resend available in ";
+  static const String emailVerificationTitle = 'Email verification';
+  static const String emailVerificationSubTitle =
+      'Please enter your code that send to your email address';
+  static const String invalidCode = 'Invalid Code';
+  static const String didntRecieveCodeStatement = 'Didn\'t receive code?';
+  static const String otpResendedSuccessfully = "OTP Resented successfully.";
+  static const String verificationSuccess = "Verification Success";
+  static const String resetPasswordTitle = 'Reset password';
+  static const String resetPasswordSubTitle =
+      'Password must not be empty and must contain 6 characters with upper case letter and one number at least ';
+  static const String continueWord = "Continue";
+  static const String passwordReseted = "Password Reseted Successfully";
 }
