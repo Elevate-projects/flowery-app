@@ -1,5 +1,5 @@
 
-import 'package:flowery_app/api/mapper/mapper.dart';
+import 'package:flowery_app/api/client/request_maper.dart';
 import 'package:flowery_app/api/responses/resend_code/resend_code_response_dto.dart';
 import 'package:flowery_app/domain/entities/resend_code/response/resend_code_response.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -10,7 +10,7 @@ void main() {
       message: null,
       info: null,
     );
-    ResendCodeResponseEntity entity = Mapper.resendCodeToEntity(dto);
+    ResendCodeResponseEntity entity = RequestMapper.resendCodeToEntity(dto);
     expect(entity.message, isNull);
   });
   test(
@@ -20,7 +20,7 @@ void main() {
         message: 'Verification code sent successfully',
         info: 'Please check your email for the verification code.',
       );
-      ResendCodeResponseEntity entity = Mapper.resendCodeToEntity(dto);
+      ResendCodeResponseEntity entity = RequestMapper.resendCodeToEntity(dto);
       expect(entity.message, equals(dto.message));
       expect(entity.info, equals(dto.info));
     },

@@ -18,8 +18,8 @@ class CustomHomeBestSellerItem extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: RSizedBox(
-            width: 131.w,
-            height: 151.h,
+            width: 131,
+            height: 151,
             child: CachedNetworkImage(
               imageUrl: bestSellerEntity.imgCover ?? "",
               progressIndicatorBuilder: (context, url, progress) =>
@@ -30,31 +30,33 @@ class CustomHomeBestSellerItem extends StatelessWidget {
           ),
         ),
         const RSizedBox(height: 8),
-        Padding(
-          padding: const EdgeInsetsDirectional.only(start: 15.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              RSizedBox(
-                width: 121,
-                child: Text(
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  bestSellerEntity.title ?? "",
-                  style: theme.textTheme.bodyLarge?.copyWith(
-                    color: AppColors.black,
-                    fontSize: 12.sp,
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsetsDirectional.only(start: 15.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                RSizedBox(
+                  width: 121,
+                  child: Text(
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    bestSellerEntity.title ?? "",
+                    style: theme.textTheme.bodyLarge?.copyWith(
+                      color: AppColors.black,
+                      fontSize: 12.sp,
+                    ),
                   ),
                 ),
-              ),
-              Text(
-                "${bestSellerEntity.price} egp",
-                style: theme.textTheme.bodyLarge?.copyWith(
-                  color: AppColors.black,
-                  fontWeight: FontWeight.w500,
+                Text(
+                  "${bestSellerEntity.price} egp",
+                  style: theme.textTheme.bodyLarge?.copyWith(
+                    color: AppColors.black,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ],

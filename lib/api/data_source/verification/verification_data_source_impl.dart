@@ -1,6 +1,6 @@
 import 'package:flowery_app/api/client/api_client.dart';
 import 'package:flowery_app/api/client/api_result.dart';
-import 'package:flowery_app/api/mapper/mapper.dart';
+import 'package:flowery_app/api/client/request_maper.dart';
 import 'package:flowery_app/api/responses/verification/verify_response_dto.dart';
 import 'package:flowery_app/data/data_source/verification/verification_data_source.dart';
 import 'package:flowery_app/domain/entities/verification/request/verify_requset.dart';
@@ -19,8 +19,8 @@ class VreificationDataSourceImpl implements VerificationDataSource {
     VerifyRequsetEntity request,
   ) async {
     return executeApi(() async {
-      var res = await apiClient.verificationCode(Mapper.verifyToDto(request));
-      return Mapper.verifyToEntity(VerifyResponseDto());
+      var res = await apiClient.verificationCode(RequestMapper.verifyToDto(request));
+      return RequestMapper.verifyToEntity(VerifyResponseDto());
     });
   }
 }

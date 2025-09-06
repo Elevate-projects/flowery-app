@@ -1,10 +1,9 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flowery_app/api/client/api_client.dart';
 import 'package:flowery_app/api/client/api_result.dart';
+import 'package:flowery_app/api/client/request_maper.dart';
 import 'package:flowery_app/api/data_source/resend_code/resend_code_data_source_impl.dart';
-import 'package:flowery_app/api/mapper/mapper.dart';
 import 'package:flowery_app/api/responses/resend_code/resend_code_response_dto.dart';
-
 import 'package:flowery_app/core/connection_manager/connection_manager.dart';
 import 'package:flowery_app/domain/entities/resend_code/request/resend_code_request.dart';
 import 'package:flowery_app/domain/entities/resend_code/response/resend_code_response.dart';
@@ -39,13 +38,13 @@ void main() {
     ).thenAnswer((_) async => [ConnectivityResult.wifi]);
 
     when(
-      mockApiClient.resendCode(Mapper.resendCodeToDto(resendCodeRequest)),
+      mockApiClient.resendCode(RequestMapper.resendCodeToDto(resendCodeRequest)),
     ).thenAnswer((_) async => expectedResponse);
 
     var result = await dataSource.resendCode(resendCodeRequest);
 
     verify(
-      mockApiClient.resendCode(Mapper.resendCodeToDto(resendCodeRequest)),
+      mockApiClient.resendCode(RequestMapper.resendCodeToDto(resendCodeRequest)),
     ).called(1);
 
     expect(result, isA<Success<ResendCodeResponseEntity>>());

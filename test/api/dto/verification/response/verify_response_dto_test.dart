@@ -1,4 +1,4 @@
-import 'package:flowery_app/api/mapper/mapper.dart';
+import 'package:flowery_app/api/client/request_maper.dart';
 import 'package:flowery_app/api/responses/verification/verify_response_dto.dart';
 import 'package:flowery_app/domain/entities/verification/response/verify_response.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -10,7 +10,7 @@ void main() {
       code: null,
       status: null,
     );
-    VerifyResponseEntity entity = Mapper.verifyToEntity(dto);
+    VerifyResponseEntity entity = RequestMapper.verifyToEntity(dto);
     expect(entity.message, isNull);
     expect(entity.code, isNull);
     expect(entity.status, isNull);
@@ -23,7 +23,7 @@ void main() {
         message: 'Verification successful',
         code: 200,
       );
-      VerifyResponseEntity entity = Mapper.verifyToEntity(dto);
+      VerifyResponseEntity entity = RequestMapper.verifyToEntity(dto);
       expect(entity.message, equals(dto.message));
       expect(entity.code, equals(dto.code));
       expect(entity.status, equals(dto.status));

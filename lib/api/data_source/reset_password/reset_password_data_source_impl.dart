@@ -1,6 +1,6 @@
 import 'package:flowery_app/api/client/api_client.dart';
 import 'package:flowery_app/api/client/api_result.dart';
-import 'package:flowery_app/api/mapper/mapper.dart';
+import 'package:flowery_app/api/client/request_maper.dart';
 import 'package:flowery_app/data/data_source/reset_password/reset_password_data_source.dart';
 import 'package:flowery_app/domain/entities/reset_password/request/reset_password_request.dart';
 import 'package:flowery_app/domain/entities/reset_password/response/reset_password_response.dart';
@@ -19,9 +19,9 @@ class ResetPasswordDataSourceImpl implements ResetPasswordDataSource {
   ) async {
     return executeApi(() async {
       var res = await apiClient.resetPassword(
-        Mapper.resetPasswordToDto(request),
+        RequestMapper.resetPasswordToDto(request),
       );
-      return Mapper.resetPasswordToEntity(res);
+      return RequestMapper.resetPasswordToEntity(res);
     });
   }
 }

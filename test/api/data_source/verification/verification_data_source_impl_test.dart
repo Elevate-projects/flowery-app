@@ -1,8 +1,8 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flowery_app/api/client/api_client.dart';
 import 'package:flowery_app/api/client/api_result.dart';
+import 'package:flowery_app/api/client/request_maper.dart';
 import 'package:flowery_app/api/data_source/verification/verification_data_source_impl.dart';
-import 'package:flowery_app/api/mapper/mapper.dart';
 import 'package:flowery_app/api/responses/verification/verify_response_dto.dart';
 
 import 'package:flowery_app/core/connection_manager/connection_manager.dart';
@@ -38,13 +38,13 @@ void main() {
     ).thenAnswer((_) async => [ConnectivityResult.wifi]);
 
     when(
-      mockApiClient.verificationCode(Mapper.verifyToDto(verifyRequest)),
+      mockApiClient.verificationCode(RequestMapper.verifyToDto(verifyRequest)),
     ).thenAnswer((_) async => expectedResponse);
 
     var result = await dataSource.verify(verifyRequest);
 
     verify(
-      mockApiClient.verificationCode(Mapper.verifyToDto(verifyRequest)),
+      mockApiClient.verificationCode(RequestMapper.verifyToDto(verifyRequest)),
     ).called(1);
 
     expect(result, isA<Success<VerifyResponseEntity>>());

@@ -6,9 +6,7 @@ abstract class Endpoints {
   static const String register = '/api/v1/auth/signup';
   static const String categories = '/api/v1/categories';
   static const String products = '/api/v1/products';
-  static const String baseUrl = 'https://flower.elevateegy.com/api/v1';
-  static const String login = '/auth/signin';
-  static const String resendCode = '/auth/forgotPassword';
-  static const String verification = '/auth/verifyResetCode';
-  static const String resetPassword = 'auth/resetPassword';
+  static const String resendCode = '/api/v1/auth/forgotPassword';
+  static const String verification = '/api/v1/auth/verifyResetCode';
+  static const String resetPassword = '/api/v1/auth/resetPassword';
 }
