@@ -58,6 +58,7 @@
   "outStock": "غير متوفر",
   "taxIncludedMessage": "جميع الأسعار شاملة الضريبة",
   "description": "الوصف",
+  "addProductToCartSuccessMessage": "لقد تمت إضافة المنتج إلى سلة التسوق الخاصة بك بنجاح",
 
   "userNameValidation": "اسم المستخدم غير صالح",
   "emptyTextValidation": "هذا الحقل مطلوب",

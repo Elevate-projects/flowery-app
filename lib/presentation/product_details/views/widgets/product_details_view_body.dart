@@ -19,7 +19,9 @@ class ProductDetailsViewBody extends StatelessWidget {
           const RSizedBox(height: 16),
           ProductDetailsSection(productCardData: productCardData),
           const RSizedBox(height: 24),
-          const ProductDetailsAddToCartButton(),
+          ProductDetailsAddToCartButton(
+            productId: productCardData.productId ?? "",
+          ),
           const RSizedBox(height: 31),
         ],
       ),

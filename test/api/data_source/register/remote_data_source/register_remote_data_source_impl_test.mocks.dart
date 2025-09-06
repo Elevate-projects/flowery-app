@@ -5,10 +5,12 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i11;
 
-import 'package:connectivity_plus/connectivity_plus.dart' as _i16;
+import 'package:connectivity_plus/connectivity_plus.dart' as _i17;
 import 'package:connectivity_plus_platform_interface/connectivity_plus_platform_interface.dart'
-    as _i17;
+    as _i18;
 import 'package:flowery_app/api/client/api_client.dart' as _i10;
+import 'package:flowery_app/api/requests/add_to_cart_request/add_to_cart_request_model.dart'
+    as _i15;
 import 'package:flowery_app/api/requests/forget_password_request/forget_password_request.dart'
     as _i14;
 import 'package:flowery_app/api/requests/login_request/login_request_model.dart'
@@ -29,7 +31,7 @@ import 'package:flowery_app/api/responses/profile_response/profile_response.dart
     as _i8;
 import 'package:flowery_app/api/responses/register_response/register_response.dart'
     as _i4;
-import 'package:flowery_app/core/secure_storage/secure_storage.dart' as _i15;
+import 'package:flowery_app/core/secure_storage/secure_storage.dart' as _i16;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i9;
 import 'package:mockito/mockito.dart' as _i1;
 
@@ -209,12 +211,27 @@ class MockApiClient extends _i1.Mock implements _i10.ApiClient {
             returnValueForMissingStub: _i11.Future<void>.value(),
           )
           as _i11.Future<void>);
+
+  @override
+  _i11.Future<void> addProductToCart({
+    required String? token,
+    required _i15.AddToCartRequestModel? request,
+  }) =>
+      (super.noSuchMethod(
+            Invocation.method(#addProductToCart, [], {
+              #token: token,
+              #request: request,
+            }),
+            returnValue: _i11.Future<void>.value(),
+            returnValueForMissingStub: _i11.Future<void>.value(),
+          )
+          as _i11.Future<void>);
 }
 
 /// A class which mocks [SecureStorage].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockSecureStorage extends _i1.Mock implements _i15.SecureStorage {
+class MockSecureStorage extends _i1.Mock implements _i16.SecureStorage {
   MockSecureStorage() {
     _i1.throwOnMissingStub(this);
   }
@@ -269,26 +286,26 @@ class MockSecureStorage extends _i1.Mock implements _i15.SecureStorage {
 /// A class which mocks [Connectivity].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockConnectivity extends _i1.Mock implements _i16.Connectivity {
+class MockConnectivity extends _i1.Mock implements _i17.Connectivity {
   MockConnectivity() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i11.Stream<List<_i17.ConnectivityResult>> get onConnectivityChanged =>
+  _i11.Stream<List<_i18.ConnectivityResult>> get onConnectivityChanged =>
       (super.noSuchMethod(
             Invocation.getter(#onConnectivityChanged),
-            returnValue: _i11.Stream<List<_i17.ConnectivityResult>>.empty(),
+            returnValue: _i11.Stream<List<_i18.ConnectivityResult>>.empty(),
           )
-          as _i11.Stream<List<_i17.ConnectivityResult>>);
+          as _i11.Stream<List<_i18.ConnectivityResult>>);
 
   @override
-  _i11.Future<List<_i17.ConnectivityResult>> checkConnectivity() =>
+  _i11.Future<List<_i18.ConnectivityResult>> checkConnectivity() =>
       (super.noSuchMethod(
             Invocation.method(#checkConnectivity, []),
-            returnValue: _i11.Future<List<_i17.ConnectivityResult>>.value(
-              <_i17.ConnectivityResult>[],
+            returnValue: _i11.Future<List<_i18.ConnectivityResult>>.value(
+              <_i18.ConnectivityResult>[],
             ),
           )
-          as _i11.Future<List<_i17.ConnectivityResult>>);
+          as _i11.Future<List<_i18.ConnectivityResult>>);
 }
