@@ -98,6 +98,11 @@ abstract final class AppText {
   static const String bestSellerText = "bestSellerText";
   static const String occasionsText = "occasionsText";
 
+  //Occasion
+  static const String occasion = "Occasion";
+  static const String titleBar = "Bloom with our exquisite best sellers";
+  static const String noProductsFound = "No products found";
+
   // Exceptions
   static const String connectionError = "connectionError";
   static const String noResponseReceivedMessage = "noResponseReceivedMessage";

@@ -14,6 +14,7 @@ class FloweryBottomNavigationCubit extends Cubit<FloweryBottomNavigationState> {
     const Center(child: Text('Cart Page')),
     const ProfileView(),
   ];
+
   void doIntent({required FloweryBottomNavigationIntent intent}) {
     switch (intent) {
       case ChangeIndexIntent():
