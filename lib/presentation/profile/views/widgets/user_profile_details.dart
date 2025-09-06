@@ -1,5 +1,6 @@
 import 'package:flowery_app/core/constants/app_icons.dart';
 import 'package:flowery_app/core/constants/app_images.dart';
+import 'package:flowery_app/core/router/route_names.dart';
 import 'package:flowery_app/presentation/profile/views_model/profile_cubit.dart';
 import 'package:flowery_app/presentation/profile/views_model/profile_state.dart';
 import 'package:flowery_app/utils/common_widgets/shimmer_effect.dart';
@@ -46,6 +47,7 @@ class UserProfileDetails extends StatelessWidget {
                         FloweryMethodHelper.userData != null)
                     ? () {
                         // Navigate to edit profile
+                        Navigator.of(context).pushNamed(RouteNames.resetPassword);
                       }
                     : () {},
                 child: SvgPicture.asset(AppIcons.edit, fit: BoxFit.contain),

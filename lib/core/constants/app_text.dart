@@ -96,6 +96,16 @@ abstract final class AppText {
   static const String bestSellerText = "bestSellerText";
   static const String occasionsText = "occasionsText";
 
+  // Reset Password
+  static const String resetPassword = "Reset password";
+  static const String resetPasswordUpdate = "Update";
+  static const String newPasswordLabel = "New password";
+  static const String newPasswordHint = "New password";
+  static const String currentPasswordLabel = "Current password";
+  static const String currentPasswordHint = "Current password";
+  static const String confirmPasswordLabel = "Confirm password";
+  static const String confirmPasswordHintReset = "Confirm password";
+
   // Exceptions
   static const String connectionError = "connectionError";
   static const String noResponseReceivedMessage = "noResponseReceivedMessage";

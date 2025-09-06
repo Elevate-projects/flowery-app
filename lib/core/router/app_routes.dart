@@ -1,3 +1,4 @@
+import 'package:flowery_app/core/di/di.dart';
 import 'package:flowery_app/core/router/route_names.dart';
 import 'package:flowery_app/domain/entities/product_card/product_card_entity.dart';
 import 'package:flowery_app/presentation/about_us/views/about_us_view.dart';
@@ -7,6 +8,9 @@ import 'package:flowery_app/presentation/auth/register/views/register_view.dart'
 import 'package:flowery_app/presentation/flowery_bottom_navigation/flowery_bottom_navigation.dart';
 import 'package:flowery_app/presentation/flowery_bottom_navigation/view_model/flowery_bottom_navigation_cubit.dart';
 import 'package:flowery_app/presentation/product_details/views/product_details_view.dart';
+import 'package:flowery_app/presentation/reset_password/view_model/reset_password_cubit.dart';
+import 'package:flowery_app/presentation/reset_password/view_model/reset_password_intent.dart';
+import 'package:flowery_app/presentation/reset_password/views/reset_password_view.dart';
 import 'package:flowery_app/presentation/terms_and_conditions/views/terms_and_conditions_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -39,6 +43,14 @@ abstract class AppRoutes {
         );
       case RouteNames.forgetPassword:
         return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen());
+      case RouteNames.resetPassword:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider<ResetPasswordCubit>(
+            create: (context) => getIt<ResetPasswordCubit>()
+            ..doIntent(intent: InitializedResertPassword()),
+            child: const ResetPasswordView(),
+          ),
+        );
       default:
         return null;
     }
