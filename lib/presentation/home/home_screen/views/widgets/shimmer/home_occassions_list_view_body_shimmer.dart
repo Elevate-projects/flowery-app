@@ -14,7 +14,6 @@ class HomeOccassionsListViewBodyShimmer extends StatelessWidget {
 
     return RSizedBox(
       height: 232,
-      width: 1,
       child: Column(
         children: [
           Row(

@@ -13,7 +13,6 @@ class HomeCategoryListViewBodyShimmer extends StatelessWidget {
     final theme = Theme.of(context);
     return RSizedBox(
       height: 134,
-      width: 1,
       child: Column(
         children: [
           Row(
@@ -38,13 +37,13 @@ class HomeCategoryListViewBodyShimmer extends StatelessWidget {
           Expanded(
             child: BlocBuilder<HomeProductsCubit, HomeProductsState>(
               builder: (context, state) {
-                 return ListView.builder(
-                    itemBuilder: (context, index) {
-                      return const CustomHomeCategoryItemShimmer();
-                    },
-                    itemCount: 14,
-                    scrollDirection: Axis.horizontal,
-                  );
+                return ListView.builder(
+                  itemBuilder: (context, index) {
+                    return const CustomHomeCategoryItemShimmer();
+                  },
+                  itemCount: 14,
+                  scrollDirection: Axis.horizontal,
+                );
               },
             ),
           ),
