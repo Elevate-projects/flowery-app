@@ -8,4 +8,6 @@ abstract class RouteNames {
   static const String floweryBottomNavigation = "/floweryBottomNavigation";
   static const String productDetails = "/productDetailsView";
   static const String verification = '/verification';
+  static const String occasionView = "/occasionView";
+
 }
