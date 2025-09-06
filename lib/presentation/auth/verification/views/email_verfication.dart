@@ -2,13 +2,14 @@ import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/core/router/route_names.dart';
 import 'package:flowery_app/presentation/auth/verification/views/widgets/build_verification_form.dart';
 import 'package:flowery_app/presentation/auth/verification/views_model/verification_screen_cubit.dart';
+import 'package:flowery_app/presentation/auth/verification/views_model/verification_screen_intent.dart';
 import 'package:flowery_app/presentation/auth/verification/views_model/verification_screen_state.dart';
+import 'package:flowery_app/utils/common_widgets/loading_dialog.dart';
 import 'package:flowery_app/utils/loaders/loaders.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../utils/common_widgets/loading_dialog.dart';
-import '../views_model/verification_screen_intent.dart';
+
 
 class EmailVerification extends StatefulWidget {
   const EmailVerification({super.key});

@@ -18,7 +18,7 @@ class ResetPasswordDataSourceImpl implements ResetPasswordDataSource {
     ResetPasswordRequestEntity request,
   ) async {
     return executeApi(() async {
-      var res = await apiClient.resetPassword(
+      final res = await apiClient.resetPassword(
         RequestMapper.resetPasswordToDto(request),
       );
       return RequestMapper.resetPasswordToEntity(res);

@@ -1,7 +1,9 @@
 import 'dart:async';
 
 import 'package:flowery_app/api/client/api_result.dart';
+import 'package:flowery_app/domain/entities/resend_code/request/resend_code_request.dart';
 import 'package:flowery_app/domain/entities/resend_code/response/resend_code_response.dart';
+import 'package:flowery_app/domain/entities/verification/request/verify_requset.dart';
 import 'package:flowery_app/domain/entities/verification/response/verify_response.dart';
 import 'package:flowery_app/domain/use_cases/resend_code/resend_code_usecase.dart';
 import 'package:flowery_app/domain/use_cases/verification/verification_usecase.dart';
@@ -10,19 +12,16 @@ import 'package:flowery_app/presentation/auth/verification/views_model/verificat
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../../domain/entities/resend_code/request/resend_code_request.dart';
-import '../../../../domain/entities/verification/request/verify_requset.dart';
-
 @injectable
 class VerificationScreenCubit extends Cubit<VerificationScreenState> {
-  final GetResendCodeUsecase _getResendCodeUsecase;
-  final GetVerificationUsecase _getVerificationUsecase;
+  final GetResendCodeUsecase _getResendCodeUseCase;
+  final GetVerificationUsecase _getVerificationUseCase;
 
   Timer? _timer;
 
   VerificationScreenCubit(
-    this._getResendCodeUsecase,
-    this._getVerificationUsecase,
+    this._getResendCodeUseCase,
+    this._getVerificationUseCase,
   ) : super(const VerificationScreenState());
 
   void doIntent(VerificationScreenIntent intent) {
@@ -38,7 +37,7 @@ class VerificationScreenCubit extends Cubit<VerificationScreenState> {
 
   void _resendCode(ResendCodeRequestEntity request) async {
     emit(state.copyWith(resendCodeStatus: Status.loading));
-    var res = await _getResendCodeUsecase.execute(request);
+    final res = await _getResendCodeUseCase.execute(request);
     switch (res) {
       case Success<ResendCodeResponseEntity>():
         _startTimer();
@@ -53,9 +52,9 @@ class VerificationScreenCubit extends Cubit<VerificationScreenState> {
     }
   }
 
-  void _verify(VerifyRequsetEntity request) async {
+  void _verify(VerifyRequestEntity request) async {
     emit(state.copyWith(verifyCodeStatus: Status.loading));
-    var res = await _getVerificationUsecase.execute(request);
+    final res = await _getVerificationUseCase.execute(request);
     switch (res) {
       case Success<VerifyResponseEntity>():
         emit(state.copyWith(verifyCodeStatus: Status.success, isError: false));

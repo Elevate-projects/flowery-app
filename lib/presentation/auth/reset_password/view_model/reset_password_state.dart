@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
-
-import '../../../../core/exceptions/response_exception.dart';
+import 'package:flowery_app/core/exceptions/response_exception.dart';
 
 enum Status { initial, loading, success, error }
 

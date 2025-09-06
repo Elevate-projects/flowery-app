@@ -31,6 +31,7 @@ abstract class RequestMapper {
       gender: entity.gender,
     );
   }
+
   static LoginRequestModel toLoginRequestModel({
     required LoginRequestEntity loginRequestEntity,
   }) {
@@ -56,7 +57,7 @@ abstract class RequestMapper {
     return ResendCodeResponseEntity(message: dto.message, info: dto.info);
   }
 
-  static VerifyRequestDto verifyToDto(VerifyRequsetEntity entity) {
+  static VerifyRequestDto verifyToDto(VerifyRequestEntity entity) {
     return VerifyRequestDto(resetCode: entity.resetCode);
   }
 

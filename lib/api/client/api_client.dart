@@ -21,7 +21,7 @@ import 'package:retrofit/retrofit.dart';
 part 'api_client.g.dart';
 
 @injectable
-@RestApi()
+@RestApi(baseUrl: Endpoints.baseUrl)
 abstract class ApiClient {
   @factoryMethod
   factory ApiClient(Dio dio) = _ApiClient;

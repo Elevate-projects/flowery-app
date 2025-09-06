@@ -5,15 +5,15 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   test('when call toDto with null values it should return null values', () {
-    VerifyRequsetEntity entity = VerifyRequsetEntity(resetCode: null);
-    VerifyRequestDto dto = RequestMapper.verifyToDto(entity);
+    final VerifyRequestEntity entity = VerifyRequestEntity(resetCode: null);
+    final VerifyRequestDto dto = RequestMapper.verifyToDto(entity);
     expect(dto.resetCode, isNull);
   });
   test(
     'when call toDto with non-null values it should return right values',
     () {
-      VerifyRequsetEntity entity = VerifyRequsetEntity(resetCode: '123456');
-      VerifyRequestDto dto = RequestMapper.verifyToDto(entity);
+      final VerifyRequestEntity entity = VerifyRequestEntity(resetCode: '123456');
+      final VerifyRequestDto dto = RequestMapper.verifyToDto(entity);
       expect(dto.resetCode, equals(entity.resetCode));
     },
   );

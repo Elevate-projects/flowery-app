@@ -1,4 +1,4 @@
-import '../../../../domain/entities/reset_password/request/reset_password_request.dart';
+import 'package:flowery_app/domain/entities/reset_password/request/reset_password_request.dart';
 
 sealed class ResetPasswordIntent {}
 

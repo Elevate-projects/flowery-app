@@ -17,19 +17,19 @@ import 'reset_password_data_source_impl_test.mocks.dart';
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
   test('verify calling resetCodeEndpoint from API', () async {
-    var mockApiClient = MockApiClient();
-    var mockConnectivity = MockConnectivity();
+    final mockApiClient = MockApiClient();
+    final mockConnectivity = MockConnectivity();
     ConnectionManager.connectivity = mockConnectivity;
-    ResetPasswordDataSourceImpl dataSource = ResetPasswordDataSourceImpl(
+    final ResetPasswordDataSourceImpl dataSource = ResetPasswordDataSourceImpl(
       mockApiClient,
     );
 
-    var resetCodeRequest = ResetPasswordRequestEntity(
+    final resetCodeRequest = ResetPasswordRequestEntity(
       email: 'moaazhassan559@gmail.com',
       newPassword: '12345678',
     );
 
-    var expectedResponse = ResetPasswordResponseDto(
+    final expectedResponse = const ResetPasswordResponseDto(
       token: 'sample_token',
       message: 'Password reset successfully',
       code: 200,
@@ -43,7 +43,7 @@ void main() {
       mockApiClient.resetPassword(RequestMapper.resetPasswordToDto(resetCodeRequest)),
     ).thenAnswer((_) async => expectedResponse);
 
-    var result = await dataSource.resetPassword(resetCodeRequest);
+    final result = await dataSource.resetPassword(resetCodeRequest);
 
     verify(
       mockApiClient.resetPassword(RequestMapper.resetPasswordToDto(resetCodeRequest)),

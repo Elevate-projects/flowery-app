@@ -5,12 +5,12 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   test('when call toEntity with null values it should return null values', () {
-    ResetPasswordResponseDto dto = ResetPasswordResponseDto(
+    final ResetPasswordResponseDto dto = const ResetPasswordResponseDto(
       message: null,
       code: null,
       token: null,
     );
-    ResetPasswordResponseEntity entity = RequestMapper.resetPasswordToEntity(dto);
+    final ResetPasswordResponseEntity entity = RequestMapper.resetPasswordToEntity(dto);
     expect(entity.message, isNull);
     expect(entity.code, isNull);
     expect(entity.token, isNull);
@@ -18,12 +18,12 @@ void main() {
   test(
     'when call toEntity with non-null values it should return right values',
     () {
-      ResetPasswordResponseDto dto = ResetPasswordResponseDto(
+      final ResetPasswordResponseDto dto = const ResetPasswordResponseDto(
         message: 'Password reset successfully',
         code: 200,
         token: 'newly_generated_token',
       );
-      ResetPasswordResponseEntity entity = RequestMapper.resetPasswordToEntity(dto);
+      final ResetPasswordResponseEntity entity = RequestMapper.resetPasswordToEntity(dto);
       expect(entity.message, equals(dto.message));
       expect(entity.code, equals(dto.code));
       expect(entity.token, equals(dto.token));

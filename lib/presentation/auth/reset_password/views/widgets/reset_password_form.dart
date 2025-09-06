@@ -1,4 +1,6 @@
 import 'package:flowery_app/core/constants/app_text.dart';
+import 'package:flowery_app/domain/entities/reset_password/request/reset_password_request.dart';
+import 'package:flowery_app/presentation/auth/reset_password/view_model/reset_password_cubit.dart';
 import 'package:flowery_app/presentation/auth/reset_password/view_model/reset_password_intent.dart';
 import 'package:flowery_app/presentation/auth/reset_password/views/widgets/reset_password_title_and_sub_title.dart';
 import 'package:flowery_app/utils/common_widgets/custom_elevated_button.dart';
@@ -7,9 +9,6 @@ import 'package:flowery_app/utils/validations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../../domain/entities/reset_password/request/reset_password_request.dart';
-import '../../view_model/reset_password_cubit.dart';
 
 class BuildResetPasswordForm extends StatelessWidget {
   const BuildResetPasswordForm({super.key, required this.email});
@@ -30,7 +29,7 @@ class BuildResetPasswordForm extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            ResetPasswordTitleAndSubTitle(),
+            const ResetPasswordTitleAndSubTitle(),
             SizedBox(height: 30.h),
             CustomTextFormField(
               label: AppText.password,

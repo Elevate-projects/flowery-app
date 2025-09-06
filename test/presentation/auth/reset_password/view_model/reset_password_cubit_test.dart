@@ -14,31 +14,31 @@ import 'reset_password_cubit_test.mocks.dart';
 
 @GenerateMocks([GetResetPasswordUsecase])
 void main() {
-  late MockGetResetPasswordUsecase getResetPasswordUsecase;
+  late MockGetResetPasswordUsecase getResetPasswordUseCase;
 
-  var resetCodeRequest = ResetPasswordRequestEntity(
+  final resetCodeRequest = ResetPasswordRequestEntity(
     email: 'moaazhassan559@gmail.com',
     newPassword: 'newPassword123',
   );
 
-  var expectedResponse = ResetPasswordResponseEntity(
+  final expectedResponse = ResetPasswordResponseEntity(
     token: 'newlyGeneratedToken',
     code: 200,
     message: 'Password reset successfully',
   );
 
-  var expectedResult = Success(expectedResponse);
+  final expectedResult = Success(expectedResponse);
   setUp(() {
-    getResetPasswordUsecase = MockGetResetPasswordUsecase();
+    getResetPasswordUseCase = MockGetResetPasswordUsecase();
     provideDummy<Result<ResetPasswordResponseEntity>>(expectedResult);
 
     when(
-      getResetPasswordUsecase.execute(resetCodeRequest),
+      getResetPasswordUseCase.execute(resetCodeRequest),
     ).thenAnswer((_) async => expectedResult);
   });
   blocTest<ResetPasswordCubit, ResetPasswordState>(
     'should emit [loading, success] when reset code is successful',
-    build: () => ResetPasswordCubit(getResetPasswordUsecase),
+    build: () => ResetPasswordCubit(getResetPasswordUseCase),
     act: (cubit) =>
         cubit.doIntent(OnResetPasswordIntent(request: resetCodeRequest)),
     expect: () => [

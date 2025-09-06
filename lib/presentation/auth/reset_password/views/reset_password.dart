@@ -1,12 +1,12 @@
 import 'package:flowery_app/core/constants/app_text.dart';
+import 'package:flowery_app/core/router/route_names.dart';
+import 'package:flowery_app/presentation/auth/reset_password/view_model/reset_password_cubit.dart';
+import 'package:flowery_app/presentation/auth/reset_password/view_model/reset_password_state.dart';
 import 'package:flowery_app/presentation/auth/reset_password/views/widgets/reset_password_form.dart';
+import 'package:flowery_app/utils/common_widgets/loading_dialog.dart';
+import 'package:flowery_app/utils/loaders/loaders.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../utils/common_widgets/loading_dialog.dart';
-import '../../../../utils/loaders/loaders.dart';
-import '../view_model/reset_password_cubit.dart';
-import '../view_model/reset_password_state.dart';
 
 class ResetPassword extends StatefulWidget {
   const ResetPassword({super.key, required this.email});
@@ -42,6 +42,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                 message: AppText.passwordReseted,
                 context: context,
               );
+              Navigator.pushReplacementNamed(context, RouteNames.login);
               break;
             case Status.error:
               Navigator.pop(context);

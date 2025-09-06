@@ -5,21 +5,21 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   test('when call toDto with null values it should return null values', () {
-    ResetPasswordRequestEntity entity = ResetPasswordRequestEntity(
+    final ResetPasswordRequestEntity entity = ResetPasswordRequestEntity(
       email: null,
       newPassword: null,
     );
-    ResetPasswordRequestDto dto = RequestMapper.resetPasswordToDto(entity);
+    final ResetPasswordRequestDto dto = RequestMapper.resetPasswordToDto(entity);
     expect(dto.email, isNull);
   });
   test(
     'when call toDto with non-null values it should return right values',
     () {
-      ResetPasswordRequestEntity entity = ResetPasswordRequestEntity(
+      final ResetPasswordRequestEntity entity = ResetPasswordRequestEntity(
         email: 'moaazhassan559@gmail.com',
         newPassword: 'MyNewPassword123',
       );
-      ResetPasswordRequestDto dto = RequestMapper.resetPasswordToDto(entity);
+      final ResetPasswordRequestDto dto = RequestMapper.resetPasswordToDto(entity);
       expect(dto.email, equals(entity.email));
       expect(dto.newPassword, equals(entity.newPassword));
     },

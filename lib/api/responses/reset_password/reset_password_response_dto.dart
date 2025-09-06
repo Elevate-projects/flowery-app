@@ -12,7 +12,7 @@ class ResetPasswordResponseDto extends Equatable {
   @JsonKey(name: "code")
   final int? code;
 
-  ResetPasswordResponseDto({this.message, this.token, this.code});
+  const ResetPasswordResponseDto({this.message, this.token, this.code});
 
   factory ResetPasswordResponseDto.fromJson(Map<String, dynamic> json) {
     return _$ResetPasswordResponseDtoFromJson(json);

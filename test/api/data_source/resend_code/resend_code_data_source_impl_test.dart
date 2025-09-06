@@ -17,18 +17,18 @@ import 'resend_code_data_source_impl_test.mocks.dart';
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
   test('verify calling resendCodeEndpoint from API', () async {
-    var mockApiClient = MockApiClient();
-    var mockConnectivity = MockConnectivity();
+    final mockApiClient = MockApiClient();
+    final mockConnectivity = MockConnectivity();
     ConnectionManager.connectivity = mockConnectivity;
-    ResendCodeDataSourceImpl dataSource = ResendCodeDataSourceImpl(
+    final ResendCodeDataSourceImpl dataSource = ResendCodeDataSourceImpl(
       mockApiClient,
     );
 
-    var resendCodeRequest = ResendCodeRequestEntity(
+    final resendCodeRequest = ResendCodeRequestEntity(
       email: 'moaazhassan559@gmail.com',
     );
 
-    var expectedResponse = ResendCodeResponseDto(
+    final expectedResponse = ResendCodeResponseDto(
       message: 'Verification code sent successfully',
       info: 'Please check your email for the verification code.',
     );
@@ -41,7 +41,7 @@ void main() {
       mockApiClient.resendCode(RequestMapper.resendCodeToDto(resendCodeRequest)),
     ).thenAnswer((_) async => expectedResponse);
 
-    var result = await dataSource.resendCode(resendCodeRequest);
+    final result = await dataSource.resendCode(resendCodeRequest);
 
     verify(
       mockApiClient.resendCode(RequestMapper.resendCodeToDto(resendCodeRequest)),

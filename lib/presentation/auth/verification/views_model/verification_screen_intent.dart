@@ -1,5 +1,5 @@
-import '../../../../domain/entities/resend_code/request/resend_code_request.dart';
-import '../../../../domain/entities/verification/request/verify_requset.dart';
+import 'package:flowery_app/domain/entities/resend_code/request/resend_code_request.dart';
+import 'package:flowery_app/domain/entities/verification/request/verify_requset.dart';
 
 sealed class VerificationScreenIntent {}
 
@@ -10,7 +10,7 @@ class OnResendClickIntent extends VerificationScreenIntent {
 }
 
 class OnVerificationIntent extends VerificationScreenIntent {
-  VerifyRequsetEntity request;
+  VerifyRequestEntity request;
 
   OnVerificationIntent({required this.request});
 }

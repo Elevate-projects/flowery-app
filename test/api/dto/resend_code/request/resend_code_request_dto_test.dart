@@ -5,17 +5,17 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   test('when call toDto with null values it should return null values', () {
-    ResendCodeRequestEntity entity = ResendCodeRequestEntity(email: null);
-    ResendCodeRequestDto dto = RequestMapper.resendCodeToDto(entity);
+    final ResendCodeRequestEntity entity = ResendCodeRequestEntity(email: null);
+    final ResendCodeRequestDto dto = RequestMapper.resendCodeToDto(entity);
     expect(dto.email, isNull);
   });
   test(
     'when call toDto with non-null values it should return right values',
     () {
-      ResendCodeRequestEntity entity = ResendCodeRequestEntity(
+      final ResendCodeRequestEntity entity = ResendCodeRequestEntity(
         email: 'moaazhassan559@gmail.com',
       );
-      ResendCodeRequestDto dto = RequestMapper.resendCodeToDto(entity);
+      final ResendCodeRequestDto dto = RequestMapper.resendCodeToDto(entity);
       expect(dto.email, equals(entity.email));
     },
   );

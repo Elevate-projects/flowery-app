@@ -10,7 +10,7 @@ class ResetPasswordRequestDto extends Equatable {
   @JsonKey(name: "newPassword")
   final String? newPassword;
 
-  ResetPasswordRequestDto({this.email, this.newPassword});
+  const ResetPasswordRequestDto({this.email, this.newPassword});
 
   factory ResetPasswordRequestDto.fromJson(Map<String, dynamic> json) =>
       _$ResetPasswordRequestDtoFromJson(json);

@@ -1,7 +1,6 @@
 import 'package:flowery_app/api/client/api_client.dart';
 import 'package:flowery_app/api/client/api_result.dart';
 import 'package:flowery_app/api/client/request_maper.dart';
-import 'package:flowery_app/api/responses/verification/verify_response_dto.dart';
 import 'package:flowery_app/data/data_source/verification/verification_data_source.dart';
 import 'package:flowery_app/domain/entities/verification/request/verify_requset.dart';
 import 'package:flowery_app/domain/entities/verification/response/verify_response.dart';
@@ -16,11 +15,13 @@ class VreificationDataSourceImpl implements VerificationDataSource {
 
   @override
   Future<Result<VerifyResponseEntity>> verify(
-    VerifyRequsetEntity request,
+    VerifyRequestEntity request,
   ) async {
     return executeApi(() async {
-      var res = await apiClient.verificationCode(RequestMapper.verifyToDto(request));
-      return RequestMapper.verifyToEntity(VerifyResponseDto());
+      final res = await apiClient.verificationCode(
+        RequestMapper.verifyToDto(request),
+      );
+      return RequestMapper.verifyToEntity(res);
     });
   }
 }

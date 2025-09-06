@@ -51,7 +51,7 @@ class _PinCodeTextFiledWidgetState extends State<PinCodeTextFiledWidget> {
         if (widget.isError)
           Row(
             children: [
-              Spacer(),
+              const Spacer(),
               Icon(Icons.error, color: Colors.red, size: 18.sp),
               SizedBox(width: 4.w),
               Text(

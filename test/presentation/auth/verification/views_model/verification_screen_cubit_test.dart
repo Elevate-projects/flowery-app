@@ -17,58 +17,65 @@ import 'verification_screen_cubit_test.mocks.dart';
 
 @GenerateMocks([GetResendCodeUsecase, GetVerificationUsecase])
 void main() {
-  late MockGetResendCodeUsecase getResendCodeUsecase;
-  late MockGetVerificationUsecase getVerificationUsecase;
+  late MockGetResendCodeUsecase getResendCodeUseCase;
+  late MockGetVerificationUsecase getVerificationUseCase;
 
-  var resendCodeRequest = ResendCodeRequestEntity(
+  final resendCodeRequest = ResendCodeRequestEntity(
     email: 'moaazhassan559@gmail.com',
   );
-  var verificationRequest = VerifyRequsetEntity(resetCode: '123456');
-  var resendExpectedResponse = ResendCodeResponseEntity(
-    message: 'OTP Resended Successfully',
+  final verificationRequest = VerifyRequestEntity(resetCode: '123456');
+  final resendExpectedResponse = ResendCodeResponseEntity(
+    message: 'OTP Resented Successfully',
     info: 'Success',
   );
-  var verificationExpectedResponse = VerifyResponseEntity(
+  final verificationExpectedResponse = const VerifyResponseEntity(
     message: 'Verification Successful',
     code: 200,
     status: 'Success',
   );
 
-  var resendExpectedResult = Success<ResendCodeResponseEntity>(
+  final resendExpectedResult = Success<ResendCodeResponseEntity>(
     resendExpectedResponse,
   );
-  var verifyationExpectedResult = Success<VerifyResponseEntity>(
+  final verificationExpectedResult = Success<VerifyResponseEntity>(
     verificationExpectedResponse,
   );
   setUp(() {
-    getResendCodeUsecase = MockGetResendCodeUsecase();
-    getVerificationUsecase = MockGetVerificationUsecase();
+    getResendCodeUseCase = MockGetResendCodeUsecase();
+    getVerificationUseCase = MockGetVerificationUsecase();
 
     provideDummy<Result<ResendCodeResponseEntity>>(resendExpectedResult);
-    provideDummy<Result<VerifyResponseEntity>>(verifyationExpectedResult);
+    provideDummy<Result<VerifyResponseEntity>>(verificationExpectedResult);
 
     when(
-      getResendCodeUsecase.execute(resendCodeRequest),
+      getResendCodeUseCase.execute(resendCodeRequest),
     ).thenAnswer((_) async => resendExpectedResult);
     when(
-      getVerificationUsecase.execute(verificationRequest),
-    ).thenAnswer((_) async => verifyationExpectedResult);
+      getVerificationUseCase.execute(verificationRequest),
+    ).thenAnswer((_) async => verificationExpectedResult);
   });
   blocTest<VerificationScreenCubit, VerificationScreenState>(
     'should emit [loading, success] when resend code is successful',
     build: () =>
-        VerificationScreenCubit(getResendCodeUsecase, getVerificationUsecase),
+        VerificationScreenCubit(getResendCodeUseCase, getVerificationUseCase),
     act: (cubit) =>
         cubit.doIntent(OnResendClickIntent(request: resendCodeRequest)),
     expect: () => [
       const VerificationScreenState(resendCodeStatus: Status.loading),
-      const VerificationScreenState(resendCodeStatus: Status.success),
+      const VerificationScreenState(
+        resendCodeStatus: Status.loading,
+        secondsRemaining: 30,
+      ),
+      const VerificationScreenState(
+        resendCodeStatus: Status.success,
+        secondsRemaining: 30,
+      ),
     ],
   );
   blocTest<VerificationScreenCubit, VerificationScreenState>(
     'should emit [loading, success] when verification is successful',
     build: () =>
-        VerificationScreenCubit(getResendCodeUsecase, getVerificationUsecase),
+        VerificationScreenCubit(getResendCodeUseCase, getVerificationUseCase),
     act: (cubit) =>
         cubit.doIntent(OnVerificationIntent(request: verificationRequest)),
     expect: () => [

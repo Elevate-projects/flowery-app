@@ -1,17 +1,18 @@
 import 'package:flowery_app/core/constants/app_text.dart';
+import 'package:flowery_app/domain/entities/resend_code/request/resend_code_request.dart';
+import 'package:flowery_app/domain/entities/verification/request/verify_requset.dart';
 import 'package:flowery_app/presentation/auth/verification/views/widgets/pin_code_textfiled.dart';
 import 'package:flowery_app/presentation/auth/verification/views/widgets/resend_code_row.dart';
 import 'package:flowery_app/presentation/auth/verification/views/widgets/title_and_subtitle_of_verification.dart';
 import 'package:flowery_app/presentation/auth/verification/views_model/verification_screen_cubit.dart';
+import 'package:flowery_app/presentation/auth/verification/views_model/verification_screen_intent.dart';
 import 'package:flowery_app/presentation/auth/verification/views_model/verification_screen_state.dart';
+import 'package:flowery_app/utils/loaders/loaders.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../domain/entities/resend_code/request/resend_code_request.dart';
-import '../../../../../domain/entities/verification/request/verify_requset.dart';
-import '../../../../../utils/loaders/loaders.dart';
-import '../../views_model/verification_screen_intent.dart';
+
 
 class BuildVerificationForm extends StatefulWidget {
   const BuildVerificationForm({
@@ -49,7 +50,7 @@ class _BuildVerificationFormState extends State<BuildVerificationForm> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                TitleAndSubtitleOfVerification(),
+                const TitleAndSubtitleOfVerification(),
                 SizedBox(height: 30.h),
                 PinCodeTextFiledWidget(
                   isError: widget.isError,
@@ -57,7 +58,7 @@ class _BuildVerificationFormState extends State<BuildVerificationForm> {
                   onCompleted: (value) {
                     BlocProvider.of<VerificationScreenCubit>(context).doIntent(
                       OnVerificationIntent(
-                        request: VerifyRequsetEntity(
+                        request: VerifyRequestEntity(
                           resetCode: verificationController.text,
                         ),
                       ),
@@ -73,7 +74,7 @@ class _BuildVerificationFormState extends State<BuildVerificationForm> {
                     }
                     BlocProvider.of<VerificationScreenCubit>(context).doIntent(
                       OnVerificationIntent(
-                        request: VerifyRequsetEntity(resetCode: value),
+                        request: VerifyRequestEntity(resetCode: value),
                       ),
                     );
                   },
@@ -85,9 +86,7 @@ class _BuildVerificationFormState extends State<BuildVerificationForm> {
                   maintainAnimation: true,
                   maintainState: true,
                   child: Text(
-                    AppText.resendAvaiableStatement +
-                        '${state.secondsRemaining}' +
-                        's',
+                    '${AppText.resendAvaiableStatement}${state.secondsRemaining}s',
                     style: Theme.of(
                       context,
                     ).textTheme.bodyLarge?.copyWith(color: Colors.red),

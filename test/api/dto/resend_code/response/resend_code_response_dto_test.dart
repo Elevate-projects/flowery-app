@@ -6,21 +6,21 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   test('when call toEntity with null values it should return null values', () {
-    ResendCodeResponseDto dto = ResendCodeResponseDto(
+    final ResendCodeResponseDto dto = ResendCodeResponseDto(
       message: null,
       info: null,
     );
-    ResendCodeResponseEntity entity = RequestMapper.resendCodeToEntity(dto);
+    final ResendCodeResponseEntity entity = RequestMapper.resendCodeToEntity(dto);
     expect(entity.message, isNull);
   });
   test(
     'when call toEntity with non-null values it should return right values',
     () {
-      ResendCodeResponseDto dto = ResendCodeResponseDto(
+      final ResendCodeResponseDto dto = ResendCodeResponseDto(
         message: 'Verification code sent successfully',
         info: 'Please check your email for the verification code.',
       );
-      ResendCodeResponseEntity entity = RequestMapper.resendCodeToEntity(dto);
+      final ResendCodeResponseEntity entity = RequestMapper.resendCodeToEntity(dto);
       expect(entity.message, equals(dto.message));
       expect(entity.info, equals(dto.info));
     },
