@@ -9,8 +9,6 @@ import 'package:flowery_app/utils/loaders/loaders.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
-
 class EmailVerification extends StatefulWidget {
   const EmailVerification({super.key});
 
@@ -83,11 +81,13 @@ class _EmailVerificationState extends State<EmailVerification> {
                     context: context,
                   );
                   Future.delayed(const Duration(milliseconds: 1000), () {
-                    Navigator.pushReplacementNamed(
-                      context,
-                      RouteNames.resetPassword,
-                      arguments: widget.email,
-                    );
+                    if (context.mounted) {
+                      Navigator.pushReplacementNamed(
+                        context,
+                        RouteNames.resetPassword,
+                        arguments: widget.email,
+                      );
+                    }
                   });
                   break;
                 case Status.error:
