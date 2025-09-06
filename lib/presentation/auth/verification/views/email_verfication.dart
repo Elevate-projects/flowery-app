@@ -30,7 +30,7 @@ class _EmailVerificationState extends State<EmailVerification> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(AppText.password)),
+      appBar: AppBar(title: const Text(AppText.password)),
       body: MultiBlocListener(
         listeners: [
           BlocListener<VerificationScreenCubit, VerificationScreenState>(

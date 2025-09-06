@@ -28,7 +28,7 @@ void main() {
       email: 'moaazhassan559@gmail.com',
     );
 
-    final expectedResponse = ResendCodeResponseDto(
+    final expectedResponse = const ResendCodeResponseDto(
       message: 'Verification code sent successfully',
       info: 'Please check your email for the verification code.',
     );

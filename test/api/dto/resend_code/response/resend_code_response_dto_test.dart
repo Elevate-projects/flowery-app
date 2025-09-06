@@ -6,7 +6,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   test('when call toEntity with null values it should return null values', () {
-    final ResendCodeResponseDto dto = ResendCodeResponseDto(
+    final ResendCodeResponseDto dto = const ResendCodeResponseDto(
       message: null,
       info: null,
     );
@@ -16,7 +16,7 @@ void main() {
   test(
     'when call toEntity with non-null values it should return right values',
     () {
-      final ResendCodeResponseDto dto = ResendCodeResponseDto(
+      final ResendCodeResponseDto dto = const ResendCodeResponseDto(
         message: 'Verification code sent successfully',
         info: 'Please check your email for the verification code.',
       );

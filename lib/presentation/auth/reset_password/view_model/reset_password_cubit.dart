@@ -25,7 +25,7 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
 
   void _resetPassword(ResetPasswordRequestEntity request) async {
     emit(state.copyWith(status: Status.loading));
-    var res = await getResetPasswordUseCase.execute(request);
+    final res = await getResetPasswordUseCase.execute(request);
     switch (res) {
       case Success<ResetPasswordResponseEntity>():
         emit(state.copyWith(status: Status.success));

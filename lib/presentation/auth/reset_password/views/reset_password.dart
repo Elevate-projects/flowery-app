@@ -22,7 +22,7 @@ class _ResetPasswordState extends State<ResetPassword> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppText.password),
+        title: const Text(AppText.password),
         automaticallyImplyLeading: false,
       ),
       body: BlocListener<ResetPasswordCubit, ResetPasswordState>(
