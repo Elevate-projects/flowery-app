@@ -99,7 +99,7 @@ abstract final class AppText {
   //Occasion
   static const String occasion = "Occasion";
   static const String titleBar = "Bloom with our exquisite best sellers";
-  static const String noProductsFound =  "No products found";
+  static const String noProductsFound = "No products found";
 
   // Exceptions
   static const String connectionError = "connectionError";
