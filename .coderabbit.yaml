@@ -4,8 +4,11 @@ language: "en-US"
 reviews:
     profile: "assertive"
     high_level_summary: true
+    review_status: true
     auto_review:
         enabled: true
+        branches:
+            - "*"
     drafts: false
     ignore_title_keywords:
         - "wip"
