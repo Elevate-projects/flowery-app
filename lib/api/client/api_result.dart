@@ -15,6 +15,7 @@ class Success<T> extends Result<T> {
 
 class Failure<T> extends Result<T> {
   Failure({required this.responseException});
+
   final ResponseException responseException;
 }
 
@@ -33,7 +34,9 @@ Future<Result<T>> executeApi<T>(Future<T> Function() apiCall) async {
     }
   } on DioException catch (error) {
     return Failure(
-      responseException: DioExceptions.handleError(error).responseException,
+      responseException: DioExceptions
+          .handleError(error)
+          .responseException,
     );
   }
 }

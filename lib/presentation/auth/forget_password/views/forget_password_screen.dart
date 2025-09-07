@@ -9,6 +9,7 @@ import 'package:flowery_app/presentation/auth/forget_password/views_model/forget
 import 'package:flowery_app/presentation/auth/forget_password/views_model/forget_password_view_model.dart';
 import 'package:flowery_app/utils/common_widgets/custom_elevated_button.dart';
 import 'package:flowery_app/utils/common_widgets/custom_text_form_field.dart';
+import 'package:flowery_app/utils/loaders/loaders.dart';
 import 'package:flowery_app/utils/validations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,7 +25,7 @@ class ForgetPasswordScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           leading: const BackButton(color: AppColors.black),
-          title: Text(AppText.password.tr()),
+          title: const Text(AppText.password),
         ),
 
         body: BlocConsumer<ForgetPasswordViewModel, ForgetPasswordState>(
@@ -33,15 +34,13 @@ class ForgetPasswordScreen extends StatelessWidget {
               case ForgetPasswordInitial():
                 break;
               case ForgetPasswordSuccess():
-                ScaffoldMessenger.of(
-                  context,
-                ).showSnackBar(SnackBar(content: Text(state.message)));
                 Navigator.of(context).pushNamed(RouteNames.verification);
                 break;
               case ForgetPasswordFailure():
-                ScaffoldMessenger.of(
-                  context,
-                ).showSnackBar(SnackBar(content: Text(state.error)));
+                Loaders.showErrorMessage(
+                  message: state.error,
+                  context: context,
+                );
               default:
                 break;
             }

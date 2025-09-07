@@ -16,8 +16,8 @@ class CustomHomeOccasionsItem extends StatelessWidget {
        Padding(
          padding: const EdgeInsets.symmetric(horizontal: 16),
          child: RSizedBox(
-           width: 131.w,
-           height: 151.h,
+           width: 131,
+           height: 151,
            child: CachedNetworkImage(
            imageUrl: occasionsEntity.image ?? "",
            errorWidget: (context, url, error) => const Icon(Icons.info),
@@ -26,17 +26,19 @@ class CustomHomeOccasionsItem extends StatelessWidget {
          ),
        ),
         const RSizedBox(height: 8),
-       Padding(
-         padding:  REdgeInsetsDirectional.only(start: 14.0),
-         child: RSizedBox(
-          width: 130,
-           child: Text(
-            overflow: TextOverflow.ellipsis,
-            maxLines: 1,
-             occasionsEntity.name ?? "",
-             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-               color: AppColors.black,
-               fontWeight: FontWeight.w500
+       Expanded(
+         child: Padding(
+           padding:  REdgeInsetsDirectional.only(start: 14.0),
+           child: RSizedBox(
+            width: 130,
+             child: Text(
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+               occasionsEntity.name ?? "",
+               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                 color: AppColors.black,
+                 fontWeight: FontWeight.w500
+               ),
              ),
            ),
          ),
