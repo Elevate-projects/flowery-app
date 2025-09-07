@@ -1,10 +1,10 @@
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flowery_app/api/client/api_result.dart';
 import 'package:flowery_app/core/state_status/state_status.dart';
 import 'package:flowery_app/domain/entities/home_products/products_response_entity.dart';
 import 'package:flowery_app/domain/use_cases/home_products/home_products_use_case.dart';
 import 'package:flowery_app/presentation/home/home_screen/view_model/home_products_intent.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 part 'home_products_state.dart';

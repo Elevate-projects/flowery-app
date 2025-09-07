@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -41,7 +42,7 @@ class CustomElevatedButton extends StatelessWidget {
       child: isText
           ? FittedBox(
               child: Text(
-                buttonTitle,
+                buttonTitle.tr(),
                 style: titleStyle ?? Theme.of(context).textTheme.labelLarge,
               ),
             )

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/presentation/home/home_screen/view_model/home_products_cubit.dart';
 import 'package:flowery_app/presentation/home/home_screen/views/widgets/custom_home_category_item.dart';
@@ -19,11 +20,11 @@ class HomeCategoryListViewBody extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                AppText.categoriesText,
+                AppText.categoriesText.tr(),
                 style: theme.textTheme.headlineSmall,
               ),
               Text(
-                AppText.viewAll,
+                AppText.viewAll.tr(),
                 style: theme.textTheme.bodyMedium?.copyWith(
                   color: Colors.pink,
                   fontSize: 12.sp,

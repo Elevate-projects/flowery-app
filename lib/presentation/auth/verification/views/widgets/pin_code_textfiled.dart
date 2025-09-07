@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_colors.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flutter/material.dart';
@@ -55,7 +56,7 @@ class _PinCodeTextFiledWidgetState extends State<PinCodeTextFiledWidget> {
               Icon(Icons.error, color: Colors.red, size: 18.sp),
               SizedBox(width: 4.w),
               Text(
-                AppText.invalidCode,
+                AppText.invalidCode.tr(),
                 style: Theme.of(
                   context,
                 ).textTheme.bodyLarge?.copyWith(color: Colors.red),

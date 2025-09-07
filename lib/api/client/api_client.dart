@@ -10,6 +10,7 @@ import 'package:flowery_app/api/responses/forget_password_response/forget_passwo
 import 'package:flowery_app/api/responses/home_products/products_response_model.dart';
 import 'package:flowery_app/api/responses/login_response/login_response.dart';
 import 'package:flowery_app/api/responses/products_response/products_response.dart';
+import 'package:flowery_app/api/responses/profile_response/profile_response.dart';
 import 'package:flowery_app/api/responses/register_response/register_response.dart';
 import 'package:flowery_app/api/responses/resend_code/resend_code_response_dto.dart';
 import 'package:flowery_app/api/responses/reset_password/reset_password_response_dto.dart';
@@ -25,7 +26,6 @@ part 'api_client.g.dart';
 abstract class ApiClient {
   @factoryMethod
   factory ApiClient(Dio dio) = _ApiClient;
-
   @GET(Endpoints.home)
   Future<ProductsResponseModel> getHomeData({
     @Header("Authorization") required String token,
@@ -53,6 +53,13 @@ abstract class ApiClient {
     @Body() ResendCodeRequestDto request,
   );
 
+  @GET(Endpoints.loggedUserData)
+  Future<ProfileResponse> getUserData({
+    @Header("Authorization") required String token,
+  });
+
+  @GET(Endpoints.logout)
+  Future<void> logout({@Header("Authorization") required String token});
   @POST(Endpoints.verification)
   Future<VerifyResponseDto> verificationCode(@Body() VerifyRequestDto request);
 

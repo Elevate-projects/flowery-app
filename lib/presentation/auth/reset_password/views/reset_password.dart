@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/core/router/route_names.dart';
 import 'package:flowery_app/presentation/auth/reset_password/view_model/reset_password_cubit.dart';
@@ -39,7 +40,7 @@ class _ResetPasswordState extends State<ResetPassword> {
             case Status.success:
               Navigator.pop(context);
               Loaders.showSuccessMessage(
-                message: AppText.passwordReseted,
+                message: AppText.passwordRested.tr(),
                 context: context,
               );
               Navigator.pushReplacementNamed(context, RouteNames.login);

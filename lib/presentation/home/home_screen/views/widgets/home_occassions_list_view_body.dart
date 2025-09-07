@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/core/router/route_names.dart';
 import 'package:flowery_app/domain/entities/arguments/occasion_arguments_entity.dart';
@@ -22,7 +23,7 @@ class HomeOccassionsListViewBody extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  AppText.occassionsText,
+                  AppText.occasionsText.tr(),
                   style: theme.textTheme.headlineSmall,
                 ),
                 GestureDetector(
@@ -34,10 +35,9 @@ class HomeOccassionsListViewBody extends StatelessWidget {
                     ),
                   ),
                   child: Text(
-                    AppText.viewAll,
-                    style: theme.textTheme.bodyMedium?.copyWith(
+                    AppText.viewAll.tr(),
+                    style: theme.textTheme.bodySmall?.copyWith(
                       color: Colors.pink,
-                      fontSize: 12.sp,
                       fontWeight: FontWeight.w500,
                       decoration: TextDecoration.underline,
                       decorationColor: Colors.pink,

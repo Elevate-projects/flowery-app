@@ -21,6 +21,7 @@ class AnimationLoaderWidget extends StatelessWidget {
   final TextStyle? style;
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -29,7 +30,11 @@ class AnimationLoaderWidget extends StatelessWidget {
           const RSizedBox(height: 24),
           Text(
             text,
-            style: style ?? Theme.of(context).textTheme.labelMedium,
+            style:
+                style ??
+                theme.textTheme.bodyLarge?.copyWith(
+                  color: theme.colorScheme.onSecondary,
+                ),
             textAlign: TextAlign.center,
             overflow: TextOverflow.visible,
           ),
@@ -45,7 +50,7 @@ class AnimationLoaderWidget extends StatelessWidget {
                 ),
                 child: Text(
                   actionText ?? "",
-                  style: Theme.of(context).textTheme.bodyLarge,
+                  style: theme.textTheme.labelLarge,
                 ),
               ),
             ),

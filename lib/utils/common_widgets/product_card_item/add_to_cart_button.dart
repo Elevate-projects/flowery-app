@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_icons.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/utils/common_widgets/custom_elevated_button.dart';
@@ -22,7 +23,7 @@ class AddToCartButton extends StatelessWidget {
           SvgPicture.asset(AppIcons.cart, fit: BoxFit.scaleDown),
           const RSizedBox(width: 8),
           Text(
-            AppText.addToCart,
+            AppText.addToCart.tr(),
             style: theme.textTheme.bodyMedium?.copyWith(
               fontWeight: FontWeight.w500,
               color: theme.colorScheme.secondary,

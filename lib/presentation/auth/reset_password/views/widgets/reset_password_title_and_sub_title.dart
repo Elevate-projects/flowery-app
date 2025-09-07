@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_colors.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flutter/material.dart';
@@ -11,11 +12,11 @@ class ResetPasswordTitleAndSubTitle extends StatelessWidget {
     final theme = Theme.of(context).textTheme;
     return Column(
       children: [
-        Text(AppText.resetPasswordTitle, style: theme.headlineSmall),
+        Text(AppText.resetPasswordTitle.tr(), style: theme.headlineSmall),
         SizedBox(height: 15.h),
         Text(
           textAlign: TextAlign.center,
-          AppText.resetPasswordSubTitle,
+          AppText.resetPasswordSubTitle.tr(),
           style: theme.bodyLarge?.copyWith(color: AppColors.gray),
         ),
       ],

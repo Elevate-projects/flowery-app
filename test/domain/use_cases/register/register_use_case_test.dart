@@ -1,5 +1,5 @@
 import 'package:flowery_app/api/client/api_result.dart';
-import 'package:flowery_app/domain/entities/request/register_request_entity.dart';
+import 'package:flowery_app/domain/entities/requests/register_request/register_request_entity.dart';
 import 'package:flowery_app/domain/entities/user_data/user_data_entity.dart';
 import 'package:flowery_app/domain/repositories/register/register_repository.dart';
 import 'package:flowery_app/domain/use_cases/register/register_use_case.dart';
@@ -35,8 +35,8 @@ void main() {
         lastName: "elsadany",
         gender: "male",
         photo: "profilePic",
-        addresses: ["address1", "address2"],
-        wishlist: ["item1", "item2"],
+        addresses: const ["address1", "address2"],
+        wishlist: const ["item1", "item2"],
         role: "user",
       );
       final expectedResult = Success(userDataEntity);

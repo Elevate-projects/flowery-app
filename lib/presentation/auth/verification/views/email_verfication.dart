@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/core/router/route_names.dart';
 import 'package:flowery_app/presentation/auth/verification/views/widgets/build_verification_form.dart';
@@ -47,7 +48,7 @@ class _EmailVerificationState extends State<EmailVerification> {
                 case Status.success:
                   Navigator.pop(context);
                   Loaders.showSuccessMessage(
-                    message: AppText.otpResendedSuccessfully,
+                    message: AppText.otpResentedSuccessfully.tr(),
                     context: context,
                   );
                   break;
@@ -77,7 +78,7 @@ class _EmailVerificationState extends State<EmailVerification> {
                 case Status.success:
                   Navigator.pop(context);
                   Loaders.showSuccessMessage(
-                    message: AppText.verificationSuccess,
+                    message: AppText.verificationSuccess.tr(),
                     context: context,
                   );
                   Future.delayed(const Duration(milliseconds: 1000), () {

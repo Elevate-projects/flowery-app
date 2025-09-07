@@ -1,5 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_colors.dart';
+import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/domain/entities/product_card/product_card_entity.dart';
 import 'package:flowery_app/utils/common_widgets/shimmer_effect.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +51,7 @@ class CustomHomeBestSellerItem extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "${bestSellerEntity.price} egp",
+                  "${bestSellerEntity.price} ${AppText.egp.tr()}",
                   style: theme.textTheme.bodyLarge?.copyWith(
                     color: AppColors.black,
                     fontWeight: FontWeight.w500,
