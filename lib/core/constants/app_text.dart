@@ -56,9 +56,9 @@ abstract final class AppText {
   static const String logout = "logout";
   static const String version = "version";
   static const String changeLanguage = "changeLanguage";
-  static const String logoutCapital = "LOGOUT";
-  static const String confirmLogout = "Confirm logout!!";
-  static const String cancel = "Cancel";
+  static const String logoutCapital = "logoutCapital";
+  static const String confirmLogout = "confirmLogout";
+  static const String cancel = "cancel";
 
   // Product Details
   static const String status = "status";
@@ -115,4 +115,18 @@ abstract final class AppText {
   static const String connectionTimeout = "connectionTimeout";
   static const String networkError = "networkError";
   static const String anUnknownErrorOccurred = "anUnknownErrorOccurred";
+
+  // Password verification
+  static const String enter6DigitCode = "enter6DigitCode";
+  static const String resendAvailableStatement = "resendAvailableStatement";
+  static const String emailVerificationTitle = 'emailVerificationTitle';
+  static const String emailVerificationSubTitle = 'emailVerificationSubTitle';
+  static const String invalidCode = 'invalidCode';
+  static const String notReceivedCodeStatement = 'notReceivedCodeStatement';
+  static const String otpResentedSuccessfully = "otpResentedSuccessfully";
+  static const String verificationSuccess = "verificationSuccess";
+  static const String resetPasswordTitle = 'resetPasswordTitle';
+  static const String resetPasswordSubTitle = 'resetPasswordSubTitle';
+  static const String continueWord = "continueWord";
+  static const String passwordRested = "passwordRested";
 }

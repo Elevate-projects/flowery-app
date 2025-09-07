@@ -40,7 +40,6 @@ class HomeBestSellerListViewBody extends StatelessWidget {
             builder: (context, state) {
               return RSizedBox(
                 height: 216,
-                width: 344,
                 child: ListView.builder(
                   itemBuilder: (context, index) {
                     return CustomHomeBestSellerItem(

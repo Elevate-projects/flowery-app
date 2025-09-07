@@ -16,8 +16,6 @@ import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
 import '../../api/client/api_client.dart' as _i508;
 import '../../api/client/api_module.dart' as _i272;
-import '../../api/data_source/add_to_cart/remote_data_source/add_to_cart_remote_data_source_impl.dart'
-    as _i187;
 import '../../api/data_source/categories/remote_data_source/categories_remote_data_source_impl.dart'
     as _i699;
 import '../../api/data_source/forget_password/remote_data_source/forget_password_remote_data_source_impl.dart'
@@ -32,8 +30,6 @@ import '../../api/data_source/profile/remote_data_source/profile_remote_data_sou
     as _i913;
 import '../../api/data_source/register/remote_data_source/register_remote_data_source_impl.dart'
     as _i281;
-import '../../data/data_source/add_to_cart/remote_data_source/add_to_cart_remote_data_source.dart'
-    as _i819;
 import '../../data/data_source/categories/remote_data_source/categories_remote_data_source.dart'
     as _i960;
 import '../../data/data_source/forget_password/forget_password_remote_data_source.dart'
@@ -48,8 +44,6 @@ import '../../data/data_source/profile/remote_data_source/profile_remote_data_so
     as _i470;
 import '../../data/data_source/register/remote_data_source/register_remote_data_source.dart'
     as _i233;
-import '../../data/repositories/add_to_cart/add_to_cart_repository_impl.dart'
-    as _i585;
 import '../../data/repositories/categories/categories_repository_impl.dart'
     as _i940;
 import '../../data/repositories/forget_password_repo_impl/forget_password_repo_impl.dart'
@@ -60,8 +54,6 @@ import '../../data/repositories/login/login_repository_impl.dart' as _i722;
 import '../../data/repositories/logout/logout_repository_impl.dart' as _i463;
 import '../../data/repositories/profile/profile_repository_impl.dart' as _i770;
 import '../../data/repositories/register/register_repository_impl.dart' as _i40;
-import '../../domain/repositories/add_to_cart/add_to_cart_repository.dart'
-    as _i475;
 import '../../domain/repositories/categories/categories_repository.dart'
     as _i660;
 import '../../domain/repositories/forget_password/forget_password_repo.dart'
@@ -72,8 +64,6 @@ import '../../domain/repositories/login/login_repository.dart' as _i300;
 import '../../domain/repositories/logout/logout_repository.dart' as _i6;
 import '../../domain/repositories/profile/profile_repository.dart' as _i445;
 import '../../domain/repositories/register/register_repository.dart' as _i638;
-import '../../domain/use_cases/add_to_cart/add_product_to_cart_use_case.dart'
-    as _i334;
 import '../../domain/use_cases/categories/get_all_categories_use_case.dart'
     as _i824;
 import '../../domain/use_cases/categories/get_all_products_use_case.dart'
@@ -105,8 +95,6 @@ import '../../presentation/product_details/views_model/product_details_cubit.dar
 import '../../presentation/profile/views_model/profile_cubit.dart' as _i1028;
 import '../../presentation/terms_and_conditions/views_model/terms_and_conditions_cubit.dart'
     as _i297;
-import '../../utils/common_cubits/add_product_to_cart/add_product_to_cart_cubit.dart'
-    as _i1028;
 import '../cache/shared_preferences_helper.dart' as _i686;
 import '../cache/shared_preferences_module.dart' as _i912;
 import '../global_cubit/global_cubit.dart' as _i209;
@@ -134,15 +122,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i361.Dio>(() => apiModule.provideDio());
     gh.singleton<_i23.SecureStorage>(() => _i23.SecureStorage());
     gh.factory<_i508.ApiClient>(() => _i508.ApiClient(gh<_i361.Dio>()));
-    gh.factory<_i819.AddToCartRemoteDataSource>(
-      () => _i187.AddToCartRemoteDataSourceImpl(gh<_i508.ApiClient>()),
-    );
     gh.singleton<_i686.SharedPreferencesHelper>(
       () => _i686.SharedPreferencesHelper(gh<_i460.SharedPreferences>()),
-    );
-    gh.factory<_i475.AddToCartRepository>(
-      () =>
-          _i585.AddToCartRepositoryImpl(gh<_i819.AddToCartRemoteDataSource>()),
     );
     gh.factory<_i233.RegisterRemoteDataSource>(
       () => _i281.RegisterRemoteDataSourceImpl(
@@ -168,17 +149,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i849.ForgetPasswordRemoteDataSource>(
       () => _i428.ForgetPasswordRemoteDataSourceImpl(gh<_i508.ApiClient>()),
     );
-    gh.factory<_i334.AddProductToCartUseCase>(
-      () => _i334.AddProductToCartUseCase(gh<_i475.AddToCartRepository>()),
-    );
     gh.factory<_i470.ProfileRemoteDataSource>(
       () => _i913.ProfileRemoteDataSourceImpl(gh<_i508.ApiClient>()),
     );
     gh.factory<_i924.LogoutRemoteDataSource>(
       () => _i340.LogoutRemoteDataSourceImpl(gh<_i508.ApiClient>()),
-    );
-    gh.factory<_i1028.AddProductToCartCubit>(
-      () => _i1028.AddProductToCartCubit(gh<_i334.AddProductToCartUseCase>()),
     );
     gh.factory<_i960.CategoriesRemoteDataSource>(
       () => _i699.CategoriesRemoteDataSourceImpl(gh<_i508.ApiClient>()),
