@@ -31,11 +31,6 @@ abstract class ApiClient {
     @Header("Authorization") required String token,
   });
 
-  @GET(Endpoints.home)
-  Future<ProductsResponseModel> getHomeData({
-    @Header("Authorization") required String token,
-  });
-
   @POST(Endpoints.login)
   Future<LoginResponse> login({@Body() required LoginRequestModel request});
 
@@ -49,9 +44,6 @@ abstract class ApiClient {
   Future<ProductsResponse> fetchAllProducts();
 
   @POST(Endpoints.forgetPassword)
-  Future<ForgetPasswordResponseModel> forgetPassword({
-    @Body() required ForgetPasswordRequestDto request,
-  });
   Future<ForgetPasswordResponseModel> forgetPassword({
     @Body() required ForgetPasswordRequestDto request,
   });

@@ -9,6 +9,7 @@ import 'package:flowery_app/presentation/auth/forget_password/views_model/forget
 import 'package:flowery_app/presentation/auth/forget_password/views_model/forget_password_view_model.dart';
 import 'package:flowery_app/utils/common_widgets/custom_elevated_button.dart';
 import 'package:flowery_app/utils/common_widgets/custom_text_form_field.dart';
+import 'package:flowery_app/utils/common_widgets/loading_button.dart';
 import 'package:flowery_app/utils/loaders/loaders.dart';
 import 'package:flowery_app/utils/validations.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,9 @@ class ForgetPasswordScreen extends StatelessWidget {
               case ForgetPasswordInitial():
                 break;
               case ForgetPasswordSuccess():
-                Navigator.of(context).pushNamed(RouteNames.verification);
+                Navigator.of(
+                  context,
+                ).pushReplacementNamed(RouteNames.verification);
                 break;
               case ForgetPasswordFailure():
                 Loaders.showErrorMessage(
@@ -48,10 +51,6 @@ class ForgetPasswordScreen extends StatelessWidget {
 
           builder: (context, state) {
             final viewModel = context.read<ForgetPasswordViewModel>();
-
-            if (state is ForgetPasswordLoading) {
-              return const Center(child: CircularProgressIndicator());
-            }
             return Padding(
               padding: const EdgeInsets.all(20),
               child: Form(
@@ -80,23 +79,28 @@ class ForgetPasswordScreen extends StatelessWidget {
                       controller: viewModel.emailController,
                       validator: (value) =>
                           Validations.emailValidation(email: value),
+                      enabled: state is! ForgetPasswordLoading,
                     ),
                     SizedBox(height: 35.h),
 
-                    CustomElevatedButton(
-                      onPressed: () {
-                        if (viewModel.formKey.currentState!.validate()) {
-                          context.read<ForgetPasswordViewModel>().doIntent(
-                            OnConfirmEmailForgetPasswordClickIntent(
-                              request: ForgetPasswordRequestEntity(
-                                email: viewModel.emailController.text,
-                              ),
-                            ),
-                          );
-                        }
-                      },
-                      buttonTitle: AppText.confirmButton,
-                    ),
+                    state is ForgetPasswordLoading
+                        ? const LoadingButton()
+                        : CustomElevatedButton(
+                            onPressed: () {
+                              if (viewModel.formKey.currentState!.validate()) {
+                                context
+                                    .read<ForgetPasswordViewModel>()
+                                    .doIntent(
+                                      OnConfirmEmailForgetPasswordClickIntent(
+                                        request: ForgetPasswordRequestEntity(
+                                          email: viewModel.emailController.text,
+                                        ),
+                                      ),
+                                    );
+                              }
+                            },
+                            buttonTitle: AppText.confirmButton,
+                          ),
                   ],
                 ),
               ),

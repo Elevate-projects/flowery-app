@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/domain/entities/reset_password/request/reset_password_request.dart';
 import 'package:flowery_app/presentation/auth/reset_password/view_model/reset_password_cubit.dart';
@@ -66,7 +67,7 @@ class BuildResetPasswordForm extends StatelessWidget {
                   );
                 }
               },
-              buttonTitle: AppText.continueWord,
+              buttonTitle: AppText.continueWord.tr(),
             ),
           ],
         ),

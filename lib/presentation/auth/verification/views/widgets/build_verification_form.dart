@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/domain/entities/resend_code/request/resend_code_request.dart';
 import 'package:flowery_app/domain/entities/verification/request/verify_requset.dart';
@@ -11,8 +12,6 @@ import 'package:flowery_app/utils/loaders/loaders.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-
 
 class BuildVerificationForm extends StatefulWidget {
   const BuildVerificationForm({
@@ -67,7 +66,7 @@ class _BuildVerificationFormState extends State<BuildVerificationForm> {
                   onSubmitted: (value) {
                     if (value.isEmpty || value.length < 6) {
                       Loaders.showErrorMessage(
-                        message: AppText.enter6DigitCode,
+                        message: AppText.enter6DigitCode.tr(),
                         context: context,
                       );
                       return;
@@ -86,7 +85,7 @@ class _BuildVerificationFormState extends State<BuildVerificationForm> {
                   maintainAnimation: true,
                   maintainState: true,
                   child: Text(
-                    '${AppText.resendAvaiableStatement}${state.secondsRemaining}s',
+                    '${AppText.resendAvailableStatement.tr()}${state.secondsRemaining}s',
                     style: Theme.of(
                       context,
                     ).textTheme.bodyLarge?.copyWith(color: Colors.red),

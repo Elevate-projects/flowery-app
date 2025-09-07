@@ -1,6 +1,10 @@
+import 'dart:math' as math;
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_icons.dart';
+import 'package:flowery_app/core/global_cubit/global_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -26,6 +30,7 @@ class ProfileNavigationItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final globalCubit = BlocProvider.of<GlobalCubit>(context);
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(12.r),
@@ -60,10 +65,13 @@ class ProfileNavigationItem extends StatelessWidget {
             ),
             Visibility(
               visible: isSuffixArrow,
-              child: SvgPicture.asset(
-                AppIcons.rightArrow,
-                width: 24.r,
-                height: 24.r,
+              child: Transform.rotate(
+                angle: globalCubit.isArLanguage ? math.pi : 0,
+                child: SvgPicture.asset(
+                  AppIcons.rightArrow,
+                  width: 24.r,
+                  height: 24.r,
+                ),
               ),
             ),
             Visibility(

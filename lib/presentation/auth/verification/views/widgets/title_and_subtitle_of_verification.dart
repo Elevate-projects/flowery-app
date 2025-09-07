@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_colors.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flutter/material.dart';
@@ -12,13 +13,13 @@ class TitleAndSubtitleOfVerification extends StatelessWidget {
     return Column(
       children: [
         Text(
-          AppText.emailVerificationTitle,
+          AppText.emailVerificationTitle.tr(),
           style: theme.textTheme.headlineSmall,
         ),
         SizedBox(height: 15.h),
         Text(
           textAlign: TextAlign.center,
-          AppText.emailVerificationSubTitle,
+          AppText.emailVerificationSubTitle.tr(),
           style: theme.textTheme.bodyLarge?.copyWith(color: AppColors.gray),
         ),
       ],

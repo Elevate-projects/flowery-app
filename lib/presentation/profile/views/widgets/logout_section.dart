@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_icons.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/presentation/profile/views/widgets/profile_navigation_item.dart';
@@ -44,7 +45,7 @@ class LogoutSection extends StatelessWidget {
                 FittedBox(
                   fit: BoxFit.scaleDown,
                   child: Text(
-                    AppText.logoutCapital,
+                    AppText.logoutCapital.tr(),
                     style: theme.textTheme.headlineSmall?.copyWith(
                       fontWeight: FontWeight.w600,
                     ),
@@ -55,7 +56,7 @@ class LogoutSection extends StatelessWidget {
                 FittedBox(
                   fit: BoxFit.scaleDown,
                   child: Text(
-                    AppText.confirmLogout,
+                    AppText.confirmLogout.tr(),
                     style: theme.textTheme.labelLarge?.copyWith(
                       fontWeight: FontWeight.w400,
                       color: theme.colorScheme.onSecondary,
@@ -84,7 +85,7 @@ class LogoutSection extends StatelessWidget {
                             fontWeight: FontWeight.w500,
                             letterSpacing: 0.1,
                           ),
-                          buttonTitle: AppText.cancel,
+                          buttonTitle: AppText.cancel.tr(),
                           height: 40.h,
                         ),
                       ),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,7 +20,7 @@ class ResendCodeRow extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          AppText.didntRecieveCodeStatement,
+          AppText.notReceivedCodeStatement.tr(),
           style: theme.labelLarge?.copyWith(
             color: Colors.black,
             fontWeight: FontWeight.w400,
