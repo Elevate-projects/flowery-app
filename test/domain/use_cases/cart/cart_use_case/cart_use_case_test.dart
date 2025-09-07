@@ -17,7 +17,7 @@ void main() {
       final getLoggedUserCartUseCase = GetLoggedUserCartUseCase(
         mockedCartRepository,
       );
-      final expectedGetLoggedUserCartEntity = GetLoggedUserCartEntity(
+      final expectedGetLoggedUserCartEntity = const GetLoggedUserCartEntity(
         message: "ok",
         numOfCartItems: 1,
         cart: CartEntity(

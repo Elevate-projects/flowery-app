@@ -77,7 +77,7 @@ class CartPage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    duration: Duration(seconds: 2),
+                    duration: const Duration(seconds: 2),
                   ),
                 );
                 context.read<CartCubit>().doIntent(
