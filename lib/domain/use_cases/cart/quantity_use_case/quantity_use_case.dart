@@ -4,7 +4,7 @@ import 'package:flowery_app/domain/repositories/cart/quantity_repositories/quant
 import 'package:injectable/injectable.dart';
 @injectable
 class QuantityUseCase{
-  final RemoteDataSourceQuantityRepositories _request;
+  final RemoveQuantityRepositories _request;
   QuantityUseCase(this._request);
   Future<Result<QuantityEntity>> updateCartQuantity(String productId, String token, int quantity) {
     return _request.updateCartQuantity(productId, token, quantity);

@@ -4,6 +4,7 @@ import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/presentation/cart/view_model/cart_intent.dart';
 import 'package:flowery_app/presentation/cart/view_model/delete_cubit/delete_cubit.dart';
 import 'package:flowery_app/presentation/cart/view_model/delete_cubit/delete_state.dart';
+import 'package:flowery_app/presentation/cart/widget/custom_cart_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flowery_app/presentation/cart/view_model/cart_cubit.dart';
@@ -26,33 +27,94 @@ class CartPage extends StatelessWidget {
         leading: const CustomBackArrow(),
         title: const Text(AppText.cart),
       ),
-      body: BlocListener<DeleteCartCubit, DeleteCartState>(
-        listener: (context, state) {
-          if (state.deleteStatus.isSuccess) {
-            context.read<CartCubit>().doIntent(
-              LoadCartIntent(FloweryMethodHelper.currentUserToken ?? ""),
-            );
-          }
-        },
+      body: MultiBlocListener(
+        listeners: [
+          BlocListener<CartCubit, CartState>(
+            listener: (context, state) {
+              if (state.cartStatus.isFailure) {
+                final errorMessage = state.cartStatus.error?.message ?? "";
+                if (errorMessage == "You are not logged in press to Arrow back to login ") {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: const Text("You are not logged in press to Arrow back to login"),
+                      backgroundColor: Colors.red,
+                      behavior: SnackBarBehavior.floating,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                  );
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(errorMessage),
+                      backgroundColor: Colors.red,
+                    ),
+                  );
+                }
+              }
+            },
+          ),
+          BlocListener<DeleteCartCubit, DeleteCartState>(
+            listener: (context, state) {
+              if (state.deleteStatus.isSuccess) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    behavior: SnackBarBehavior.floating,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    backgroundColor: Colors.green,
+                    content: const Row(
+                      children: [
+                        Icon(Icons.check_circle_outline, color: Colors.white),
+                        SizedBox(width: 12),
+                        Expanded(
+                          child: Text(
+                            'Product removed from cart Successfully',
+                            style: TextStyle(color: Colors.white, fontSize: 16),
+                          ),
+                        ),
+                      ],
+                    ),
+                    duration: Duration(seconds: 2),
+                  ),
+                );
+                context.read<CartCubit>().doIntent(
+                  LoadCartIntent(FloweryMethodHelper.currentUserToken ?? ""),
+                );
+              }
+            },
+          ),
+        ],
         child: BlocBuilder<CartCubit, CartState>(
           builder: (context, state) {
             if (state.cartStatus.isLoading) {
-              return const Center(child: CircularProgressIndicator());
+              return ListView.builder(
+                itemCount: 4,
+                itemBuilder: (context, index) =>
+                    const CustomCartDetailsShimmer(),
+              );
             }
-
             if (state.cartStatus.isFailure) {
               return Center(
                 child: Text(
-                  state.cartStatus.error?.message ?? AppText.unexpectedError,
+                  state.cartStatus.error?.message ?? "Unexpected error",
                   style: const TextStyle(color: Colors.red),
                 ),
               );
             }
-
             if (state.cartStatus.isSuccess) {
               final cart = state.cartStatus.data;
               final cartItems = cart?.cart?.cartItems ?? [];
-
+              if (cartItems.isEmpty) {
+                return const Center(
+                  child: Text(
+                    AppText.noItems,
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                );
+              }
               return Column(
                 children: [
                   const Padding(
@@ -102,16 +164,20 @@ class CartPage extends StatelessWidget {
                   ),
                   Container(
                     width: double.infinity,
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 10,
                     ),
+                    decoration: const BoxDecoration(color: Colors.white),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Row(
                           children: [
-                            const Text(AppText.subTotal, style: TextStyle(color: Colors.grey)),
+                            const Text(
+                              AppText.subTotal,
+                              style: TextStyle(color: Colors.grey),
+                            ),
                             const Spacer(),
                             Text(
                               "\$${cart?.cart?.totalPrice ?? 0}",
@@ -122,7 +188,10 @@ class CartPage extends StatelessWidget {
                         const SizedBox(height: 4),
                         const Row(
                           children: [
-                            Text(AppText.deliveryFee, style: TextStyle(color: Colors.grey)),
+                            Text(
+                              AppText.deliveryFee,
+                              style: TextStyle(color: Colors.grey),
+                            ),
                             Spacer(),
                             Text("\$10", style: TextStyle(color: Colors.grey)),
                           ],
@@ -176,7 +245,7 @@ class CartPage extends StatelessWidget {
                 ],
               );
             }
-            return const SizedBox();
+            return const SizedBox.shrink();
           },
         ),
       ),

@@ -112,4 +112,6 @@ abstract final class AppText {
   static const String price = "EGP";
   static const String noDescription = "No Description";
   static const String location = "2XVP+XC - Sheikh Zayed.....";
+  static const String noItems = "No items in the cart";
+  static const String delete = "Successfully Delete";
 }

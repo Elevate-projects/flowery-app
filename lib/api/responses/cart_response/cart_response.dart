@@ -25,6 +25,7 @@ import 'package:json_annotation/json_annotation.dart';
     Map<String, dynamic> toJson() {
       return _$CartResponseToJson(this);
     }
+
     AddProductCartEntity toEntity() {
       return AddProductCartEntity(
         message: message,

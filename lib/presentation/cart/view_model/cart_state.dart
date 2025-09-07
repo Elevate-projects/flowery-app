@@ -7,10 +7,10 @@ class CartState extends Equatable {
   const CartState({
     this.cartStatus = const StateStatus.initial(),
   });
-
   CartState copyWith({
     StateStatus<GetLoggedUserCartEntity>? cartStatus,
-  }) {
+  })
+  {
     return CartState(
       cartStatus: cartStatus ?? this.cartStatus,
     );

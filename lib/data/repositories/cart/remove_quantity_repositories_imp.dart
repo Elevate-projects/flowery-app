@@ -3,13 +3,16 @@ import 'package:flowery_app/data/data_source/cart/remote_data_source_quantity_re
 import 'package:flowery_app/domain/entities/cart/update_quantity/update_quantity.dart';
 import 'package:flowery_app/domain/repositories/cart/quantity_repositories/quantity_repositories.dart';
 import 'package:injectable/injectable.dart';
-@Injectable(as: RemoteDataSourceQuantityRepositories)
-class RemoteDataSourceQuantityRepositoriesImp extends RemoteDataSourceQuantityRepositories{
+@Injectable(as: RemoveQuantityRepositories)
+class QuantityRepositoriesImp implements RemoveQuantityRepositories {
   final RemoteDataSourceQuantityRequest _request;
-  RemoteDataSourceQuantityRepositoriesImp(this._request);
-
+  QuantityRepositoriesImp(this._request);
   @override
-  Future<Result<QuantityEntity>> updateCartQuantity(String productId, String token, int quantity) {
+  Future<Result<QuantityEntity>> updateCartQuantity(
+      String productId,
+      String token,
+      int quantity,
+      ) {
     return _request.updateCartQuantity(productId, token, quantity);
   }
 }

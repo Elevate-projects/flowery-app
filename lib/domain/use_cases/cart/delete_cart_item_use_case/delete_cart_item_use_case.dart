@@ -4,7 +4,7 @@ import 'package:flowery_app/domain/repositories/cart/delete_item_repositories/de
 import 'package:injectable/injectable.dart';
 @injectable
 class DeleteCartItemUseCase{
-  final RemoteDataSourceDeleteItemRepositories _repositories;
+  final DeleteItemRepositories _repositories;
   DeleteCartItemUseCase(this._repositories);
   Future<Result<DeleteItemsEntity>> deleteCartItem(String productId, String token) {
     return _repositories.deleteCartItem(productId, token);

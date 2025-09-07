@@ -3,6 +3,7 @@ import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/domain/entities/cart/get_logged_user_cart/get_logged_user_cart.dart';
 import 'package:flowery_app/presentation/cart/view_model/delete_cubit/delete_cubit.dart';
 import 'package:flowery_app/presentation/cart/view_model/delete_cubit/delete_intent.dart';
+import 'package:flowery_app/presentation/cart/view_model/delete_cubit/delete_state.dart';
 import 'package:flowery_app/presentation/cart/view_model/quantity_cubit/quantity_cubit.dart';
 import 'package:flowery_app/presentation/cart/view_model/quantity_cubit/quantity_intent.dart';
 import 'package:flowery_app/presentation/cart/view_model/quantity_cubit/quantity_state.dart';
@@ -13,13 +14,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomCartDetails extends StatelessWidget {
   final CartItemEntity cartItem;
-
   const CustomCartDetails({super.key, required this.cartItem});
-
   @override
   Widget build(BuildContext context) {
     final product = cartItem.product;
-
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
       width: 343.w,
@@ -44,7 +42,7 @@ class CustomCartDetails extends StatelessWidget {
                 product?.imgCover ?? '',
                 fit: BoxFit.cover,
                 errorBuilder: (context, error, stackTrace) =>
-                const Icon(Icons.broken_image),
+                    const Icon(Icons.broken_image),
               ),
             ),
           ),
@@ -113,9 +111,8 @@ class CustomCartDetails extends StatelessWidget {
                               UpdateCartQuantityIntent(
                                 productId: cartItem.product?.id ?? "",
                                 token:
-                                FloweryMethodHelper.currentUserToken ??
-                                    "",
-                                quantity: (cartItem.quantity ?? 0) -1,
+                                    FloweryMethodHelper.currentUserToken ?? "",
+                                quantity: (cartItem.quantity ?? 0) - 1,
                               ),
                             );
                           }
@@ -135,7 +132,8 @@ class CustomCartDetails extends StatelessWidget {
                       SizedBox(width: 5.w),
                       BlocBuilder<QuantityCubit, QuantityState>(
                         builder: (context, state) {
-                          final isLoading = state.quantityStatus.isLoading &&
+                          final isLoading =
+                              state.quantityStatus.isLoading &&
                               state.currentProductId == cartItem.product?.id;
                           return SizedBox(
                             width: 24.w,
@@ -143,18 +141,18 @@ class CustomCartDetails extends StatelessWidget {
                             child: Center(
                               child: isLoading
                                   ? const SizedBox(
-                                width: 16,
-                                height: 16,
-                                child: CircularProgressIndicator(strokeWidth: 2),
-                              )
+                                      width: 16,
+                                      height: 16,
+                                      child: CircularProgressIndicator(),
+                                    )
                                   : Text(
-                                "${cartItem.quantity ?? 0}",
-                                style: TextStyle(
-                                  fontSize: 16.sp,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.black,
-                                ),
-                              ),
+                                      "${cartItem.quantity ?? 0}",
+                                      style: TextStyle(
+                                        fontSize: 16.sp,
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.black,
+                                      ),
+                                    ),
                             ),
                           );
                         },
@@ -164,8 +162,7 @@ class CustomCartDetails extends StatelessWidget {
                           context.read<QuantityCubit>().doIntent(
                             UpdateCartQuantityIntent(
                               productId: cartItem.product?.id ?? "",
-                              token:
-                              FloweryMethodHelper.currentUserToken ?? "",
+                              token: FloweryMethodHelper.currentUserToken ?? "",
                               quantity: (cartItem.quantity ?? 0) + 1,
                             ),
                           );

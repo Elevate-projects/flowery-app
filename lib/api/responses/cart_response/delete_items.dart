@@ -9,13 +9,9 @@ class DeleteItems {
   final String? message;
   @JsonKey(name: "numOfCartItems")
   final int? numOfCartItems;
-  @JsonKey(name: "cart")
-  final Cart? cart;
-
   DeleteItems ({
     this.message,
     this.numOfCartItems,
-    this.cart,
   });
 
   factory DeleteItems.fromJson(Map<String, dynamic> json) {
@@ -29,60 +25,9 @@ class DeleteItems {
     return DeleteItemsEntity(
       message: message,
       numOfCartItems: numOfCartItems,
-      cart: cart?.toEntity(),
     );
   }
 }
 
-@JsonSerializable()
-class Cart {
-  @JsonKey(name: "_id")
-  final String? id;
-  @JsonKey(name: "user")
-  final String? user;
-  @JsonKey(name: "cartItems")
-  final List<dynamic>? cartItems;
-  @JsonKey(name: "appliedCoupons")
-  final List<dynamic>? appliedCoupons;
-  @JsonKey(name: "totalPrice")
-  final int? totalPrice;
-  @JsonKey(name: "createdAt")
-  final String? createdAt;
-  @JsonKey(name: "updatedAt")
-  final String? updatedAt;
-  @JsonKey(name: "__v")
-  final int? V;
-
-  Cart ({
-    this.id,
-    this.user,
-    this.cartItems,
-    this.appliedCoupons,
-    this.totalPrice,
-    this.createdAt,
-    this.updatedAt,
-    this.V,
-  });
-
-  factory Cart.fromJson(Map<String, dynamic> json) {
-    return _$CartFromJson(json);
-  }
-
-  Map<String, dynamic> toJson() {
-    return _$CartToJson(this);
-  }
-  CartEntity toEntity() {
-    return CartEntity(
-      id: id,
-      user: user,
-      cartItems: cartItems,
-      appliedCoupons: appliedCoupons,
-      totalPrice: totalPrice,
-      createdAt: createdAt,
-      updatedAt: updatedAt,
-      v: V,
-    );
-  }
-}
 
 
