@@ -23,7 +23,6 @@ class CartPage extends StatelessWidget {
     log('userinfo: ${FloweryMethodHelper.userData}');
     return Scaffold(
       appBar: AppBar(
-        titleSpacing: 0,
         leading: const CustomBackArrow(),
         title: const Text(AppText.cart),
       ),
