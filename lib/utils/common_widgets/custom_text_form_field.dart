@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -72,7 +73,7 @@ class CustomTextFormField extends StatelessWidget {
         contentPadding: contentPadding ?? REdgeInsets.all(16),
         filled: false,
         label: Text(
-          label,
+          label.tr(),
           style:
               labelStyle ??
               Theme.of(context).textTheme.bodyLarge?.copyWith(
@@ -84,7 +85,7 @@ class CustomTextFormField extends StatelessWidget {
             Theme.of(
               context,
             ).textTheme.bodyLarge?.copyWith(color: AppColors.white[70]),
-        hintText: hintText,
+        hintText: hintText?.tr(),
         focusedBorder: buildOutlinedBorder(
           borderColor: Theme.of(context).colorScheme.primary,
           borderRadius: borderRadius,
