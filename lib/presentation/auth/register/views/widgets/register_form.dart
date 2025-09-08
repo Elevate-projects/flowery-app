@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/presentation/auth/register/view_model/register_cubit.dart';
 import 'package:flowery_app/presentation/auth/register/view_model/register_intent.dart';

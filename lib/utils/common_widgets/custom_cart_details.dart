@@ -10,10 +10,6 @@ import 'package:flowery_app/utils/flowery_method_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-
-
-
 class CustomCartDetails extends StatelessWidget {
   final CartItemEntity cartItem;
   const CustomCartDetails({super.key, required this.cartItem});

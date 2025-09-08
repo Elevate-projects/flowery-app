@@ -1,6 +1,11 @@
 import 'package:dio/dio.dart';
+import 'package:flowery_app/api/requests/cart_request/quintity_request.dart';
+import 'package:flowery_app/api/requests/forget_password_request/forget_password_request.dart';
 import 'package:flowery_app/api/requests/login_request/login_request_model.dart';
 import 'package:flowery_app/api/requests/register_request/register_request.dart';
+import 'package:flowery_app/api/requests/resend_code/resend_code_request_dto.dart';
+import 'package:flowery_app/api/requests/reset_password/reset_password_request_dto.dart';
+import 'package:flowery_app/api/requests/verification/verify_request_dto.dart';
 import 'package:flowery_app/api/responses/cart_response/delete_items.dart';
 import 'package:flowery_app/api/responses/cart_response/quantity_response.dart';
 import 'package:flowery_app/api/responses/categories_response/categories_response.dart';

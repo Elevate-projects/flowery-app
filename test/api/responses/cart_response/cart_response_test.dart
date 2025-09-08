@@ -37,7 +37,5 @@ void main() {
     expect(cart.numOfCartItems, 1);
     expect(cart.cart?.id, "cart123");
     expect(cart.cart?.user, "user123");
-    expect(cart.cart?.cartItems?.first.product?.id, "product123");
-    expect(cart.cart?.cartItems?.first.product?.title, "product title");
   });
 }

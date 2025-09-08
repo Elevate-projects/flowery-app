@@ -118,23 +118,6 @@ abstract final class AppText {
   static const String networkError =
       "Something went wrong. Please check your internet connection.";
   static const String anUnknownErrorOccurred = "An unknown error occurred.";
-//   forgetPassword
-  static const String forgetPassword2 = "Forget password";
-  static const String enterRegisteredEmail = 'Please enter your email associated to your account';
-  static const String confirmButton = "Confirm";
-  // Exceptions
-  static const String connectionError = "connectionError";
-  static const String noResponseReceivedMessage = "noResponseReceivedMessage";
-  static const String error = "error";
-  static const String unexpectedError = "unexpectedError";
-  static const String unexpectedErrorOccurred = "unexpectedErrorOccurred";
-  static const String requestCancelled = "requestCancelled";
-  static const String receiveTimeout = "receiveTimeout";
-  static const String sendTimeout = "sendTimeout";
-  static const String connectionTimeout = "connectionTimeout";
-  static const String networkError = "networkError";
-  static const String anUnknownErrorOccurred = "anUnknownErrorOccurred";
-
   // Password verification
   static const String enter6DigitCode = "enter6DigitCode";
   static const String resendAvailableStatement = "resendAvailableStatement";
@@ -151,14 +134,14 @@ abstract final class AppText {
   // cart text
   static const String delivery = "Delivery to ";
   static const String subTotal = "Sub total";
-  static const String deliveryFee = "Delivery fee";
-  static const String total = "Total";
-  static const String checkOut = "Check Out";
+  static const String deliveryFee = "DeliveryFee";
+  static const String total = "total";
+  static const String checkout = "Checkout";
   static const String emptyCart = "Your cart is empty";
   static const String noName = "No Name";
   static const String price = "EGP";
   static const String noDescription = "No Description";
   static const String location = "2XVP+XC - Sheikh Zayed.....";
   static const String noItems = "No items in the cart";
-  static const String delete = "Successfully Delete";
+  static const String delete = "Product removed from cart Successfully";
 }

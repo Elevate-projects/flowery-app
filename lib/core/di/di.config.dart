@@ -381,8 +381,6 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i28.DeleteCartCubit>(
       () => _i28.DeleteCartCubit(gh<_i195.DeleteCartItemUseCase>()),
-import '../../api/data_source/home_products/home_products_data_source_impl.dart'
-    as _i81;
     );
     return this;
   }

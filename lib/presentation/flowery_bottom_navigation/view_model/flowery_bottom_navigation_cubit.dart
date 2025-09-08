@@ -1,3 +1,4 @@
+import 'package:flowery_app/presentation/cart/views/cart_view.dart';
 import 'package:flowery_app/presentation/categories/views/categories_view.dart';
 import 'package:flowery_app/presentation/flowery_bottom_navigation/view_model/flowery_bottom_navigation_intent.dart';
 import 'package:flowery_app/presentation/flowery_bottom_navigation/view_model/flowery_bottom_navigation_state.dart';

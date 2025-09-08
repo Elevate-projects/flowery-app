@@ -5,14 +5,24 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i17;
 
-import 'package:connectivity_plus/connectivity_plus.dart' as _i21;
+import 'package:connectivity_plus/connectivity_plus.dart' as _i26;
 import 'package:connectivity_plus_platform_interface/connectivity_plus_platform_interface.dart'
-    as _i22;
+    as _i27;
 import 'package:flowery_app/api/client/api_client.dart' as _i16;
+import 'package:flowery_app/api/requests/cart_request/quintity_request.dart'
+    as _i24;
+import 'package:flowery_app/api/requests/forget_password_request/forget_password_request.dart'
+    as _i20;
 import 'package:flowery_app/api/requests/login_request/login_request_model.dart'
     as _i18;
 import 'package:flowery_app/api/requests/register_request/register_request.dart'
     as _i19;
+import 'package:flowery_app/api/requests/resend_code/resend_code_request_dto.dart'
+    as _i21;
+import 'package:flowery_app/api/requests/reset_password/reset_password_request_dto.dart'
+    as _i23;
+import 'package:flowery_app/api/requests/verification/verify_request_dto.dart'
+    as _i22;
 import 'package:flowery_app/api/responses/cart_response/delete_items.dart'
     as _i14;
 import 'package:flowery_app/api/responses/cart_response/get_logged_user_cart.dart'
@@ -39,7 +49,7 @@ import 'package:flowery_app/api/responses/reset_password/reset_password_response
     as _i11;
 import 'package:flowery_app/api/responses/verification/verify_response_dto.dart'
     as _i10;
-import 'package:flowery_app/core/secure_storage/secure_storage.dart' as _i20;
+import 'package:flowery_app/core/secure_storage/secure_storage.dart' as _i25;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i15;
 import 'package:mockito/mockito.dart' as _i1;
 
@@ -220,7 +230,7 @@ class MockApiClient extends _i1.Mock implements _i16.ApiClient {
 
   @override
   _i17.Future<_i7.ForgetPasswordResponseModel> forgetPassword({
-    required dynamic request,
+    required _i20.ForgetPasswordRequestDto? request,
   }) =>
       (super.noSuchMethod(
             Invocation.method(#forgetPassword, [], {#request: request}),
@@ -234,7 +244,9 @@ class MockApiClient extends _i1.Mock implements _i16.ApiClient {
           as _i17.Future<_i7.ForgetPasswordResponseModel>);
 
   @override
-  _i17.Future<_i8.ResendCodeResponseDto> resendCode(dynamic request) =>
+  _i17.Future<_i8.ResendCodeResponseDto> resendCode(
+    _i21.ResendCodeRequestDto? request,
+  ) =>
       (super.noSuchMethod(
             Invocation.method(#resendCode, [request]),
             returnValue: _i17.Future<_i8.ResendCodeResponseDto>.value(
@@ -269,7 +281,9 @@ class MockApiClient extends _i1.Mock implements _i16.ApiClient {
           as _i17.Future<void>);
 
   @override
-  _i17.Future<_i10.VerifyResponseDto> verificationCode(dynamic request) =>
+  _i17.Future<_i10.VerifyResponseDto> verificationCode(
+    _i22.VerifyRequestDto? request,
+  ) =>
       (super.noSuchMethod(
             Invocation.method(#verificationCode, [request]),
             returnValue: _i17.Future<_i10.VerifyResponseDto>.value(
@@ -282,7 +296,9 @@ class MockApiClient extends _i1.Mock implements _i16.ApiClient {
           as _i17.Future<_i10.VerifyResponseDto>);
 
   @override
-  _i17.Future<_i11.ResetPasswordResponseDto> resetPassword(dynamic request) =>
+  _i17.Future<_i11.ResetPasswordResponseDto> resetPassword(
+    _i23.ResetPasswordRequestDto? request,
+  ) =>
       (super.noSuchMethod(
             Invocation.method(#resetPassword, [request]),
             returnValue: _i17.Future<_i11.ResetPasswordResponseDto>.value(
@@ -313,7 +329,7 @@ class MockApiClient extends _i1.Mock implements _i16.ApiClient {
   _i17.Future<_i13.QuantityResponse> updateCartQuantity({
     required String? productId,
     required String? token,
-    required dynamic request,
+    required _i24.QuantityRequest? request,
   }) =>
       (super.noSuchMethod(
             Invocation.method(#updateCartQuantity, [], {
@@ -360,7 +376,7 @@ class MockApiClient extends _i1.Mock implements _i16.ApiClient {
 /// A class which mocks [SecureStorage].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockSecureStorage extends _i1.Mock implements _i20.SecureStorage {
+class MockSecureStorage extends _i1.Mock implements _i25.SecureStorage {
   MockSecureStorage() {
     _i1.throwOnMissingStub(this);
   }
@@ -415,27 +431,26 @@ class MockSecureStorage extends _i1.Mock implements _i20.SecureStorage {
 /// A class which mocks [Connectivity].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockConnectivity extends _i1.Mock implements _i21.Connectivity {
+class MockConnectivity extends _i1.Mock implements _i26.Connectivity {
   MockConnectivity() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i17.Stream<List<_i22.ConnectivityResult>> get onConnectivityChanged =>
+  _i17.Stream<List<_i27.ConnectivityResult>> get onConnectivityChanged =>
       (super.noSuchMethod(
             Invocation.getter(#onConnectivityChanged),
-            returnValue: _i17.Stream<List<_i22.ConnectivityResult>>.empty(),
+            returnValue: _i17.Stream<List<_i27.ConnectivityResult>>.empty(),
           )
-          as _i17.Stream<List<_i22.ConnectivityResult>>);
+          as _i17.Stream<List<_i27.ConnectivityResult>>);
 
   @override
-  _i17.Future<List<_i22.ConnectivityResult>> checkConnectivity() =>
+  _i17.Future<List<_i27.ConnectivityResult>> checkConnectivity() =>
       (super.noSuchMethod(
             Invocation.method(#checkConnectivity, []),
-            returnValue: _i17.Future<List<_i22.ConnectivityResult>>.value(
-              <_i22.ConnectivityResult>[],
+            returnValue: _i17.Future<List<_i27.ConnectivityResult>>.value(
+              <_i27.ConnectivityResult>[],
             ),
           )
-          as _i17.Future<List<_i22.ConnectivityResult>>);
-import 'dart:async' as _i14;
+          as _i17.Future<List<_i27.ConnectivityResult>>);
 }

@@ -103,7 +103,8 @@
   "categoriesText": "التصنيفات",
   "bestSellerText": "الأكثر مبيعًا",
   "occasionsText": "المناسبات",
-
+  "total": "المجموع",
+  "checkout": "الدفع",
   "connectionError": "يرجى التحقق من اتصال الإنترنت والمحاولة مرة أخرى",
   "noResponseReceivedMessage": "لم يتم استلام استجابة أو الاستجابة ليست بالتنسيق المتوقع.",
   "error": "خطأ",
@@ -114,5 +115,7 @@
   "sendTimeout": "انتهت مهلة الإرسال، يرجى المحاولة لاحقًا.",
   "connectionTimeout": "انتهت مهلة الاتصال، يرجى المحاولة لاحقًا.",
   "networkError": "حدث خطأ ما. يرجى التحقق من اتصال الإنترنت.",
-  "anUnknownErrorOccurred": "حدث خطأ غير معروف."
+  "anUnknownErrorOccurred": "حدث خطأ غير معروف.",
+  "delete" : "تم حذف العنصر بنجاح",
+  "deliveryFee": "رسوم التوصيل"
 }

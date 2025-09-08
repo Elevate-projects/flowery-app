@@ -9,11 +9,15 @@
   "donNotHaveAccount": "Don't have an account?",
   "signup": "Sign up",
   "continueAsGuest": "Continue as guest",
+  "total": "total",
+  "checkout": "Checkout",
+  "deliveryFee": "deliveryFee",
 
   "forgetPassword2": "Forget password",
   "enterRegisteredEmail": "Please enter your email associated to your account",
   "confirmButton": "Confirm",
   "success": "success",
+  "delete": "Product removed from cart Successfully",
 
   "search": "Search",
   "notProvided": "Not Provided",

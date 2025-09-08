@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_icons.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/presentation/cart/view_model/cart_intent.dart';
@@ -20,6 +21,7 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     log('userinfo: ${FloweryMethodHelper.userData}');
     return Scaffold(
       appBar: AppBar(
@@ -64,14 +66,14 @@ class CartPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(12),
                     ),
                     backgroundColor: Colors.green,
-                    content: const Row(
+                    content: Row(
                       children: [
-                        Icon(Icons.check_circle_outline, color: Colors.white),
-                        SizedBox(width: 12),
+                        const Icon(Icons.check_circle_outline, color: Colors.white),
+                        const SizedBox(width: 12),
                         Expanded(
                           child: Text(
-                            'Product removed from cart Successfully',
-                            style: TextStyle(color: Colors.white, fontSize: 16),
+                            AppText.delete.tr(),
+                            style: const TextStyle(color: Colors.white, fontSize: 16),
                           ),
                         ),
                       ],
@@ -185,10 +187,10 @@ class CartPage extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(height: 4),
-                        const Row(
+                         Row(
                           children: [
                             Text(
-                              AppText.deliveryFee,
+                              AppText.deliveryFee.tr(),
                               style: TextStyle(color: Colors.grey),
                             ),
                             Spacer(),
@@ -198,9 +200,9 @@ class CartPage extends StatelessWidget {
                         const Divider(),
                         Row(
                           children: [
-                            const Text(
-                              AppText.total,
-                              style: TextStyle(
+                             Text(
+                              AppText.total.tr(),
+                              style: const TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.black,
@@ -228,12 +230,11 @@ class CartPage extends StatelessWidget {
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.pinkAccent,
                             ),
-                            child: const Text(
-                              AppText.checkOut,
+                            child:  Text(
+                              AppText.checkout.tr(),
                               style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white,
+                                fontSize: 16.sp,
+                                color: theme.colorScheme.onPrimary,
                               ),
                             ),
                           ),

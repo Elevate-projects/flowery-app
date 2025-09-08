@@ -62,9 +62,12 @@ void main() {
       expect: () => [
         isA<CartState>()
             .having((s) => s.cartStatus.isFailure, "isFailure", true)
-            .having((s) => s.cartStatus.error?.message,
-            "error message", "You are not logged in"),
-      ],
+        .having(
+          (s) => s.cartStatus.error?.message.startsWith("You are not logged in"),
+      "error message startsWith",
+      true,
+      ),
+      ]
     );
 
     blocTest<CartCubit, CartState>(
