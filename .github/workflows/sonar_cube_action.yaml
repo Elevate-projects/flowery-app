@@ -1,0 +1,40 @@
+name: Build & Analyze
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  sonarqube:
+    name: SonarQube
+    runs-on: ubuntu-latest   # faster for Flutter
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Required for better analysis
+
+      # Install Flutter
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      # Get dependencies
+      - name: Flutter pub get
+        run: flutter pub get
+
+      # (Optional) Run analyzer before Sonar
+      - name: Run Flutter analyze
+        run: flutter analyze
+
+      # (Optional) Run unit tests before Sonar
+      - name: Run Flutter tests
+        run: flutter test --no-pub --coverage
+
+      # SonarQube Scan
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}  # add this in repo secrets
