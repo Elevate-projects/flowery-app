@@ -4,10 +4,12 @@ import 'package:flowery_app/api/requests/register_request/register_request.dart'
 import 'package:flowery_app/api/requests/resend_code/resend_code_request_dto.dart';
 import 'package:flowery_app/api/requests/reset_password/reset_password_request_dto.dart';
 import 'package:flowery_app/api/requests/verification/verify_request_dto.dart';
+import 'package:flowery_app/api/responses/products_response/products_response_dto.dart';
 import 'package:flowery_app/api/responses/resend_code/resend_code_response_dto.dart';
 import 'package:flowery_app/api/responses/reset_password/reset_password_response_dto.dart';
 import 'package:flowery_app/api/responses/verification/verify_response_dto.dart';
 import 'package:flowery_app/domain/entities/forget_password/request/forget_password_request_entity.dart';
+import 'package:flowery_app/domain/entities/home_products/products_response_entity.dart';
 import 'package:flowery_app/domain/entities/request/register_request_entity.dart';
 import 'package:flowery_app/domain/entities/requests/login_request/login_request_entity.dart';
 import 'package:flowery_app/domain/entities/resend_code/request/resend_code_request.dart';
@@ -87,4 +89,13 @@ abstract class RequestMapper {
       code: dto.code,
     );
   }
+  static ProductsResponseEntity productsToEntity(ProductsResponseDto dto){
+    return ProductsResponseEntity(
+      message: dto.message,
+      products: dto.products ?.map((product) => product.toProductCardEntity())
+          .toList(),
+    );
+  }
+
+
 }
