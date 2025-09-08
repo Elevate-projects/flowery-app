@@ -2,6 +2,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flowery_app/api/client/api_client.dart';
 import 'package:flowery_app/api/client/api_result.dart';
 import 'package:flowery_app/api/data_source/login/remote_data_source/login_remote_data_source_impl.dart';
+import 'package:flowery_app/api/models/address/address_model.dart';
 import 'package:flowery_app/api/models/user_data/user_data_model.dart';
 import 'package:flowery_app/api/responses/login_response/login_response.dart';
 import 'package:flowery_app/core/connection_manager/connection_manager.dart';
@@ -37,7 +38,26 @@ void main() {
         lastName: "tarek",
         gender: "male",
         photo: "profilePic",
-        addresses: ["address1", "address2"],
+        addresses: [
+          AddressModel(
+            street: "123 Nile Street",
+            phone: "+201234567890",
+            city: "Cairo",
+            lat: "30.0444",
+            long: "31.2357",
+            username: "ahmed_tarek",
+            id: "addr_001",
+          ),
+          AddressModel(
+            street: "45 King Fahd Road",
+            phone: "+966501234567",
+            city: "Riyadh",
+            lat: "24.7136",
+            long: "46.6753",
+            username: "sara_khaled",
+            id: "addr_002",
+          ),
+        ],
         wishlist: ["item1", "item2"],
         createdAt: "2020-01-01",
         role: "developer",
@@ -86,8 +106,8 @@ void main() {
         equals(successResult.data?.photo),
       );
       expect(
-        expectedUserDataEntityResult.data.addresses?.elementAt(0),
-        equals(successResult.data?.addresses?.elementAt(0)),
+        expectedUserDataEntityResult.data.addresses?.elementAt(0).username,
+        equals(successResult.data?.addresses?.elementAt(0).username),
       );
       expect(
         expectedUserDataEntityResult.data.wishlist?.elementAt(0),

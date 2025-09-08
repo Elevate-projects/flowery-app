@@ -9,4 +9,5 @@ abstract class RouteNames {
   static const String verification = '/verification';
   static const String occasionView = "/occasionView";
   static const String resetPassword = "/resetPasswordView";
+  static const String savedAddress = "/savedAddressView";
 }

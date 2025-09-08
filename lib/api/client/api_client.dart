@@ -67,4 +67,10 @@ abstract class ApiClient {
   Future<ResetPasswordResponseDto> resetPassword(
     @Body() ResetPasswordRequestDto request,
   );
+
+  @DELETE("/api/v1/addresses/{addressId}")
+  Future<void> removeAddress({
+    @Path("addressId") required String addressId,
+    @Header("Authorization") required String token,
+  });
 }

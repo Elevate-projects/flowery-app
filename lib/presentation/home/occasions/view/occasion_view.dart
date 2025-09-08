@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_colors.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/core/di/di.dart';
@@ -49,9 +50,9 @@ class OccasionView extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
-                            AppText.occasion,
-                            style: TextStyle(
+                          Text(
+                            AppText.occasion.tr(),
+                            style: const TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.w500,
                               color: Colors.black,
@@ -60,7 +61,7 @@ class OccasionView extends StatelessWidget {
                           const SizedBox(height: 3),
 
                           Text(
-                            AppText.titleBar,
+                            AppText.titleBar.tr(),
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,

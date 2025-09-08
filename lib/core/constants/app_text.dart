@@ -97,9 +97,17 @@ abstract final class AppText {
   static const String occasionsText = "occasionsText";
 
   //Occasion
-  static const String occasion = "Occasion";
-  static const String titleBar = "Bloom with our exquisite best sellers";
-  static const String noProductsFound = "No products found";
+  static const String occasion = "occasion";
+  static const String titleBar = "titleBar";
+
+  // Saved Address
+  static const String addNewAddress = "addNewAddress";
+  static const String deleteAddress = "deleteAddress";
+  static const String deleteAddressMessage = "deleteAddressMessage";
+  static const String delete = "delete";
+  static const String deleteAddressSuccessMessage =
+      "deleteAddressSuccessMessage";
+  static const String emptyAddressesMessage = "emptyAddressesMessage";
 
   // Exceptions
   static const String connectionError = "connectionError";
