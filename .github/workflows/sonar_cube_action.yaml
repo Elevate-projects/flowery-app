@@ -7,34 +7,35 @@ on:
 jobs:
   sonarqube:
     name: SonarQube
-    runs-on: ubuntu-latest   # faster for Flutter
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Required for better analysis
+          fetch-depth: 0
 
-      # Install Flutter
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
           channel: stable
           cache: true
 
-      # Get dependencies
       - name: Flutter pub get
         run: flutter pub get
 
-      # (Optional) Run analyzer before Sonar
       - name: Run Flutter analyze
         run: flutter analyze
 
-      # (Optional) Run unit tests before Sonar
-      - name: Run Flutter tests
+      - name: Run Flutter tests with coverage
         run: flutter test --no-pub --coverage
 
-      # SonarQube Scan
+      - name: Upload coverage report (debug)
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage/lcov.info
+
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}  # add this in repo secrets
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
