@@ -5,13 +5,14 @@ on:
   pull_request:
 
 jobs:
-  sonarqube:
-    name: SonarQube
+  sonarcloud:
+    name: SonarCloud
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0   # full history for better analysis
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
@@ -19,23 +20,29 @@ jobs:
           channel: stable
           cache: true
 
-      - name: Flutter pub get
+      - name: Flutter doctor
+        run: flutter doctor -v
+
+      - name: Install dependencies
         run: flutter pub get
 
-      - name: Run Flutter analyze
-        run: flutter analyze
+      - name: Generate code
+        run: flutter pub run build_runner build --delete-conflicting-outputs
 
-      - name: Run Flutter tests with coverage
+      - name: Run analyzer
+        run: flutter analyze --no-pub
+
+      - name: Run tests with coverage
         run: flutter test --no-pub --coverage
 
-      - name: Upload coverage report (debug)
+      - name: Upload coverage report (debugging only)
         uses: actions/upload-artifact@v4
         with:
           name: coverage-report
           path: coverage/lcov.info
 
-      - name: SonarQube Scan
+      - name: SonarCloud Scan
         uses: SonarSource/sonarqube-scan-action@v5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}   # for SonarCloud = https://sonarcloud.io
