@@ -16,6 +16,8 @@ import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
 import '../../api/client/api_client.dart' as _i508;
 import '../../api/client/api_module.dart' as _i272;
+import '../../api/data_source/address/remote_data_source/address_remote_data_source_impl.dart'
+    as _i188;
 import '../../api/data_source/categories/remote_data_source/categories_remote_data_source_impl.dart'
     as _i699;
 import '../../api/data_source/forget_password/remote_data_source/forget_password_remote_data_source_impl.dart'
@@ -36,6 +38,8 @@ import '../../api/data_source/reset_password/reset_password_data_source_impl.dar
     as _i783;
 import '../../api/data_source/verification/verification_data_source_impl.dart'
     as _i15;
+import '../../data/data_source/address/remote_data_source/address_remote_data_source.dart'
+    as _i1025;
 import '../../data/data_source/categories/remote_data_source/categories_remote_data_source.dart'
     as _i960;
 import '../../data/data_source/forget_password/forget_password_remote_data_source.dart'
@@ -56,6 +60,7 @@ import '../../data/data_source/reset_password/reset_password_data_source.dart'
     as _i926;
 import '../../data/data_source/verification/verification_data_source.dart'
     as _i14;
+import '../../data/repositories/address/address_repository_impl.dart' as _i444;
 import '../../data/repositories/categories/categories_repository_impl.dart'
     as _i940;
 import '../../data/repositories/forget_password_repo_impl/forget_password_repo_impl.dart'
@@ -72,6 +77,7 @@ import '../../data/repositories/reset_password/reset_password_repository_impl.da
     as _i50;
 import '../../data/repositories/verification/verification_repository_impl.dart'
     as _i1003;
+import '../../domain/repositories/address/address_repository.dart' as _i119;
 import '../../domain/repositories/categories/categories_repository.dart'
     as _i660;
 import '../../domain/repositories/forget_password/forget_password_repo.dart'
@@ -87,6 +93,7 @@ import '../../domain/repositories/reset_password/reset_password_repository.dart'
     as _i189;
 import '../../domain/repositories/verification/verification_repository.dart'
     as _i550;
+import '../../domain/use_cases/address/remove_address_use_case.dart' as _i20;
 import '../../domain/use_cases/categories/get_all_categories_use_case.dart'
     as _i824;
 import '../../domain/use_cases/categories/get_all_products_use_case.dart'
@@ -124,6 +131,8 @@ import '../../presentation/home/occasions/view_model/occasion_view_model.dart'
 import '../../presentation/product_details/views_model/product_details_cubit.dart'
     as _i586;
 import '../../presentation/profile/views_model/profile_cubit.dart' as _i1028;
+import '../../presentation/saved_address/views_model/saved_address_cubit.dart'
+    as _i46;
 import '../../presentation/terms_and_conditions/views_model/terms_and_conditions_cubit.dart'
     as _i297;
 import '../cache/shared_preferences_helper.dart' as _i686;
@@ -195,6 +204,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i470.ProfileRemoteDataSource>(
       () => _i913.ProfileRemoteDataSourceImpl(gh<_i508.ApiClient>()),
     );
+    gh.factory<_i1025.AddressRemoteDataSource>(
+      () => _i188.AddressRemoteDataSourceImpl(gh<_i508.ApiClient>()),
+    );
+    gh.factory<_i119.AddressRepository>(
+      () => _i444.AddressRepositoryImpl(gh<_i1025.AddressRemoteDataSource>()),
+    );
     gh.factory<_i924.LogoutRemoteDataSource>(
       () => _i340.LogoutRemoteDataSourceImpl(gh<_i508.ApiClient>()),
     );
@@ -209,6 +224,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i445.ProfileRepository>(
       () => _i770.ProfileRepositoryImpl(gh<_i470.ProfileRemoteDataSource>()),
+    );
+    gh.factory<_i20.RemoveAddressUseCase>(
+      () => _i20.RemoveAddressUseCase(gh<_i119.AddressRepository>()),
     );
     gh.factory<_i550.VerificationRepository>(
       () =>
@@ -272,6 +290,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i950.RegisterUseCase>(
       () => _i950.RegisterUseCase(gh<_i638.RegisterRepository>()),
+    );
+    gh.factory<_i46.SavedAddressCubit>(
+      () => _i46.SavedAddressCubit(gh<_i20.RemoveAddressUseCase>()),
     );
     gh.factory<_i349.ResetPasswordCubit>(
       () => _i349.ResetPasswordCubit(gh<_i963.GetResetPasswordUseCase>()),

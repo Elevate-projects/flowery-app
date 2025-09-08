@@ -284,6 +284,21 @@ class MockApiClient extends _i1.Mock implements _i13.ApiClient {
             ),
           )
           as _i14.Future<_i11.ResetPasswordResponseDto>);
+
+  @override
+  _i14.Future<void> removeAddress({
+    required String? addressId,
+    required String? token,
+  }) =>
+      (super.noSuchMethod(
+            Invocation.method(#removeAddress, [], {
+              #addressId: addressId,
+              #token: token,
+            }),
+            returnValue: _i14.Future<void>.value(),
+            returnValueForMissingStub: _i14.Future<void>.value(),
+          )
+          as _i14.Future<void>);
 }
 
 /// A class which mocks [SecureStorage].

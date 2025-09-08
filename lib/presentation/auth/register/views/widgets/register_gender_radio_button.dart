@@ -44,7 +44,12 @@ class RegisterGenderRadioButton extends StatelessWidget {
                     theme.colorScheme.primary.withValues(alpha: 0.1),
                   ),
                 ),
-                child: Text(AppText.genderFemaleDisplay.tr()),
+                child: Text(
+                  AppText.genderFemaleDisplay.tr(),
+                  style: theme.textTheme.bodyLarge?.copyWith(
+                    color: theme.colorScheme.onSecondary,
+                  ),
+                ),
               ),
             ),
             SizedBox(width: 12.w),
@@ -68,7 +73,12 @@ class RegisterGenderRadioButton extends StatelessWidget {
                     theme.colorScheme.primary.withValues(alpha: 0.1),
                   ),
                 ),
-                child: Text(AppText.genderMaleDisplay.tr()),
+                child: Text(
+                  AppText.genderMaleDisplay.tr(),
+                  style: theme.textTheme.bodyLarge?.copyWith(
+                    color: theme.colorScheme.onSecondary,
+                  ),
+                ),
               ),
             ),
           ],

@@ -15,7 +15,7 @@ class RegisterGenderRow extends StatelessWidget {
       children: [
         Text(AppText.genderLabel.tr(), style: theme.textTheme.headlineSmall),
         const RSizedBox(width: 40),
-        const Expanded(child: RegisterGenderRadioButton()), // Wrap in Expanded
+        const Expanded(child: RegisterGenderRadioButton()),
       ],
     );
   }

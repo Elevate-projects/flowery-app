@@ -5,7 +5,6 @@ import 'package:flowery_app/presentation/auth/register/view_model/register_inten
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HaveAccountLoginText extends StatelessWidget {
   const HaveAccountLoginText({super.key});
@@ -19,7 +18,9 @@ class HaveAccountLoginText extends StatelessWidget {
           children: [
             TextSpan(
               text: AppText.alreadyHaveAnAccount.tr(),
-              style: theme.textTheme.labelMedium?.copyWith(fontSize: 16.sp),
+              style: theme.textTheme.labelLarge?.copyWith(
+                color: theme.colorScheme.onSecondary,
+              ),
             ),
             TextSpan(
               text: AppText.login.tr(),

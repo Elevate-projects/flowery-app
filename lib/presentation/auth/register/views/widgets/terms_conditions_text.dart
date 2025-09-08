@@ -15,7 +15,9 @@ class TermsConditionsText extends StatelessWidget {
           children: [
             TextSpan(
               text: AppText.createAnAccountYouAgree.tr(),
-              style: theme.textTheme.labelMedium,
+              style: theme.textTheme.bodySmall?.copyWith(
+                color: theme.colorScheme.onSecondary,
+              ),
             ),
             TextSpan(
               text: AppText.termsAndConditions.tr(),

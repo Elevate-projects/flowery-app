@@ -18,4 +18,7 @@ abstract final class AppIcons {
   static const String rightArrow = "assets/icons/right_arrow.svg";
   static const String cart = "assets/icons/cart.svg";
   static const String filter = "assets/icons/filter.svg";
+  static const String location2 = "assets/icons/location2.svg";
+  static const String delete = "assets/icons/delete.svg";
+  static const String edit2 = "assets/icons/edit2.svg";
 }
