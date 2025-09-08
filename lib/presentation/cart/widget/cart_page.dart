@@ -191,10 +191,10 @@ class CartPage extends StatelessWidget {
                           children: [
                             Text(
                               AppText.deliveryFee.tr(),
-                              style: TextStyle(color: Colors.grey),
+                              style: const TextStyle(color: Colors.grey),
                             ),
-                            Spacer(),
-                            Text("\$10", style: TextStyle(color: Colors.grey)),
+                            const Spacer(),
+                            const Text("\$10", style: TextStyle(color: Colors.grey)),
                           ],
                         ),
                         const Divider(),
