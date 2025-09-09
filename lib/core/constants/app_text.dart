@@ -73,6 +73,8 @@ abstract final class AppText {
   static const String outStock = "outStock";
   static const String taxIncludedMessage = "taxIncludedMessage";
   static const String description = "description";
+  static const String addProductToCartSuccessMessage =
+      "addProductToCartSuccessMessage";
 
   // Validations
   static const String userNameValidation = "userNameValidation";

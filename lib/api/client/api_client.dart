@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flowery_app/api/requests/add_to_cart_request/add_to_cart_request_model.dart';
 import 'package:flowery_app/api/requests/forget_password_request/forget_password_request.dart';
 import 'package:flowery_app/api/requests/login_request/login_request_model.dart';
 import 'package:flowery_app/api/requests/register_request/register_request.dart';
@@ -72,5 +73,11 @@ abstract class ApiClient {
   Future<void> removeAddress({
     @Path("addressId") required String addressId,
     @Header("Authorization") required String token,
+  });
+
+  @POST(Endpoints.addProductToCart)
+  Future<void> addProductToCart({
+    @Header("Authorization") required String token,
+    @Body() required AddToCartRequestModel request,
   });
 }
