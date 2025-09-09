@@ -1,3 +1,4 @@
+import 'package:flowery_app/api/requests/add_to_cart_request/add_to_cart_request_model.dart';
 import 'package:flowery_app/api/requests/forget_password_request/forget_password_request.dart';
 import 'package:flowery_app/api/requests/login_request/login_request_model.dart';
 import 'package:flowery_app/api/requests/register_request/register_request.dart';
@@ -7,6 +8,7 @@ import 'package:flowery_app/api/requests/verification/verify_request_dto.dart';
 import 'package:flowery_app/api/responses/resend_code/resend_code_response_dto.dart';
 import 'package:flowery_app/api/responses/reset_password/reset_password_response_dto.dart';
 import 'package:flowery_app/api/responses/verification/verify_response_dto.dart';
+import 'package:flowery_app/domain/entities/requests/add_to_cart_request/add_to_cart_request_entity.dart';
 import 'package:flowery_app/domain/entities/requests/forget_password_request/forget_password_request_entity.dart';
 import 'package:flowery_app/domain/entities/requests/login_request/login_request_entity.dart';
 import 'package:flowery_app/domain/entities/requests/register_request/register_request_entity.dart';
@@ -85,6 +87,15 @@ abstract class RequestMapper {
       message: dto.message,
       token: dto.token,
       code: dto.code,
+    );
+  }
+
+  static AddToCartRequestModel toAddToCartRequestModel({
+    required AddToCartRequestEntity addToCartRequestEntity,
+  }) {
+    return AddToCartRequestModel(
+      productId: addToCartRequestEntity.productId,
+      quantity: addToCartRequestEntity.quantity ?? 1,
     );
   }
 }
