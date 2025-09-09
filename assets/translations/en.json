@@ -62,7 +62,6 @@
 
   "occasion": "Occasion",
   "titleBar": "Bloom with our exquisite best sellers",
-  "noProductsFound": "No products found",
   "enter6DigitCode": "Please enter the 6-digit code.",
   "resendAvailableStatement": "Resend available in ",
   "emailVerificationTitle": "Email verification",
@@ -78,6 +77,13 @@
   "logoutCapital": "LOGOUT",
   "confirmLogout": "Confirm logout!!",
   "cancel": "Cancel",
+
+  "addNewAddress": "Add new address",
+  "deleteAddress": "Delete Address",
+  "deleteAddressMessage": "Are you sure that you want to delete this address?",
+  "delete": "Delete",
+  "deleteAddressSuccessMessage": "You have successfully deleted the selected address",
+  "emptyAddressesMessage": "It looks like you don't have any available addresses just yet!",
 
   "userNameValidation": "This user name is not valid",
   "emptyTextValidation": "This field is required",

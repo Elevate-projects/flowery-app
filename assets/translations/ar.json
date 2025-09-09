@@ -79,6 +79,13 @@
   "confirmLogout": "تأكيد تسجيل الخروج!!",
   "cancel": "إلغاء",
 
+  "addNewAddress": "إضافة عنوان جديد",
+  "deleteAddress": "حذف العنوان",
+  "deleteAddressMessage": "هل أنت متأكد أنك تريد حذف هذا العنوان؟",
+  "delete": "حذف",
+  "deleteAddressSuccessMessage": "لقد قمت بحذف العنوان المحدد بنجاح",
+  "emptyAddressesMessage": "يبدو أنه ليس لديك أي عناوين متاحة حتى الآن!",
+
   "userNameValidation": "اسم المستخدم غير صالح",
   "emptyTextValidation": "هذا الحقل مطلوب",
   "phoneNumberValidation": "حقل رقم الهاتف مطلوب",

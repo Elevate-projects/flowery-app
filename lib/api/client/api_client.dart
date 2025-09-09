@@ -69,6 +69,12 @@ abstract class ApiClient {
     @Body() ResetPasswordRequestDto request,
   );
 
+  @DELETE("/api/v1/addresses/{addressId}")
+  Future<void> removeAddress({
+    @Path("addressId") required String addressId,
+    @Header("Authorization") required String token,
+  });
+
   @POST(Endpoints.addProductToCart)
   Future<void> addProductToCart({
     @Header("Authorization") required String token,
