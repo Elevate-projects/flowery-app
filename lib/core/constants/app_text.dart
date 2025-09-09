@@ -18,6 +18,13 @@ abstract final class AppText {
 
   // Categories
   static const String search = "search";
+  static const String filter = "filter";
+  static const String sortBy = "sortBy";
+  static const String lowestPrice = "lowestPrice";
+  static const String highestPrice = "highestPrice";
+  static const String newProducts = "newProducts";
+  static const String old = "old";
+  static const String discount = "discount";
 
   // Signup
   static const String firstName = "firstName";
