@@ -12,4 +12,6 @@ abstract class Endpoints {
   static const String verification = '/api/v1/auth/verifyResetCode';
   static const String resetPassword = '/api/v1/auth/resetPassword';
   static const String removeAddress = '/api/v1/addresses/{addressId}';
+  static const String addAddress = '/api/v1/addresses';
+
 }

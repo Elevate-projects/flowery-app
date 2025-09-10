@@ -71,6 +71,7 @@ class CustomTextFormField extends StatelessWidget {
       textInputAction: textInputAction,
       decoration: InputDecoration(
         contentPadding: contentPadding ?? REdgeInsets.all(16),
+        floatingLabelBehavior: FloatingLabelBehavior.always,
         filled: false,
         label: Text(
           label.tr(),
@@ -124,10 +125,12 @@ class CustomTextFormField extends StatelessWidget {
       maxLines: maxLines,
       validator: validator,
       enabled: enabled,
+
+
     );
   }
 
-  OutlineInputBorder buildOutlinedBorder({
+ static OutlineInputBorder buildOutlinedBorder({
     required Color borderColor,
     required double borderRadius,
   }) {
