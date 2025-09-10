@@ -1,6 +1,6 @@
 import 'package:flowery_app/core/constants/app_icons.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
-import 'package:flowery_app/domain/entities/cart/cart_item_entity/cart_Item_entity.dart';
+import 'package:flowery_app/domain/entities/cart/cart_item_entity/cart_item_entity.dart';
 import 'package:flowery_app/presentation/cart/view_model/delete_cubit/delete_cubit.dart';
 import 'package:flowery_app/presentation/cart/view_model/delete_cubit/delete_intent.dart';
 import 'package:flowery_app/presentation/cart/view_model/quantity_cubit/quantity_cubit.dart';

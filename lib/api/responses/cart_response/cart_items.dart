@@ -1,5 +1,5 @@
 import 'package:flowery_app/api/models/product_card/product_card_model.dart';
-import 'package:flowery_app/domain/entities/cart/cart_item_entity/cart_Item_entity.dart';
+import 'package:flowery_app/domain/entities/cart/cart_item_entity/cart_item_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'cart_items.g.dart';
 @JsonSerializable()

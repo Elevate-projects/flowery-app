@@ -2,7 +2,7 @@ import 'package:flowery_app/api/client/api_result.dart';
 import 'package:flowery_app/data/data_source/cart/remote_data_source_get_logged_user/remote_data_source_get_logged_user.dart';
 import 'package:flowery_app/data/repositories/cart/cart_repo_imp/cart_repositories_impl.dart';
 import 'package:flowery_app/domain/entities/cart/cart_entity/cart_entity.dart';
-import 'package:flowery_app/domain/entities/cart/cart_item_entity/cart_Item_entity.dart';
+import 'package:flowery_app/domain/entities/cart/cart_item_entity/cart_item_entity.dart';
 import 'package:flowery_app/domain/entities/cart/get_logged_user_cart/get_logged_user_cart.dart';
 import 'package:flowery_app/domain/entities/product_card/product_card_entity.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -20,7 +20,7 @@ void main() {
     cartRepositoryImpl = CartRepositoryImpl(remoteDataSourceGetLoggedUser);
   });
   test('when call getLoggedUserCart it should be called successfully from RemoteDataSourceGetLoggedUser and return GetLoggedUserCartEntity', ()async {
-    final expectedCart = GetLoggedUserCartEntity(
+    final expectedCart = const GetLoggedUserCartEntity(
       message: "success",
       numOfCartItems: 10,
       cart: CartEntity(
@@ -34,7 +34,7 @@ void main() {
               slug: "red-rose-bouquet",
               description: "A beautiful bouquet of fresh red roses, perfect for romantic occasions.",
               imgCover: "https://example.com/images/red_rose_cover.jpg",
-              images: const [
+              images: [
                 "https://example.com/images/red_rose_1.jpg",
                 "https://example.com/images/red_rose_2.jpg",
               ],

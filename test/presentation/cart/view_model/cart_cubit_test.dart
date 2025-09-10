@@ -3,7 +3,7 @@ import 'package:flowery_app/api/client/api_result.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/core/exceptions/response_exception.dart';
 import 'package:flowery_app/domain/entities/cart/cart_entity/cart_entity.dart';
-import 'package:flowery_app/domain/entities/cart/cart_item_entity/cart_Item_entity.dart';
+import 'package:flowery_app/domain/entities/cart/cart_item_entity/cart_item_entity.dart';
 import 'package:flowery_app/domain/entities/cart/get_logged_user_cart/get_logged_user_cart.dart';
 import 'package:flowery_app/domain/entities/product_card/product_card_entity.dart';
 import 'package:flowery_app/domain/use_cases/cart/cart_use_case/cart_use_case.dart';
@@ -24,7 +24,7 @@ void main() {
   late GetLoggedUserCartEntity fakeCart;
 
   setUpAll(() {
-    fakeCart = GetLoggedUserCartEntity(
+    fakeCart = const GetLoggedUserCartEntity(
       message: "ok",
       numOfCartItems: 1,
       cart: CartEntity(
@@ -41,7 +41,7 @@ void main() {
               slug: "flower",
               description: "flower description",
               imgCover: "flower image",
-              images: const ["flower image"],
+              images: ["flower image"],
             ),
           )
         ],

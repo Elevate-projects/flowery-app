@@ -1,4 +1,4 @@
-import 'package:flowery_app/domain/entities/cart/cart_item_entity/cart_Item_entity.dart';
+import 'package:flowery_app/domain/entities/cart/cart_item_entity/cart_item_entity.dart';
 
 class CartEntity {
   final String? id;

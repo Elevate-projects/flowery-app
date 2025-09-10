@@ -1,6 +1,6 @@
 import 'package:flowery_app/api/client/api_result.dart';
 import 'package:flowery_app/domain/entities/cart/cart_entity/cart_entity.dart';
-import 'package:flowery_app/domain/entities/cart/cart_item_entity/cart_Item_entity.dart';
+import 'package:flowery_app/domain/entities/cart/cart_item_entity/cart_item_entity.dart';
 import 'package:flowery_app/domain/entities/cart/get_logged_user_cart/get_logged_user_cart.dart';
 import 'package:flowery_app/domain/entities/product_card/product_card_entity.dart';
 import 'package:flowery_app/domain/repositories/cart/cart_repositories/cart_repositories.dart';
@@ -20,7 +20,7 @@ void main() {
       final getLoggedUserCartUseCase = GetLoggedUserCartUseCase(
         mockedCartRepository,
       );
-      final expectedGetLoggedUserCartEntity = GetLoggedUserCartEntity(
+      final expectedGetLoggedUserCartEntity = const GetLoggedUserCartEntity(
         message: "ok",
         numOfCartItems: 1,
         cart:  CartEntity(
