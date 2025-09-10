@@ -5,7 +5,6 @@ class CartItemEntity {
   final int? price;
   final int? quantity;
   final String? id;
-
   const CartItemEntity({
     this.product,
     this.price,
