@@ -3,7 +3,6 @@ class QuantityEntity {
   final String? message;
   final int? numOfCartItems;
   final CartEntity? cart;
-
   const QuantityEntity({
     this.message,
     this.numOfCartItems,
