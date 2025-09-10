@@ -1,6 +1,7 @@
 import 'package:flowery_app/api/client/api_result.dart';
 import 'package:flowery_app/data/data_source/login/remote_data_source/login_remote_data_source.dart';
 import 'package:flowery_app/data/repositories/login/login_repository_impl.dart';
+import 'package:flowery_app/domain/entities/address/address_entity.dart';
 import 'package:flowery_app/domain/entities/requests/login_request/login_request_entity.dart';
 import 'package:flowery_app/domain/entities/user_data/user_data_entity.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -32,8 +33,27 @@ void main() {
         lastName: "tarek",
         gender: "male",
         photo: "profilePic",
-        addresses: ["address1", "address2"],
-        wishlist: ["item1", "item2"],
+        addresses: [
+          AddressEntity(
+            street: "123 Nile Street",
+            phone: "+201234567890",
+            city: "Cairo",
+            lat: "30.0444",
+            long: "31.2357",
+            username: "ahmed_tarek",
+            id: "addr_001",
+          ),
+          AddressEntity(
+            street: "45 King Fahd Road",
+            phone: "+966501234567",
+            city: "Riyadh",
+            lat: "24.7136",
+            long: "46.6753",
+            username: "sara_khaled",
+            id: "addr_002",
+          ),
+        ],
+        wishlist: const ["item1", "item2"],
         role: "developer",
       );
       final expectedUserDataEntityResult = Success(userDataEntity);

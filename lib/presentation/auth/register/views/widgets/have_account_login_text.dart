@@ -1,11 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/presentation/auth/register/view_model/register_cubit.dart';
 import 'package:flowery_app/presentation/auth/register/view_model/register_intent.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 
 class HaveAccountLoginText extends StatelessWidget {
   const HaveAccountLoginText({super.key});
@@ -18,14 +17,14 @@ class HaveAccountLoginText extends StatelessWidget {
         text: TextSpan(
           children: [
             TextSpan(
-              text:AppText.alreadyHaveAnAccount,
-              style:theme.textTheme.labelMedium?.copyWith(
-                  fontSize: 16.sp,
-                )
+              text: AppText.alreadyHaveAnAccount.tr(),
+              style: theme.textTheme.labelLarge?.copyWith(
+                color: theme.colorScheme.onSecondary,
+              ),
             ),
             TextSpan(
-              text:AppText.login,
-              style:  theme.textTheme.labelLarge?.copyWith(
+              text: AppText.login.tr(),
+              style: theme.textTheme.labelLarge?.copyWith(
                 color: theme.colorScheme.primary,
                 decoration: TextDecoration.underline,
                 decorationColor: theme.colorScheme.primary,
@@ -41,12 +40,3 @@ class HaveAccountLoginText extends StatelessWidget {
     );
   }
 }
-
-
-  // displaySmall: TextStyle(
-  //   fontSize: 16.sp,
-  //   fontWeight: FontWeight.w500,
-  //   color: AppColors.pink,
-  //   decoration: TextDecoration.underline,
-  //   decorationColor: AppColors.pink, // pink underline text span
-  // ),

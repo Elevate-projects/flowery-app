@@ -4,12 +4,19 @@ import 'package:flowery_app/api/requests/login_request/login_request_model.dart'
 import 'package:flowery_app/api/requests/register_request/register_request.dart';
 import 'package:flowery_app/api/responses/cart_response/delete_items.dart';
 import 'package:flowery_app/api/responses/cart_response/quantity_response.dart';
+import 'package:flowery_app/api/requests/resend_code/resend_code_request_dto.dart';
+import 'package:flowery_app/api/requests/reset_password/reset_password_request_dto.dart';
+import 'package:flowery_app/api/requests/verification/verify_request_dto.dart';
 import 'package:flowery_app/api/responses/categories_response/categories_response.dart';
+import 'package:flowery_app/api/responses/forget_password_response/forget_password_response.dart';
+import 'package:flowery_app/api/responses/home_products/products_response_model.dart';
 import 'package:flowery_app/api/responses/login_response/login_response.dart';
 import 'package:flowery_app/api/responses/products_response/products_response.dart';
+import 'package:flowery_app/api/responses/profile_response/profile_response.dart';
 import 'package:flowery_app/api/responses/register_response/register_response.dart';
-import 'package:flowery_app/api/requests/forget_password_request/forget_password_request.dart';
-import 'package:flowery_app/api/responses/forget_password_response/forget_password_response.dart';
+import 'package:flowery_app/api/responses/resend_code/resend_code_response_dto.dart';
+import 'package:flowery_app/api/responses/reset_password/reset_password_response_dto.dart';
+import 'package:flowery_app/api/responses/verification/verify_response_dto.dart';
 import 'package:flowery_app/core/constants/endpoints.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
@@ -17,10 +24,14 @@ import 'package:flowery_app/api/responses/cart_response/get_logged_user_cart.dar
 part 'api_client.g.dart';
 
 @injectable
-@RestApi()
+@RestApi(baseUrl: Endpoints.baseUrl)
 abstract class ApiClient {
   @factoryMethod
   factory ApiClient(Dio dio) = _ApiClient;
+  @GET(Endpoints.home)
+  Future<ProductsResponseModel> getHomeData({
+    @Header("Authorization") required String token,
+  });
 
   @POST(Endpoints.login)
   Future<LoginResponse> login({@Body() required LoginRequestModel request});
@@ -35,8 +46,41 @@ abstract class ApiClient {
   Future<ProductsResponse> fetchAllProducts();
 
   @POST(Endpoints.forgetPassword)
-  Future<ForgetPasswordResponseModel> forgetPassword( {@Body() required ForgetPasswordRequestDto request});
+  Future<ForgetPasswordResponseModel> forgetPassword({
+    @Body() required ForgetPasswordRequestDto request,
+  });
 
+  @POST(Endpoints.resendCode)
+  Future<ResendCodeResponseDto> resendCode(
+    @Body() ResendCodeRequestDto request,
+  );
+
+  @GET(Endpoints.loggedUserData)
+  Future<ProfileResponse> getUserData({
+    @Header("Authorization") required String token,
+  });
+
+  @GET(Endpoints.logout)
+  Future<void> logout({@Header("Authorization") required String token});
+  @POST(Endpoints.verification)
+  Future<VerifyResponseDto> verificationCode(@Body() VerifyRequestDto request);
+
+  @PUT(Endpoints.resetPassword)
+  Future<ResetPasswordResponseDto> resetPassword(
+    @Body() ResetPasswordRequestDto request,
+  );
+
+  @DELETE("/api/v1/addresses/{addressId}")
+  Future<void> removeAddress({
+    @Path("addressId") required String addressId,
+    @Header("Authorization") required String token,
+  });
+
+  @POST(Endpoints.addProductToCart)
+  Future<void> addProductToCart({
+    @Header("Authorization") required String token,
+    @Body() required AddToCartRequestModel request,
+  });
   @GET(Endpoints.getLoggedUserCart)
   Future<GetLoggedUserCartModel> getLoggedUserCart({
     @Header("Authorization") required String token,

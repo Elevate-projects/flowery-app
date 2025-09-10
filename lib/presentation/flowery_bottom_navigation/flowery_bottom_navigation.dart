@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_colors.dart';
 import 'package:flowery_app/core/constants/app_icons.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
@@ -45,7 +46,7 @@ class FloweryBottomNavigation extends StatelessWidget {
                         BlendMode.srcIn,
                       ),
                     ),
-                    label: AppText.home,
+                    label: AppText.home.tr(),
                   ),
                   BottomNavigationBarItem(
                     icon: SvgPicture.asset(
@@ -57,7 +58,7 @@ class FloweryBottomNavigation extends StatelessWidget {
                         BlendMode.srcIn,
                       ),
                     ),
-                    label: AppText.categories,
+                    label: AppText.categories.tr(),
                   ),
                   BottomNavigationBarItem(
                     icon: SvgPicture.asset(
@@ -69,7 +70,7 @@ class FloweryBottomNavigation extends StatelessWidget {
                         BlendMode.srcIn,
                       ),
                     ),
-                    label: AppText.cart,
+                    label: AppText.cart.tr(),
                   ),
                   BottomNavigationBarItem(
                     icon: SvgPicture.asset(
@@ -81,7 +82,7 @@ class FloweryBottomNavigation extends StatelessWidget {
                         BlendMode.srcIn,
                       ),
                     ),
-                    label: AppText.profile,
+                    label: AppText.profile.tr(),
                   ),
                 ],
               ),

@@ -1,31 +1,35 @@
-  # Configuration for development teams
-  language: "en-US"
+# Configuration for development teams
+language: "en-US"
 
-  reviews:
-  profile: "assertive"
-  high_level_summary: true
-  auto_review:
-    enabled: true
-  drafts: false
-  ignore_title_keywords:
-    - "wip"
-    - "draft"
-  tools:
-  eslint:
-    enabled: true
-  ruff:
-    enabled: true
-  gitleaks:
-    enabled: true
-  hadolint:
-    enabled: true
+reviews:
+    profile: "assertive"
+    high_level_summary: true
+    review_status: true
+    auto_review:
+        enabled: true
+        branches:
+            - "*"
+    drafts: false
+    ignore_title_keywords:
+        - "wip"
+        - "draft"
 
-  chat:
-  auto_reply: true
+tools:
+    eslint:
+        enabled: true
+    ruff:
+        enabled: true
+    gitleaks:
+        enabled: true
+    hadolint:
+        enabled: true
 
-  knowledge_base:
-  code_guidelines:
-  enabled: true
-  filePatterns:
-    - "**/.cursorrules"
-    - "**/CODING_STANDARDS.md"
+chat:
+    auto_reply: true
+
+knowledge_base:
+    code_guidelines:
+        enabled: true
+        filePatterns:
+            - "**/.cursorrules"
+            - "**/CODING_STANDARDS.md"

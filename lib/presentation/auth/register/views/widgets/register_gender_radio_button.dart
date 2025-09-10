@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/core/enum/gender.dart';
 import 'package:flowery_app/presentation/auth/register/view_model/register_cubit.dart';
@@ -17,8 +18,9 @@ class RegisterGenderRadioButton extends StatelessWidget {
     return BlocBuilder<RegisterCubit, RegisterState>(
       buildWhen: (previous, current) => current is GenderChangedState,
       builder: (context, state) {
-        final selectedGender =
-            state is GenderChangedState ? state.selectedGender : null;
+        final selectedGender = state is GenderChangedState
+            ? state.selectedGender
+            : null;
 
         return Row(
           children: [
@@ -42,7 +44,12 @@ class RegisterGenderRadioButton extends StatelessWidget {
                     theme.colorScheme.primary.withValues(alpha: 0.1),
                   ),
                 ),
-                child: const Text(AppText.genderFemaleDisplay),
+                child: Text(
+                  AppText.genderFemaleDisplay.tr(),
+                  style: theme.textTheme.bodyLarge?.copyWith(
+                    color: theme.colorScheme.onSecondary,
+                  ),
+                ),
               ),
             ),
             SizedBox(width: 12.w),
@@ -66,7 +73,12 @@ class RegisterGenderRadioButton extends StatelessWidget {
                     theme.colorScheme.primary.withValues(alpha: 0.1),
                   ),
                 ),
-                child: const Text(AppText.genderMaleDisplay),
+                child: Text(
+                  AppText.genderMaleDisplay.tr(),
+                  style: theme.textTheme.bodyLarge?.copyWith(
+                    color: theme.colorScheme.onSecondary,
+                  ),
+                ),
               ),
             ),
           ],

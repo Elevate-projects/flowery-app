@@ -6,8 +6,11 @@ abstract class Dialogs {
     required BuildContext context,
     List<Widget>? actions,
     Widget? content,
+    bool isBarrierDismissible = true,
   }) {
     return showDialog(
+      barrierDismissible: isBarrierDismissible,
+      useSafeArea: true,
       context: context,
       builder: (context) =>
           CustomDialogContent(content: content, actions: actions),

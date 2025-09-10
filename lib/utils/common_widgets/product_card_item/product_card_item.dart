@@ -57,7 +57,11 @@ class ProductCardItem extends StatelessWidget {
               ),
             ),
             ProductTitleAndPrice(productCardData: productCardData),
-            const Flexible(child: AddToCartButton()),
+            Flexible(
+              child: AddToCartButton(
+                productId: productCardData.productId ?? "",
+              ),
+            ),
           ],
         ),
       ),
