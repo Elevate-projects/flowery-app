@@ -5,6 +5,7 @@ import 'package:flowery_app/api/data_source/cart/remote_data_source_delete_item_
 import 'package:flowery_app/api/responses/cart_response/delete_items.dart';
 import 'package:flowery_app/core/connection_manager/connection_manager.dart';
 import 'package:flowery_app/domain/entities/cart/delete_cart/delete_cart_item.dart';
+import 'package:flowery_app/utils/flowery_method_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -31,9 +32,9 @@ void main() {
           () async {
         /// arrange
         const productId = "123";
-        const token = "fake_token";
+        const _ = "fake_token";
 
-        final deleteItems = DeleteItems(
+        final deleteItems = DeleteItem(
           message: "success",
           numOfCartItems: 1,
         );
@@ -43,18 +44,18 @@ void main() {
 
         when(mockApiClient.deleteCartQuantity(
           productId: productId,
-          token: "Bearer $token",
+          token: "Bearer ${FloweryMethodHelper.currentUserToken}",
         )).thenAnswer((_) async => deleteItems);
 
         /// act
         final result =
-        await remoteDataSourceDeleteItemImp.deleteCartItem(productId, token);
+        await remoteDataSourceDeleteItemImp.deleteCartItem(productId);
 
         /// assert
         expect(result, isA<Success<DeleteItemsEntity>>());
         verify(mockApiClient.deleteCartQuantity(
           productId: productId,
-          token: "Bearer $token",
+          token: "Bearer ${FloweryMethodHelper.currentUserToken}",
         )).called(1);
       });
 }

@@ -3,5 +3,5 @@ import 'package:flowery_app/domain/entities/cart/get_logged_user_cart/get_logged
 
 
 abstract class CartRepository {
-  Future<Result<GetLoggedUserCartEntity>> getLoggedUserCart(String token);
+  Future<Result<GetLoggedUserCartEntity>> getLoggedUserCart();
 }

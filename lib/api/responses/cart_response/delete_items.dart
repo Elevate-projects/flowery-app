@@ -4,22 +4,22 @@ import 'package:json_annotation/json_annotation.dart';
 part 'delete_items.g.dart';
 
 @JsonSerializable()
-class DeleteItems {
+class DeleteItem {
   @JsonKey(name: "message")
   final String? message;
   @JsonKey(name: "numOfCartItems")
   final int? numOfCartItems;
-  DeleteItems ({
+  DeleteItem ({
     this.message,
     this.numOfCartItems,
   });
 
-  factory DeleteItems.fromJson(Map<String, dynamic> json) {
-    return _$DeleteItemsFromJson(json);
+  factory DeleteItem.fromJson(Map<String, dynamic> json) {
+    return _$DeleteItemFromJson(json);
   }
 
   Map<String, dynamic> toJson() {
-    return _$DeleteItemsToJson(this);
+    return _$DeleteItemToJson(this);
   }
   DeleteItemsEntity toEntity() {
     return DeleteItemsEntity(

@@ -1,12 +1,11 @@
 import 'package:flowery_app/core/constants/app_icons.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
-import 'package:flowery_app/domain/entities/cart/get_logged_user_cart/get_logged_user_cart.dart';
+import 'package:flowery_app/domain/entities/cart/cart_item_entity/cart_Item_entity.dart';
 import 'package:flowery_app/presentation/cart/view_model/delete_cubit/delete_cubit.dart';
 import 'package:flowery_app/presentation/cart/view_model/delete_cubit/delete_intent.dart';
 import 'package:flowery_app/presentation/cart/view_model/quantity_cubit/quantity_cubit.dart';
 import 'package:flowery_app/presentation/cart/view_model/quantity_cubit/quantity_intent.dart';
 import 'package:flowery_app/presentation/cart/view_model/quantity_cubit/quantity_state.dart';
-import 'package:flowery_app/utils/flowery_method_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,14 +18,15 @@ class CustomCartDetails extends StatelessWidget {
   const CustomCartDetails({super.key, required this.cartItem});
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     final product = cartItem.product;
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
       width: 343.w,
       height: 117.h,
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.black),
-        color: Colors.white,
+        border: Border.all(color: theme.colorScheme.onSecondary),
+        color: theme.colorScheme.secondary,
         borderRadius: BorderRadius.circular(10.r),
       ),
       child: Row(
@@ -61,9 +61,8 @@ class CustomCartDetails extends StatelessWidget {
                         child: Text(
                           product?.title ?? AppText.noName,
                           style: TextStyle(
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black,
+                            fontSize: theme.textTheme.titleSmall?.fontSize,
+                            color: theme.colorScheme.shadow,
                           ),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
@@ -74,15 +73,14 @@ class CustomCartDetails extends StatelessWidget {
                         onTap: () {
                           context.read<DeleteCartCubit>().doIntent(
                             DeleteCartItemIntent(
-                              productId: cartItem.product?.id ?? "",
-                              token: FloweryMethodHelper.currentUserToken ?? "",
+                              productId: cartItem.product?.productId ?? "",
                             ),
                           );
                         },
                         child: Image.asset(
                           AppIcons.trashIcon,
-                          width: 24,
-                          height: 24,
+                          width: 24.w,
+                          height: 24.h,
                         ),
                       ),
                     ],
@@ -90,7 +88,8 @@ class CustomCartDetails extends StatelessWidget {
                   SizedBox(height: 3.h),
                   Text(
                     product?.description ?? AppText.noDescription,
-                    style: TextStyle(fontSize: 15.sp, color: Colors.grey),
+                    style: TextStyle(fontSize: theme.textTheme.bodySmall?.fontSize, color:
+                    theme.colorScheme.shadow),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -100,9 +99,9 @@ class CustomCartDetails extends StatelessWidget {
                       Text(
                         "EGP ${cartItem.price ?? product?.price ?? 0}",
                         style: TextStyle(
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.black,
+                          fontSize: theme.textTheme.titleMedium?.fontSize,
+                          fontWeight: theme.textTheme.titleMedium?.fontWeight,
+                          color: theme.colorScheme.onSecondary,
                         ),
                       ),
                       const Spacer(),
@@ -111,9 +110,7 @@ class CustomCartDetails extends StatelessWidget {
                           if ((cartItem.quantity ?? 0) > 1) {
                             context.read<QuantityCubit>().doIntent(
                               UpdateCartQuantityIntent(
-                                productId: cartItem.product?.id ?? "",
-                                token:
-                                    FloweryMethodHelper.currentUserToken ?? "",
+                                productId: cartItem.product?.productId ?? "",
                                 quantity: (cartItem.quantity ?? 0) - 1,
                               ),
                             );
@@ -125,8 +122,8 @@ class CustomCartDetails extends StatelessWidget {
                           child: Center(
                             child: Icon(
                               Icons.remove,
-                              size: 20.sp,
-                              color: Colors.black,
+                              size: theme.textTheme.titleLarge?.fontSize,
+                              color: theme.colorScheme.onSecondary,
                             ),
                           ),
                         ),
@@ -136,7 +133,7 @@ class CustomCartDetails extends StatelessWidget {
                         builder: (context, state) {
                           final isLoading =
                               state.quantityStatus.isLoading &&
-                              state.currentProductId == cartItem.product?.id;
+                              state.currentProductId == cartItem.product?.productId;
                           return SizedBox(
                             width: 24.w,
                             height: 24.h,
@@ -150,9 +147,9 @@ class CustomCartDetails extends StatelessWidget {
                                   : Text(
                                       "${cartItem.quantity ?? 0}",
                                       style: TextStyle(
-                                        fontSize: 16.sp,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.black,
+                                        fontSize: theme.textTheme.titleMedium?.fontSize,
+                                        fontWeight: theme.textTheme.titleMedium?.fontWeight,
+                                        color: theme.colorScheme.onSecondary,
                                       ),
                                     ),
                             ),
@@ -163,8 +160,7 @@ class CustomCartDetails extends StatelessWidget {
                         onTap: () {
                           context.read<QuantityCubit>().doIntent(
                             UpdateCartQuantityIntent(
-                              productId: cartItem.product?.id ?? "",
-                              token: FloweryMethodHelper.currentUserToken ?? "",
+                              productId: cartItem.product?.productId ?? "",
                               quantity: (cartItem.quantity ?? 0) + 1,
                             ),
                           );
@@ -176,7 +172,7 @@ class CustomCartDetails extends StatelessWidget {
                             child: Icon(
                               Icons.add,
                               size: 20.sp,
-                              color: Colors.black,
+                              color: theme.colorScheme.onSecondary,
                             ),
                           ),
                         ),

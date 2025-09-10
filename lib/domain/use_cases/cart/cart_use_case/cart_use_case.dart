@@ -8,7 +8,7 @@ class GetLoggedUserCartUseCase {
 
   GetLoggedUserCartUseCase(this.repository);
 
-  Future<Result<GetLoggedUserCartEntity>> call(String token) {
-    return repository.getLoggedUserCart(token);
+  Future<Result<GetLoggedUserCartEntity>> call() {
+    return repository.getLoggedUserCart();
   }
 }

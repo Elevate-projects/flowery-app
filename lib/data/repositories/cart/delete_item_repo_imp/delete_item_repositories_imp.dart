@@ -8,7 +8,7 @@ class DeleteItemRepositoriesImp implements DeleteItemRepositories{
   final RemoteDataSourceDeleteItem _sourceDeleteItem;
  DeleteItemRepositoriesImp(this._sourceDeleteItem);
   @override
-  Future<Result<DeleteItemsEntity>> deleteCartItem(String productId, String token) {
-    return _sourceDeleteItem.deleteCartItem(productId, token);
+  Future<Result<DeleteItemsEntity>> deleteCartItem(String productId) {
+    return _sourceDeleteItem.deleteCartItem(productId);
   }
 }

@@ -6,6 +6,7 @@ import 'package:flowery_app/domain/use_cases/cart/delete_cart_item_use_case/dele
 import 'package:flowery_app/presentation/cart/view_model/delete_cubit/delete_cubit.dart';
 import 'package:flowery_app/presentation/cart/view_model/delete_cubit/delete_intent.dart';
 import 'package:flowery_app/presentation/cart/view_model/delete_cubit/delete_state.dart';
+import 'package:flowery_app/utils/flowery_method_helper.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -18,6 +19,7 @@ void main() {
   late DeleteItemsEntity fakeDeleteResult;
 
   setUpAll(() {
+    FloweryMethodHelper.currentUserToken = "fake_token";
     fakeDeleteResult = const DeleteItemsEntity(
       message: "Item deleted successfully",
       numOfCartItems: 0,
@@ -36,14 +38,13 @@ void main() {
     blocTest<DeleteCartCubit, DeleteCartState>(
       'emits loading then success when deleteCartItemUseCase returns Success',
       build: () {
-        when(mockDeleteCartItemUseCase.deleteCartItem("123", "validToken"))
+        when(mockDeleteCartItemUseCase.deleteCartItem("123"))
             .thenAnswer((_) async => Success(fakeDeleteResult));
         return cubit;
       },
       act: (cubit) async =>
       await cubit.doIntent(DeleteCartItemIntent(
         productId: "123",
-        token: "validToken",
       )),
       expect: () => [
         isA<DeleteCartState>().having((s) => s.deleteStatus.isLoading, "isLoading", true),
@@ -57,7 +58,7 @@ void main() {
       'emits loading then failure when deleteCartItemUseCase returns Failure',
       build: () {
         when(mockDeleteCartItemUseCase.deleteCartItem(
-            "0", "validToken"
+            "0",
         ))
             .thenAnswer((_) async => Failure(
           responseException: const ResponseException(message: "Delete failed"),
@@ -67,7 +68,6 @@ void main() {
       act: (cubit) async =>
       await cubit.doIntent(DeleteCartItemIntent(
         productId: "0",
-        token: "validToken",
       )),
       expect: () => [
         isA<DeleteCartState>().having((s) => s.deleteStatus.isLoading, "isLoading", true),
@@ -76,5 +76,16 @@ void main() {
             .having((s) => s.deleteStatus.error?.message, "error message", "Delete failed"),
       ],
     );
+    blocTest<DeleteCartCubit, DeleteCartState>(
+      'emits failure when token is null',
+      build: () {
+        FloweryMethodHelper.currentUserToken = null;
+        return cubit;
+      },
+      act: (cubit) async =>
+      await cubit.doIntent(DeleteCartItemIntent(productId: "123")),
+      expect: () => [],
+    );
+
   });
 }

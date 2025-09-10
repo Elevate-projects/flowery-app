@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:flowery_app/core/constants/app_colors.dart';
 import 'package:flowery_app/core/constants/app_icons.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/presentation/cart/view_model/cart_intent.dart';
@@ -20,10 +21,12 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     log('userinfo: ${FloweryMethodHelper.userData}');
     return Scaffold(
       appBar: AppBar(
-        leading: const CustomBackArrow(),
+        titleSpacing: 0,
+          leading: const CustomBackArrow(),
         title: const Text(AppText.cart),
       ),
       body: MultiBlocListener(
@@ -32,22 +35,15 @@ class CartPage extends StatelessWidget {
             listener: (context, state) {
               if (state.cartStatus.isFailure) {
                 final errorMessage = state.cartStatus.error?.message ?? "";
-                if (errorMessage == "You are not logged in press to Arrow back to login ") {
+                if (errorMessage ==   AppText.noToken) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: const Text("You are not logged in press to Arrow back to login"),
-                      backgroundColor: Colors.red,
+                      content: const Text(AppText.noToken),
+                      backgroundColor: theme.colorScheme.error,
                       behavior: SnackBarBehavior.floating,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
-                    ),
-                  );
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(errorMessage),
-                      backgroundColor: Colors.red,
                     ),
                   );
                 }
@@ -63,15 +59,15 @@ class CartPage extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    backgroundColor: Colors.green,
-                    content: const Row(
+                    backgroundColor: theme.colorScheme.onSurface,
+                    content: Row(
                       children: [
-                        Icon(Icons.check_circle_outline, color: Colors.white),
-                        SizedBox(width: 12),
+                        Icon(Icons.check_circle_outline, color: theme.colorScheme.onSecondary),
+                        const SizedBox(width: 12),
                         Expanded(
                           child: Text(
-                            'Product removed from cart Successfully',
-                            style: TextStyle(color: Colors.white, fontSize: 16),
+                            AppText.delete,
+                            style: TextStyle(color: theme.colorScheme.onSecondary,fontWeight: theme.textTheme.bodyMedium?.fontWeight),
                           ),
                         ),
                       ],
@@ -80,7 +76,7 @@ class CartPage extends StatelessWidget {
                   ),
                 );
                 context.read<CartCubit>().doIntent(
-                  LoadCartIntent(FloweryMethodHelper.currentUserToken ?? ""),
+                  LoadCartIntent(),
                 );
               }
             },
@@ -98,8 +94,8 @@ class CartPage extends StatelessWidget {
             if (state.cartStatus.isFailure) {
               return Center(
                 child: Text(
-                  state.cartStatus.error?.message ?? "Unexpected error",
-                  style: const TextStyle(color: Colors.red),
+                  state.cartStatus.error?.message ?? AppText.unexpectedError,
+                  style: const TextStyle(color: AppColors.red),
                 ),
               );
             }
@@ -107,45 +103,43 @@ class CartPage extends StatelessWidget {
               final cart = state.cartStatus.data;
               final cartItems = cart?.cart?.cartItems ?? [];
               if (cartItems.isEmpty) {
-                return const Center(
+                return  const Center(
                   child: Text(
                     AppText.noItems,
-                    style: TextStyle(color: Colors.grey),
+                    style: TextStyle(color: AppColors.black),
                   ),
                 );
               }
               return Column(
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.all(16),
+                  Padding(
+                    padding: const EdgeInsets.all(16),
                     child: Row(
                       children: [
-                        Icon(Icons.location_on_outlined),
-                        SizedBox(width: 8),
+                        const Icon(Icons.location_on_outlined),
+                        const SizedBox(width: 8),
                         Text(
                           AppText.delivery,
                           style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.grey,
+                            fontSize: theme.textTheme.bodyMedium?.fontSize,
+                            color: AppColors.gray,
                           ),
                         ),
-                        SizedBox(width: 10),
-                        Expanded(
+                        const SizedBox(width: 10),
+                         Expanded(
                           child: Text(
                             AppText.location,
                             style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black,
+                              fontSize: theme.textTheme.bodyMedium?.fontSize,
+                              color: AppColors.black,
                             ),
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),
-                        SizedBox(width: 10),
-                        ImageIcon(
-                          AssetImage(AppIcons.arrowBackCart),
-                          color: Colors.black45,
+                        const SizedBox(width: 10),
+                         ImageIcon(
+                          const AssetImage(AppIcons.arrowBackCart),
+                          color: AppColors.black.withAlpha(2),
                           size: 28,
                         ),
                       ],
@@ -167,52 +161,50 @@ class CartPage extends StatelessWidget {
                       horizontal: 16,
                       vertical: 10,
                     ),
-                    decoration: const BoxDecoration(color: Colors.white),
+                    decoration: const BoxDecoration(color: AppColors.white),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Row(
                           children: [
-                            const Text(
+                             const Text(
                               AppText.subTotal,
-                              style: TextStyle(color: Colors.grey),
+                              style: TextStyle(color: AppColors.gray),
                             ),
                             const Spacer(),
                             Text(
                               "\$${cart?.cart?.totalPrice ?? 0}",
-                              style: const TextStyle(color: Colors.grey),
+                              style: const TextStyle(color: AppColors.gray),
                             ),
                           ],
                         ),
                         const SizedBox(height: 4),
-                        const Row(
+                         Row(
                           children: [
-                            Text(
+                            const Text(
                               AppText.deliveryFee,
                               style: TextStyle(color: Colors.grey),
                             ),
-                            Spacer(),
-                            Text("\$10", style: TextStyle(color: Colors.grey)),
+                            const Spacer(),
+                            Text("\$10", style: TextStyle(color: AppColors.gray.withAlpha(2))),
                           ],
                         ),
                         const Divider(),
                         Row(
                           children: [
-                            const Text(
+                             Text(
                               AppText.total,
                               style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.black,
+                                fontSize: theme.textTheme.bodyLarge?.fontSize,
+                                color: AppColors.black,
                               ),
                             ),
                             const Spacer(),
                             Text(
                               "\$${(cart?.cart?.totalPrice ?? 0) + 10}",
-                              style: const TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.black,
+                              style:  TextStyle(
+                                fontSize: theme.textTheme.titleMedium?.fontSize,
+                                color: AppColors.black,
                               ),
                             ),
                           ],
@@ -226,14 +218,13 @@ class CartPage extends StatelessWidget {
                               // Handle checkout button press
                             },
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.pinkAccent,
+                              backgroundColor: theme.colorScheme.primary,
                             ),
-                            child: const Text(
+                            child:  Text(
                               AppText.checkOut,
                               style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white,
+                                fontSize: theme.textTheme.titleLarge?.fontSize,
+                                color: AppColors.white,
                               ),
                             ),
                           ),

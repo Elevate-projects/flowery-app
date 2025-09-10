@@ -10,7 +10,7 @@ class CartRepositoryImpl implements CartRepository {
   CartRepositoryImpl(this.remoteDataSource);
 
   @override
-  Future<Result<GetLoggedUserCartEntity>> getLoggedUserCart(String token) async {
-    return await remoteDataSource.getLoggedUserCart(token);
+  Future<Result<GetLoggedUserCartEntity>> getLoggedUserCart() async {
+    return await remoteDataSource.getLoggedUserCart();
   }
 }

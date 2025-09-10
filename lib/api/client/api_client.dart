@@ -38,7 +38,7 @@ abstract class ApiClient {
   Future<ForgetPasswordResponseModel> forgetPassword( {@Body() required ForgetPasswordRequestDto request});
 
   @GET(Endpoints.getLoggedUserCart)
-  Future<GetLoggedUserCart> getLoggedUserCart({
+  Future<GetLoggedUserCartModel> getLoggedUserCart({
     @Header("Authorization") required String token,
 });
   @PUT(Endpoints.updateCartQuantity)
@@ -48,7 +48,7 @@ abstract class ApiClient {
     @Body() required QuantityRequest request,
   });
   @DELETE(Endpoints.deleteCartQuantity)
-  Future<DeleteItems> deleteCartQuantity({
+  Future<DeleteItem> deleteCartQuantity({
     @Path("productId") required String productId,
     @Header("Authorization") required String token,
   });

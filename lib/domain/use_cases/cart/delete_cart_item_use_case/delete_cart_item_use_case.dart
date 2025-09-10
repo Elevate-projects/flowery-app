@@ -6,7 +6,7 @@ import 'package:injectable/injectable.dart';
 class DeleteCartItemUseCase{
   final DeleteItemRepositories _repositories;
   DeleteCartItemUseCase(this._repositories);
-  Future<Result<DeleteItemsEntity>> deleteCartItem(String productId, String token) {
-    return _repositories.deleteCartItem(productId, token);
+  Future<Result<DeleteItemsEntity>> deleteCartItem(String productId) {
+    return _repositories.deleteCartItem(productId);
   }
 }

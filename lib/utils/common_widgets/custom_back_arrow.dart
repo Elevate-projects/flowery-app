@@ -5,7 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomBackArrow extends StatelessWidget {
   const CustomBackArrow({super.key});
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

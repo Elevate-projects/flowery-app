@@ -80,9 +80,9 @@ class _FakeForgetPasswordResponseModel_4 extends _i1.SmartFake
     : super(parent, parentInvocation);
 }
 
-class _FakeGetLoggedUserCart_5 extends _i1.SmartFake
-    implements _i7.GetLoggedUserCart {
-  _FakeGetLoggedUserCart_5(Object parent, Invocation parentInvocation)
+class _FakeGetLoggedUserCartModel_5 extends _i1.SmartFake
+    implements _i7.GetLoggedUserCartModel {
+  _FakeGetLoggedUserCartModel_5(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
@@ -92,8 +92,8 @@ class _FakeQuantityResponse_6 extends _i1.SmartFake
     : super(parent, parentInvocation);
 }
 
-class _FakeDeleteItems_7 extends _i1.SmartFake implements _i9.DeleteItems {
-  _FakeDeleteItems_7(Object parent, Invocation parentInvocation)
+class _FakeDeleteItem_7 extends _i1.SmartFake implements _i9.DeleteItem {
+  _FakeDeleteItem_7(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
@@ -183,19 +183,19 @@ class MockApiClient extends _i1.Mock implements _i11.ApiClient {
           as _i12.Future<_i6.ForgetPasswordResponseModel>);
 
   @override
-  _i12.Future<_i7.GetLoggedUserCart> getLoggedUserCart({
+  _i12.Future<_i7.GetLoggedUserCartModel> getLoggedUserCart({
     required String? token,
   }) =>
       (super.noSuchMethod(
             Invocation.method(#getLoggedUserCart, [], {#token: token}),
-            returnValue: _i12.Future<_i7.GetLoggedUserCart>.value(
-              _FakeGetLoggedUserCart_5(
+            returnValue: _i12.Future<_i7.GetLoggedUserCartModel>.value(
+              _FakeGetLoggedUserCartModel_5(
                 this,
                 Invocation.method(#getLoggedUserCart, [], {#token: token}),
               ),
             ),
           )
-          as _i12.Future<_i7.GetLoggedUserCart>);
+          as _i12.Future<_i7.GetLoggedUserCartModel>);
 
   @override
   _i12.Future<_i8.QuantityResponse> updateCartQuantity({
@@ -223,7 +223,7 @@ class MockApiClient extends _i1.Mock implements _i11.ApiClient {
           as _i12.Future<_i8.QuantityResponse>);
 
   @override
-  _i12.Future<_i9.DeleteItems> deleteCartQuantity({
+  _i12.Future<_i9.DeleteItem> deleteCartQuantity({
     required String? productId,
     required String? token,
   }) =>
@@ -232,8 +232,8 @@ class MockApiClient extends _i1.Mock implements _i11.ApiClient {
               #productId: productId,
               #token: token,
             }),
-            returnValue: _i12.Future<_i9.DeleteItems>.value(
-              _FakeDeleteItems_7(
+            returnValue: _i12.Future<_i9.DeleteItem>.value(
+              _FakeDeleteItem_7(
                 this,
                 Invocation.method(#deleteCartQuantity, [], {
                   #productId: productId,
@@ -242,7 +242,7 @@ class MockApiClient extends _i1.Mock implements _i11.ApiClient {
               ),
             ),
           )
-          as _i12.Future<_i9.DeleteItems>);
+          as _i12.Future<_i9.DeleteItem>);
 }
 
 /// A class which mocks [SecureStorage].

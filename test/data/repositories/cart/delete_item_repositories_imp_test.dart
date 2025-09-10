@@ -1,6 +1,6 @@
 import 'package:flowery_app/api/client/api_result.dart';
 import 'package:flowery_app/data/data_source/cart/remote_data_source_delete_item/remote_data_source_delete_item.dart';
-import 'package:flowery_app/data/repositories/cart/delete_item_repositories_imp.dart';
+import 'package:flowery_app/data/repositories/cart/delete_item_repo_imp/delete_item_repositories_imp.dart';
 import 'package:flowery_app/domain/entities/cart/delete_cart/delete_cart_item.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -25,9 +25,9 @@ void main() {
 
     final expectedResult = Success(expectedCart);
     provideDummy<Result<DeleteItemsEntity>>(expectedResult);
-    when(remoteDataSourceQuantityRequest.deleteCartItem("id123", "token123"))
+    when(remoteDataSourceQuantityRequest.deleteCartItem("id123"))
         .thenAnswer((_) async => expectedResult);
-    final result = await cartRepositoryImpl.deleteCartItem("id123", "token123");
+    final result = await cartRepositoryImpl.deleteCartItem("id123");
     expect(result, isA<Success<DeleteItemsEntity>>());
     expect(result, expectedResult);
   });

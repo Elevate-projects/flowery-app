@@ -6,7 +6,6 @@ import 'package:flowery_app/presentation/cart/view_model/delete_cubit/delete_sta
 import 'package:flowery_app/presentation/cart/view_model/quantity_cubit/quantity_cubit.dart';
 import 'package:flowery_app/presentation/cart/view_model/quantity_cubit/quantity_state.dart';
 import 'package:flowery_app/presentation/cart/widget/cart_page.dart';
-import 'package:flowery_app/utils/flowery_method_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 class CartView extends StatelessWidget {
@@ -20,7 +19,6 @@ class CartView extends StatelessWidget {
           create: (context) => getIt.get<CartCubit>()
             ..doIntent(
               LoadCartIntent(
-                FloweryMethodHelper.currentUserToken ?? "",
               ),
             ),
         ),
@@ -37,7 +35,7 @@ class CartView extends StatelessWidget {
             listener: (context, state) {
               if (state.quantityStatus.isSuccess) {
                 context.read<CartCubit>().doIntent(
-                  LoadCartIntent(FloweryMethodHelper.currentUserToken ?? ""),
+                  LoadCartIntent(),
                 );
               }
             },
@@ -46,7 +44,7 @@ class CartView extends StatelessWidget {
             listener: (context, state) {
               if (state.deleteStatus.isSuccess) {
                 context.read<CartCubit>().doIntent(
-                  LoadCartIntent(FloweryMethodHelper.currentUserToken ?? ""),
+                  LoadCartIntent(),
                 );
               }
             },

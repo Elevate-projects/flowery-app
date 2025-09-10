@@ -25,12 +25,12 @@ void main() {
     final expectedDeleteCartItemResult = Success(expectedDeleteCartItemEntity);
     provideDummy<Result<DeleteItemsEntity>>(expectedDeleteCartItemResult);
     when(
-      mockedDeleteItemRepositories.deleteCartItem("productId", "token"),
+      mockedDeleteItemRepositories.deleteCartItem("productId"),
     ).thenAnswer((_) async => expectedDeleteCartItemResult);
-    final result = await deleteCartItemUseCase.deleteCartItem("productId", "token");
+    final result = await deleteCartItemUseCase.deleteCartItem("productId");
     final successResult = result as Success<DeleteItemsEntity>;
     expect(result, isA<Success<DeleteItemsEntity>>());
-    verify(mockedDeleteItemRepositories.deleteCartItem("productId", "token")).called(1);
+    verify(mockedDeleteItemRepositories.deleteCartItem("productId")).called(1);
     expect(
       expectedDeleteCartItemResult.data.message,
       equals(successResult.data.message),

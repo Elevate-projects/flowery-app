@@ -44,11 +44,12 @@ import '../../data/data_source/login/remote_data_source/login_remote_data_source
     as _i684;
 import '../../data/data_source/register/remote_data_source/register_remote_data_source.dart'
     as _i233;
-import '../../data/repositories/cart/cart_repositories_impl.dart' as _i831;
-import '../../data/repositories/cart/delete_item_repositories_imp.dart'
-    as _i338;
-import '../../data/repositories/cart/remove_quantity_repositories_imp.dart'
-    as _i104;
+import '../../data/repositories/cart/cart_repo_imp/cart_repositories_impl.dart'
+    as _i112;
+import '../../data/repositories/cart/delete_item_repo_imp/delete_item_repositories_imp.dart'
+    as _i6;
+import '../../data/repositories/cart/remove_quantity_repo_imp/remove_quantity_repositories_imp.dart'
+    as _i954;
 import '../../data/repositories/categories/categories_repository_impl.dart'
     as _i940;
 import '../../data/repositories/forget_password_repo_impl/forget_password_repo_impl.dart'
@@ -148,11 +149,6 @@ extension GetItInjectableX on _i174.GetIt {
       () =>
           _i618.RemoteDataSourceDeleteItemImp(apiClient: gh<_i508.ApiClient>()),
     );
-    gh.factory<_i378.RemoveQuantityRepositories>(
-      () => _i104.QuantityRepositoriesImp(
-        gh<_i879.RemoteDataSourceQuantityRequest>(),
-      ),
-    );
     gh.factory<_i691.RemoteDataSourceGetLoggedUser>(
       () => _i874.RemoteDataSourceGetLoggedUserImp(gh<_i508.ApiClient>()),
     );
@@ -161,6 +157,14 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i638.RegisterRepository>(
       () => _i40.RegisterRepositoryImpl(gh<_i233.RegisterRemoteDataSource>()),
+    );
+    gh.factory<_i378.RemoveQuantityRepositories>(
+      () => _i954.QuantityRepositoriesImp(
+        gh<_i879.RemoteDataSourceQuantityRequest>(),
+      ),
+    );
+    gh.factory<_i757.CartRepository>(
+      () => _i112.CartRepositoryImpl(gh<_i691.RemoteDataSourceGetLoggedUser>()),
     );
     gh.factory<_i72.ForgetPasswordRepo>(
       () => _i1030.ForgetPasswordRepoImpl(
@@ -183,16 +187,18 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i960.CategoriesRemoteDataSource>(),
       ),
     );
-    gh.factory<_i330.DeleteItemRepositories>(
-      () => _i338.DeleteItemRepositoriesImp(
-        gh<_i631.RemoteDataSourceDeleteItem>(),
-      ),
+    gh.factory<_i257.GetLoggedUserCartUseCase>(
+      () => _i257.GetLoggedUserCartUseCase(gh<_i757.CartRepository>()),
     );
     gh.factory<_i46.QuantityCubit>(
       () => _i46.QuantityCubit(gh<_i618.QuantityUseCase>()),
     );
-    gh.factory<_i757.CartRepository>(
-      () => _i831.CartRepositoryImpl(gh<_i691.RemoteDataSourceGetLoggedUser>()),
+    gh.factory<_i330.DeleteItemRepositories>(
+      () =>
+          _i6.DeleteItemRepositoriesImp(gh<_i631.RemoteDataSourceDeleteItem>()),
+    );
+    gh.factory<_i764.CartCubit>(
+      () => _i764.CartCubit(gh<_i257.GetLoggedUserCartUseCase>()),
     );
     gh.factory<_i824.GetAllCategoriesUseCase>(
       () => _i824.GetAllCategoriesUseCase(gh<_i660.CategoriesRepository>()),
@@ -222,14 +228,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i195.DeleteCartItemUseCase>(
       () => _i195.DeleteCartItemUseCase(gh<_i330.DeleteItemRepositories>()),
     );
-    gh.factory<_i257.GetLoggedUserCartUseCase>(
-      () => _i257.GetLoggedUserCartUseCase(gh<_i757.CartRepository>()),
-    );
     gh.factory<_i536.RegisterCubit>(
       () => _i536.RegisterCubit(gh<_i950.RegisterUseCase>()),
-    );
-    gh.factory<_i764.CartCubit>(
-      () => _i764.CartCubit(gh<_i257.GetLoggedUserCartUseCase>()),
     );
     gh.factory<_i457.ForgetPasswordViewModel>(
       () => _i457.ForgetPasswordViewModel(gh<_i150.ForgetPasswordUseCase>()),

@@ -1,8 +1,6 @@
 import 'package:flowery_app/domain/entities/product_card/product_card_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
-
 part 'product_card_model.g.dart';
-
 @JsonSerializable()
 class ProductCardModel {
   @JsonKey(name: "rateAvg")

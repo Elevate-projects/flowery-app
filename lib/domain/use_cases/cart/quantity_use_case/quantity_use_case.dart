@@ -6,7 +6,7 @@ import 'package:injectable/injectable.dart';
 class QuantityUseCase{
   final RemoveQuantityRepositories _request;
   QuantityUseCase(this._request);
-  Future<Result<QuantityEntity>> updateCartQuantity(String productId, String token, int quantity) {
-    return _request.updateCartQuantity(productId, token, quantity);
+  Future<Result<QuantityEntity>> updateCartQuantity(String productId, int quantity) {
+    return _request.updateCartQuantity(productId, quantity);
   }
 }

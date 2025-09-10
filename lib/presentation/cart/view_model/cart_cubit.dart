@@ -1,4 +1,6 @@
+import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/core/exceptions/response_exception.dart';
+import 'package:flowery_app/utils/flowery_method_helper.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:flowery_app/core/state_status/state_status.dart';
@@ -14,26 +16,22 @@ class CartCubit extends Cubit<CartState> {
 
   Future<void> doIntent(CartIntent intent) async {
     switch (intent) {
-      case LoadCartIntent(:final token):
-        await _loadCart(token);
+      case LoadCartIntent():
+        await _loadCart();
     }
   }
-
-  Future<void> _loadCart(String? token) async {
-    if (token == null || token.trim().isEmpty) {
+  Future<void> _loadCart() async {
+    if (FloweryMethodHelper.currentUserToken == null) {
       emit(state.copyWith(
         cartStatus: const StateStatus.failure(
-          ResponseException(message: "You are not logged in press to Arrow back to login"),
+          ResponseException(message: AppText.noToken),
         ),
       ));
       return;
     }
-
-
     emit(state.copyWith(cartStatus: const StateStatus.loading()));
-    final result = await _getLoggedUserCartUseCase(token);
+    final result = await _getLoggedUserCartUseCase();
     if (isClosed) return;
-
     switch (result) {
       case Success():
         emit(state.copyWith(cartStatus: StateStatus.success(result.data)));

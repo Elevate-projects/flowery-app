@@ -10,9 +10,8 @@ class QuantityRepositoriesImp implements RemoveQuantityRepositories {
   @override
   Future<Result<QuantityEntity>> updateCartQuantity(
       String productId,
-      String token,
       int quantity,
       ) {
-    return _request.updateCartQuantity(productId, token, quantity);
+    return _request.updateCartQuantity(productId, quantity);
   }
 }
