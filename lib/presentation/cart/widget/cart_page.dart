@@ -140,7 +140,7 @@ class CartPage extends StatelessWidget {
                          ImageIcon(
                           const AssetImage(AppIcons.arrowBackCart),
                           color: AppColors.black.withAlpha(2),
-                          size: 28,
+                          size: 16.sp,
                         ),
                       ],
                     ),
@@ -179,14 +179,14 @@ class CartPage extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(height: 4),
-                         Row(
+                         const Row(
                           children: [
-                            const Text(
+                             Text(
                               AppText.deliveryFee,
-                              style: TextStyle(color: Colors.grey),
+                              style: TextStyle(color: AppColors.gray),
                             ),
-                            const Spacer(),
-                            Text("\$10", style: TextStyle(color: AppColors.gray.withAlpha(2))),
+                            Spacer(),
+                            Text("\$10", style: TextStyle(color: AppColors.gray)),
                           ],
                         ),
                         const Divider(),

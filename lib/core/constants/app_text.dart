@@ -124,26 +124,6 @@ abstract final class AppText {
   static const String networkError = "networkError";
   static const String anUnknownErrorOccurred = "anUnknownErrorOccurred";
   //Exceptions
-  static const String connectionError =
-      "Please check your internet connection and try again";
-  static const String noResponseReceivedMessage =
-      "No response received or response is not in expected format.";
-  static const String error = "Error";
-  static const String unexpectedError = "Unexpected error:";
-  static const String unexpectedErrorOccurred = "Unexpected error occurred.";
-  static const String requestCancelled = "Request was cancelled.";
-  static const String receiveTimeout =
-      "Receive timeout, please try again later.";
-  static const String sendTimeout = "Send timeout, please try again later.";
-  static const String connectionTimeout =
-      "Connection timeout, please try again later.";
-  static const String networkError =
-      "Something went wrong. Please check your internet connection.";
-  static const String anUnknownErrorOccurred = "An unknown error occurred.";
-//   forgetPassword
-  static const String forgetPassword2 = "Forget password";
-  static const String enterRegisteredEmail = 'Please enter your email associated to your account';
-  static const String confirmButton = "Confirm";
 
   // Password verification
   static const String enter6DigitCode = "enter6DigitCode";
@@ -170,6 +150,5 @@ abstract final class AppText {
   static const String noDescription = "No Description";
   static const String location = "2XVP+XC - Sheikh Zayed.....";
   static const String noItems = "No items in the cart";
-  static const String delete = "Successfully Delete Item";
   static const String noToken = "You are not logged in press to Arrow back to login";
 }
