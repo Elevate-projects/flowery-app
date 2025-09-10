@@ -83,7 +83,6 @@ abstract class AppRoutes {
             child: const AddressDetails(),
           ),
         );
-        return null;
       default:
         return null;
     }
