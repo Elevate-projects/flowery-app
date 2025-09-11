@@ -7,13 +7,17 @@ import 'package:flowery_app/presentation/profile/views/profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 class FloweryBottomNavigationCubit extends Cubit<FloweryBottomNavigationState> {
   FloweryBottomNavigationCubit() : super(const FloweryBottomNavigationState());
   final List<Widget> pages = [
     const HomeView(),
     const CategoriesView(),
     const CartView(),
+    const ProfileView(),
+  ];
+  final List<Widget> guestPages = [
+    const HomeView(),
+    const CategoriesView(),
     const ProfileView(),
   ];
 

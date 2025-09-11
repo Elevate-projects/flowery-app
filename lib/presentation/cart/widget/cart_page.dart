@@ -1,19 +1,19 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_colors.dart';
 import 'package:flowery_app/core/constants/app_icons.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
+import 'package:flowery_app/presentation/cart/view_model/cart_cubit.dart';
 import 'package:flowery_app/presentation/cart/view_model/cart_intent.dart';
+import 'package:flowery_app/presentation/cart/view_model/cart_state.dart';
 import 'package:flowery_app/presentation/cart/view_model/delete_cubit/delete_cubit.dart';
 import 'package:flowery_app/presentation/cart/view_model/delete_cubit/delete_state.dart';
 import 'package:flowery_app/presentation/cart/widget/custom_cart_shimmer.dart';
+import 'package:flowery_app/utils/common_widgets/custom_cart_details.dart';
+import 'package:flowery_app/utils/common_widgets/custom_elevated_button.dart';
 import 'package:flowery_app/utils/loaders/loaders.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flowery_app/presentation/cart/view_model/cart_cubit.dart';
-import 'package:flowery_app/presentation/cart/view_model/cart_state.dart';
-import 'package:flowery_app/utils/common_widgets/custom_back_arrow.dart';
-import 'package:flowery_app/utils/common_widgets/custom_cart_details.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 class CartPage extends StatelessWidget {
   final String? productId;
@@ -23,19 +23,18 @@ class CartPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Scaffold(
-      appBar: AppBar(
-        titleSpacing: 0,
-          leading: const CustomBackArrow(),
-        title:  Text(AppText.cartPage.tr()),
-      ),
+      appBar: AppBar(titleSpacing: 0, title: Text(AppText.cartPage.tr())),
       body: MultiBlocListener(
         listeners: [
           BlocListener<CartCubit, CartState>(
             listener: (context, state) {
               if (state.cartStatus.isFailure) {
                 final errorMessage = state.cartStatus.error?.message ?? "";
-                if (errorMessage ==   AppText.noToken.tr()) {
-                  Loaders.showErrorMessage(message: AppText.noToken, context: context);
+                if (errorMessage == AppText.noToken.tr()) {
+                  Loaders.showErrorMessage(
+                    message: AppText.noToken,
+                    context: context,
+                  );
                 }
               }
             },
@@ -43,10 +42,11 @@ class CartPage extends StatelessWidget {
           BlocListener<DeleteCartCubit, DeleteCartState>(
             listener: (context, state) {
               if (state.deleteStatus.isSuccess) {
-                Loaders.showSuccessMessage(message: AppText.deleteCart.tr(), context: context);
-                context.read<CartCubit>().doIntent(
-                  LoadCartIntent(),
+                Loaders.showSuccessMessage(
+                  message: AppText.deleteCart.tr(),
+                  context: context,
                 );
+                context.read<CartCubit>().doIntent(LoadCartIntent());
               }
             },
           ),
@@ -72,10 +72,12 @@ class CartPage extends StatelessWidget {
               final cart = state.cartStatus.data;
               final cartItems = cart?.cart?.cartItems ?? [];
               if (cartItems.isEmpty) {
-                return  Center(
+                return Center(
                   child: Text(
                     AppText.noItems.tr(),
-                    style: theme.textTheme.labelLarge?.copyWith(color: theme.colorScheme.onSecondary)
+                    style: theme.textTheme.labelLarge?.copyWith(
+                      color: theme.colorScheme.onSecondary,
+                    ),
                   ),
                 );
               }
@@ -89,8 +91,8 @@ class CartPage extends StatelessWidget {
                         const RSizedBox(width: 8),
                         Text(
                           AppText.delivery.tr(),
-                          style: theme.textTheme.bodyMedium?.copyWith(
-                            color: AppColors.gray,
+                          style: theme.textTheme.labelLarge?.copyWith(
+                            color: theme.colorScheme.shadow,
                           ),
                         ),
                         const RSizedBox(width: 10),
@@ -104,17 +106,17 @@ class CartPage extends StatelessWidget {
                           ),
                         ),
                         const RSizedBox(width: 10),
-                         ImageIcon(
+                        ImageIcon(
                           const AssetImage(AppIcons.arrowBackCart),
                           color: theme.colorScheme.onSecondary,
-                          size:theme.textTheme.titleLarge?.fontSize,
+                          size: theme.textTheme.titleLarge?.fontSize,
                         ),
                       ],
                     ),
                   ),
                   Expanded(
                     child: ListView.builder(
-                      padding:REdgeInsets.symmetric(horizontal: 8),
+                      padding: REdgeInsets.symmetric(horizontal: 8),
                       itemCount: cartItems.length,
                       itemBuilder: (context, index) {
                         final item = cartItems[index];
@@ -128,7 +130,9 @@ class CartPage extends StatelessWidget {
                       horizontal: 16,
                       vertical: 10,
                     ),
-                    decoration: BoxDecoration(color: theme.colorScheme.secondary),
+                    decoration: BoxDecoration(
+                      color: theme.colorScheme.secondary,
+                    ),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -136,34 +140,33 @@ class CartPage extends StatelessWidget {
                           children: [
                             Text(
                               AppText.subTotal.tr(),
-                              style: theme.textTheme.bodyMedium?.copyWith(
-                                color: AppColors.gray,
+                              style: theme.textTheme.labelLarge?.copyWith(
+                                color: theme.colorScheme.shadow,
                               ),
                             ),
                             const Spacer(),
                             Text(
                               "\$${cart?.cart?.totalPrice ?? 0}",
-                              style: theme.textTheme.bodyMedium?.copyWith(
-                                color: AppColors.gray,
+                              style: theme.textTheme.labelLarge?.copyWith(
+                                color: theme.colorScheme.shadow,
                               ),
                             ),
-
                           ],
                         ),
                         const RSizedBox(height: 4),
-                          Row(
+                        Row(
                           children: [
                             Text(
                               AppText.deliveryFee.tr(),
-                              style: theme.textTheme.bodyMedium?.copyWith(
-                                color: AppColors.gray,
+                              style: theme.textTheme.labelLarge?.copyWith(
+                                color: theme.colorScheme.shadow,
                               ),
                             ),
                             const Spacer(),
                             Text(
                               "\$10",
-                              style: theme.textTheme.bodyMedium?.copyWith(
-                                color: AppColors.gray,
+                              style: theme.textTheme.labelLarge?.copyWith(
+                                color: theme.colorScheme.shadow,
                               ),
                             ),
                           ],
@@ -173,38 +176,19 @@ class CartPage extends StatelessWidget {
                           children: [
                             Text(
                               AppText.total.tr(),
-                              style: theme.textTheme.bodyLarge?.copyWith(
-                                color: AppColors.black,
-                              ),
+                              style: theme.textTheme.headlineSmall,
                             ),
                             const Spacer(),
                             Text(
                               "\$${(cart?.cart?.totalPrice ?? 0) + 10}",
-                              style: theme.textTheme.titleMedium?.copyWith(
-                                color: AppColors.black,
-                              ),
+                              style: theme.textTheme.headlineSmall,
                             ),
                           ],
                         ),
                         const RSizedBox(height: 10),
-                        SizedBox(
-                          width: double.infinity,
-                          height: 50.h,
-                          child: ElevatedButton(
-                            onPressed: () {
-
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: theme.colorScheme.primary,
-                            ),
-                            child:
-                            Text(
-                              AppText.checkOut.tr(),
-                              style: theme.textTheme.titleMedium?.copyWith(
-                                color: AppColors.white,
-                              ),
-                            ),
-                          ),
+                        CustomElevatedButton(
+                          onPressed: () {},
+                          buttonTitle: AppText.checkOut,
                         ),
                       ],
                     ),

@@ -8,6 +8,7 @@ import 'package:flowery_app/domain/entities/home_products/occasion_products_enti
 import 'package:flowery_app/presentation/home/occasions/view_model/occasion_intent.dart';
 import 'package:flowery_app/presentation/home/occasions/view_model/occasion_view_model.dart';
 import 'package:flowery_app/utils/common_widgets/product_card_item/product_card_item.dart';
+import 'package:flowery_app/utils/flowery_method_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -99,7 +100,10 @@ class OccasionView extends StatelessWidget {
                           crossAxisCount: 2,
                           crossAxisSpacing: 17.r,
                           mainAxisSpacing: 17.r,
-                          childAspectRatio: 1 / 1.44,
+                          childAspectRatio:
+                              FloweryMethodHelper.currentUserToken != null
+                              ? 1 / 1.44
+                              : 1 / 1.28,
                         ),
                         itemCount: occasionData.listOfProducts.length,
                         itemBuilder: (context, index) {

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_icons.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
@@ -10,7 +11,7 @@ import 'package:flowery_app/presentation/cart/view_model/quantity_cubit/quantity
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+
 class CustomCartDetails extends StatelessWidget {
   final CartItemEntity cartItem;
   const CustomCartDetails({super.key, required this.cartItem});
@@ -39,9 +40,10 @@ class CustomCartDetails extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10.r),
               child: CachedNetworkImage(
-                imageUrl:product?.imgCover ?? '',
+                imageUrl: product?.imgCover ?? '',
                 fit: BoxFit.cover,
-                errorWidget: (context, url, error) => const Icon(Icons.broken_image),
+                errorWidget: (context, url, error) =>
+                    const Icon(Icons.broken_image),
               ),
             ),
           ),
@@ -128,24 +130,26 @@ class CustomCartDetails extends StatelessWidget {
                         builder: (context, state) {
                           final isLoading =
                               state.quantityStatus.isLoading &&
-                              state.currentProductId == cartItem.product?.productId;
+                              state.currentProductId ==
+                                  cartItem.product?.productId;
                           return RSizedBox(
                             width: 24.r,
                             height: 24.r,
                             child: Center(
                               child: isLoading
-                                  ?  RSizedBox(
+                                  ? RSizedBox(
                                       width: 16.r,
                                       height: 16.r,
                                       child: const CircularProgressIndicator(),
                                     )
-                                  :
-                              Text(
-                                "${cartItem.quantity ?? 0}",
-                                style: theme.textTheme.headlineSmall?.copyWith(
-                                  color: theme.colorScheme.onSecondary,
-                                ),
-                              ),
+                                  : Text(
+                                      "${cartItem.quantity ?? 0}",
+                                      style: theme.textTheme.headlineSmall
+                                          ?.copyWith(
+                                            color:
+                                                theme.colorScheme.onSecondary,
+                                          ),
+                                    ),
                             ),
                           );
                         },
@@ -165,7 +169,7 @@ class CustomCartDetails extends StatelessWidget {
                           child: Center(
                             child: Icon(
                               Icons.add,
-                              size:theme.textTheme.titleLarge?.fontSize,
+                              size: theme.textTheme.titleLarge?.fontSize,
                               color: theme.colorScheme.onSecondary,
                             ),
                           ),

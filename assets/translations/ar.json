@@ -142,7 +142,7 @@
   "tapOnMapToGetAddress": "اضغط على الخريطة للحصول على العنوان",
   "saveAddress": "حفظ العنوان",
   "bestSellerAppbar": "الأكثر مبيعًا",
-  "bestSellerAppbarHint": "ازدهر مع منتجاتنا الأكثر مبيعًا"
+  "bestSellerAppbarHint": "ازدهر مع منتجاتنا الأكثر مبيعًا",
 
   "delivery": "التوصيل إلى ",
   "subTotal": "المجموع الفرعي",
@@ -151,7 +151,7 @@
   "checkOut": "إتمام الشراء",
   "emptyCart": "سلة التسوق فارغة",
   "noName": "بدون اسم",
-  "price": "ج.م",
+  "price": "السعر",
   "noDescription": "لا يوجد وصف",
   "location": "2XVP+XC - الشيخ زايد.....",
   "noItems": "لا توجد عناصر في السلة",

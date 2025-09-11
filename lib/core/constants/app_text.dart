@@ -158,7 +158,7 @@ abstract final class AppText {
   static const String addressSavedSuccessfully = "addressSavedSuccessfully";
   static const String tapOnMapToGetAddress = "tapOnMapToGetAddress";
   static const String saveAddress = "saveAddress";
-}
+
   // cart text
   static const String delivery = "delivery";
   static const String subTotal = "subTotal";
@@ -173,4 +173,4 @@ abstract final class AppText {
   static const String price = "price";
   static const String cartPage = "cart";
   static const String deleteCart = "deleteCart";
-  }
+}
