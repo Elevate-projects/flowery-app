@@ -141,6 +141,8 @@
   "addressSavedSuccessfully": "تم حفظ العنوان بنجاح",
   "tapOnMapToGetAddress": "اضغط على الخريطة للحصول على العنوان",
   "saveAddress": "حفظ العنوان",
+  "bestSellerAppbar": "الأكثر مبيعًا",
+  "bestSellerAppbarHint": "ازدهر مع منتجاتنا الأكثر مبيعًا"
 
   "delivery": "التوصيل إلى ",
   "subTotal": "المجموع الفرعي",

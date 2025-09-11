@@ -153,4 +153,7 @@
   "noToken": "You are not logged in press to Arrow back to login",
   "cartPage": "Cart",
   "deleteCart": "Item removed successfully"
+
+  "bestSellerAppbar": "Best Seller",
+  "bestSellerAppbarHint": "Bloom with our exquisite best sellers"
 }

@@ -14,10 +14,12 @@ import 'package:flowery_app/presentation/auth/verification/views/email_verficati
 import 'package:flowery_app/presentation/auth/verification/views_model/verification_screen_cubit.dart';
 import 'package:flowery_app/presentation/flowery_bottom_navigation/flowery_bottom_navigation.dart';
 import 'package:flowery_app/presentation/flowery_bottom_navigation/view_model/flowery_bottom_navigation_cubit.dart';
+import 'package:flowery_app/presentation/home/best_seller/view/best_seller_view.dart';
 import 'package:flowery_app/presentation/home/occasions/view/occasion_view.dart';
 import 'package:flowery_app/presentation/product_details/views/product_details_view.dart';
 import 'package:flowery_app/presentation/saved_address/views/saved_address_view.dart';
 import 'package:flowery_app/presentation/terms_and_conditions/views/terms_and_conditions_view.dart';
+import 'package:flowery_app/utils/common_cubits/add_product_to_cart/add_product_to_cart_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -49,10 +51,22 @@ abstract class AppRoutes {
         );
       case RouteNames.forgetPassword:
         return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen());
+      case RouteNames.bestSeller:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => getIt.get<AddProductToCartCubit>(),
+            child: BestSellerView(
+              products: settings.arguments as List<ProductCardEntity>,
+            ),
+          ),
+        );
       case RouteNames.occasionView:
         return MaterialPageRoute(
-          builder: (_) => OccasionView(
-            occasionArguments: settings.arguments as OccasionArgumentsEntity,
+          builder: (_) => BlocProvider(
+            create: (context) => getIt.get<AddProductToCartCubit>(),
+            child: OccasionView(
+              occasionArguments: settings.arguments as OccasionArgumentsEntity,
+            ),
           ),
         );
       case RouteNames.verification:

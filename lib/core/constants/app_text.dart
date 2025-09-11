@@ -118,7 +118,7 @@ abstract final class AppText {
       "deleteAddressSuccessMessage";
   static const String emptyAddressesMessage = "emptyAddressesMessage";
 
-  // Exceptions
+  //Exceptions
   static const String connectionError = "connectionError";
   static const String noResponseReceivedMessage = "noResponseReceivedMessage";
   static const String error = "error";
@@ -130,6 +130,10 @@ abstract final class AppText {
   static const String connectionTimeout = "connectionTimeout";
   static const String networkError = "networkError";
   static const String anUnknownErrorOccurred = "anUnknownErrorOccurred";
+
+  static const String success = "success";
+  static const String bestSellerAppbar = "bestSellerAppbar";
+  static const String bestSellerAppbarHint = "bestSellerAppbarHint";
 
   // Password verification
   static const String enter6DigitCode = "enter6DigitCode";
