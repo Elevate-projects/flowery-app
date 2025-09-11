@@ -29,7 +29,7 @@ class CustomTextFormField extends StatelessWidget {
     required this.label,
     this.labelStyle,
     this.borderRadius = 4,
-    this.enabledBorderColor,
+    this.disabledBorderColor,
   });
   final String? hintText;
   final String label;
@@ -54,7 +54,7 @@ class CustomTextFormField extends StatelessWidget {
   final BoxConstraints? prefixIconConstraints;
   final int? maxLength;
   final double borderRadius;
-  final Color? enabledBorderColor;
+  final Color? disabledBorderColor;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -92,8 +92,7 @@ class CustomTextFormField extends StatelessWidget {
           borderRadius: borderRadius,
         ),
         enabledBorder: buildOutlinedBorder(
-          borderColor:
-              enabledBorderColor ?? Theme.of(context).colorScheme.onSecondary,
+          borderColor: Theme.of(context).colorScheme.onSecondary,
           borderRadius: borderRadius,
         ),
         focusedErrorBorder: buildOutlinedBorder(
@@ -105,7 +104,8 @@ class CustomTextFormField extends StatelessWidget {
           borderRadius: borderRadius,
         ),
         disabledBorder: buildOutlinedBorder(
-          borderColor: Theme.of(context).colorScheme.onSecondary,
+          borderColor:
+              disabledBorderColor ?? Theme.of(context).colorScheme.onSecondary,
           borderRadius: borderRadius,
         ),
         prefixIcon: prefixIcon,

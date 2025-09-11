@@ -52,6 +52,8 @@
   "outStock": "غير متوفر",
   "taxIncludedMessage": "جميع الأسعار شاملة الضريبة",
   "description": "الوصف",
+  "addProductToCartSuccessMessage": "لقد تمت إضافة المنتج إلى سلة التسوق الخاصة بك بنجاح",
+
   "occasion": "المناسبة",
   "titleBar": "ازدهر مع أفضل منتجاتنا المميزة",
   "noProductsFound": "لم يتم العثور على منتجات",
@@ -76,6 +78,15 @@
   "delete": "حذف",
   "deleteAddressSuccessMessage": "لقد قمت بحذف العنوان المحدد بنجاح",
   "emptyAddressesMessage": "يبدو أنه ليس لديك أي عناوين متاحة حتى الآن!",
+
+  "filter": "تصفية",
+  "sortBy": "ترتيب حسب",
+  "lowestPrice": "الأقل سعرًا",
+  "highestPrice": "الأعلى سعرًا",
+  "newProducts": "جديد",
+  "old": "قديم",
+  "discount": "خصم",
+
   "userNameValidation": "اسم المستخدم غير صالح",
   "emptyTextValidation": "هذا الحقل مطلوب",
   "phoneNumberValidation": "حقل رقم الهاتف مطلوب",
