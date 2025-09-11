@@ -12,7 +12,7 @@ void main() {
   late final ProductCardEntity productCardData;
 
   setUpAll(() {
-    productCardData = ProductCardEntity(
+    productCardData = const ProductCardEntity(
       title: "Forever Pink | Baby Roses",
       slug: "forever-pink-or-baby-roses",
       description:
@@ -28,8 +28,8 @@ void main() {
       price: 2049,
       priceAfterDiscount: 1899,
       quantity: 4741,
-      category: "673c46fd1159920171827c85",
-      occasion: "673b34c21159920171827ae0",
+      categoryId: "673c46fd1159920171827c85",
+      occasionId: "673b34c21159920171827ae0",
       sold: 259,
       productId: "6745096c90ab40a0685402fc",
       discountPercentage: "20%",

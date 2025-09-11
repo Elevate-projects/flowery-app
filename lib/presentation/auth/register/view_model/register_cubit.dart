@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flowery_app/api/client/api_result.dart';
 import 'package:flowery_app/core/enum/gender.dart';
 import 'package:flowery_app/core/state_status/state_status.dart';
-import 'package:flowery_app/domain/entities/request/register_request_entity.dart';
+import 'package:flowery_app/domain/entities/requests/register_request/register_request_entity.dart';
 import 'package:flowery_app/domain/entities/user_data/user_data_entity.dart';
 import 'package:flowery_app/domain/use_cases/register/register_use_case.dart';
 import 'package:flowery_app/presentation/auth/register/view_model/register_intent.dart';
@@ -26,7 +26,7 @@ class RegisterCubit extends Cubit<RegisterState> {
   late final TextEditingController confirmPasswordController;
   late final TextEditingController phoneNumberController;
   late AutovalidateMode autoValidateMode;
-  late Gender _selectedGender; 
+  late Gender _selectedGender;
   ChangeConfirmPasswordObscureState _changeConfirmPasswordObscureState =
       const ChangeConfirmPasswordObscureState();
   ChangePasswordObscureState _changePasswordObscureState =
@@ -47,10 +47,10 @@ class RegisterCubit extends Cubit<RegisterState> {
         _toggleConfirmPasswordVisiblity();
         break;
       case ChangeGenderIntent():
-       _changeGender(gender: intent.gender);
+        _changeGender(gender: intent.gender);
         break;
       case AlreadyHaveAccountIntent():
-       _alreadyHaveAccount();
+        _alreadyHaveAccount();
     }
   }
 
@@ -106,7 +106,11 @@ class RegisterCubit extends Cubit<RegisterState> {
           break;
 
         case Failure<UserDataEntity?>():
-          emit(state.copyWith(registerState: StateStatus.failure(userData.responseException)));
+          emit(
+            state.copyWith(
+              registerState: StateStatus.failure(userData.responseException),
+            ),
+          );
           break;
       }
     } else {

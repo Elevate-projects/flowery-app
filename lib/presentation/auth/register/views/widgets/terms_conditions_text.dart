@@ -1,11 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_colors.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 
 class TermsConditionsText extends StatelessWidget {
-  const TermsConditionsText({super.key,});
+  const TermsConditionsText({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,14 +14,15 @@ class TermsConditionsText extends StatelessWidget {
         text: TextSpan(
           children: [
             TextSpan(
-              text:AppText.createAnAccountYouAgree,
-              style: theme.textTheme.labelMedium
+              text: AppText.createAnAccountYouAgree.tr(),
+              style: theme.textTheme.bodySmall?.copyWith(
+                color: theme.colorScheme.onSecondary,
+              ),
             ),
             TextSpan(
-              text: AppText.termsAndConditions,
+              text: AppText.termsAndConditions.tr(),
               style: theme.textTheme.bodySmall?.copyWith(
                 fontWeight: FontWeight.bold,
-                fontSize: 12.sp,
                 color: AppColors.black,
                 decoration: TextDecoration.underline,
                 decorationColor: AppColors.black,

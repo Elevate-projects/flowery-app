@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/core/router/route_names.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class DonNotHaveAcc extends StatelessWidget {
           child: FittedBox(
             fit: BoxFit.scaleDown,
             child: Text(
-              AppText.donNotHaveAccount,
+              AppText.donNotHaveAccount.tr(),
               style: theme.textTheme.labelLarge?.copyWith(
                 color: theme.colorScheme.onSecondary,
               ),
@@ -41,7 +42,7 @@ class DonNotHaveAcc extends StatelessWidget {
               child: FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Text(
-                  AppText.signup,
+                  AppText.signup.tr(),
                   style: theme.textTheme.labelLarge?.copyWith(
                     color: theme.colorScheme.primary,
                     decoration: TextDecoration.underline,

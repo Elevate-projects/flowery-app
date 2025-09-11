@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/core/router/route_names.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +13,7 @@ class ForgetPasswordButton extends StatelessWidget {
         Navigator.of(context).pushNamed(RouteNames.forgetPassword);
       },
       child: Text(
-        AppText.forgetPassword,
+        AppText.forgetPassword.tr(),
         style: Theme.of(context).textTheme.bodySmall?.copyWith(
           color: Theme.of(context).colorScheme.onSecondary,
           decoration: TextDecoration.underline,
