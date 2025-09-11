@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/core/exceptions/response_exception.dart';
 import 'package:flowery_app/utils/flowery_method_helper.dart';
@@ -23,8 +24,8 @@ class CartCubit extends Cubit<CartState> {
   Future<void> _loadCart() async {
     if (FloweryMethodHelper.currentUserToken == null) {
       emit(state.copyWith(
-        cartStatus: const StateStatus.failure(
-          ResponseException(message: AppText.noToken),
+        cartStatus: StateStatus.failure(
+          ResponseException(message: AppText.noToken.tr()),
         ),
       ));
       return;

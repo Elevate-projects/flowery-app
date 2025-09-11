@@ -139,16 +139,17 @@ abstract final class AppText {
   static const String continueWord = "continueWord";
   static const String passwordRested = "passwordRested";
   // cart text
-  static const String delivery = "Delivery to ";
-  static const String subTotal = "Sub total";
-  static const String deliveryFee = "Delivery fee";
-  static const String total = "Total";
-  static const String checkOut = "Check Out";
-  static const String emptyCart = "Your cart is empty";
-  static const String noName = "No Name";
-  static const String price = "EGP";
-  static const String noDescription = "No Description";
-  static const String location = "2XVP+XC - Sheikh Zayed.....";
-  static const String noItems = "No items in the cart";
-  static const String noToken = "You are not logged in press to Arrow back to login";
-}
+  static const String delivery = "delivery";
+  static const String subTotal = "subTotal";
+  static const String deliveryFee = "deliveryFee";
+  static const String total = "total";
+  static const String checkOut = "checkOut";
+  static const String noName = "noName";
+  static const String noDescription = "noDescription";
+  static const String noItems = "noItems";
+  static const String noToken = "noToken";
+  static const String location = "location";
+  static const String price = "price";
+  static const String cartPage = "cart";
+  static const String deleteCart = "deleteCart";
+  }

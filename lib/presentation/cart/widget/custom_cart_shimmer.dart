@@ -1,36 +1,35 @@
-import 'package:flowery_app/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
-
 class CustomCartDetailsShimmer extends StatelessWidget {
   const CustomCartDetailsShimmer({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Shimmer.fromColors(
-      baseColor: AppColors.white,
-      highlightColor: AppColors.gray.withAlpha(2),
+      baseColor: theme.colorScheme.secondary,
+      highlightColor: theme.colorScheme.shadow,
       child: Container(
-        margin: EdgeInsets.symmetric(vertical: 8.h, horizontal: 12.w),
-        padding: EdgeInsets.all(12.w),
+        margin: REdgeInsets.symmetric(vertical: 8, horizontal: 12),
+        padding: REdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: theme.colorScheme.secondary,
           borderRadius: BorderRadius.circular(12.r),
-          border: Border.all(color: AppColors.gray.withAlpha(2)),
+          border: Border.all(color: theme.colorScheme.shadow.withAlpha(2)),
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              width: 80.w,
-              height: 80.w,
+              width: 80.r,
+              height: 80.r,
               decoration: BoxDecoration(
-                color:AppColors.gray.withAlpha(2) ,
+                color:theme.colorScheme.shadow.withAlpha(2),
                 borderRadius: BorderRadius.circular(10.r),
               ),
             ),
-            SizedBox(width: 12.w),
+            const RSizedBox(width: 12),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,19 +37,19 @@ class CustomCartDetailsShimmer extends StatelessWidget {
                   Container(
                     height: 16.h,
                     width: 120.w,
-                    color: AppColors.gray.withAlpha(2),
+                    color: theme.colorScheme.shadow.withAlpha(2)
                   ),
-                  SizedBox(height: 8.h),
+                  const RSizedBox(height: 8),
                   Container(
                     height: 14.h,
                     width: 80.w,
-                    color: AppColors.gray.withAlpha(2),
+                    color: theme.colorScheme.shadow.withAlpha(2),
                   ),
-                  SizedBox(height: 12.h),
+                  const RSizedBox(height: 12),
                   Container(
                     height: 20.h,
                     width: 60.w,
-                    color: AppColors.gray.withAlpha(2),
+                    color: theme.colorScheme.shadow.withAlpha(2),
                   ),
                 ],
               ),
@@ -58,19 +57,19 @@ class CustomCartDetailsShimmer extends StatelessWidget {
             Column(
               children: [
                 Container(
-                  height: 20.w,
-                  width: 20.w,
+                  height: 20.r,
+                  width: 20.r,
                   decoration: BoxDecoration(
-                    color: AppColors.gray.withAlpha(2),
+                    color: theme.colorScheme.shadow.withAlpha(2),
                     borderRadius: BorderRadius.circular(4.r),
                   ),
                 ),
-                SizedBox(height: 12.h),
+                const RSizedBox(height: 12),
                 Container(
-                  height: 20.w,
-                  width: 20.w,
+                  height: 20.r,
+                  width: 20.r,
                   decoration: BoxDecoration(
-                    color: AppColors.gray.withAlpha(2),
+                    color:theme.colorScheme.shadow.withAlpha(2),
                     borderRadius: BorderRadius.circular(4.r),
                   ),
                 ),

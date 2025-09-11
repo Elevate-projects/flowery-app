@@ -1,4 +1,5 @@
 import 'package:bloc_test/bloc_test.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/api/client/api_result.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/core/exceptions/response_exception.dart';
@@ -68,7 +69,7 @@ void main() {
     expect: () => [
       isA<CartState>()
           .having((s) => s.cartStatus.isFailure, "isFailure", true)
-          .having((s) => s.cartStatus.error?.message, "error message", AppText.noToken),
+          .having((s) => s.cartStatus.error?.message, "error message", AppText.noToken.tr()),
     ],
   );
 
@@ -77,7 +78,6 @@ void main() {
     build: () {
       when(mockGetLoggedUserCartUseCase())
           .thenAnswer((_) async {
-        // تأخير بسيط يخلي loading يبان
         await Future.delayed(const Duration(milliseconds: 1));
         return Success(fakeCart);
       });

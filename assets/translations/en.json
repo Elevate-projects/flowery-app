@@ -121,5 +121,20 @@
   "sendTimeout": "Send timeout, please try again later.",
   "connectionTimeout": "Connection timeout, please try again later.",
   "networkError": "Something went wrong. Please check your internet connection.",
-  "anUnknownErrorOccurred": "An unknown error occurred."
+  "anUnknownErrorOccurred": "An unknown error occurred.",
+
+  "delivery": "Delivery to ",
+  "subTotal": "Sub total",
+  "deliveryFee": "Delivery fee",
+  "total": "Total",
+  "checkOut": "Check Out",
+  "emptyCart": "Your cart is empty",
+  "noName": "No Name",
+  "price": "EGP",
+  "noDescription": "No Description",
+  "location": "2XVP+XC - Sheikh Zayed.....",
+  "noItems": "No items in the cart",
+  "noToken": "You are not logged in press to Arrow back to login",
+  "cartPage": "Cart",
+  "deleteCart": "Item removed successfully"
 }

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_icons.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/domain/entities/cart/cart_item_entity/cart_item_entity.dart';
@@ -9,10 +10,7 @@ import 'package:flowery_app/presentation/cart/view_model/quantity_cubit/quantity
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-
-
-
+import 'package:cached_network_image/cached_network_image.dart';
 class CustomCartDetails extends StatelessWidget {
   final CartItemEntity cartItem;
   const CustomCartDetails({super.key, required this.cartItem});
@@ -21,7 +19,7 @@ class CustomCartDetails extends StatelessWidget {
     final theme = Theme.of(context);
     final product = cartItem.product;
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+      margin: REdgeInsets.symmetric(horizontal: 16, vertical: 8),
       width: 343.w,
       height: 117.h,
       decoration: BoxDecoration(
@@ -32,7 +30,7 @@ class CustomCartDetails extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            margin: EdgeInsets.symmetric(horizontal: 8.w),
+            margin: REdgeInsets.symmetric(horizontal: 8),
             height: 101.h,
             width: 96.w,
             decoration: BoxDecoration(
@@ -40,11 +38,10 @@ class CustomCartDetails extends StatelessWidget {
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10.r),
-              child: Image.network(
-                product?.imgCover ?? '',
+              child: CachedNetworkImage(
+                imageUrl:product?.imgCover ?? '',
                 fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) =>
-                    const Icon(Icons.broken_image),
+                errorWidget: (context, url, error) => const Icon(Icons.broken_image),
               ),
             ),
           ),
@@ -54,15 +51,14 @@ class CustomCartDetails extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 16.h),
+                  const RSizedBox(height: 16),
                   Row(
                     children: [
                       Expanded(
                         child: Text(
-                          product?.title ?? AppText.noName,
-                          style: TextStyle(
-                            fontSize: theme.textTheme.titleSmall?.fontSize,
-                            color: theme.colorScheme.shadow,
+                          product?.title ?? AppText.noName.tr(),
+                          style: theme.textTheme.titleMedium?.copyWith(
+                            color: theme.colorScheme.onSecondary,
                           ),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
@@ -79,28 +75,27 @@ class CustomCartDetails extends StatelessWidget {
                         },
                         child: Image.asset(
                           AppIcons.trashIcon,
-                          width: 24.w,
-                          height: 24.h,
+                          width: 24.r,
+                          height: 24.r,
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(height: 3.h),
+                  const RSizedBox(height: 3),
                   Text(
-                    product?.description ?? AppText.noDescription,
-                    style: TextStyle(fontSize: theme.textTheme.bodySmall?.fontSize, color:
-                    theme.colorScheme.shadow),
+                    product?.description ?? AppText.noDescription.tr(),
+                    style: theme.textTheme.bodyMedium?.copyWith(
+                      color: theme.colorScheme.shadow,
+                    ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  SizedBox(height: 17.h),
+                  const RSizedBox(height: 17),
                   Row(
                     children: [
                       Text(
-                        "EGP ${cartItem.price ?? product?.price ?? 0}",
-                        style: TextStyle(
-                          fontSize: theme.textTheme.titleMedium?.fontSize,
-                          fontWeight: theme.textTheme.titleMedium?.fontWeight,
+                        "${AppText.price.tr()}: ${product?.price ?? 0}",
+                        style: theme.textTheme.titleMedium?.copyWith(
                           color: theme.colorScheme.onSecondary,
                         ),
                       ),
@@ -117,8 +112,8 @@ class CustomCartDetails extends StatelessWidget {
                           }
                         },
                         child: SizedBox(
-                          width: 30.w,
-                          height: 30.h,
+                          width: 30.r,
+                          height: 30.r,
                           child: Center(
                             child: Icon(
                               Icons.remove,
@@ -128,30 +123,29 @@ class CustomCartDetails extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(width: 5.w),
+                      const RSizedBox(width: 5),
                       BlocBuilder<QuantityCubit, QuantityState>(
                         builder: (context, state) {
                           final isLoading =
                               state.quantityStatus.isLoading &&
                               state.currentProductId == cartItem.product?.productId;
-                          return SizedBox(
-                            width: 24.w,
-                            height: 24.h,
+                          return RSizedBox(
+                            width: 24.r,
+                            height: 24.r,
                             child: Center(
                               child: isLoading
-                                  ? const SizedBox(
-                                      width: 16,
-                                      height: 16,
-                                      child: CircularProgressIndicator(),
+                                  ?  RSizedBox(
+                                      width: 16.r,
+                                      height: 16.r,
+                                      child: const CircularProgressIndicator(),
                                     )
-                                  : Text(
-                                      "${cartItem.quantity ?? 0}",
-                                      style: TextStyle(
-                                        fontSize: theme.textTheme.titleMedium?.fontSize,
-                                        fontWeight: theme.textTheme.titleMedium?.fontWeight,
-                                        color: theme.colorScheme.onSecondary,
-                                      ),
-                                    ),
+                                  :
+                              Text(
+                                "${cartItem.quantity ?? 0}",
+                                style: theme.textTheme.headlineSmall?.copyWith(
+                                  color: theme.colorScheme.onSecondary,
+                                ),
+                              ),
                             ),
                           );
                         },
@@ -165,13 +159,13 @@ class CustomCartDetails extends StatelessWidget {
                             ),
                           );
                         },
-                        child: SizedBox(
-                          width: 30.w,
-                          height: 30.h,
+                        child: RSizedBox(
+                          width: 30.r,
+                          height: 30.r,
                           child: Center(
                             child: Icon(
                               Icons.add,
-                              size: 20.sp,
+                              size:theme.textTheme.titleLarge?.fontSize,
                               color: theme.colorScheme.onSecondary,
                             ),
                           ),
