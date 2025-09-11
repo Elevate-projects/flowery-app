@@ -14,6 +14,7 @@ import 'package:flowery_app/presentation/auth/verification/views_model/verificat
 import 'package:flowery_app/presentation/flowery_bottom_navigation/flowery_bottom_navigation.dart';
 import 'package:flowery_app/presentation/flowery_bottom_navigation/view_model/flowery_bottom_navigation_cubit.dart';
 import 'package:flowery_app/presentation/home/occasions/view/occasion_view.dart';
+import 'package:flowery_app/presentation/payment/credit/views_model/views/credit_payment_view.dart';
 import 'package:flowery_app/presentation/product_details/views/product_details_view.dart';
 import 'package:flowery_app/presentation/saved_address/views/saved_address_view.dart';
 import 'package:flowery_app/presentation/terms_and_conditions/views/terms_and_conditions_view.dart';
@@ -74,6 +75,10 @@ abstract class AppRoutes {
             addresses: settings.arguments as List<AddressEntity>,
           ),
         );
+        case RouteNames.paymentView:
+      return MaterialPageRoute(
+        builder: (_) =>    PaymentView()
+      );
       default:
         return null;
     }
