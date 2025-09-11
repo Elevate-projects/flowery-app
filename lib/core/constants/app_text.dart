@@ -119,29 +119,21 @@ abstract final class AppText {
   static const String emptyAddressesMessage = "emptyAddressesMessage";
 
   //Exceptions
-  static const String connectionError =
-      "Please check your internet connection and try again";
-  static const String noResponseReceivedMessage =
-      "No response received or response is not in expected format.";
-  static const String error = "Error";
-  static const String unexpectedError = "Unexpected error:";
-  static const String unexpectedErrorOccurred = "Unexpected error occurred.";
-  static const String requestCancelled = "Request was cancelled.";
-  static const String receiveTimeout =
-      "Receive timeout, please try again later.";
-  static const String sendTimeout = "Send timeout, please try again later.";
-  static const String connectionTimeout =
-      "Connection timeout, please try again later.";
-  static const String networkError =
-      "Something went wrong. Please check your internet connection.";
-  static const String anUnknownErrorOccurred = "An unknown error occurred.";
+  static const String connectionError = "connectionError";
+  static const String noResponseReceivedMessage = "noResponseReceivedMessage";
+  static const String error = "error";
+  static const String unexpectedError = "unexpectedError";
+  static const String unexpectedErrorOccurred = "unexpectedErrorOccurred";
+  static const String requestCancelled = "requestCancelled";
+  static const String receiveTimeout = "receiveTimeout";
+  static const String sendTimeout = "sendTimeout";
+  static const String connectionTimeout = "connectionTimeout";
+  static const String networkError = "networkError";
+  static const String anUnknownErrorOccurred = "anUnknownErrorOccurred";
 
   static const String success = "success";
-  static const String bestSellerAppbar = "Best Seller";
-  static const String bestSellerAppbarHint =
-      "Bloom with our exquisite best sellers";
-  // Exceptions
-
+  static const String bestSellerAppbar = "bestSellerAppbar";
+  static const String bestSellerAppbarHint = "bestSellerAppbarHint";
 
   // Password verification
   static const String enter6DigitCode = "enter6DigitCode";

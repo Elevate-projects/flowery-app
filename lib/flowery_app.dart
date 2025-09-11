@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/app_theme.dart';
 import 'package:flowery_app/core/global_cubit/global_cubit.dart';
 import 'package:flowery_app/core/global_cubit/global_state.dart';

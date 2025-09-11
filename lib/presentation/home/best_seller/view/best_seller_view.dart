@@ -1,41 +1,18 @@
-import 'package:flowery_app/core/constants/app_colors.dart';
-import 'package:flowery_app/core/constants/app_text.dart';
+import 'package:flowery_app/domain/entities/product_card/product_card_entity.dart';
+import 'package:flowery_app/presentation/home/best_seller/view/widgets/best_seller_app_bar.dart';
 import 'package:flowery_app/presentation/home/best_seller/view/widgets/best_seller_list.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class BestSellerView extends StatefulWidget {
-  const BestSellerView({super.key});
+class BestSellerView extends StatelessWidget {
+  const BestSellerView({super.key, required this.products});
 
-  @override
-  State<BestSellerView> createState() => _BestSellerViewState();
-}
+  final List<ProductCardEntity> products;
 
-class _BestSellerViewState extends State<BestSellerView> {
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Scaffold(
-      appBar: AppBar(
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              AppText.bestSellerAppbar,
-              style: theme.textTheme.headlineMedium,
-            ),
-            SizedBox(height: 4.h),
-            Text(
-              AppText.bestSellerAppbarHint,
-              style: theme.textTheme.bodyMedium?.copyWith(
-                color: AppColors.gray,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ],
-        ),
-      ),
-      body: BestSellerList(),
+      appBar: const BestSellerAppBar(),
+      body: BestSellerList(products: products),
     );
   }
 }

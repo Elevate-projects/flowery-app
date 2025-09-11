@@ -137,8 +137,6 @@ import '../../presentation/auth/verification/views_model/verification_screen_cub
     as _i988;
 import '../../presentation/categories/views_model/categories_cubit.dart'
     as _i200;
-import '../../presentation/home/best_seller/view_model/best_seller_cubit.dart'
-    as _i94;
 import '../../presentation/home/home_screen/view_model/home_products_cubit.dart'
     as _i641;
 import '../../presentation/home/occasions/view_model/occasion_view_model.dart'
@@ -171,7 +169,6 @@ extension GetItInjectableX on _i174.GetIt {
       preResolve: true,
     );
     gh.factory<_i225.AboutUsCubit>(() => _i225.AboutUsCubit());
-    gh.factory<_i94.BestSellerCubit>(() => _i94.BestSellerCubit());
     gh.factory<_i694.OccasionsViewModel>(() => _i694.OccasionsViewModel());
     gh.factory<_i586.ProductDetailsCubit>(() => _i586.ProductDetailsCubit());
     gh.factory<_i297.TermsAndConditionsCubit>(
