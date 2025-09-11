@@ -15,13 +15,11 @@ class ProductCardEntity extends Equatable {
     this.categoryId,
     this.occasionId,
     this.sold,
-    this.rateAvg,
-    this.rateCount,
     this.discountPercentage,
-    this.isInStock
+    this.createdAt,
   });
 
-   final String? productId;
+  final String? productId;
   final String? title;
   final String? slug;
   final String? description;
@@ -33,10 +31,8 @@ class ProductCardEntity extends Equatable {
   final String? categoryId;
   final String? occasionId;
   final int? sold;
-  final double? rateAvg;
-  final int? rateCount;
   final String? discountPercentage;
-  final bool? isInStock;
+  final String? createdAt;
 
   @override
   List<Object?> get props => [
@@ -53,5 +49,6 @@ class ProductCardEntity extends Equatable {
     occasionId,
     sold,
     discountPercentage,
+    createdAt,
   ];
 }
