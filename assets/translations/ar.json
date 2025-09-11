@@ -86,6 +86,14 @@
   "deleteAddressSuccessMessage": "لقد قمت بحذف العنوان المحدد بنجاح",
   "emptyAddressesMessage": "يبدو أنه ليس لديك أي عناوين متاحة حتى الآن!",
 
+  "filter": "تصفية",
+  "sortBy": "ترتيب حسب",
+  "lowestPrice": "الأقل سعرًا",
+  "highestPrice": "الأعلى سعرًا",
+  "newProducts": "جديد",
+  "old": "قديم",
+  "discount": "خصم",
+
   "userNameValidation": "اسم المستخدم غير صالح",
   "emptyTextValidation": "هذا الحقل مطلوب",
   "phoneNumberValidation": "حقل رقم الهاتف مطلوب",
@@ -124,6 +132,15 @@
   "networkError": "حدث خطأ ما. يرجى التحقق من اتصال الإنترنت.",
   "anUnknownErrorOccurred": "حدث خطأ غير معروف.",
 
+  "addressWord": "العنوان",
+  "addressHint": "ادخل العنوان",
+  "recipientName": "اسم المستلم",
+  "recipientNameHint": "ادخل اسم المستلم",
+  "city": "المدينة",
+  "area": "المنطقة",
+  "addressSavedSuccessfully": "تم حفظ العنوان بنجاح",
+  "tapOnMapToGetAddress": "اضغط على الخريطة للحصول على العنوان",
+  "saveAddress": "حفظ العنوان",
 
   "delivery": "التوصيل إلى ",
   "subTotal": "المجموع الفرعي",

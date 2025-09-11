@@ -18,6 +18,13 @@ abstract final class AppText {
 
   // Categories
   static const String search = "search";
+  static const String filter = "filter";
+  static const String sortBy = "sortBy";
+  static const String lowestPrice = "lowestPrice";
+  static const String highestPrice = "highestPrice";
+  static const String newProducts = "newProducts";
+  static const String old = "old";
+  static const String discount = "discount";
 
   // Signup
   static const String firstName = "firstName";
@@ -123,7 +130,6 @@ abstract final class AppText {
   static const String connectionTimeout = "connectionTimeout";
   static const String networkError = "networkError";
   static const String anUnknownErrorOccurred = "anUnknownErrorOccurred";
-  //Exceptions
 
   // Password verification
   static const String enter6DigitCode = "enter6DigitCode";
@@ -138,6 +144,17 @@ abstract final class AppText {
   static const String resetPasswordSubTitle = 'resetPasswordSubTitle';
   static const String continueWord = "continueWord";
   static const String passwordRested = "passwordRested";
+
+  static const String addressWord = "addressWord";
+  static const String addressHint = "addressHint";
+  static const String recipientName = "recipientName";
+  static const String recipientNameHint = "recipientNameHint";
+  static const String city = "city";
+  static const String area = "area";
+  static const String addressSavedSuccessfully = "addressSavedSuccessfully";
+  static const String tapOnMapToGetAddress = "tapOnMapToGetAddress";
+  static const String saveAddress = "saveAddress";
+}
   // cart text
   static const String delivery = "delivery";
   static const String subTotal = "subTotal";

@@ -4,6 +4,7 @@ import 'package:flowery_app/domain/entities/address/address_entity.dart';
 import 'package:flowery_app/domain/entities/arguments/occasion_arguments_entity.dart';
 import 'package:flowery_app/domain/entities/product_card/product_card_entity.dart';
 import 'package:flowery_app/presentation/about_us/views/about_us_view.dart';
+import 'package:flowery_app/presentation/address_details/view/address_details.dart';
 import 'package:flowery_app/presentation/auth/forget_password/views/forget_password_screen.dart';
 import 'package:flowery_app/presentation/auth/login/views/login_view.dart';
 import 'package:flowery_app/presentation/auth/register/views/register_view.dart';
@@ -74,6 +75,8 @@ abstract class AppRoutes {
             addresses: settings.arguments as List<AddressEntity>,
           ),
         );
+      case RouteNames.addressDetails:
+        return MaterialPageRoute(builder: (_) => const AddressDetails());
       default:
         return null;
     }

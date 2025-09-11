@@ -2,11 +2,11 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_icons.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/core/global_cubit/global_cubit.dart';
-import 'package:flowery_app/presentation/profile/views/widgets/language_item.dart';
 import 'package:flowery_app/presentation/profile/views/widgets/profile_navigation_item.dart';
 import 'package:flowery_app/presentation/profile/views_model/profile_cubit.dart';
 import 'package:flowery_app/presentation/profile/views_model/profile_intent.dart';
 import 'package:flowery_app/presentation/profile/views_model/profile_state.dart';
+import 'package:flowery_app/utils/common_widgets/bottom_sheet_selection_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -34,6 +34,7 @@ class LanguageSection extends StatelessWidget {
         ),
         onTap: () {
           showModalBottomSheet(
+            isScrollControlled: true,
             backgroundColor: theme.colorScheme.secondary,
             context: context,
             builder: (context) => BlocProvider.value(
@@ -85,22 +86,44 @@ class LanguageSection extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            LanguageItem(
-                              languageName: AppText.english,
+                            BottomSheetSelectionItem(
+                              itemTitle: AppText.english,
                               radioItem: Radio<Languages>(
                                 value: Languages.english,
                                 activeColor: theme.colorScheme.primary,
                                 toggleable: true,
                               ),
+                              onTap: () async {
+                                await profileCubit.doIntent(
+                                  intent: ToggleLanguageIntent(
+                                    globalCubit: globalCubit,
+                                    newSelectedLanguage: Languages.english,
+                                  ),
+                                );
+                                if (context.mounted) {
+                                  context.setLocale(const Locale("en"));
+                                }
+                              },
                             ),
                             const RSizedBox(height: 16),
-                            LanguageItem(
-                              languageName: AppText.arabic,
+                            BottomSheetSelectionItem(
+                              itemTitle: AppText.arabic,
                               radioItem: Radio<Languages>(
                                 value: Languages.arabic,
                                 activeColor: theme.colorScheme.primary,
                                 toggleable: true,
                               ),
+                              onTap: () async {
+                                await profileCubit.doIntent(
+                                  intent: ToggleLanguageIntent(
+                                    globalCubit: globalCubit,
+                                    newSelectedLanguage: Languages.arabic,
+                                  ),
+                                );
+                                if (context.mounted) {
+                                  context.setLocale(const Locale("ar"));
+                                }
+                              },
                             ),
                           ],
                         ),
@@ -116,20 +139,3 @@ class LanguageSection extends StatelessWidget {
     );
   }
 }
-
-/*
-*
-*
-*  RadioGroup<Languages>(
-            onChanged: (value) {
-              currentLanguage = value!;
-            },
-            groupValue: currentLanguage,
-            child: Radio<Languages>(
-              value: currentLanguage,
-              activeColor: theme.colorScheme.primary,
-              toggleable: true,
-            ),
-          ),
-*
-* */

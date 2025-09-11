@@ -16,4 +16,6 @@ abstract class Endpoints {
   static const String getLoggedUserCart = '/api/v1/cart';
   static const String updateCartQuantity = '/api/v1/cart/{productId}';
   static const String deleteCartQuantity = '/api/v1/cart/{productId}';
+  static const String addAddress = '/api/v1/addresses';
+
 }
