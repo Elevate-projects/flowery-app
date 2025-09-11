@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
+import 'package:flowery_app/core/router/route_names.dart';
 import 'package:flowery_app/presentation/home/home_screen/view_model/home_products_cubit.dart';
 import 'package:flowery_app/presentation/home/home_screen/views/widgets/custom_home_best_seller_item.dart';
 import 'package:flutter/material.dart';
@@ -15,45 +16,58 @@ class HomeBestSellerListViewBody extends StatelessWidget {
 
     return RSizedBox(
       height: 260,
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: BlocBuilder<HomeProductsCubit, HomeProductsState>(
+        builder: (context, state) {
+          return Column(
             children: [
-              Text(
-                AppText.bestSellerText.tr(),
-                style: theme.textTheme.headlineSmall,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    AppText.bestSellerText.tr(),
+                    style: theme.textTheme.headlineSmall,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context,
+                        RouteNames.bestSeller,
+                        arguments: state.homeState.data?.bestSeller,
+                      );
+                    },
+                    child: Text(
+                      AppText.viewAll.tr(),
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        color: theme.colorScheme.primary,
+                        fontWeight: FontWeight.w500,
+                        decoration: TextDecoration.underline,
+                        decorationColor: theme.colorScheme.primary,
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              Text(
-                AppText.viewAll.tr(),
-                style: theme.textTheme.bodySmall?.copyWith(
-                  color: Colors.pink,
-                  fontWeight: FontWeight.w500,
-                  decoration: TextDecoration.underline,
-                  decorationColor: Colors.pink,
-                ),
+              const RSizedBox(height: 16),
+              BlocBuilder<HomeProductsCubit, HomeProductsState>(
+                builder: (context, state) {
+                  return RSizedBox(
+                    height: 216,
+                    child: ListView.builder(
+                      itemBuilder: (context, index) {
+                        return CustomHomeBestSellerItem(
+                          bestSellerEntity:
+                              state.homeState.data!.bestSeller![index],
+                        );
+                      },
+                      itemCount: state.homeState.data!.bestSeller!.length,
+                      scrollDirection: Axis.horizontal,
+                    ),
+                  );
+                },
               ),
             ],
-          ),
-          const RSizedBox(height: 16),
-          BlocBuilder<HomeProductsCubit, HomeProductsState>(
-            builder: (context, state) {
-              return RSizedBox(
-                height: 216,
-                child: ListView.builder(
-                  itemBuilder: (context, index) {
-                    return CustomHomeBestSellerItem(
-                      bestSellerEntity:
-                          state.homeState.data!.bestSeller![index],
-                    );
-                  },
-                  itemCount: state.homeState.data!.bestSeller!.length,
-                  scrollDirection: Axis.horizontal,
-                ),
-              );
-            },
-          ),
-        ],
+          );
+        },
       ),
     );
   }

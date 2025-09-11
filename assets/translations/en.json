@@ -53,7 +53,6 @@
   "taxIncludedMessage": "All prices include tax",
   "description": "Description",
   "addProductToCartSuccessMessage": "The product has been successfully added to your cart",
-
   "occasion": "Occasion",
   "titleBar": "Bloom with our exquisite best sellers",
   "enter6DigitCode": "Please enter the 6-digit code.",
@@ -77,7 +76,6 @@
   "delete": "Delete",
   "deleteAddressSuccessMessage": "You have successfully deleted the selected address",
   "emptyAddressesMessage": "It looks like you don't have any available addresses just yet!",
-
   "filter": "Filter",
   "sortBy": "Sort by",
   "lowestPrice": "Lowest Price",
@@ -85,7 +83,6 @@
   "newProducts": "New",
   "old": "Old",
   "discount": "Discount",
-
   "userNameValidation": "This user name is not valid",
   "emptyTextValidation": "This field is required",
   "phoneNumberValidation": "Phone number field is required",
@@ -128,5 +125,7 @@
   "area": "Area",
   "addressSavedSuccessfully": "address Saved Successfully",
   "tapOnMapToGetAddress": "Tap on map to get address",
-  "saveAddress": "Save Address"
+  "saveAddress": "Save Address",
+  "bestSellerAppbar": "Best Seller",
+  "bestSellerAppbarHint": "Bloom with our exquisite best sellers"
 }
