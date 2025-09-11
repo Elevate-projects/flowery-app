@@ -9,15 +9,12 @@
   "donNotHaveAccount": "Don't have an account?",
   "signup": "Sign up",
   "continueAsGuest": "Continue as guest",
-
   "forgetPassword2": "Forget password",
   "enterRegisteredEmail": "Please enter your email associated to your account",
   "confirmButton": "Confirm",
   "success": "success",
-
   "search": "Search",
   "notProvided": "Not Provided",
-
   "firstName": "First Name",
   "firstNameHint": "Enter your first name",
   "lastName": "Last Name",
@@ -34,12 +31,10 @@
   "createAnAccountYouAgree": "Creating an account, you agree to our ",
   "termsAndConditions": "Terms and Conditions",
   "alreadyHaveAnAccount": "Already have an account?",
-
   "home": "Home",
   "categories": "Categories",
   "cart": "Cart",
   "profile": "Profile",
-
   "flowery": "Flowery",
   "myOrders": "My orders",
   "savedAddress": "Saved address",
@@ -52,7 +47,6 @@
   "logout": "Logout",
   "version": "v 6.3.0 - (446)",
   "changeLanguage": "Change Language",
-
   "status": "Status: ",
   "inStock": "In stock",
   "outStock": "Out stock",
@@ -77,7 +71,6 @@
   "logoutCapital": "LOGOUT",
   "confirmLogout": "Confirm logout!!",
   "cancel": "Cancel",
-
   "addNewAddress": "Add new address",
   "deleteAddress": "Delete Address",
   "deleteAddressMessage": "Are you sure that you want to delete this address?",
@@ -110,15 +103,12 @@
   "passwordValidation7": "Password must contain a special character",
   "otpValidation": "The code sent to your email address is required",
   "otpValidation2": "You have to enter the 6-digit code",
-
   "egp": "EGP",
   "addToCart": "Add to cart",
-
   "viewAll": "View All",
   "categoriesText": "Categories",
   "bestSellerText": "Best Seller",
   "occasionsText": "Occasion",
-
   "connectionError": "Please check your internet connection and try again",
   "noResponseReceivedMessage": "No response received or response is not in expected format.",
   "error": "Error",
@@ -129,5 +119,14 @@
   "sendTimeout": "Send timeout, please try again later.",
   "connectionTimeout": "Connection timeout, please try again later.",
   "networkError": "Something went wrong. Please check your internet connection.",
-  "anUnknownErrorOccurred": "An unknown error occurred."
+  "anUnknownErrorOccurred": "An unknown error occurred.",
+  "addressWord": "Address",
+  "addressHint": "Enter the Address",
+  "recipientName": "Recipient Name",
+  "recipientNameHint": "Enter The Recipient Name",
+  "city": "City",
+  "area": "Area",
+  "addressSavedSuccessfully": "address Saved Successfully",
+  "tapOnMapToGetAddress": "Tap on map to get address",
+  "saveAddress": "Save Address"
 }

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flowery_app/api/requests/add_address/add_address_request_model.dart';
 import 'package:flowery_app/api/requests/add_to_cart_request/add_to_cart_request_model.dart';
 import 'package:flowery_app/api/requests/forget_password_request/forget_password_request.dart';
 import 'package:flowery_app/api/requests/login_request/login_request_model.dart';
@@ -6,6 +7,7 @@ import 'package:flowery_app/api/requests/register_request/register_request.dart'
 import 'package:flowery_app/api/requests/resend_code/resend_code_request_dto.dart';
 import 'package:flowery_app/api/requests/reset_password/reset_password_request_dto.dart';
 import 'package:flowery_app/api/requests/verification/verify_request_dto.dart';
+import 'package:flowery_app/api/responses/add_address_response/add_address_response.dart';
 import 'package:flowery_app/api/responses/categories_response/categories_response.dart';
 import 'package:flowery_app/api/responses/forget_password_response/forget_password_response.dart';
 import 'package:flowery_app/api/responses/home_products/products_response_model.dart';
@@ -27,6 +29,7 @@ part 'api_client.g.dart';
 abstract class ApiClient {
   @factoryMethod
   factory ApiClient(Dio dio) = _ApiClient;
+
   @GET(Endpoints.home)
   Future<ProductsResponseModel> getHomeData({
     @Header("Authorization") required String token,
@@ -61,6 +64,7 @@ abstract class ApiClient {
 
   @GET(Endpoints.logout)
   Future<void> logout({@Header("Authorization") required String token});
+
   @POST(Endpoints.verification)
   Future<VerifyResponseDto> verificationCode(@Body() VerifyRequestDto request);
 
@@ -72,6 +76,12 @@ abstract class ApiClient {
   @DELETE("/api/v1/addresses/{addressId}")
   Future<void> removeAddress({
     @Path("addressId") required String addressId,
+    @Header("Authorization") required String token,
+  });
+
+  @PATCH(Endpoints.addAddress)
+  Future<AddAddressResponse> addAddress({
+    @Body() required AddAddressRequestModel request,
     @Header("Authorization") required String token,
   });
 

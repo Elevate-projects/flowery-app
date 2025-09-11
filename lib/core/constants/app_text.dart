@@ -144,4 +144,14 @@ abstract final class AppText {
   static const String resetPasswordSubTitle = 'resetPasswordSubTitle';
   static const String continueWord = "continueWord";
   static const String passwordRested = "passwordRested";
+
+  static const String addressWord = "addressWord";
+  static const String addressHint = "addressHint";
+  static const String recipientName = "recipientName";
+  static const String recipientNameHint = "recipientNameHint";
+  static const String city = "city";
+  static const String area = "area";
+  static const String addressSavedSuccessfully = "addressSavedSuccessfully";
+  static const String tapOnMapToGetAddress = "tapOnMapToGetAddress";
+  static const String saveAddress = "saveAddress";
 }

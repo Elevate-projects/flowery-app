@@ -103,6 +103,7 @@ import '../../domain/repositories/verification/verification_repository.dart'
     as _i550;
 import '../../domain/use_cases/add_to_cart/add_product_to_cart_use_case.dart'
     as _i334;
+import '../../domain/use_cases/address/add_address_use_case.dart' as _i1000;
 import '../../domain/use_cases/address/remove_address_use_case.dart' as _i20;
 import '../../domain/use_cases/categories/get_all_categories_use_case.dart'
     as _i824;
@@ -123,6 +124,8 @@ import '../../domain/use_cases/reset_password/reset_password_usecase.dart'
     as _i963;
 import '../../domain/use_cases/verification/verification_usecase.dart' as _i510;
 import '../../presentation/about_us/views_model/about_us_cubit.dart' as _i225;
+import '../../presentation/address_details/view_model/add_address_cubit.dart'
+    as _i92;
 import '../../presentation/auth/forget_password/views_model/forget_password_view_model.dart'
     as _i457;
 import '../../presentation/auth/login/views_model/login_cubit.dart' as _i512;
@@ -134,6 +137,8 @@ import '../../presentation/auth/verification/views_model/verification_screen_cub
     as _i988;
 import '../../presentation/categories/views_model/categories_cubit.dart'
     as _i200;
+import '../../presentation/home/best_seller/view_model/best_seller_cubit.dart'
+    as _i94;
 import '../../presentation/home/home_screen/view_model/home_products_cubit.dart'
     as _i641;
 import '../../presentation/home/occasions/view_model/occasion_view_model.dart'
@@ -166,6 +171,7 @@ extension GetItInjectableX on _i174.GetIt {
       preResolve: true,
     );
     gh.factory<_i225.AboutUsCubit>(() => _i225.AboutUsCubit());
+    gh.factory<_i94.BestSellerCubit>(() => _i94.BestSellerCubit());
     gh.factory<_i694.OccasionsViewModel>(() => _i694.OccasionsViewModel());
     gh.factory<_i586.ProductDetailsCubit>(() => _i586.ProductDetailsCubit());
     gh.factory<_i297.TermsAndConditionsCubit>(
@@ -301,8 +307,14 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i510.GetVerificationUseCase>(),
       ),
     );
+    gh.factory<_i1000.GetAddAddressUseCase>(
+      () => _i1000.GetAddAddressUseCase(gh<_i119.AddressRepository>()),
+    );
     gh.factory<_i963.GetResetPasswordUseCase>(
       () => _i963.GetResetPasswordUseCase(gh<_i189.ResetPasswordRepository>()),
+    );
+    gh.factory<_i92.AddAddressCubit>(
+      () => _i92.AddAddressCubit(gh<_i1000.GetAddAddressUseCase>()),
     );
     gh.factory<_i824.GetAllCategoriesUseCase>(
       () => _i824.GetAllCategoriesUseCase(gh<_i660.CategoriesRepository>()),
