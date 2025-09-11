@@ -9,15 +9,12 @@
   "donNotHaveAccount": "ليس لديك حساب؟",
   "signup": "إنشاء حساب",
   "continueAsGuest": "المتابعة كضيف",
-
   "forgetPassword2": "نسيت كلمة المرور",
   "enterRegisteredEmail": "من فضلك أدخل البريد الإلكتروني المرتبط بحسابك",
   "confirmButton": "تأكيد",
   "success": "نجاح",
-
   "search": "بحث",
   "notProvided": "غير متوفر",
-
   "firstName": "الاسم الأول",
   "firstNameHint": "أدخل اسمك الأول",
   "lastName": "اسم العائلة",
@@ -34,12 +31,10 @@
   "createAnAccountYouAgree": "بإنشائك حساب، فإنك توافق على ",
   "termsAndConditions": "الشروط والأحكام",
   "alreadyHaveAnAccount": "لديك حساب بالفعل؟",
-
   "home": "الرئيسية",
   "categories": "التصنيفات",
   "cart": "عربة التسوق",
   "profile": "الملف الشخصي",
-
   "flowery": "فلاوري",
   "myOrders": "طلباتي",
   "savedAddress": "العناوين المحفوظة",
@@ -52,13 +47,11 @@
   "logout": "تسجيل الخروج",
   "version": "الإصدار 6.3.0 - (446)",
   "changeLanguage": "تغيير اللغة",
-
   "status": "الحالة: ",
   "inStock": "متوفر",
   "outStock": "غير متوفر",
   "taxIncludedMessage": "جميع الأسعار شاملة الضريبة",
   "description": "الوصف",
-
   "occasion": "المناسبة",
   "titleBar": "ازدهر مع أفضل منتجاتنا المميزة",
   "noProductsFound": "لم يتم العثور على منتجات",
@@ -77,14 +70,12 @@
   "logoutCapital": "تسجيل الخروج",
   "confirmLogout": "تأكيد تسجيل الخروج!!",
   "cancel": "إلغاء",
-
   "addNewAddress": "إضافة عنوان جديد",
   "deleteAddress": "حذف العنوان",
   "deleteAddressMessage": "هل أنت متأكد أنك تريد حذف هذا العنوان؟",
   "delete": "حذف",
   "deleteAddressSuccessMessage": "لقد قمت بحذف العنوان المحدد بنجاح",
   "emptyAddressesMessage": "يبدو أنه ليس لديك أي عناوين متاحة حتى الآن!",
-
   "userNameValidation": "اسم المستخدم غير صالح",
   "emptyTextValidation": "هذا الحقل مطلوب",
   "phoneNumberValidation": "حقل رقم الهاتف مطلوب",
@@ -102,15 +93,12 @@
   "passwordValidation7": "يجب أن تحتوي كلمة المرور على رمز خاص واحد على الأقل",
   "otpValidation": "الرمز المرسل إلى بريدك الإلكتروني مطلوب",
   "otpValidation2": "يجب إدخال الرمز المكون من 6 أرقام",
-
   "egp": "جنيه",
   "addToCart": "أضف إلى السلة",
-
   "viewAll": "عرض الكل",
   "categoriesText": "التصنيفات",
   "bestSellerText": "الأكثر مبيعًا",
   "occasionsText": "المناسبات",
-
   "connectionError": "يرجى التحقق من اتصال الإنترنت والمحاولة مرة أخرى",
   "noResponseReceivedMessage": "لم يتم استلام استجابة أو الاستجابة ليست بالتنسيق المتوقع.",
   "error": "خطأ",
@@ -121,5 +109,14 @@
   "sendTimeout": "انتهت مهلة الإرسال، يرجى المحاولة لاحقًا.",
   "connectionTimeout": "انتهت مهلة الاتصال، يرجى المحاولة لاحقًا.",
   "networkError": "حدث خطأ ما. يرجى التحقق من اتصال الإنترنت.",
-  "anUnknownErrorOccurred": "حدث خطأ غير معروف."
+  "anUnknownErrorOccurred": "حدث خطأ غير معروف.",
+  "addressWord": "العنوان",
+  "addressHint": "ادخل العنوان",
+  "recipientName": "اسم المستلم",
+  "recipientNameHint": "ادخل اسم المستلم",
+  "city": "المدينة",
+  "area": "المنطقة",
+  "addressSavedSuccessfully": "تم حفظ العنوان بنجاح",
+  "tapOnMapToGetAddress": "اضغط على الخريطة للحصول على العنوان",
+  "saveAddress": "حفظ العنوان"
 }

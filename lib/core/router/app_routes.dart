@@ -5,7 +5,6 @@ import 'package:flowery_app/domain/entities/arguments/occasion_arguments_entity.
 import 'package:flowery_app/domain/entities/product_card/product_card_entity.dart';
 import 'package:flowery_app/presentation/about_us/views/about_us_view.dart';
 import 'package:flowery_app/presentation/address_details/view/address_details.dart';
-import 'package:flowery_app/presentation/address_details/view_model/add_address_cubit.dart';
 import 'package:flowery_app/presentation/auth/forget_password/views/forget_password_screen.dart';
 import 'package:flowery_app/presentation/auth/login/views/login_view.dart';
 import 'package:flowery_app/presentation/auth/register/views/register_view.dart';
@@ -77,12 +76,7 @@ abstract class AppRoutes {
           ),
         );
       case RouteNames.addressDetails:
-        return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => getIt<AddAddressCubit>(),
-            child: const AddressDetails(),
-          ),
-        );
+        return MaterialPageRoute(builder: (_) => const AddressDetails());
       default:
         return null;
     }

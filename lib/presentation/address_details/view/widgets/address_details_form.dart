@@ -1,4 +1,5 @@
 import 'package:dropdown_textfield/dropdown_textfield.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/core/state_status/state_status.dart';
 import 'package:flowery_app/domain/entities/address/add_address_request_entity.dart';
@@ -66,8 +67,8 @@ class _AddressDetailsFormState extends State<AddressDetailsForm> {
                 children: [
                   CustomTextFormField(
                     controller: addressController,
-                    label: AppText.addressWord,
-                    hintText: AppText.addressHint,
+                    label: AppText.addressWord.tr(),
+                    hintText: AppText.addressHint.tr(),
                     keyboardType: TextInputType.streetAddress,
                     textInputAction: TextInputAction.next,
                     validator: (value) => Validations.validateEmptyText(value),
@@ -75,8 +76,8 @@ class _AddressDetailsFormState extends State<AddressDetailsForm> {
                   const RSizedBox(height: 25),
                   CustomTextFormField(
                     controller: phoneNumberController,
-                    label: AppText.phoneNumber,
-                    hintText: AppText.phoneNumberHint,
+                    label: AppText.phoneNumber.tr(),
+                    hintText: AppText.phoneNumberHint.tr(),
                     keyboardType: TextInputType.phone,
                     textInputAction: TextInputAction.next,
                     validator: (value) =>
@@ -85,8 +86,8 @@ class _AddressDetailsFormState extends State<AddressDetailsForm> {
                   const RSizedBox(height: 25),
                   CustomTextFormField(
                     controller: recipientNameController,
-                    label: AppText.recipientName,
-                    hintText: AppText.recipientNameHint,
+                    label: AppText.recipientName.tr(),
+                    hintText: AppText.recipientNameHint.tr(),
                     keyboardType: TextInputType.name,
                     textInputAction: TextInputAction.next,
                     validator: (value) => Validations.validateEmptyText(value),
@@ -110,10 +111,10 @@ class _AddressDetailsFormState extends State<AddressDetailsForm> {
                                     context,
                                   ).colorScheme.onSecondary,
                                 ),
-                            labelText: AppText.city,
+                            labelText: AppText.city.tr(),
                             hintText: state.cities.isNotEmpty
                                 ? state.cities.first
-                                : AppText.city,
+                                : AppText.city.tr(),
                             floatingLabelBehavior: FloatingLabelBehavior.always,
                             border: const OutlineInputBorder(),
                           ),
@@ -158,10 +159,10 @@ class _AddressDetailsFormState extends State<AddressDetailsForm> {
                                     context,
                                   ).colorScheme.onSecondary,
                                 ),
-                            labelText: AppText.area,
+                            labelText: AppText.area.tr(),
                             hintText: state.areas.isNotEmpty
                                 ? state.areas.first
-                                : AppText.area,
+                                : AppText.area.tr(),
                             border: const OutlineInputBorder(),
                             floatingLabelBehavior: FloatingLabelBehavior.always,
                           ),
@@ -216,7 +217,7 @@ class _AddressDetailsFormState extends State<AddressDetailsForm> {
                         );
                       }
                     },
-                    buttonTitle: AppText.saveAddress,
+                    buttonTitle: AppText.saveAddress.tr(),
                   ),
                 ],
               ),
@@ -224,7 +225,7 @@ class _AddressDetailsFormState extends State<AddressDetailsForm> {
           case Status.failure:
             return Center(
               child: Text(
-                state.loadCitiesAndAreasStatus.error?.message ?? AppText.error,
+                state.loadCitiesAndAreasStatus.error?.message ?? AppText.error.tr(),
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                   color: Theme.of(context).colorScheme.error,
                 ),

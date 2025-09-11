@@ -135,13 +135,14 @@ abstract final class AppText {
   static const String resetPasswordSubTitle = 'resetPasswordSubTitle';
   static const String continueWord = "continueWord";
   static const String passwordRested = "passwordRested";
-  static const String addressWord = "Address";
-  static const String addressHint = "Enter the Address";
-  static const String recipientName = "Recipient Name";
-  static const String recipientNameHint = "Enter The  Recipient Name";
-  static const String city = "City";
-  static const String area = "Area";
+
+  static const String addressWord = "addressWord";
+  static const String addressHint = "addressHint";
+  static const String recipientName = "recipientName";
+  static const String recipientNameHint = "recipientNameHint";
+  static const String city = "city";
+  static const String area = "area";
   static const String addressSavedSuccessfully = "addressSavedSuccessfully";
-  static const String tapOnMapToGetAddress = "Tap on map to get address";
-  static const String saveAddress = "Save Address";
+  static const String tapOnMapToGetAddress = "tapOnMapToGetAddress";
+  static const String saveAddress = "saveAddress";
 }

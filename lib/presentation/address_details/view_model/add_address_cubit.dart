@@ -10,6 +10,7 @@ import 'package:flowery_app/domain/entities/address/address_entity.dart';
 import 'package:flowery_app/domain/use_cases/address/add_address_use_case.dart';
 import 'package:flowery_app/presentation/address_details/view_model/add_address_intent.dart';
 import 'package:flowery_app/presentation/address_details/view_model/add_address_state.dart';
+import 'package:flowery_app/utils/flowery_method_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -107,6 +108,7 @@ class AddAddressCubit extends Cubit<AddAddressState> {
     final res = await _getAddAddressUseCase.execute(request);
     switch (res) {
       case Success<List<AddressEntity>?>():
+        FloweryMethodHelper.userData?.addresses?.add(res.data!.last);
         emit(state.copyWith(addAddressStatus: const StateStatus.success(null)));
         emit(state.copyWith(addAddressStatus: const StateStatus.initial()));
       case Failure<List<AddressEntity>?>():
