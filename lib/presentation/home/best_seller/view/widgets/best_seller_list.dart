@@ -11,7 +11,7 @@ class BestSellerList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RPadding(
-      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 24.h),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
       child: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
@@ -22,7 +22,6 @@ class BestSellerList extends StatelessWidget {
         itemBuilder: (context, index) =>
             ProductCardItem(productCardData: products[index]),
         itemCount: products.length,
-        scrollDirection: Axis.vertical,
       ),
     );
   }

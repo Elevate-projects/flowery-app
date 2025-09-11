@@ -38,10 +38,10 @@ class HomeBestSellerListViewBody extends StatelessWidget {
                     child: Text(
                       AppText.viewAll.tr(),
                       style: theme.textTheme.bodySmall?.copyWith(
-                        color: Colors.pink,
+                        color: theme.colorScheme.primary,
                         fontWeight: FontWeight.w500,
                         decoration: TextDecoration.underline,
-                        decorationColor: Colors.pink,
+                        decorationColor: theme.colorScheme.primary,
                       ),
                     ),
                   ),
