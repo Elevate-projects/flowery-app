@@ -80,6 +80,7 @@ void main() {
 
   setUp(() {
     FloweryMethodHelper.userData = null;
+    FloweryMethodHelper.currentUserToken = "fakeToken";
     cubit = ProfileCubit(
       mockGetUserProfileDataUseCase,
       mockLogoutUseCase,

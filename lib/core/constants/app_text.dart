@@ -158,4 +158,19 @@ abstract final class AppText {
   static const String addressSavedSuccessfully = "addressSavedSuccessfully";
   static const String tapOnMapToGetAddress = "tapOnMapToGetAddress";
   static const String saveAddress = "saveAddress";
+
+  // cart text
+  static const String delivery = "delivery";
+  static const String subTotal = "subTotal";
+  static const String deliveryFee = "deliveryFee";
+  static const String total = "total";
+  static const String checkOut = "checkOut";
+  static const String noName = "noName";
+  static const String noDescription = "noDescription";
+  static const String noItems = "noItems";
+  static const String noToken = "noToken";
+  static const String location = "location";
+  static const String price = "price";
+  static const String cartPage = "cart";
+  static const String deleteCart = "deleteCart";
 }

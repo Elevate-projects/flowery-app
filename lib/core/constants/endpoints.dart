@@ -13,6 +13,8 @@ abstract class Endpoints {
   static const String verification = '/api/v1/auth/verifyResetCode';
   static const String resetPassword = '/api/v1/auth/resetPassword';
   static const String removeAddress = '/api/v1/addresses/{addressId}';
+  static const String getLoggedUserCart = '/api/v1/cart';
+  static const String updateCartQuantity = '/api/v1/cart/{productId}';
+  static const String deleteCartQuantity = '/api/v1/cart/{productId}';
   static const String addAddress = '/api/v1/addresses';
-
 }
