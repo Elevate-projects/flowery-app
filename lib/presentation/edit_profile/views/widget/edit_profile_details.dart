@@ -20,6 +20,18 @@ class EditProfileDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<EditProfileCubit, EditProfileState>(
       listener: (context, state) {
+        if (state.uploadPhotoState.isSuccess) {
+          Loaders.showSuccessMessage(
+            message: "Profile picture updated successfully",
+            context: context,
+          );
+        }
+        if (state.uploadPhotoState.isFailure) {
+          Loaders.showErrorMessage(
+            message: state.uploadPhotoState.error?.message ?? "Unknown error occurred",
+            context: context,
+          );
+        }
         if (state.editProfileState.isSuccess) {
           Loaders.showSuccessMessage(
             message: "Profile updated successfully",

@@ -8,4 +8,5 @@ abstract class Endpoints {
   static const String categories = '/api/v1/categories';
   static const String products = '/api/v1/products';
   static const String editProfile = '/api/v1/auth/editProfile';
+  static const String uploadProfileImage = '/api/v1/auth/upload-photo';
 }

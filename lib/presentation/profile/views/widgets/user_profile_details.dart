@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flowery_app/core/constants/app_icons.dart';
 import 'package:flowery_app/core/constants/app_images.dart';
 import 'package:flowery_app/core/router/route_names.dart';
@@ -24,7 +25,7 @@ class UserProfileDetails extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 40.5.r,
-            backgroundImage: const AssetImage(AppImages.defaultProfile),
+            backgroundImage:  CachedNetworkImageProvider(FloweryMethodHelper.userData?.photo ?? ""),
           ),
           const RSizedBox(height: 8),
           Row(

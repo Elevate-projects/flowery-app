@@ -20,6 +20,8 @@ import '../../api/data_source/categories/remote_data_source/categories_remote_da
     as _i699;
 import '../../api/data_source/edit_profile/edit_profile_data_source_impl.dart'
     as _i742;
+import '../../api/data_source/edit_profile/upload_photo_data_source_impl.dart'
+    as _i567;
 import '../../api/data_source/forget_password/remote_data_source/forget_password_remote_data_source_impl.dart'
     as _i428;
 import '../../api/data_source/login/remote_data_source/login_remote_data_source_impl.dart'
@@ -32,6 +34,8 @@ import '../../data/data_source/categories/remote_data_source/categories_remote_d
     as _i960;
 import '../../data/data_source/edit_profile/edit_profile_data_source.dart'
     as _i297;
+import '../../data/data_source/edit_profile/upload_photo_data_source.dart'
+    as _i195;
 import '../../data/data_source/forget_password/forget_password_remote_data_source.dart'
     as _i849;
 import '../../data/data_source/login/remote_data_source/login_remote_data_source.dart'
@@ -44,6 +48,8 @@ import '../../data/repositories/categories/categories_repository_impl.dart'
     as _i940;
 import '../../data/repositories/edit_profile/edit_profile_repository_impl.dart'
     as _i216;
+import '../../data/repositories/edit_profile/upload_photo_repository_impl.dart'
+    as _i396;
 import '../../data/repositories/forget_password_repo_impl/forget_password_repo_impl.dart'
     as _i1030;
 import '../../data/repositories/login/login_repository_impl.dart' as _i722;
@@ -53,6 +59,8 @@ import '../../domain/repositories/categories/categories_repository.dart'
     as _i660;
 import '../../domain/repositories/edit_profile/edit_profile_repository.dart'
     as _i157;
+import '../../domain/repositories/edit_profile/upload_photo_repository.dart'
+    as _i234;
 import '../../domain/repositories/forget_password/forget_password_repo.dart'
     as _i72;
 import '../../domain/repositories/login/login_repository.dart' as _i300;
@@ -63,6 +71,8 @@ import '../../domain/use_cases/categories/get_all_categories_use_case.dart'
 import '../../domain/use_cases/categories/get_all_products_use_case.dart'
     as _i969;
 import '../../domain/use_cases/edit_profile/edit_profile_use_case.dart' as _i89;
+import '../../domain/use_cases/edit_profile/upload_photo_use_case.dart'
+    as _i876;
 import '../../domain/use_cases/forget_password/forget_password_use_case.dart'
     as _i150;
 import '../../domain/use_cases/login/login_with_email_and_password_use_case.dart'
@@ -103,16 +113,22 @@ extension GetItInjectableX on _i174.GetIt {
       () => sharedPreferencesModule.prefs,
       preResolve: true,
     );
-    gh.factory<_i586.ProductDetailsCubit>(() => _i586.ProductDetailsCubit());
     gh.factory<_i225.AboutUsCubit>(() => _i225.AboutUsCubit());
+    gh.factory<_i586.ProductDetailsCubit>(() => _i586.ProductDetailsCubit());
     gh.factory<_i297.TermsAndConditionsCubit>(
       () => _i297.TermsAndConditionsCubit(),
     );
     gh.singleton<_i361.Dio>(() => apiModule.provideDio());
     gh.singleton<_i23.SecureStorage>(() => _i23.SecureStorage());
     gh.factory<_i508.ApiClient>(() => _i508.ApiClient(gh<_i361.Dio>()));
+    gh.factory<_i195.UploadPhotoDataSource>(
+      () => _i567.UploadPhotoDataSourceImpl(gh<_i508.ApiClient>()),
+    );
     gh.singleton<_i686.SharedPreferencesHelper>(
       () => _i686.SharedPreferencesHelper(gh<_i460.SharedPreferences>()),
+    );
+    gh.factory<_i234.UploadPhotoRepository>(
+      () => _i396.UploadPhotoRepositoryImpl(gh<_i195.UploadPhotoDataSource>()),
     );
     gh.factory<_i233.RegisterRemoteDataSource>(
       () => _i281.RegisterRemoteDataSourceImpl(
@@ -134,6 +150,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i849.ForgetPasswordRemoteDataSource>(
       () => _i428.ForgetPasswordRemoteDataSourceImpl(gh<_i508.ApiClient>()),
+    );
+    gh.factory<_i876.UploadPhotoUseCase>(
+      () => _i876.UploadPhotoUseCase(gh<_i234.UploadPhotoRepository>()),
     );
     gh.factory<_i470.ProfileRemoteDataSource>(
       () => _i913.ProfileRemoteDataSourceImpl(gh<_i508.ApiClient>()),
@@ -206,7 +225,10 @@ extension GetItInjectableX on _i174.GetIt {
       ),
     );
     gh.factory<_i236.EditProfileCubit>(
-      () => _i236.EditProfileCubit(gh<_i89.EditProfileUseCase>()),
+      () => _i236.EditProfileCubit(
+        gh<_i89.EditProfileUseCase>(),
+        gh<_i876.UploadPhotoUseCase>(),
+      ),
     );
     gh.factory<_i536.RegisterCubit>(
       () => _i536.RegisterCubit(gh<_i950.RegisterUseCase>()),
