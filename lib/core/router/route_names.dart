@@ -11,7 +11,8 @@ abstract class RouteNames {
   static const String occasionView = "/occasionView";
   static const String resetPassword = "/resetPasswordView";
   static const String savedAddress = "/savedAddressView";
-  static const String paymentView = "/paymentView";
+  static const String cashPaymentView = "/cashPaymentView";
+  static const String creditPaymentView = "/creditPaymentView";
 
   static const String addressDetails = "/addressDetailsView";
   static const String bestSeller = "/bestSellerView";

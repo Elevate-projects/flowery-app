@@ -16,6 +16,7 @@ import 'package:flowery_app/presentation/flowery_bottom_navigation/flowery_botto
 import 'package:flowery_app/presentation/flowery_bottom_navigation/view_model/flowery_bottom_navigation_cubit.dart';
 import 'package:flowery_app/presentation/home/best_seller/view/best_seller_view.dart';
 import 'package:flowery_app/presentation/home/occasions/view/occasion_view.dart';
+import 'package:flowery_app/presentation/payment/cash/views_model/views/cash_payment_view.dart';
 import 'package:flowery_app/presentation/payment/credit/views_model/views/credit_payment_view.dart';
 import 'package:flowery_app/presentation/product_details/views/product_details_view.dart';
 import 'package:flowery_app/presentation/saved_address/views/saved_address_view.dart';
@@ -92,10 +93,14 @@ abstract class AppRoutes {
         );
       case RouteNames.addressDetails:
         return MaterialPageRoute(builder: (_) => const AddressDetails());
-        case RouteNames.paymentView:
+        case RouteNames.creditPaymentView:
       return MaterialPageRoute(
-        builder: (_) =>    PaymentView()
+        builder: (_) =>    const CreditPaymentView()
       );
+      case RouteNames.cashPaymentView:
+        return MaterialPageRoute(
+            builder: (_) =>    const CashPaymentView()
+        );
       default:
         return null;
     }
