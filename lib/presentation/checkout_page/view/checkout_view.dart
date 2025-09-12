@@ -2,27 +2,31 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_icons.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/domain/entities/cart/cart_item_entity/cart_item_entity.dart';
+import 'package:flowery_app/presentation/checkout_page/view_model/adress_cubit/adress_cubit.dart';
+import 'package:flowery_app/presentation/checkout_page/view_model/checkout_cubit/gift_state.dart';
+import 'package:flowery_app/presentation/checkout_page/view_model/checkout_cubit/checkout_view_model.dart';
+import 'package:flowery_app/presentation/order_page/order_page.dart';
 import 'package:flowery_app/utils/common_widgets/custom_add_address.dart';
 import 'package:flowery_app/utils/common_widgets/custom_elevated_button.dart';
 import 'package:flowery_app/utils/common_widgets/custom_paymant.dart';
 import 'package:flowery_app/utils/common_widgets/custom_payment_vise.dart';
 import 'package:flowery_app/utils/common_widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CheckoutView extends StatelessWidget {
-  final CartItemEntity cartItem;
   final int subTotal;
+  final List<CartItemEntity> cartItems;
   const CheckoutView({
     super.key,
-    required this.cartItem,
-    required this.subTotal,
+    required this.cartItems,
+     required this.subTotal,
   });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-
     return Scaffold(
       appBar: AppBar(
         actionsPadding: EdgeInsets.zero,
@@ -35,7 +39,7 @@ class CheckoutView extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding:  REdgeInsets.only(bottom: 20),
+          padding: REdgeInsets.only(bottom: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -64,7 +68,7 @@ class CheckoutView extends StatelessWidget {
                 child: Row(
                   children: [
                     const ImageIcon(AssetImage(AppIcons.clock)),
-                     const RSizedBox(width: 10),
+                    const RSizedBox(width: 10),
                     Text(
                       AppText.instant.tr(),
                       style: theme.textTheme.bodyLarge?.copyWith(
@@ -89,19 +93,25 @@ class CheckoutView extends StatelessWidget {
                 ),
               ),
               const RSizedBox(height: 10),
-              /////////////////////////////////////
-              ListView.builder(
-                itemCount: 2,
-                padding: REdgeInsets.symmetric(horizontal: 8, vertical: 12),
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  return const CustomAddAddress();
+              BlocBuilder<AddressCubit, int?>(
+                builder: (context, selectedIndex) {
+                  return ListView.builder(
+                    itemCount: 2,
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return CustomAddAddress(
+                        index: index,
+                        isSelected: selectedIndex == index,
+                        onSelect: () => context.read<AddressCubit>().selectAddress(index),
+                      );
+                    },
+                  );
                 },
               ),
               const RSizedBox(height: 5),
               Padding(
-                //////////////////////////////////
                 padding: REdgeInsets.symmetric(horizontal: 13),
                 child: SizedBox(
                   height: 40,
@@ -134,7 +144,7 @@ class CheckoutView extends StatelessWidget {
                 ),
               ),
               const RSizedBox(height: 10),
-               Padding(
+              Padding(
                 padding: REdgeInsets.symmetric(horizontal: 10),
                 child: const Column(
                   children: [
@@ -146,44 +156,66 @@ class CheckoutView extends StatelessWidget {
               ),
               const RSizedBox(height: 10),
               Padding(
-                padding:  REdgeInsets.symmetric(horizontal: 10),
+                padding: REdgeInsets.symmetric(horizontal: 10),
                 child: Row(
                   children: [
                     FittedBox(
                       fit: BoxFit.cover,
-                      child: Switch.adaptive(
-                        value: false,
-                        onChanged: (value) {
+                      child: BlocBuilder<GiftSwitchCubit, GiftSwitchState>(
+                        builder: (context, state) {
+                          if (state is GiftSwitchInitial) {
+                            return Switch.adaptive(
+                              value: state.isGift,
+                              onChanged: (value) {
+                                context.read<GiftSwitchCubit>().toggleGiftSwitch(value);
+                              },
+                              padding: EdgeInsets.zero,
+                              activeThumbColor: theme.colorScheme.secondary,
+                              activeTrackColor: theme.colorScheme.primary,
+                            );
+                          }
+                          return const SizedBox();
                         },
-                        padding: EdgeInsets.zero,
-                        activeThumbColor: theme.colorScheme.secondary,
-                        activeTrackColor: theme.colorScheme.primary,
                       ),
                     ),
                     const RSizedBox(width: 10),
-                    Text(AppText.itsGift.tr(), style: theme.textTheme.headlineSmall),
+                    Text(
+                      AppText.itsGift.tr(),
+                      style: theme.textTheme.headlineSmall,
+                    ),
                   ],
                 ),
               ),
-              const RSizedBox(height: 5),
-              Padding(
-                padding:  REdgeInsets.symmetric(horizontal: 10),
-                child: CustomTextFormField(
-                  label: AppText.name.tr(),
-                  hintText: AppText.enterName.tr(),
-                ),
+              BlocBuilder<GiftSwitchCubit, GiftSwitchState>(
+                builder: (context, state) {
+                  if (state is GiftSwitchInitial && state.isGift) {
+                    return Column(
+                      children: [
+                        const RSizedBox(height: 5),
+                        Padding(
+                          padding: REdgeInsets.symmetric(horizontal: 10),
+                          child: CustomTextFormField(
+                            label: AppText.name.tr(),
+                            hintText: AppText.enterName.tr(),
+                          ),
+                        ),
+                        const RSizedBox(height: 10),
+                        Padding(
+                          padding: REdgeInsets.symmetric(horizontal: 10),
+                          child: CustomTextFormField(
+                            label: AppText.phoneNumber.tr(),
+                            hintText: AppText.enterPhoneNumber.tr(),
+                          ),
+                        ),
+                      ],
+                    );
+                  }
+                  return const SizedBox.shrink();
+                },
               ),
               const RSizedBox(height: 10),
-               Padding(
+              Padding(
                 padding: REdgeInsets.symmetric(horizontal: 10),
-                child: CustomTextFormField(
-                  label: AppText.phoneNumber.tr(),
-                  hintText: AppText.enterPhoneNumber.tr(),
-                ),
-              ),
-              const RSizedBox(height: 10),
-              Padding(
-                padding:  REdgeInsets.symmetric(horizontal: 10),
                 child: Column(
                   children: [
                     /// sub total
@@ -241,7 +273,11 @@ class CheckoutView extends StatelessWidget {
                     ),
                     const RSizedBox(height: 10),
                     CustomElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => OrderPage(
+                          cartItems: cartItems,
+                        ),));
+                      },
                       buttonTitle: AppText.placeOrder.tr(),
                     ),
                     const RSizedBox(height: 20),

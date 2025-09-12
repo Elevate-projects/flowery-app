@@ -171,6 +171,8 @@ import '../../presentation/cart/view_model/quantity_cubit/quantity_cubit.dart'
     as _i46;
 import '../../presentation/categories/views_model/categories_cubit.dart'
     as _i200;
+import '../../presentation/checkout_page/view_model/checkout_cubit/checkout_view_model.dart'
+    as _i504;
 import '../../presentation/home/home_screen/view_model/home_products_cubit.dart'
     as _i641;
 import '../../presentation/home/occasions/view_model/occasion_view_model.dart'
@@ -208,6 +210,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i297.TermsAndConditionsCubit>(
       () => _i297.TermsAndConditionsCubit(),
     );
+    gh.factory<_i504.GiftSwitchCubit>(() => _i504.GiftSwitchCubit());
     gh.singleton<_i361.Dio>(() => apiModule.provideDio());
     gh.singleton<_i23.SecureStorage>(() => _i23.SecureStorage());
     gh.factory<_i508.ApiClient>(() => _i508.ApiClient(gh<_i361.Dio>()));

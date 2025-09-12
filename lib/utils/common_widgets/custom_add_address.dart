@@ -1,13 +1,23 @@
-import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flowery_app/core/constants/app_text.dart';
 
 class CustomAddAddress extends StatelessWidget {
-  const CustomAddAddress({super.key});
+  final int index;
+  final bool isSelected;
+  final VoidCallback onSelect;
+
+  const CustomAddAddress({
+    super.key,
+    required this.index,
+    required this.isSelected,
+    required this.onSelect,
+  });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
     return Padding(
       padding: REdgeInsets.symmetric(horizontal: 10, vertical: 6),
       child: Container(
@@ -23,32 +33,35 @@ class CustomAddAddress extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const RSizedBox(height: 10),
-            Row(
-              children: [
-                const RSizedBox(width: 10),
-                // Radio(
-                //   value: true,
-                //   groupValue: true,
-                //   onChanged: (val) {},
-                // ),
-                const Text(AppText.homeAddress),
-                const Spacer(),
-                InkWell(
-                  onTap: () {},
-                  child: const Padding(
-                    padding: EdgeInsets.only(right: 10),
-                    child: Icon(
-                      Icons.edit
-                    ),
+            RadioGroup(
+              groupValue: isSelected ? index : null,
+              onChanged: (int? value) {
+                onSelect();
+              },
+              child:   Row(
+                children: [
+                  const RSizedBox(width: 10),
+                  Radio(
+                    value: index,
                   ),
-                )
-              ],
+                  const Text(AppText.homeAddress),
+                  const Spacer(),
+                  InkWell(
+                    onTap: () {},
+                    child: const Padding(
+                      padding: EdgeInsets.only(right: 20, left: 10),
+                      child: Icon(Icons.edit),
+                    ),
+                  )
+                ],
+              ),
             ),
+
             const RSizedBox(height: 5),
             Row(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 10),
+                  padding: REdgeInsets.only(left: 10),
                   child: Text(
                     AppText.address,
                     style: theme.textTheme.bodyMedium,
@@ -56,8 +69,8 @@ class CustomAddAddress extends StatelessWidget {
                 ),
               ],
             ),
-          ]
-        )
+          ],
+        ),
       ),
     );
   }
