@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 
 // ignore: must_be_immutable
 class ProductCardEntity extends Equatable {
-  ProductCardEntity({
+  const ProductCardEntity({
     this.productId,
     this.title,
     this.slug,
@@ -16,21 +16,23 @@ class ProductCardEntity extends Equatable {
     this.occasionId,
     this.sold,
     this.discountPercentage,
+    this.createdAt,
   });
 
-  String? productId;
-  String? title;
-  String? slug;
-  String? description;
-  String? imgCover;
-  List<String>? images;
-  num? price;
-  num? priceAfterDiscount;
-  num? quantity;
-  String? categoryId;
-  String? occasionId;
-  num? sold;
-  String? discountPercentage;
+  final String? productId;
+  final String? title;
+  final String? slug;
+  final String? description;
+  final String? imgCover;
+  final List<String>? images;
+  final int? price;
+  final int? priceAfterDiscount;
+  final int? quantity;
+  final String? categoryId;
+  final String? occasionId;
+  final int? sold;
+  final String? discountPercentage;
+  final String? createdAt;
 
   @override
   List<Object?> get props => [
@@ -47,5 +49,6 @@ class ProductCardEntity extends Equatable {
     occasionId,
     sold,
     discountPercentage,
+    createdAt,
   ];
 }

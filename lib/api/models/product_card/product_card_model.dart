@@ -1,8 +1,6 @@
 import 'package:flowery_app/domain/entities/product_card/product_card_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
-
 part 'product_card_model.g.dart';
-
 @JsonSerializable()
 class ProductCardModel {
   @JsonKey(name: "rateAvg")
@@ -82,18 +80,19 @@ class ProductCardModel {
       description: description,
       imgCover: imgCover,
       images: images,
-      price: price,
-      priceAfterDiscount: priceAfterDiscount,
+      price: price ?? 0,
+      priceAfterDiscount: priceAfterDiscount ?? 0,
       quantity: quantity,
       categoryId: category,
       occasionId: occasion,
       sold: sold,
-      discountPercentage: getDiscountPercentage(),
+      createdAt: createdAt,
+      discountPercentage: getDiscountPercentage() ?? "0%",
     );
   }
 
   String? getDiscountPercentage() {
-    if (priceAfterDiscount != null && price != null) {
+    if (priceAfterDiscount != null && price != null && price != 0) {
       return "${((price! - priceAfterDiscount!) / price! * 100).toStringAsFixed(0)}%";
     }
     return null;

@@ -35,11 +35,6 @@ abstract class AppTheme {
         fontWeight: FontWeight.w500,
         color: AppColors.black,
       ),
-      labelMedium: TextStyle(
-        fontSize: 12.sp,
-        fontWeight: FontWeight.w400,
-        color: AppColors.black,
-      ),
       labelLarge: TextStyle(
         fontSize: 16.sp,
         fontWeight: FontWeight.w500,

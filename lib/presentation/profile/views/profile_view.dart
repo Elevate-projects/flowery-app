@@ -1,4 +1,5 @@
 import 'package:flowery_app/core/di/di.dart';
+import 'package:flowery_app/core/global_cubit/global_cubit.dart';
 import 'package:flowery_app/presentation/profile/views/widgets/profile_view_body.dart';
 import 'package:flowery_app/presentation/profile/views_model/profile_cubit.dart';
 import 'package:flowery_app/presentation/profile/views_model/profile_intent.dart';
@@ -10,10 +11,12 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final globalCubit = BlocProvider.of<GlobalCubit>(context);
     return BlocProvider<ProfileCubit>(
-      create: (context) =>
-          getIt.get<ProfileCubit>()
-            ..doIntent(intent: ProfileInitializationIntent()),
+      create: (context) => getIt.get<ProfileCubit>()
+        ..doIntent(
+          intent: ProfileInitializationIntent(globalCubit: globalCubit),
+        ),
       child: const SafeArea(child: ProfileViewBody()),
     );
   }

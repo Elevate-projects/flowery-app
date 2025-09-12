@@ -1,4 +1,5 @@
 import 'package:flowery_app/api/client/api_result.dart';
+import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/core/state_status/state_status.dart';
 import 'package:flowery_app/domain/entities/category/category_entity.dart';
 import 'package:flowery_app/domain/entities/product_card/product_card_entity.dart';
@@ -13,6 +14,13 @@ import 'package:injectable/injectable.dart';
 class CategoriesCubit extends Cubit<CategoriesState> {
   final GetAllCategoriesUseCase _getAllCategoriesUseCase;
   final GetAllProductsUseCase _getAllProductsUseCase;
+  final List<String> filters = const [
+    AppText.lowestPrice,
+    AppText.highestPrice,
+    AppText.newProducts,
+    AppText.old,
+    AppText.discount,
+  ];
   CategoriesCubit(this._getAllCategoriesUseCase, this._getAllProductsUseCase)
     : super(const CategoriesState());
 
@@ -20,6 +28,8 @@ class CategoriesCubit extends Cubit<CategoriesState> {
     switch (intent) {
       case CategoriesInitializationIntent():
         await _onInit();
+      case ChangeCategoryFilterIntent():
+        _changeFilter(selectedFilter: intent.selectedFilter);
     }
   }
 
@@ -100,5 +110,83 @@ class CategoriesCubit extends Cubit<CategoriesState> {
         selectedCategories: selectedCategoriesList,
       ),
     );
+    _sortProductsToHighestPrice();
+    emit(state.copyWith(categoriesProductsList: state.categoriesProductsList));
+  }
+
+  void _changeFilter({required String selectedFilter}) {
+    if (selectedFilter == filters[0]) {
+      _sortProductsToLowestPrice();
+    } else if (selectedFilter == filters[1]) {
+      _sortProductsToHighestPrice();
+    } else if (selectedFilter == filters[2]) {
+      _sortProductsToNewest();
+    } else if (selectedFilter == filters[3]) {
+      _sortProductsToOldest();
+    } else {
+      _sortProductsToDiscount();
+    }
+    emit(
+      state.copyWith(
+        categoriesProductsList: state.categoriesProductsList,
+        selectedFilter: selectedFilter,
+      ),
+    );
+  }
+
+  void _sortProductsToLowestPrice() {
+    for (int i = 0; i < state.categoriesProductsList.length; i++) {
+      for (int j = 0; j < state.categoriesProductsList[i].length; j++) {
+        state.categoriesProductsList[i].sort(
+          (a, b) => a.priceAfterDiscount!.compareTo(b.priceAfterDiscount!),
+        );
+      }
+    }
+  }
+
+  void _sortProductsToHighestPrice() {
+    for (int i = 0; i < state.categoriesProductsList.length; i++) {
+      for (int j = 0; j < state.categoriesProductsList[i].length; j++) {
+        state.categoriesProductsList[i].sort(
+          (a, b) => b.priceAfterDiscount!.compareTo(a.priceAfterDiscount!),
+        );
+      }
+    }
+  }
+
+  void _sortProductsToNewest() {
+    for (int i = 0; i < state.categoriesProductsList.length; i++) {
+      for (int j = 0; j < state.categoriesProductsList[i].length; j++) {
+        state.categoriesProductsList[i].sort(
+          (a, b) => DateTime.parse(
+            b.createdAt!,
+          ).compareTo(DateTime.parse(a.createdAt!)),
+        );
+      }
+    }
+  }
+
+  void _sortProductsToOldest() {
+    for (int i = 0; i < state.categoriesProductsList.length; i++) {
+      for (int j = 0; j < state.categoriesProductsList[i].length; j++) {
+        state.categoriesProductsList[i].sort(
+          (a, b) => DateTime.parse(
+            a.createdAt!,
+          ).compareTo(DateTime.parse(b.createdAt!)),
+        );
+      }
+    }
+  }
+
+  void _sortProductsToDiscount() {
+    for (int i = 0; i < state.categoriesProductsList.length; i++) {
+      for (int j = 0; j < state.categoriesProductsList[i].length; j++) {
+        state.categoriesProductsList[i].sort(
+          (a, b) => int.parse(
+            b.discountPercentage!.replaceAll('%', ''),
+          ).compareTo(int.parse(a.discountPercentage!.replaceAll('%', ''))),
+        );
+      }
+    }
   }
 }

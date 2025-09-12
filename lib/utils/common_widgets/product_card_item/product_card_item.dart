@@ -5,6 +5,7 @@ import 'package:flowery_app/domain/entities/product_card/product_card_entity.dar
 import 'package:flowery_app/utils/common_widgets/product_card_item/add_to_cart_button.dart';
 import 'package:flowery_app/utils/common_widgets/product_card_item/product_title_and_price.dart';
 import 'package:flowery_app/utils/common_widgets/shimmer_effect.dart';
+import 'package:flowery_app/utils/flowery_method_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -57,7 +58,12 @@ class ProductCardItem extends StatelessWidget {
               ),
             ),
             ProductTitleAndPrice(productCardData: productCardData),
-            const Flexible(child: AddToCartButton()),
+            if (FloweryMethodHelper.currentUserToken != null)
+              Flexible(
+                child: AddToCartButton(
+                  productId: productCardData.productId ?? "",
+                ),
+              ),
           ],
         ),
       ),

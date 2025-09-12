@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
@@ -21,33 +22,44 @@ class AnimationLoaderWidget extends StatelessWidget {
   final TextStyle? style;
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Lottie.asset(animation, width: ScreenUtil().screenWidth * 0.8),
-          const RSizedBox(height: 24),
-          Text(
-            text,
-            style: style ?? Theme.of(context).textTheme.labelMedium,
-            textAlign: TextAlign.center,
-            overflow: TextOverflow.visible,
+          RPadding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Text(
+              text.tr(),
+              style:
+                  style ??
+                  theme.textTheme.labelLarge?.copyWith(
+                    color: theme.colorScheme.onSecondary,
+                  ),
+              textAlign: TextAlign.center,
+              overflow: TextOverflow.visible,
+            ),
           ),
           const RSizedBox(height: 24),
           Visibility(
             visible: showAction,
-            child: RSizedBox(
-              width: 250,
-              child: OutlinedButton(
-                onPressed: onActionPressed,
-                style: OutlinedButton.styleFrom(
-                  backgroundColor: Colors.grey.shade700,
+            child: Column(
+              children: [
+                RSizedBox(
+                  width: 250,
+                  child: OutlinedButton(
+                    onPressed: onActionPressed,
+                    style: OutlinedButton.styleFrom(
+                      backgroundColor: Colors.grey.shade700,
+                    ),
+                    child: Text(
+                      actionText ?? "",
+                      style: theme.textTheme.labelLarge,
+                    ),
+                  ),
                 ),
-                child: Text(
-                  actionText ?? "",
-                  style: Theme.of(context).textTheme.bodyLarge,
-                ),
-              ),
+              ],
             ),
           ),
         ],

@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_colors.dart';
 import 'package:flowery_app/core/constants/app_icons.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/presentation/flowery_bottom_navigation/view_model/flowery_bottom_navigation_cubit.dart';
 import 'package:flowery_app/presentation/flowery_bottom_navigation/view_model/flowery_bottom_navigation_intent.dart';
 import 'package:flowery_app/presentation/flowery_bottom_navigation/view_model/flowery_bottom_navigation_state.dart';
+import 'package:flowery_app/utils/flowery_method_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -12,7 +14,9 @@ class FloweryBottomNavigation extends StatelessWidget {
   const FloweryBottomNavigation({super.key});
   @override
   Widget build(BuildContext context) {
-    final pages = context.read<FloweryBottomNavigationCubit>().pages;
+    final floweryBottomCubit = BlocProvider.of<FloweryBottomNavigationCubit>(
+      context,
+    );
     final theme = Theme.of(context);
     return BlocBuilder<
       FloweryBottomNavigationCubit,
@@ -20,7 +24,9 @@ class FloweryBottomNavigation extends StatelessWidget {
     >(
       builder: (context, state) {
         return Scaffold(
-          body: pages[state.currentIndex],
+          body: FloweryMethodHelper.currentUserToken != null
+              ? floweryBottomCubit.pages[state.currentIndex]
+              : floweryBottomCubit.guestPages[state.currentIndex],
           bottomNavigationBar: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -45,7 +51,7 @@ class FloweryBottomNavigation extends StatelessWidget {
                         BlendMode.srcIn,
                       ),
                     ),
-                    label: AppText.home,
+                    label: AppText.home.tr(),
                   ),
                   BottomNavigationBarItem(
                     icon: SvgPicture.asset(
@@ -57,20 +63,21 @@ class FloweryBottomNavigation extends StatelessWidget {
                         BlendMode.srcIn,
                       ),
                     ),
-                    label: AppText.categories,
+                    label: AppText.categories.tr(),
                   ),
-                  BottomNavigationBarItem(
-                    icon: SvgPicture.asset(
-                      AppIcons.activeCart,
-                      colorFilter: ColorFilter.mode(
-                        state.currentIndex == 2
-                            ? theme.colorScheme.primary
-                            : AppColors.white[80]!,
-                        BlendMode.srcIn,
+                  if (FloweryMethodHelper.currentUserToken != null)
+                    BottomNavigationBarItem(
+                      icon: SvgPicture.asset(
+                        AppIcons.activeCart,
+                        colorFilter: ColorFilter.mode(
+                          state.currentIndex == 2
+                              ? theme.colorScheme.primary
+                              : AppColors.white[80]!,
+                          BlendMode.srcIn,
+                        ),
                       ),
+                      label: AppText.cart.tr(),
                     ),
-                    label: AppText.cart,
-                  ),
                   BottomNavigationBarItem(
                     icon: SvgPicture.asset(
                       AppIcons.activeProfile,
@@ -81,7 +88,7 @@ class FloweryBottomNavigation extends StatelessWidget {
                         BlendMode.srcIn,
                       ),
                     ),
-                    label: AppText.profile,
+                    label: AppText.profile.tr(),
                   ),
                 ],
               ),

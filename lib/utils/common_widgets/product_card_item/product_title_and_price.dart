@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/domain/entities/product_card/product_card_entity.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +31,7 @@ class ProductTitleAndPrice extends StatelessWidget {
                 child: FittedBox(
                   fit: BoxFit.scaleDown,
                   child: Text(
-                    "${AppText.egp} ${productCardData.priceAfterDiscount}",
+                    "${AppText.egp.tr()} ${productCardData.priceAfterDiscount}",
                     style: theme.textTheme.bodyLarge?.copyWith(
                       fontWeight: FontWeight.w500,
                       color: theme.colorScheme.onSecondary,

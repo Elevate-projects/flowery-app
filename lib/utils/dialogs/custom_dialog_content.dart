@@ -8,7 +8,8 @@ class CustomDialogContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      contentPadding: REdgeInsets.symmetric(vertical: 40, horizontal: 22),
+      insetPadding: REdgeInsets.symmetric(horizontal: 47.5),
+      contentPadding: REdgeInsets.all(32),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadiusGeometry.circular(10.r),
       ),

@@ -82,13 +82,13 @@ void main() {
       () async {
         // Arrange
         final List<ProductCardEntity> expectedListOfProducts = [
-          ProductCardEntity(
+          const ProductCardEntity(
             title: "Red Rose Bouquet",
             slug: "red-rose-bouquet",
             description:
                 "A beautiful bouquet of fresh red roses, perfect for romantic occasions.",
             imgCover: "https://example.com/images/red_rose_cover.jpg",
-            images: const [
+            images: [
               "https://example.com/images/red_rose_1.jpg",
               "https://example.com/images/red_rose_2.jpg",
             ],
@@ -99,13 +99,13 @@ void main() {
             sold: 20,
             productId: "P001",
           ),
-          ProductCardEntity(
+          const ProductCardEntity(
             title: "Luxury Chocolate Box",
             slug: "luxury-chocolate-box",
             description:
                 "A premium assortment of luxury chocolates in an elegant gift box.",
             imgCover: "https://example.com/images/choco_cover.jpg",
-            images: const [
+            images: [
               "https://example.com/images/choco_1.jpg",
               "https://example.com/images/choco_2.jpg",
             ],

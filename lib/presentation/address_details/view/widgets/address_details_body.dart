@@ -1,0 +1,54 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flowery_app/core/constants/app_text.dart';
+import 'package:flowery_app/core/state_status/state_status.dart';
+import 'package:flowery_app/presentation/address_details/view/widgets/address_details_form.dart';
+import 'package:flowery_app/presentation/address_details/view/widgets/map_section.dart';
+import 'package:flowery_app/presentation/address_details/view_model/add_address_cubit.dart';
+import 'package:flowery_app/presentation/address_details/view_model/add_address_state.dart';
+import 'package:flowery_app/utils/common_widgets/loading_dialog.dart';
+import 'package:flowery_app/utils/loaders/loaders.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+class AddressDetailsBody extends StatelessWidget {
+  const AddressDetailsBody({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocListener<AddAddressCubit, AddAddressState>(
+      listener: (context, state) {
+        switch (state.addAddressStatus.status) {
+          case Status.initial:
+            break;
+          case Status.loading:
+            showLoadingDialog(
+              context,
+              color: Theme.of(context).colorScheme.primary,
+            );
+            break;
+          case Status.success:
+            Navigator.pop(context);
+            Loaders.showSuccessMessage(
+              message: AppText.addressSavedSuccessfully.tr(),
+              context: context,
+            );
+            break;
+          case Status.failure:
+            Navigator.pop(context);
+            Loaders.showErrorMessage(
+              message: state.addAddressStatus.error?.message ?? AppText.error,
+              context: context,
+            );
+            break;
+        }
+      },
+      child: Padding(
+        padding: REdgeInsets.all(16),
+        child: const Column(
+          children: [MapSection(), RSizedBox(height: 25), AddressDetailsForm()],
+        ),
+      ),
+    );
+  }
+}
