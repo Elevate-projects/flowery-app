@@ -13,16 +13,15 @@ class EditProfileButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = BlocProvider.of<EditProfileCubit>(context);
-    
+
     return BlocBuilder<EditProfileCubit, EditProfileState>(
       builder: (context, state) {
         if (state.editProfileState.isLoading) {
           return const LoadingButton();
         }
         return CustomElevatedButton(
-          onPressed: () {
-            controller.doIntent(intent: EditProfileWithDataIntent());
-            Navigator.of(context).pop();
+          onPressed: () async {
+            await controller.doIntent(intent: EditProfileWithDataIntent());
           },
           buttonTitle: AppText.editProfileUpdateButton,
         );

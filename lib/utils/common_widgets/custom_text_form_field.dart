@@ -133,7 +133,7 @@ class CustomTextFormField extends StatelessWidget {
     );
   }
 
- static OutlineInputBorder buildOutlinedBorder({
+  static OutlineInputBorder buildOutlinedBorder({
     required Color borderColor,
     required double borderRadius,
   }) {

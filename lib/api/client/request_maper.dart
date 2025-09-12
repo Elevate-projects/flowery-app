@@ -1,7 +1,5 @@
 import 'package:flowery_app/api/requests/add_address/add_address_request_model.dart';
 import 'package:flowery_app/api/requests/add_to_cart_request/add_to_cart_request_model.dart';
-import 'dart:io';
-
 import 'package:flowery_app/api/requests/edit_profile_request/edit_profile_request.dart';
 import 'package:flowery_app/api/requests/forget_password_request/forget_password_request.dart';
 import 'package:flowery_app/api/requests/login_request/login_request_model.dart';
@@ -118,10 +116,10 @@ abstract class RequestMapper {
     );
   }
 
-  static  EditProfileRequest toEditProfileRequestEntity({
-    required  EditProfileRequestEntity entity,
+  static EditProfileRequest toEditProfileRequestEntity({
+    required EditProfileRequestEntity entity,
   }) {
-    return  EditProfileRequest(
+    return EditProfileRequest(
       firstName: entity.firstName,
       lastName: entity.lastName,
       email: entity.email,

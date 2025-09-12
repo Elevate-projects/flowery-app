@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/core/enum/gender.dart';
 import 'package:flowery_app/presentation/auth/register/view_model/register_state.dart';
@@ -22,7 +23,7 @@ class EditProfileRegisterGenderRadioButton extends StatelessWidget {
             Flexible(
               child: RadioMenuButton<Gender>(
                 value: Gender.female,
-                groupValue: controller.selectedGender ,
+                groupValue: controller.selectedGender,
                 onChanged: null,
                 style: ButtonStyle(
                   visualDensity: VisualDensity.compact,
@@ -33,9 +34,9 @@ class EditProfileRegisterGenderRadioButton extends StatelessWidget {
                     theme.colorScheme.primary.withValues(alpha: 0.1),
                   ),
                 ),
-                child: const Text(
-                  AppText.genderFemaleDisplay,
-                  style: TextStyle(color: Colors.black),
+                child: Text(
+                  AppText.genderFemaleDisplay.tr(),
+                  style: const TextStyle(color: Colors.black),
                 ),
               ),
             ),
@@ -54,8 +55,8 @@ class EditProfileRegisterGenderRadioButton extends StatelessWidget {
                     theme.colorScheme.primary.withValues(alpha: 0.1),
                   ),
                 ),
-                child: const Text(
-                  AppText.genderMaleDisplay,
+                child: Text(
+                  AppText.genderMaleDisplay.tr(),
                   style: TextStyle(color: Colors.black),
                 ),
               ),

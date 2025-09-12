@@ -1,7 +1,8 @@
+import 'dart:io';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flowery_app/core/constants/app_colors.dart';
 import 'package:flowery_app/core/constants/app_icons.dart';
-import 'package:flowery_app/core/constants/app_images.dart';
 import 'package:flowery_app/presentation/edit_profile/view_model/edit_profile_cubit.dart';
 import 'package:flowery_app/presentation/edit_profile/view_model/edit_profile_intents.dart';
 import 'package:flowery_app/presentation/edit_profile/view_model/edit_profile_state.dart';
@@ -16,19 +17,26 @@ class EditProfilePicture extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = BlocProvider.of<EditProfileCubit>(context);
+    final editProfileCubit = BlocProvider.of<EditProfileCubit>(context);
+    final theme = Theme.of(context);
     return BlocBuilder<EditProfileCubit, EditProfileState>(
       builder: (context, state) {
         return Stack(
           children: [
             GestureDetector(
-              onTap: () => controller.doIntent(intent: UploadPhotoIntent()),
+              onTap: () async =>
+                  await editProfileCubit.doIntent(intent: UploadPhotoIntent()),
               child: Stack(
                 clipBehavior: Clip.none,
                 children: [
                   CircleAvatar(
                     radius: 40.5.r,
-                    backgroundImage: CachedNetworkImageProvider (FloweryMethodHelper.userData?.photo ?? ""),
+                    backgroundColor: theme.colorScheme.onPrimary,
+                    backgroundImage: state.uploadPhotoState.isInitial
+                        ? CachedNetworkImageProvider(
+                            FloweryMethodHelper.userData?.photo ?? "",
+                          )
+                        : FileImage(state.uploadPhotoState.data ?? File("")),
                     child: state.uploadPhotoState.isLoading
                         ? Container(
                             decoration: BoxDecoration(
@@ -38,7 +46,9 @@ class EditProfilePicture extends StatelessWidget {
                             child: const Center(
                               child: CircularProgressIndicator(
                                 strokeWidth: 2,
-                                valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                  Colors.white,
+                                ),
                               ),
                             ),
                           )

@@ -9,7 +9,6 @@ import 'package:flowery_app/domain/entities/upload_photo_response_entity/upload_
 import 'package:flowery_app/domain/entities/user_data/user_data_entity.dart';
 import 'package:flowery_app/domain/use_cases/edit_profile/edit_profile_use_case.dart';
 import 'package:flowery_app/domain/use_cases/edit_profile/upload_photo_use_case.dart';
-import 'package:flowery_app/domain/use_cases/profile/get_user_profile_data_use_case.dart';
 import 'package:flowery_app/presentation/edit_profile/view_model/edit_profile_intents.dart';
 import 'package:flowery_app/presentation/edit_profile/view_model/edit_profile_state.dart';
 import 'package:flowery_app/utils/flowery_method_helper.dart';
@@ -23,15 +22,17 @@ class EditProfileCubit extends Cubit<EditProfileState> {
   final EditProfileUseCase _editProfileUseCase;
   final UploadPhotoUseCase _uploadPhotoUseCase;
   final ImagePicker _imagePicker = ImagePicker();
+  File _imageFile = File('');
   //final GetUserProfileDataUseCase getUserData;
 
-  EditProfileCubit(this._editProfileUseCase, this._uploadPhotoUseCase) : super(const EditProfileState());
+  EditProfileCubit(this._editProfileUseCase, this._uploadPhotoUseCase)
+    : super(const EditProfileState());
   late GlobalKey<FormState> editFormKey;
   late final TextEditingController firstNameController;
   late final TextEditingController lastNameController;
   late final TextEditingController emailController;
   late final TextEditingController phoneNumberController;
-  Gender selectedGender = Gender.male; 
+  Gender selectedGender = Gender.male;
 
   Future<void> doIntent({required EditProfileIntents intent}) async {
     switch (intent) {
@@ -39,15 +40,15 @@ class EditProfileCubit extends Cubit<EditProfileState> {
         _init();
         break;
       case EditProfileWithDataIntent():
-        _editProfile();
+        await _editProfile();
 
       case UploadPhotoIntent():
-        _pickAndUploadPhoto();
+        await _pickAndUploadPhoto();
         break;
     }
   }
 
-  void _init() async{
+  void _init() async {
     editFormKey = GlobalKey<FormState>();
     firstNameController = TextEditingController();
     lastNameController = TextEditingController();
@@ -72,7 +73,6 @@ class EditProfileCubit extends Cubit<EditProfileState> {
     );
     switch (result) {
       case Success<UserDataEntity>():
-        FloweryMethodHelper.userData = result.data;
         emit(state.copyWith(editProfileState: const StateStatus.success(null)));
       case Failure<UserDataEntity>():
         emit(
@@ -82,8 +82,8 @@ class EditProfileCubit extends Cubit<EditProfileState> {
         );
     }
   }
-  
-    Future<void> _pickAndUploadPhoto() async {
+
+  Future<void> _pickAndUploadPhoto() async {
     try {
       final pickedFile = await _imagePicker.pickImage(
         source: ImageSource.gallery,
@@ -91,17 +91,19 @@ class EditProfileCubit extends Cubit<EditProfileState> {
         maxHeight: 1080,
         imageQuality: 8,
       );
-      
+
       if (pickedFile != null) {
-        final file = File(pickedFile.path);
-        await _uploadProfilePhoto(file);
+        _imageFile = File(pickedFile.path);
+        await _uploadProfilePhoto(_imageFile);
       }
     } catch (e) {
-      emit(state.copyWith(
-        uploadPhotoState: StateStatus.failure(
-          ResponseException(message: 'Failed to pick image: $e'),
+      emit(
+        state.copyWith(
+          uploadPhotoState: StateStatus.failure(
+            ResponseException(message: 'Failed to pick image: $e'),
+          ),
         ),
-      ));
+      );
     }
   }
 
@@ -112,13 +114,13 @@ class EditProfileCubit extends Cubit<EditProfileState> {
 
     switch (result) {
       case Success<UploadPhotoResponseEntity>():
-        emit(state.copyWith(
-          uploadPhotoState: const StateStatus.success(null),
-        ));
+        emit(state.copyWith(uploadPhotoState: StateStatus.success(_imageFile)));
       case Failure<UploadPhotoResponseEntity>():
-        emit(state.copyWith(
-          uploadPhotoState: StateStatus.failure(result.responseException),
-        ));
+        emit(
+          state.copyWith(
+            uploadPhotoState: StateStatus.failure(result.responseException),
+          ),
+        );
     }
   }
 }
