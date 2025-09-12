@@ -173,4 +173,10 @@ abstract final class AppText {
   static const String price = "price";
   static const String cartPage = "cart";
   static const String deleteCart = "deleteCart";
-}
+
+  //search text
+  static const String searchForAnyProductsYouWent = 'searchForAnyProductsYouWent';
+  static const String noProductsFound = 'noProductsFound';
+  static const String notFound = 'notFound';
+  static const String noProductsFoundForYourSearch = "noProductsFoundForYourSearch";
+ }

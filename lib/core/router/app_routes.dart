@@ -95,9 +95,9 @@ abstract class AppRoutes {
       case RouteNames.addressDetails:
         return MaterialPageRoute(builder: (_) => const AddressDetails());
 
-      case RouteNames.searchScreen:
+      case RouteNames.searchView:
         return MaterialPageRoute(
-          builder: (context) =>const SearchScreen()
+          builder: (context) =>const SearchView()
 
         );
       default:

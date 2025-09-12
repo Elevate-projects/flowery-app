@@ -1,6 +1,6 @@
 import 'package:flowery_app/api/client/api_result.dart';
-import 'package:flowery_app/domain/entities/home_products/products_response_entity.dart';
+ import 'package:flowery_app/domain/entities/search/response/search_response_entity.dart';
 
 abstract interface class SearchRepo{
-  Future<Result<ProductsResponseEntity>> getProductBySearch(String productId);
+  Future<Result<SearchResponseEntity>> searchProducts({required String search});
 }

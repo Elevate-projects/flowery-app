@@ -1,5 +1,5 @@
 sealed class SearchIntent{}
 class OnSearchClick extends SearchIntent{
-  String productId;
-  OnSearchClick({required this.productId});
+  String search;
+  OnSearchClick({required this.search});
 }

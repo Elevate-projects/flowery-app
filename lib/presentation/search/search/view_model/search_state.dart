@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:flowery_app/domain/entities/home_products/products_response_entity.dart';
 import 'package:flowery_app/domain/entities/product_card/product_card_entity.dart';
 
 sealed class SearchState extends Equatable {
@@ -21,10 +20,13 @@ class SearchSuccessState extends SearchState{
   List<Object?> get props => [products];
 
 }
+class SearchEmptyState extends SearchState {}
+
 class SearchFailureState extends SearchState{
   final String error;
 
   const SearchFailureState({required this.error});
+
 
   @override
   List<Object?> get props => [error];

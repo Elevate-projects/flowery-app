@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_colors.dart';
 import 'package:flowery_app/core/constants/app_icons.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
@@ -21,7 +22,8 @@ class SearchAppBar extends StatelessWidget {
 
     return AppBar(
       toolbarHeight: 60,
-      title: CustomTextFormField(label: AppText.search,
+      title: CustomTextFormField(
+        label: AppText.search.tr(),
         prefixIcon: Padding(
           padding:  REdgeInsetsDirectional.only(start: 16,
               end: 3.5),
@@ -30,13 +32,14 @@ class SearchAppBar extends StatelessWidget {
             colorFilter: ColorFilter.mode(AppColors.white[70]!, BlendMode.srcIn),),
         ),
         labelStyle:theme.textTheme.bodyLarge?.copyWith(
-          fontWeight: FontWeight.w500, ),
+          fontWeight: FontWeight.w500,),
+
         borderRadius: 8.r,
-        enabledBorderColor: AppColors.white[70],
-        onChanged: (value){
-        if(value.trim().isNotEmpty){
-          context.read<SearchViewModel>().doIntent(OnSearchClick(productId: value.trim()),);
-        }
+        disabledBorderColor: AppColors.white[70],
+        enabled: false,
+          onChanged: (value){
+          context.read<SearchViewModel>().doIntent(OnSearchClick(search: value.trim()),);
+
         },
       ),
 

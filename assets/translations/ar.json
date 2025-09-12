@@ -157,5 +157,12 @@
   "noItems": "لا توجد عناصر في السلة",
   "noToken": "أنت غير مسجل الدخول، اضغط على السهم للعودة لتسجيل الدخول",
   "cartPage": "عربة التسوق",
-  "deleteCart": "تم حذف العنصر بنجاح"
+  "deleteCart": "تم حذف العنصر بنجاح",
+
+  "searchForAnyProductsYouWant": "ابحث عن أي منتج تريده",
+  "noProductsFound": "لا توجد منتجات",
+  "notFound": "غير موجود",
+  "noProductsFoundForYourSearch": "لم يتم العثور على منتجات لبحثك"
+
+
 }

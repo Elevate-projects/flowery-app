@@ -155,5 +155,13 @@
   "deleteCart": "Item removed successfully",
 
   "bestSellerAppbar": "Best Seller",
-  "bestSellerAppbarHint": "Bloom with our exquisite best sellers"
+  "bestSellerAppbarHint": "Bloom with our exquisite best sellers",
+
+
+  "searchForAnyProductsYouWant": "Search For Any Product You Want",
+  "noProductsFound": "no products found",
+  "notFound": "Not Found",
+  "noProductsFoundForYourSearch": "No products found for your search"
+
+
 }
