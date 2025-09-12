@@ -5,7 +5,7 @@ import 'package:flowery_app/api/data_source/categories/remote_data_source/catego
 import 'package:flowery_app/api/models/category/category_model.dart';
 import 'package:flowery_app/api/models/product_card/product_card_model.dart';
 import 'package:flowery_app/api/responses/categories_response/categories_response.dart';
-import 'package:flowery_app/api/responses/products_response/products_response.dart';
+ import 'package:flowery_app/api/responses/products_response/products_response_dto.dart';
 import 'package:flowery_app/core/connection_manager/connection_manager.dart';
 import 'package:flowery_app/domain/entities/category/category_entity.dart';
 import 'package:flowery_app/domain/entities/product_card/product_card_entity.dart';
@@ -159,7 +159,7 @@ void main() {
             productId: "P002",
           ),
         ];
-        final expectedProductsResponse = ProductsResponse(
+        final expectedProductsResponse = ProductsResponseDto(
           message: "success",
           products: expectedListOfProducts,
         );
