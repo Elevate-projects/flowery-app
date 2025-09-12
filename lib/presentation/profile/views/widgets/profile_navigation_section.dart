@@ -22,29 +22,37 @@ class ProfileNavigationSection extends StatelessWidget {
     final theme = Theme.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        ProfileNavigationItem(
-          title: AppText.myOrders,
-          prefixIconPath: AppIcons.orders,
-          onTap: () {},
-        ),
-        BlocBuilder<ProfileCubit, ProfileState>(
-          builder: (context, state) => ProfileNavigationItem(
-            title: AppText.savedAddress,
-            prefixIconPath: AppIcons.location,
-            onTap: state.profileStatus.isLoading
-                ? () {}
-                : () {
-                    Navigator.of(context).pushNamed(
-                      RouteNames.savedAddress,
-                      arguments: FloweryMethodHelper.userData?.addresses,
-                    );
-                  },
+        Visibility(
+          visible: FloweryMethodHelper.currentUserToken != null,
+          child: Column(
+            children: [
+              ProfileNavigationItem(
+                title: AppText.myOrders,
+                prefixIconPath: AppIcons.orders,
+                onTap: () {},
+              ),
+              BlocBuilder<ProfileCubit, ProfileState>(
+                builder: (context, state) => ProfileNavigationItem(
+                  title: AppText.savedAddress,
+                  prefixIconPath: AppIcons.location,
+                  onTap: state.profileStatus.isLoading
+                      ? () {}
+                      : () {
+                          Navigator.of(context).pushNamed(
+                            RouteNames.savedAddress,
+                            arguments: FloweryMethodHelper.userData?.addresses,
+                          );
+                        },
+                ),
+              ),
+              Divider(color: AppColors.white[70], height: 32.h),
+              const NotificationSwitch(),
+              Divider(color: AppColors.white[70], height: 32.h),
+            ],
           ),
         ),
-        Divider(color: AppColors.white[70], height: 32.h),
-        const NotificationSwitch(),
-        Divider(color: AppColors.white[70], height: 32.h),
         const LanguageSection(),
         ProfileNavigationItem(
           isIconWithTitle: false,

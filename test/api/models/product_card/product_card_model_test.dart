@@ -22,8 +22,8 @@ void main() {
           imgCover: null,
           isSuperAdmin: null,
           occasion: null,
-          price: null,
-          priceAfterDiscount: null,
+          price: 0,
+          priceAfterDiscount: 0,
           quantity: null,
           sold: null,
           updatedAt: null,
@@ -49,7 +49,7 @@ void main() {
         expect(actualResult.quantity, equals(productCardData.quantity));
         expect(actualResult.categoryId, equals(productCardData.category));
         expect(actualResult.occasionId, equals(productCardData.occasion));
-        expect(actualResult.discountPercentage, isNull);
+        expect(actualResult.discountPercentage, equals("0%"));
       },
     );
     test(

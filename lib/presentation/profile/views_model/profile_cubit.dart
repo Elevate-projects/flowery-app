@@ -48,7 +48,9 @@ class ProfileCubit extends Cubit<ProfileState> {
             : Languages.english,
       ),
     );
-    await _getUserProfileData();
+    if (FloweryMethodHelper.currentUserToken != null) {
+      await _getUserProfileData();
+    }
   }
 
   Future<void> _getUserProfileData() async {

@@ -6,6 +6,7 @@ import 'package:flowery_app/presentation/profile/views/widgets/profile_navigatio
 import 'package:flowery_app/presentation/profile/views/widgets/user_profile_details.dart';
 import 'package:flowery_app/presentation/profile/views_model/profile_cubit.dart';
 import 'package:flowery_app/presentation/profile/views_model/profile_state.dart';
+import 'package:flowery_app/utils/flowery_method_helper.dart';
 import 'package:flowery_app/utils/loaders/loaders.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -44,12 +45,17 @@ class ProfileViewBody extends StatelessWidget {
         child: RPadding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const RSizedBox(height: 12),
               const ProfileAppBar(),
-              const RSizedBox(height: 27),
-              const UserProfileDetails(),
+              Visibility(
+                visible: FloweryMethodHelper.currentUserToken != null,
+                child: const Column(
+                  children: [RSizedBox(height: 27), UserProfileDetails()],
+                ),
+              ),
               const RSizedBox(height: 21),
               const ProfileNavigationSection(),
               const RSizedBox(height: 54),

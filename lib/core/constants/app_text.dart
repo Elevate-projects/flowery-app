@@ -18,6 +18,13 @@ abstract final class AppText {
 
   // Categories
   static const String search = "search";
+  static const String filter = "filter";
+  static const String sortBy = "sortBy";
+  static const String lowestPrice = "lowestPrice";
+  static const String highestPrice = "highestPrice";
+  static const String newProducts = "newProducts";
+  static const String old = "old";
+  static const String discount = "discount";
 
   // Signup
   static const String firstName = "firstName";
@@ -66,6 +73,8 @@ abstract final class AppText {
   static const String outStock = "outStock";
   static const String taxIncludedMessage = "taxIncludedMessage";
   static const String description = "description";
+  static const String addProductToCartSuccessMessage =
+      "addProductToCartSuccessMessage";
 
   // Validations
   static const String userNameValidation = "userNameValidation";
@@ -109,7 +118,7 @@ abstract final class AppText {
       "deleteAddressSuccessMessage";
   static const String emptyAddressesMessage = "emptyAddressesMessage";
 
-  // Exceptions
+  //Exceptions
   static const String connectionError = "connectionError";
   static const String noResponseReceivedMessage = "noResponseReceivedMessage";
   static const String error = "error";
@@ -121,6 +130,10 @@ abstract final class AppText {
   static const String connectionTimeout = "connectionTimeout";
   static const String networkError = "networkError";
   static const String anUnknownErrorOccurred = "anUnknownErrorOccurred";
+
+  static const String success = "success";
+  static const String bestSellerAppbar = "bestSellerAppbar";
+  static const String bestSellerAppbarHint = "bestSellerAppbarHint";
 
   // Password verification
   static const String enter6DigitCode = "enter6DigitCode";
@@ -135,4 +148,48 @@ abstract final class AppText {
   static const String resetPasswordSubTitle = 'resetPasswordSubTitle';
   static const String continueWord = "continueWord";
   static const String passwordRested = "passwordRested";
+
+  static const String addressWord = "addressWord";
+  static const String addressHint = "addressHint";
+  static const String recipientName = "recipientName";
+  static const String recipientNameHint = "recipientNameHint";
+  static const String city = "city";
+  static const String area = "area";
+  static const String addressSavedSuccessfully = "addressSavedSuccessfully";
+  static const String tapOnMapToGetAddress = "tapOnMapToGetAddress";
+  static const String saveAddress = "saveAddress";
+
+  // cart text
+  static const String delivery = "delivery";
+  static const String subTotal = "subTotal";
+  static const String deliveryFee = "deliveryFee";
+  static const String total = "total";
+  static const String checkOut = "checkOut";
+  static const String noName = "noName";
+  static const String noDescription = "noDescription";
+  static const String noItems = "noItems";
+  static const String noToken = "noToken";
+  static const String location = "location";
+  static const String price = "price";
+  static const String cartPage = "cart";
+  static const String deleteCart = "deleteCart";
+  ///
+  static const String checkout = "checkout";
+  static const String deliveryTime = "deliveryTime";
+  static const String schedule = "schedule";
+  static const String instant = "instant";
+  static const String instantArrive= "Arrive by 03 Sep 2024, 11:00 AM ";
+  static const String deliveryAddress = "deliveryAddress";
+  static const String homeAddress = "Home";
+  static const String address = "2XVP+XC - Sheikh Zayed";
+
+  static const String payment = "payment";
+  static const String addAddress = "addAddress";
+  static const String paymentCash = "paymentCash";
+  static const String paymentCard = "paymentCard";
+  static const String itsGift = "itsGift";
+  static const String name = "name";
+  static const String enterName = "enterName";
+  static const String enterPhoneNumber = "enterPhoneNumber";
+  static const String placeOrder = "placeOrder";
 }
