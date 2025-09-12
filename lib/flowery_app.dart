@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/app_theme.dart';
 import 'package:flowery_app/core/global_cubit/global_cubit.dart';
 import 'package:flowery_app/core/global_cubit/global_state.dart';
@@ -12,20 +13,26 @@ class FloweryApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final startController = BlocProvider.of<GlobalCubit>(context);
+    final globalCubit = BlocProvider.of<GlobalCubit>(context);
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) => BlocBuilder<GlobalCubit, GlobalState>(
-        buildWhen: (previous, current) => current is LoadedRedirectedScreen,
-        builder: (context, state) => state is LoadedRedirectedScreen
+        buildWhen: (previous, current) =>
+            current is LoadedRedirectedScreen ||
+            current is ChangeLanguageIndexState,
+        builder: (context, state) => globalCubit.redirectedScreen != null
             ? MaterialApp(
                 title: 'Flowery',
                 debugShowCheckedModeBanner: false,
                 theme: AppTheme.lightTheme,
                 themeMode: ThemeMode.light,
                 onGenerateRoute: AppRoutes.onGenerateRoute,
+                initialRoute: globalCubit.redirectedScreen,
+                localizationsDelegates: context.localizationDelegates,
+                supportedLocales: context.supportedLocales,
+                locale: context.locale,
                 // initialRoute: startController.redirectedScreen,
             initialRoute: RouteNames.searchScreen
               )

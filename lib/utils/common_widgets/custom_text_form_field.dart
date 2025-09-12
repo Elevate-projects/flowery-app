@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,7 +29,7 @@ class CustomTextFormField extends StatelessWidget {
     required this.label,
     this.labelStyle,
     this.borderRadius = 4,
-    this.enabledBorderColor,
+    this.disabledBorderColor,
   });
   final String? hintText;
   final String label;
@@ -53,7 +54,7 @@ class CustomTextFormField extends StatelessWidget {
   final BoxConstraints? prefixIconConstraints;
   final int? maxLength;
   final double borderRadius;
-  final Color? enabledBorderColor;
+  final Color? disabledBorderColor;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -70,9 +71,10 @@ class CustomTextFormField extends StatelessWidget {
       textInputAction: textInputAction,
       decoration: InputDecoration(
         contentPadding: contentPadding ?? REdgeInsets.all(16),
+        floatingLabelBehavior: FloatingLabelBehavior.always,
         filled: false,
         label: Text(
-          label,
+          label.tr(),
           style:
               labelStyle ??
               Theme.of(context).textTheme.bodyLarge?.copyWith(
@@ -84,14 +86,13 @@ class CustomTextFormField extends StatelessWidget {
             Theme.of(
               context,
             ).textTheme.bodyLarge?.copyWith(color: AppColors.white[70]),
-        hintText: hintText,
+        hintText: hintText?.tr(),
         focusedBorder: buildOutlinedBorder(
           borderColor: Theme.of(context).colorScheme.primary,
           borderRadius: borderRadius,
         ),
         enabledBorder: buildOutlinedBorder(
-          borderColor:
-              enabledBorderColor ?? Theme.of(context).colorScheme.onSecondary,
+          borderColor: Theme.of(context).colorScheme.onSecondary,
           borderRadius: borderRadius,
         ),
         focusedErrorBorder: buildOutlinedBorder(
@@ -103,7 +104,8 @@ class CustomTextFormField extends StatelessWidget {
           borderRadius: borderRadius,
         ),
         disabledBorder: buildOutlinedBorder(
-          borderColor: Theme.of(context).colorScheme.onSecondary,
+          borderColor:
+              disabledBorderColor ?? Theme.of(context).colorScheme.onSecondary,
           borderRadius: borderRadius,
         ),
         prefixIcon: prefixIcon,
@@ -123,10 +125,12 @@ class CustomTextFormField extends StatelessWidget {
       maxLines: maxLines,
       validator: validator,
       enabled: enabled,
+
+
     );
   }
 
-  OutlineInputBorder buildOutlinedBorder({
+ static OutlineInputBorder buildOutlinedBorder({
     required Color borderColor,
     required double borderRadius,
   }) {

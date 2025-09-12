@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/presentation/auth/login/views/widgets/forget_password_button.dart';
 import 'package:flowery_app/presentation/auth/login/views_model/login_cubit.dart';
@@ -41,7 +42,7 @@ class RememberMeAndForgetPassRow extends StatelessWidget {
                 onTap: () async =>
                     await loginCubit.doIntent(intent: ToggleRememberMeIntent()),
                 child: Text(
-                  AppText.rememberMe,
+                  AppText.rememberMe.tr(),
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ),

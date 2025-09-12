@@ -38,7 +38,12 @@ dependencies:
   smooth_page_indicator: ^1.2.1
 
   dio: any
-  bloc: ^9.0.0
+  easy_localization: ^3.0.8
+  google_maps_flutter: ^2.13.1
+  geocoding: ^4.0.0
+  location: ^8.0.1
+  dropdown_textfield: ^1.2.0
+  geolocator: ^14.0.2
 dev_dependencies:
   flutter_launcher_icons: "^0.14.4"
   injectable_generator: ^2.7.0
@@ -58,6 +63,9 @@ flutter:
   assets:
     - assets/icons/
     - assets/animations/
+    - assets/images/
+    - assets/json_screens/
+    - assets/translations/
 
   fonts:
     - family: IM Fell English

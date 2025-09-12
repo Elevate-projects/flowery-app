@@ -1,4 +1,8 @@
-class UserDataEntity {
+import 'package:equatable/equatable.dart';
+import 'package:flowery_app/domain/entities/address/address_entity.dart';
+
+// ignore: must_be_immutable
+class UserDataEntity extends Equatable {
   UserDataEntity({
     this.id,
     this.firstName,
@@ -22,6 +26,21 @@ class UserDataEntity {
   String? photo;
   String? role;
   List<String>? wishlist;
-  List<String>? addresses;
+  List<AddressEntity>? addresses;
   String? passwordResetCode;
+
+  @override
+  List<Object?> get props => [
+    id,
+    firstName,
+    lastName,
+    email,
+    gender,
+    phone,
+    photo,
+    role,
+    wishlist,
+    addresses,
+    passwordResetCode,
+  ];
 }

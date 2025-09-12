@@ -1,5 +1,4 @@
-
-import 'package:flowery_app/domain/entities/forget_password/request/forget_password_request_entity.dart';
+import 'package:flowery_app/domain/entities/requests/forget_password_request/forget_password_request_entity.dart';
 
 sealed class ForgetPasswordIntent {}
 

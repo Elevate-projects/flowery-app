@@ -1,4 +1,4 @@
-import 'package:flowery_app/domain/entities/forget_password/response/forget_password_response_entity.dart';
+import 'package:flowery_app/domain/entities/forget_password/forget_password_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'forget_password_response.g.dart';
@@ -10,10 +10,7 @@ class ForgetPasswordResponseModel {
   @JsonKey(name: "info")
   final String? info;
 
-  ForgetPasswordResponseModel ({
-    this.message,
-    this.info,
-  });
+  ForgetPasswordResponseModel({this.message, this.info});
 
   factory ForgetPasswordResponseModel.fromJson(Map<String, dynamic> json) {
     return _$ForgetPasswordResponseModelFromJson(json);
@@ -22,13 +19,8 @@ class ForgetPasswordResponseModel {
   Map<String, dynamic> toJson() {
     return _$ForgetPasswordResponseModelToJson(this);
   }
-  ForgetPasswordEntity toForgetPasswordEntity(){
-    return ForgetPasswordEntity(
-      message: message,
-      info: info ,
-    );
+
+  ForgetPasswordEntity toForgetPasswordEntity() {
+    return ForgetPasswordEntity(message: message, info: info);
   }
-
 }
-
-

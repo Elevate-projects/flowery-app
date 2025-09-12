@@ -1,3 +1,4 @@
+import 'package:flowery_app/api/models/address/address_model.dart';
 import 'package:flowery_app/domain/entities/user_data/user_data_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -24,7 +25,7 @@ class UserDataModel {
   @JsonKey(name: "wishlist")
   final List<String>? wishlist;
   @JsonKey(name: "addresses")
-  final List<String>? addresses;
+  final List<AddressModel>? addresses;
   @JsonKey(name: "createdAt")
   final String? createdAt;
   @JsonKey(name: "passwordResetCode")
@@ -70,7 +71,8 @@ class UserDataModel {
       photo: photo,
       role: role,
       wishlist: wishlist,
-      addresses: addresses,
+      addresses:
+          addresses?.map((address) => address.toAddressEntity()).toList() ?? [],
       passwordResetCode: passwordResetCode,
     );
   }
