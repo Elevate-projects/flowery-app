@@ -173,4 +173,23 @@ abstract final class AppText {
   static const String price = "price";
   static const String cartPage = "cart";
   static const String deleteCart = "deleteCart";
+  ///
+  static const String checkout = "checkout";
+  static const String deliveryTime = "deliveryTime";
+  static const String schedule = "schedule";
+  static const String instant = "instant";
+  static const String instantArrive= "Arrive by 03 Sep 2024, 11:00 AM ";
+  static const String deliveryAddress = "deliveryAddress";
+  static const String homeAddress = "Home";
+  static const String address = "2XVP+XC - Sheikh Zayed";
+
+  static const String payment = "payment";
+  static const String addAddress = "addAddress";
+  static const String paymentCash = "paymentCash";
+  static const String paymentCard = "paymentCard";
+  static const String itsGift = "itsGift";
+  static const String name = "name";
+  static const String enterName = "enterName";
+  static const String enterPhoneNumber = "enterPhoneNumber";
+  static const String placeOrder = "placeOrder";
 }

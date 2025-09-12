@@ -155,5 +155,22 @@
   "deleteCart": "Item removed successfully",
 
   "bestSellerAppbar": "Best Seller",
-  "bestSellerAppbarHint": "Bloom with our exquisite best sellers"
+  "bestSellerAppbarHint": "Bloom with our exquisite best sellers",
+  "deliveryTime": "Delivery Time",
+  "schedule": "schedule",
+  "instant": "instant,",
+  "instantArrive": "Arrive by 03 Sep 2024, 11:00 AM",
+  "deliveryAddress": "Delivery Address",
+  "homeAddress": "Home",
+  "address": "2XVP+XC - Sheikh Zayed",
+  "payment": "Payment Method",
+  "addAddress": "Add New",
+  "paymentCash": "Cash on delivery",
+  "paymentCard": "Credit Card",
+  "itsGift": "It is a gift",
+  "name": "Name",
+  "enterName": "Enter the name",
+  "enterPhoneNumber": "Enter the phone number",
+  "placeOrder": "Place Order",
+  "checkout": "Checkout"
 }

@@ -8,6 +8,7 @@ import 'package:flowery_app/presentation/cart/view_model/cart_state.dart';
 import 'package:flowery_app/presentation/cart/view_model/delete_cubit/delete_cubit.dart';
 import 'package:flowery_app/presentation/cart/view_model/delete_cubit/delete_state.dart';
 import 'package:flowery_app/presentation/cart/widget/custom_cart_shimmer.dart';
+import 'package:flowery_app/presentation/checkout_page/page/checkout_view.dart';
 import 'package:flowery_app/utils/common_widgets/custom_cart_details.dart';
 import 'package:flowery_app/utils/common_widgets/custom_elevated_button.dart';
 import 'package:flowery_app/utils/loaders/loaders.dart';
@@ -187,7 +188,14 @@ class CartPage extends StatelessWidget {
                         ),
                         const RSizedBox(height: 10),
                         CustomElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            final subTotal = cart?.cart?.totalPrice ?? 0;
+                            final cartItems = cart?.cart?.cartItems ?? [];
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => CheckoutView(
+                              cartItem: cartItems[0],
+                              subTotal: subTotal,
+                            )));
+                          },
                           buttonTitle: AppText.checkOut,
                         ),
                       ],

@@ -157,5 +157,23 @@
   "noItems": "لا توجد عناصر في السلة",
   "noToken": "أنت غير مسجل الدخول، اضغط على السهم للعودة لتسجيل الدخول",
   "cartPage": "عربة التسوق",
-  "deleteCart": "تم حذف العنصر بنجاح"
+
+  "deleteCart": "تم حذف العنصر بنجاح",
+  "deliveryTime": "وقت التوصيل",
+  "schedule": "جدولة",
+  "instant": "فوري،",
+  "instantArrive": "يصل بحلول 03 سبتمبر 2024، الساعة 11:00 صباحًا",
+  "deliveryAddress": "عنوان التوصيل",
+  "homeAddress": "المنزل",
+  "address": "2XVP+XC - الشيخ زايد",
+  "payment": "طريقة الدفع",
+  "addAddress": "أضف عنوان جديد",
+  "paymentCash": "الدفع عند الاستلام",
+  "paymentCard": "بطاقة ائتمان",
+  "itsGift": "هدية",
+  "name": "الاسم",
+  "enterName": "أدخل الاسم",
+  "enterPhoneNumber": "أدخل رقم الهاتف",
+  "placeOrder": "إتمام الطلب",
+  "checkout": "اتمام الشراء"
 }
