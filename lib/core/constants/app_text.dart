@@ -192,4 +192,10 @@ abstract final class AppText {
   static const String enterName = "enterName";
   static const String enterPhoneNumber = "enterPhoneNumber";
   static const String placeOrder = "placeOrder";
+  // order page
+  static const String trackOrder = "trackOrder";
+  static const String orderPage = "orderPage";
+  static const String active = "active";
+  static const String completed = "completed";
+  static const String productName = "productName";
 }

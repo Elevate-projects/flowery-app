@@ -172,5 +172,10 @@
   "enterName": "Enter the name",
   "enterPhoneNumber": "Enter the phone number",
   "placeOrder": "Place Order",
-  "checkout": "Checkout"
+  "checkout": "Checkout",
+  "trackOrder": "Track Order",
+  "orderPage": "Order Page",
+  "active": "Active",
+  "completed": "Completed",
+  "productName": "Product Name"
 }
