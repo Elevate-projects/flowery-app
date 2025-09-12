@@ -175,17 +175,19 @@ abstract final class AppText {
   static const String deleteCart = "deleteCart";
 
   //search text
-  static const String searchForAnyProductsYouWent = 'searchForAnyProductsYouWent';
+  static const String searchForAnyProductsYouWent =
+      'searchForAnyProductsYouWent';
   static const String noProductsFound = 'noProductsFound';
   static const String notFound = 'notFound';
-  static const String noProductsFoundForYourSearch = "noProductsFoundForYourSearch";
- }
+  static const String noProductsFoundForYourSearch =
+      "noProductsFoundForYourSearch";
+
   ///
   static const String checkout = "checkout";
   static const String deliveryTime = "deliveryTime";
   static const String schedule = "schedule";
   static const String instant = "instant";
-  static const String instantArrive= "Arrive by 03 Sep 2024, 11:00 AM ";
+  static const String instantArrive = "Arrive by 03 Sep 2024, 11:00 AM ";
   static const String deliveryAddress = "deliveryAddress";
   static const String homeAddress = "Home";
   static const String address = "2XVP+XC - Sheikh Zayed";
@@ -199,6 +201,7 @@ abstract final class AppText {
   static const String enterName = "enterName";
   static const String enterPhoneNumber = "enterPhoneNumber";
   static const String placeOrder = "placeOrder";
+
   // order page
   static const String trackOrder = "trackOrder";
   static const String orderPage = "orderPage";
@@ -206,3 +209,4 @@ abstract final class AppText {
   static const String completed = "completed";
   static const String productName = "productName";
 }
+

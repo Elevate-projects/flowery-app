@@ -8,6 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomOrder extends StatelessWidget {
   final CartItemEntity cartitem;
+
   const CustomOrder({super.key, required this.cartitem});
 
   @override
@@ -28,41 +29,52 @@ class CustomOrder extends StatelessWidget {
               child: CachedNetworkImage(
                 width: 120.w,
                 height: 109.h,
-                fit: BoxFit.cover, imageUrl: cartitem.product?.imgCover ?? "",
+                fit: BoxFit.cover,
+                imageUrl: cartitem.product?.imgCover ?? "",
               ),
             ),
           ),
           SizedBox(width: 10.w),
-          Padding(
-            padding: const EdgeInsets.only(top: 10,),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(cartitem.product?.title ?? "", style: theme.textTheme.bodyMedium),
-                const SizedBox(height: 5),
-                Text(
-                  "${cartitem.product!.price} ${AppText.egp.tr()}",
-                  style: theme.textTheme.bodyMedium,
-                ),
-                const SizedBox(height: 5),
-                 const Text("Order Number: #123456"),
-                const SizedBox(height: 10),
-                RSizedBox(
-                  width: 152,
-                  height: 30,
-                  child: ElevatedButton(
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    cartitem.product?.title ?? "",
+                    style: theme.textTheme.bodyMedium,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  const SizedBox(height: 5),
+                  Text(
+                    "${cartitem.product!.price} ${AppText.egp.tr()}",
+                    style: theme.textTheme.bodyMedium,
+                  ),
+                  const SizedBox(height: 5),
+                  const Text("Order Number: #123456"),
+                  const SizedBox(height: 10),
+                  RSizedBox(
+                    width: 152,
+                    height: 30,
+                    child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: theme.colorScheme.primary,
                       ),
-                      onPressed: () {
-                      }, child: Text(AppText.trackOrder.tr(), style: theme.textTheme.bodyMedium?.copyWith(
-                    color: theme.colorScheme.secondary
-                  )
-                  )),
-                )
-              ],
+                      onPressed: () {},
+                      child: Text(
+                        AppText.trackOrder.tr(),
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          color: theme.colorScheme.secondary,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          )
+          ),
         ],
       ),
     );

@@ -36,19 +36,22 @@ class SearchBody extends StatelessWidget {
                 ),
               );
             }
-            return GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 17.r,
-                mainAxisSpacing: 17.r,
-                childAspectRatio: 1 / 1.44,
-              ),
-              itemCount: products.length,
+            return Padding(
+              padding:  REdgeInsets.all(16),
+              child: GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 17.r,
+                  mainAxisSpacing: 17.r,
+                  childAspectRatio: 1 / 1.44,
+                ),
+                itemCount: products.length,
 
-              itemBuilder: (_, index) {
-                final product = products[index];
-                return ProductCardItem(productCardData: product);
-              },
+                itemBuilder: (_, index) {
+                  final product = products[index];
+                  return ProductCardItem(productCardData: product);
+                },
+              ),
             );
           case SearchFailureState():
             return const Center(

@@ -90,7 +90,8 @@ class _AddressDetailsFormState extends State<AddressDetailsForm> {
                     hintText: AppText.recipientNameHint.tr(),
                     keyboardType: TextInputType.name,
                     textInputAction: TextInputAction.next,
-                    validator: (value) => Validations.validateEmptyText(value),
+                    validator: (value) =>
+                        Validations.userNameValidation(name: value),
                   ),
                   const RSizedBox(height: 25),
                   Row(
@@ -225,7 +226,8 @@ class _AddressDetailsFormState extends State<AddressDetailsForm> {
           case Status.failure:
             return Center(
               child: Text(
-                state.loadCitiesAndAreasStatus.error?.message ?? AppText.error.tr(),
+                state.loadCitiesAndAreasStatus.error?.message ??
+                    AppText.error.tr(),
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                   color: Theme.of(context).colorScheme.error,
                 ),

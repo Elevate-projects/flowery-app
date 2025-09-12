@@ -4,8 +4,10 @@ import 'package:flowery_app/domain/entities/cart/cart_item_entity/cart_item_enti
 import 'package:flowery_app/utils/common_widgets/custom_back_arrow.dart';
 import 'package:flowery_app/utils/common_widgets/product_card_item/custom_order.dart';
 import 'package:flutter/material.dart';
+
 class OrderPage extends StatelessWidget {
   final List<CartItemEntity> cartItems;
+
   const OrderPage({super.key, required this.cartItems});
 
   @override
@@ -42,9 +44,7 @@ class OrderPage extends StatelessWidget {
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.only(bottom: 10),
-                        child: CustomOrder(
-                          cartitem: cartItems[index],
-                        ),
+                        child: CustomOrder(cartitem: cartItems[index]),
                       );
                     },
                   ),
@@ -54,9 +54,7 @@ class OrderPage extends StatelessWidget {
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.only(bottom: 10),
-                        child: CustomOrder(
-                          cartitem: cartItems[index],
-                        ),
+                        child: CustomOrder(cartitem: cartItems[index]),
                       );
                     },
                   ),

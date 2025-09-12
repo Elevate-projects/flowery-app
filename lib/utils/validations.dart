@@ -6,6 +6,9 @@ abstract class Validations {
     if ((name?.isEmpty ?? true) || name?.trim() == "") {
       return AppText.userNameValidation.tr();
     }
+    if (RegExp(r'^\d+$').hasMatch(name!.trim())) {
+      return AppText.userNameValidation.tr(); // or a different error message
+    }
     return null;
   }
 

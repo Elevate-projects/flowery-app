@@ -12,10 +12,12 @@ class SearchView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<SearchViewModel>(
       create: (context) => getIt.get<SearchViewModel>(),
-      child: const Scaffold(appBar: PreferredSize(
+      child: const Scaffold(
+        appBar: PreferredSize(
           preferredSize: Size.fromHeight(60),
           child: SearchAppBar(),
-        ), body: SearchBody(),
+        ),
+        body: SearchBody(),
       ),
     );
   }
