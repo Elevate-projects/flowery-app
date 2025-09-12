@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flowery_app/core/state_status/state_status.dart';
 
 class AddProductToCartState extends Equatable {
-  final StateStatus<void> addToCartStatus;
+  final StateStatus<String> addToCartStatus;
   final String currentProductId;
   const AddProductToCartState({
     this.addToCartStatus = const StateStatus.initial(),
@@ -10,7 +10,7 @@ class AddProductToCartState extends Equatable {
   });
 
   AddProductToCartState copyWith({
-    StateStatus<void>? addToCartStatus,
+    StateStatus<String>? addToCartStatus,
     String? currentProductId,
   }) {
     return AddProductToCartState(
