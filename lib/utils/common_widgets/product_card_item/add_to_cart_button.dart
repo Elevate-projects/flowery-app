@@ -28,7 +28,7 @@ class AddToCartButton extends StatelessWidget {
             context: context,
           );
         } else if (state.addToCartStatus.isSuccess &&
-            state.currentProductId == productId) {
+            state.addToCartStatus.data == productId) {
           Loaders.showSuccessMessage(
             message: AppText.addProductToCartSuccessMessage.tr(),
             context: context,
@@ -38,7 +38,11 @@ class AddToCartButton extends StatelessWidget {
       builder: (context, state) =>
           (state.addToCartStatus.isLoading &&
               state.currentProductId == productId)
-          ? LoadingButton(height: 30.h)
+          ? LoadingButton(
+              height: 30.h,
+              loadingCircleHeight: 16.r,
+              loadingCircleWidth: 16.r,
+            )
           : CustomElevatedButton(
               onPressed: () async {
                 addToCartCubit.doIntent(
