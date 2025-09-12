@@ -165,4 +165,28 @@
   "noProductsFoundForYourSearch": "لم يتم العثور على منتجات لبحثك"
 
 
+
+  "deleteCart": "تم حذف العنصر بنجاح",
+  "deliveryTime": "وقت التوصيل",
+  "schedule": "جدولة",
+  "instant": "فوري،",
+  "instantArrive": "يصل بحلول 03 سبتمبر 2024، الساعة 11:00 صباحًا",
+  "deliveryAddress": "عنوان التوصيل",
+  "homeAddress": "المنزل",
+  "address": "2XVP+XC - الشيخ زايد",
+  "payment": "طريقة الدفع",
+  "addAddress": "أضف عنوان جديد",
+  "paymentCash": "الدفع عند الاستلام",
+  "paymentCard": "بطاقة ائتمان",
+  "itsGift": "هدية",
+  "name": "الاسم",
+  "enterName": "أدخل الاسم",
+  "enterPhoneNumber": "أدخل رقم الهاتف",
+  "placeOrder": "إتمام الطلب",
+  "checkout": "اتمام الشراء",
+  "trackOrder": "تتبع الطلب",
+  "orderPage": "الطلبات",
+  "active": "نشط",
+  "completed": "اكتمل",
+  "productName": "اسم المنتج"
 }

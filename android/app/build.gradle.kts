@@ -7,9 +7,8 @@ plugins {
 
 android {
     namespace = "com.example.flowery_app"
-    compileSdk = 36
-    ndkVersion = "27.0.12077973"
-
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = "29.0.13599879"
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
