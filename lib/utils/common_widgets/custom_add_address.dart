@@ -26,11 +26,11 @@ class CustomAddAddress extends StatelessWidget {
             Row(
               children: [
                 const RSizedBox(width: 10),
-                Radio(
-                  value: true,
-                  groupValue: true,
-                  onChanged: (val) {},
-                ),
+                // Radio(
+                //   value: true,
+                //   groupValue: true,
+                //   onChanged: (val) {},
+                // ),
                 const Text(AppText.homeAddress),
                 const Spacer(),
                 InkWell(
