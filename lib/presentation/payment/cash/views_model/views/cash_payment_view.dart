@@ -28,7 +28,9 @@ class CashPaymentView extends StatelessWidget {
         },
         builder: (context, state) {
           if (state is CashPaymentLoading) {
-            return const  Center(child: CircularProgressIndicator(),);
+            return const Scaffold(
+              body: Center(child: CircularProgressIndicator()),
+            );
           }
 
           return Scaffold(
