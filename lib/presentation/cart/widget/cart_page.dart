@@ -61,7 +61,7 @@ class CartPage extends StatelessWidget {
                     const CustomCartDetailsShimmer(),
               );
             }
-            if (state.cartStatus.isFailure) {
+            else if (state.cartStatus.isFailure) {
               return Center(
                 child: Text(
                   state.cartStatus.error?.message ?? AppText.unexpectedError,
@@ -69,7 +69,7 @@ class CartPage extends StatelessWidget {
                 ),
               );
             }
-            if (state.cartStatus.isSuccess) {
+            else if (state.cartStatus.isSuccess) {
               final cart = state.cartStatus.data;
               final cartItems = cart?.cart?.cartItems ?? [];
               if (cartItems.isEmpty) {
@@ -190,10 +190,8 @@ class CartPage extends StatelessWidget {
                         CustomElevatedButton(
                           onPressed: () {
                             final subTotal = cart?.cart?.totalPrice ?? 0;
-                            final cartItems = cart?.cart?.cartItems ?? [];
                             Navigator.push(context, MaterialPageRoute(builder: (context) => CheckoutPage(
-                              cartItem: cartItems,
-                              subTotal: subTotal,
+                              subTotal: subTotal.toInt(),
                             )));
                           },
                           buttonTitle: AppText.checkOut,

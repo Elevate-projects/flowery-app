@@ -1,7 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flowery_app/core/constants/app_text.dart';
-import 'package:flowery_app/core/exceptions/response_exception.dart';
-import 'package:flowery_app/utils/flowery_method_helper.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:flowery_app/core/state_status/state_status.dart';
@@ -22,14 +18,6 @@ class CartCubit extends Cubit<CartState> {
     }
   }
   Future<void> _loadCart() async {
-    if (FloweryMethodHelper.currentUserToken == null) {
-      emit(state.copyWith(
-        cartStatus: StateStatus.failure(
-          ResponseException(message: AppText.noToken.tr()),
-        ),
-      ));
-      return;
-    }
     emit(state.copyWith(cartStatus: const StateStatus.loading()));
     final result = await _getLoggedUserCartUseCase();
     if (isClosed) return;
