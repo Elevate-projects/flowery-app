@@ -1,21 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_icons.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
-import 'package:flowery_app/core/constants/const_keys.dart';
-import 'package:flowery_app/core/di/di.dart';
 import 'package:flowery_app/domain/entities/cart/cart_item_entity/cart_item_entity.dart';
-import 'package:flowery_app/domain/entities/payment/credit/credit_payment_request_entity.dart';
-import 'package:flowery_app/domain/entities/payment/enum/payment_method.dart';
 import 'package:flowery_app/presentation/checkout_page/view_model/adress_cubit/adress_cubit.dart';
 import 'package:flowery_app/presentation/checkout_page/view_model/checkout_cubit/gift_state.dart';
 import 'package:flowery_app/presentation/checkout_page/view_model/checkout_cubit/checkout_view_model.dart';
 import 'package:flowery_app/presentation/checkout_page/view_model/payment_cubit/payment_cubit.dart';
-import 'package:flowery_app/presentation/order_page/order_page.dart';
-import 'package:flowery_app/presentation/payment/cash/views_model/cash_payment_view_model.dart';
-import 'package:flowery_app/presentation/payment/cash/views_model/views/cash_payment_intent.dart';
 import 'package:flowery_app/presentation/payment/cash/views_model/views/cash_payment_view.dart';
-import 'package:flowery_app/presentation/payment/credit/views_model/credit_payment_view_model.dart';
-import 'package:flowery_app/presentation/payment/credit/views_model/views/credit_payment_intent.dart';
 import 'package:flowery_app/presentation/payment/credit/views_model/views/credit_payment_view.dart';
 import 'package:flowery_app/utils/common_widgets/custom_add_address.dart';
 import 'package:flowery_app/utils/common_widgets/custom_elevated_button.dart';
@@ -168,10 +159,10 @@ class CheckoutView extends StatelessWidget {
                   const RSizedBox(height: 10),
                   Padding(
                     padding: REdgeInsets.symmetric(horizontal: 10),
-                    child: Column(
+                    child: const Column(
                       children: [
-                        const CustomPayment(),
-                        const RSizedBox(height: 10),
+                        CustomPayment(),
+                        RSizedBox(height: 10),
                         CustomPaymentVise(),
                       ],
                     ),

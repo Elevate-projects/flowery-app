@@ -14,7 +14,6 @@ import 'package:flowery_app/domain/entities/payment/credit/credit_payment_reques
   import 'package:flowery_app/domain/entities/requests/forget_password_request/forget_password_request_entity.dart';
 import 'package:flowery_app/domain/entities/address/add_address_request_entity.dart';
 import 'package:flowery_app/domain/entities/requests/add_to_cart_request/add_to_cart_request_entity.dart';
-import 'package:flowery_app/domain/entities/requests/forget_password_request/forget_password_request_entity.dart';
 import 'package:flowery_app/domain/entities/requests/login_request/login_request_entity.dart';
 import 'package:flowery_app/domain/entities/requests/register_request/register_request_entity.dart';
 import 'package:flowery_app/domain/entities/resend_code/request/resend_code_request.dart';

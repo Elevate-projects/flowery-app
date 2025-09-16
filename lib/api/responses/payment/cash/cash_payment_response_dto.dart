@@ -49,7 +49,7 @@ class Order {
   @JsonKey(name: "state")
   final String? state;
   @JsonKey(name: "_id")
-  final String? Id;
+  final String? id;
   @JsonKey(name: "createdAt")
   final String? createdAt;
   @JsonKey(name: "updatedAt")
@@ -67,7 +67,7 @@ class Order {
     this.isPaid,
     this.isDelivered,
     this.state,
-    this.Id,
+    this.id,
     this.createdAt,
     this.updatedAt,
     this.orderNumber,
@@ -93,7 +93,7 @@ class Order {
       isPaid: isPaid,
       isDelivered: isDelivered,
       state: state,
-      id: Id,
+      id: id,
       createdAt: createdAt,
       updatedAt: updatedAt,
       orderNumber: orderNumber,
@@ -113,13 +113,13 @@ class OrderItems {
   @JsonKey(name: "quantity")
   final int? quantity;
   @JsonKey(name: "_id")
-  final String? Id;
+  final String? id;
 
   OrderItems ({
     this.product,
     this.price,
     this.quantity,
-    this.Id,
+    this.id,
   });
 
   factory OrderItems.fromJson(Map<String, dynamic> json) {
@@ -134,7 +134,7 @@ class OrderItems {
       product: product?.productToEntity(),
       price: price,
       quantity: quantity,
-      id: Id,
+      id: id,
     );
   }
 
@@ -146,8 +146,8 @@ class Product {
   final int? rateAvg;
   @JsonKey(name: "rateCount")
   final int? rateCount;
-  @JsonKey(name: "_id")
-  final String? Id;
+  @JsonKey(name: "id")
+  final String? id;
   @JsonKey(name: "title")
   final String? title;
   @JsonKey(name: "slug")
@@ -178,13 +178,12 @@ class Product {
   final int? sold;
   @JsonKey(name: "isSuperAdmin")
   final bool? isSuperAdmin;
-  @JsonKey(name: "id")
-  final String? id;
+
 
   Product ({
     this.rateAvg,
     this.rateCount,
-    this.Id,
+    this.id,
     this.title,
     this.slug,
     this.description,
@@ -200,8 +199,7 @@ class Product {
     this.V,
     this.sold,
     this.isSuperAdmin,
-    this.id,
-  });
+   });
 
   factory Product.fromJson(Map<String, dynamic> json) {
     return _$ProductFromJson(json);
@@ -214,7 +212,7 @@ class Product {
     return ProductEntity(
       rateAvg: rateAvg,
       rateCount: rateCount,
-      id: Id,
+      id: id,
       title: title,
       slug: slug,
       description: description,

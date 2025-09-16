@@ -1,9 +1,7 @@
-import 'package:flowery_app/core/constants/const_keys.dart';
 import 'package:flowery_app/core/di/di.dart';
 import 'package:flowery_app/core/router/route_names.dart';
 import 'package:flowery_app/domain/entities/address/address_entity.dart';
 import 'package:flowery_app/domain/entities/arguments/occasion_arguments_entity.dart';
-import 'package:flowery_app/domain/entities/payment/credit/credit_payment_request_entity.dart';
 import 'package:flowery_app/domain/entities/product_card/product_card_entity.dart';
 import 'package:flowery_app/presentation/about_us/views/about_us_view.dart';
 import 'package:flowery_app/presentation/address_details/view/address_details.dart';
@@ -97,13 +95,13 @@ abstract class AppRoutes {
         return MaterialPageRoute(builder: (_) => const AddressDetails());
         case RouteNames.creditPaymentView:
        return MaterialPageRoute(
-        builder: (_) => CreditPaymentView(cartItems: [],),
+        builder: (_) => const CreditPaymentView(cartItems: [],),
       );
 
       case RouteNames.cashPaymentView:
 
         return MaterialPageRoute(
-            builder: (_) =>    CashPaymentView(cartItems: [],)
+            builder: (_) =>    const CashPaymentView(cartItems: [],)
         );
       default:
         return null;

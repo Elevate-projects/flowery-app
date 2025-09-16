@@ -31,7 +31,7 @@ class _CreditCheckoutWebViewState extends State<CreditCheckoutWebView> {
               context.read<CreditPaymentViewModel>().doIntent(
                 OnPaymentRedirect(url: url),
               );
-              Future.microtask(() => Navigator.pop(context));
+              Navigator.pop(context);
             }
           },
           onWebResourceError: (error) {

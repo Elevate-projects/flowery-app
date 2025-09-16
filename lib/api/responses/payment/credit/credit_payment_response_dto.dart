@@ -41,9 +41,9 @@ class SessionDto {
   @JsonKey(name: "adaptive_pricing")
   final AdaptivePricing? adaptivePricing;
   @JsonKey(name: "after_expiration")
-  final dynamic? afterExpiration;
+  final dynamic afterExpiration;
   @JsonKey(name: "allow_promotion_codes")
-  final dynamic? allowPromotionCodes;
+  final dynamic allowPromotionCodes;
   @JsonKey(name: "amount_subtotal")
   final int? amountSubtotal;
   @JsonKey(name: "amount_total")
@@ -51,31 +51,31 @@ class SessionDto {
   @JsonKey(name: "automatic_tax")
   final AutomaticTax? automaticTax;
   @JsonKey(name: "billing_address_collection")
-  final dynamic? billingAddressCollection;
+  final dynamic billingAddressCollection;
   @JsonKey(name: "cancel_url")
   final String? cancelUrl;
   @JsonKey(name: "client_reference_id")
   final String? clientReferenceId;
   @JsonKey(name: "client_secret")
-  final dynamic? clientSecret;
+  final dynamic clientSecret;
   @JsonKey(name: "collected_information")
   final CollectedInformation? collectedInformation;
   @JsonKey(name: "consent")
-  final dynamic? consent;
+  final dynamic consent;
   @JsonKey(name: "consent_collection")
-  final dynamic? consentCollection;
+  final dynamic consentCollection;
   @JsonKey(name: "created")
   final int? created;
   @JsonKey(name: "currency")
   final String? currency;
   @JsonKey(name: "currency_conversion")
-  final dynamic? currencyConversion;
+  final dynamic currencyConversion;
   @JsonKey(name: "custom_fields")
   final List<dynamic>? customFields;
   @JsonKey(name: "custom_text")
   final CustomText? customText;
   @JsonKey(name: "customer")
-  final dynamic? customer;
+  final dynamic customer;
   @JsonKey(name: "customer_creation")
   final String? customerCreation;
   @JsonKey(name: "customer_details")
@@ -87,23 +87,23 @@ class SessionDto {
   @JsonKey(name: "expires_at")
   final int? expiresAt;
   @JsonKey(name: "invoice")
-  final dynamic? invoice;
+  final dynamic invoice;
   @JsonKey(name: "invoice_creation")
   final InvoiceCreation? invoiceCreation;
   @JsonKey(name: "livemode")
   final bool? livemode;
   @JsonKey(name: "locale")
-  final dynamic? locale;
+  final dynamic locale;
   @JsonKey(name: "metadata")
   final Metadata? metadata;
   @JsonKey(name: "mode")
   final String? mode;
   @JsonKey(name: "origin_context")
-  final dynamic? originContext;
+  final dynamic originContext;
   @JsonKey(name: "payment_intent")
-  final dynamic? paymentIntent;
+  final dynamic paymentIntent;
   @JsonKey(name: "payment_link")
-  final dynamic? paymentLink;
+  final dynamic paymentLink;
   @JsonKey(name: "payment_method_collection")
   final String? paymentMethodCollection;
   @JsonKey(name: "payment_method_configuration_details")
@@ -115,29 +115,29 @@ class SessionDto {
   @JsonKey(name: "payment_status")
   final String? paymentStatus;
   @JsonKey(name: "permissions")
-  final dynamic? permissions;
+  final dynamic permissions;
   @JsonKey(name: "phone_number_collection")
   final PhoneNumberCollection? phoneNumberCollection;
   @JsonKey(name: "recovered_from")
-  final dynamic? recoveredFrom;
+  final dynamic recoveredFrom;
   @JsonKey(name: "saved_payment_method_options")
-  final dynamic? savedPaymentMethodOptions;
+  final dynamic savedPaymentMethodOptions;
   @JsonKey(name: "setup_intent")
-  final dynamic? setupIntent;
+  final dynamic setupIntent;
   @JsonKey(name: "shipping_address_collection")
-  final dynamic? shippingAddressCollection;
+  final dynamic shippingAddressCollection;
   @JsonKey(name: "shipping_cost")
-  final dynamic? shippingCost;
+  final dynamic shippingCost;
   @JsonKey(name: "shipping_details")
-  final dynamic? shippingDetails;
+  final dynamic shippingDetails;
   @JsonKey(name: "shipping_options")
   final List<dynamic>? shippingOptions;
   @JsonKey(name: "status")
   final String? status;
   @JsonKey(name: "submit_type")
-  final dynamic? submitType;
+  final dynamic submitType;
   @JsonKey(name: "subscription")
-  final dynamic? subscription;
+  final dynamic subscription;
   @JsonKey(name: "success_url")
   final String? successUrl;
   @JsonKey(name: "total_details")
@@ -147,7 +147,7 @@ class SessionDto {
   @JsonKey(name: "url")
   final String? url;
   @JsonKey(name: "wallet_options")
-  final dynamic? walletOptions;
+  final dynamic walletOptions;
 
   SessionDto ({
     this.id,
@@ -252,11 +252,11 @@ class AutomaticTax {
   @JsonKey(name: "enabled")
   final bool? enabled;
   @JsonKey(name: "liability")
-  final dynamic? liability;
+  final dynamic liability;
   @JsonKey(name: "provider")
-  final dynamic? provider;
+  final dynamic provider;
   @JsonKey(name: "status")
-  final dynamic? status;
+  final dynamic status;
 
   AutomaticTax ({
     this.enabled,
@@ -277,7 +277,7 @@ class AutomaticTax {
 @JsonSerializable()
 class CollectedInformation {
   @JsonKey(name: "shipping_details")
-  final dynamic? shippingDetails;
+  final dynamic shippingDetails;
 
   CollectedInformation ({
     this.shippingDetails,
@@ -295,13 +295,13 @@ class CollectedInformation {
 @JsonSerializable()
 class CustomText {
   @JsonKey(name: "after_submit")
-  final dynamic? afterSubmit;
+  final dynamic afterSubmit;
   @JsonKey(name: "shipping_address")
-  final dynamic? shippingAddress;
+  final dynamic shippingAddress;
   @JsonKey(name: "submit")
-  final dynamic? submit;
+  final dynamic submit;
   @JsonKey(name: "terms_of_service_acceptance")
-  final dynamic? termsOfServiceAcceptance;
+  final dynamic termsOfServiceAcceptance;
 
   CustomText ({
     this.afterSubmit,
@@ -322,17 +322,17 @@ class CustomText {
 @JsonSerializable()
 class CustomerDetails {
   @JsonKey(name: "address")
-  final dynamic? address;
+  final dynamic address;
   @JsonKey(name: "email")
   final String? email;
   @JsonKey(name: "name")
-  final dynamic? name;
+  final dynamic name;
   @JsonKey(name: "phone")
-  final dynamic? phone;
+  final dynamic phone;
   @JsonKey(name: "tax_exempt")
   final String? taxExempt;
   @JsonKey(name: "tax_ids")
-  final dynamic? taxIds;
+  final dynamic taxIds;
 
   CustomerDetails ({
     this.address,
@@ -376,19 +376,19 @@ class InvoiceCreation {
 @JsonSerializable()
 class InvoiceData {
   @JsonKey(name: "account_tax_ids")
-  final dynamic? accountTaxIds;
+  final dynamic accountTaxIds;
   @JsonKey(name: "custom_fields")
-  final dynamic? customFields;
+  final dynamic customFields;
   @JsonKey(name: "description")
-  final dynamic? description;
+  final dynamic description;
   @JsonKey(name: "footer")
-  final dynamic? footer;
+  final dynamic footer;
   @JsonKey(name: "issuer")
-  final dynamic? issuer;
+  final dynamic issuer;
   @JsonKey(name: "metadata")
   final Metadata? metadata;
   @JsonKey(name: "rendering_options")
-  final dynamic? renderingOptions;
+  final dynamic renderingOptions;
 
   InvoiceData ({
     this.accountTaxIds,
@@ -458,7 +458,7 @@ class PaymentMethodConfigurationDetails {
   @JsonKey(name: "id")
   final String? id;
   @JsonKey(name: "parent")
-  final dynamic? parent;
+  final dynamic parent;
 
   PaymentMethodConfigurationDetails ({
     this.id,
