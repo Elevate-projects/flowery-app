@@ -205,12 +205,12 @@ extension GetItInjectableX on _i174.GetIt {
       preResolve: true,
     );
     gh.factory<_i225.AboutUsCubit>(() => _i225.AboutUsCubit());
+    gh.factory<_i504.GiftSwitchCubit>(() => _i504.GiftSwitchCubit());
     gh.factory<_i694.OccasionsViewModel>(() => _i694.OccasionsViewModel());
     gh.factory<_i586.ProductDetailsCubit>(() => _i586.ProductDetailsCubit());
     gh.factory<_i297.TermsAndConditionsCubit>(
       () => _i297.TermsAndConditionsCubit(),
     );
-    gh.factory<_i504.GiftSwitchCubit>(() => _i504.GiftSwitchCubit());
     gh.singleton<_i361.Dio>(() => apiModule.provideDio());
     gh.singleton<_i23.SecureStorage>(() => _i23.SecureStorage());
     gh.factory<_i508.ApiClient>(() => _i508.ApiClient(gh<_i361.Dio>()));
