@@ -97,12 +97,13 @@ abstract class AppRoutes {
         return MaterialPageRoute(builder: (_) => const AddressDetails());
         case RouteNames.creditPaymentView:
        return MaterialPageRoute(
-        builder: (_) => CreditPaymentView(),
+        builder: (_) => CreditPaymentView(cartItems: [],),
       );
 
       case RouteNames.cashPaymentView:
+
         return MaterialPageRoute(
-            builder: (_) =>    CashPaymentView()
+            builder: (_) =>    CashPaymentView(cartItems: [],)
         );
       default:
         return null;

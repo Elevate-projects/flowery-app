@@ -180,5 +180,8 @@
   "orderPage": "الطلبات",
   "active": "نشط",
   "completed": "اكتمل",
-  "productName": "اسم المنتج"
+  "productName": "اسم المنتج",
+  "pleaseSelectAPaymentMethod": "من فضلك اختر طريقة الدفع",
+  "paymentCompleted": "تم الدفع بنجاح",
+  "invalidSessionURL": "رابط الجلسة غير صالح"
 }

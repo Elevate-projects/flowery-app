@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
+import 'package:flowery_app/domain/entities/payment/enum/payment_method.dart';
 import 'package:flowery_app/presentation/checkout_page/view_model/payment_cubit/payment_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,7 +13,7 @@ class CustomPayment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return BlocBuilder<PaymentCubit, String>(
+    return BlocBuilder<PaymentCubit,PaymentMethod?>(
       builder: (context, method) {
         return Container(
           width: 343.w,
@@ -24,10 +25,11 @@ class CustomPayment extends StatelessWidget {
           ),
           child: RadioButton(
             description: AppText.paymentCash.tr(),
-            value: AppText.paymentCash.tr(),
+            value: PaymentMethod.cash,
             groupValue: method,
             onChanged: (val) {
-              context.read<PaymentCubit>().selectMethod(val!);
+              context.read<PaymentCubit>().selectMethod(PaymentMethod.cash);
+
             },
             textPosition: RadioButtonTextPosition.right,
           ),

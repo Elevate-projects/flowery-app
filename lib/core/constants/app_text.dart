@@ -173,12 +173,13 @@ abstract final class AppText {
   static const String price = "price";
   static const String cartPage = "cart";
   static const String deleteCart = "deleteCart";
+
   ///
   static const String checkout = "checkout";
   static const String deliveryTime = "deliveryTime";
   static const String schedule = "schedule";
   static const String instant = "instant";
-  static const String instantArrive= "Arrive by 03 Sep 2024, 11:00 AM ";
+  static const String instantArrive = "Arrive by 03 Sep 2024, 11:00 AM ";
   static const String deliveryAddress = "deliveryAddress";
   static const String homeAddress = "Home";
   static const String address = "2XVP+XC - Sheikh Zayed";
@@ -192,10 +193,16 @@ abstract final class AppText {
   static const String enterName = "enterName";
   static const String enterPhoneNumber = "enterPhoneNumber";
   static const String placeOrder = "placeOrder";
+
   // order page
   static const String trackOrder = "trackOrder";
   static const String orderPage = "orderPage";
   static const String active = "active";
   static const String completed = "completed";
   static const String productName = "productName";
+
+// payment
+  static const String pleaseSelectAPaymentMethod = "pleaseSelectAPaymentMethod";
+  static const String paymentCompleted = "paymentCompleted";
+  static const String invalidSessionURL = "invalidSessionURL";
 }

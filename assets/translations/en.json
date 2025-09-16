@@ -177,5 +177,8 @@
   "orderPage": "Order Page",
   "active": "Active",
   "completed": "Completed",
-  "productName": "Product Name"
+  "productName": "Product Name",
+  "pleaseSelectAPaymentMethod": "Please Select a Payment Method",
+  "paymentCompleted": "Payment Completed",
+  "invalidSessionURL": "Invalid Session URL"
 }
