@@ -1,7 +1,5 @@
 import 'package:bloc_test/bloc_test.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/api/client/api_result.dart';
-import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/core/exceptions/response_exception.dart';
 import 'package:flowery_app/domain/entities/cart/cart_entity/cart_entity.dart';
 import 'package:flowery_app/domain/entities/cart/cart_item_entity/cart_item_entity.dart';
@@ -60,19 +58,24 @@ void main() {
     cubit = CartCubit(mockGetLoggedUserCartUseCase);
   });
   blocTest<CartCubit, CartState>(
-    'emits failure when token is null',
+    'emits loading then failure when token is null',
     build: () {
       FloweryMethodHelper.currentUserToken = null;
+      when(mockGetLoggedUserCartUseCase()).thenAnswer(
+            (_) async => Failure(
+          responseException: const ResponseException(message: "noToken"),
+        ),
+      );
       return cubit;
     },
     act: (cubit) async => await cubit.doIntent(LoadCartIntent()),
     expect: () => [
+      isA<CartState>().having((s) => s.cartStatus.isLoading, "isLoading", true),
       isA<CartState>()
           .having((s) => s.cartStatus.isFailure, "isFailure", true)
-          .having((s) => s.cartStatus.error?.message, "error message", AppText.noToken.tr()),
+          .having((s) => s.cartStatus.error?.message, "error message", "noToken"),
     ],
   );
-
   blocTest<CartCubit, CartState>(
     'emits loading then success when GetLoggedUserCartUseCase returns Success',
     build: () {
