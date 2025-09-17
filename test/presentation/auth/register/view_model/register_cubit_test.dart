@@ -11,8 +11,8 @@ import 'package:flowery_app/utils/flowery_method_helper.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-
 import '../../../../fake_form_state.dart';
+
 import 'register_cubit_test.mocks.dart';
 
 @GenerateMocks([RegisterUseCase])
