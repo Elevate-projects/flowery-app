@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_colors.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/presentation/edit_profile/view_model/edit_profile_cubit.dart';
+import 'package:flowery_app/presentation/edit_profile/view_model/edit_profile_intents.dart';
 import 'package:flowery_app/presentation/edit_profile/view_model/edit_profile_state.dart';
 import 'package:flowery_app/utils/common_widgets/custom_text_form_field.dart';
 import 'package:flowery_app/utils/validations.dart';
@@ -37,6 +39,9 @@ class EditProfileForm extends StatelessWidget {
                       textInputAction: TextInputAction.next,
                       validator: (value) =>
                           Validations.validateEmptyText(value),
+                          onChanged: (_) {
+                            controller.doIntent(intent: IsEditingFieldIntent());
+                          },
                     ),
                   ),
                   const RSizedBox(width: 17),
@@ -50,6 +55,9 @@ class EditProfileForm extends StatelessWidget {
                       textInputAction: TextInputAction.next,
                       validator: (value) =>
                           Validations.validateEmptyText(value),
+                          onChanged: (_) {
+                            controller.doIntent(intent: IsEditingFieldIntent());
+                          }
                     ),
                   ),
                 ],
@@ -63,6 +71,9 @@ class EditProfileForm extends StatelessWidget {
                 keyboardType: TextInputType.emailAddress,
                 textInputAction: TextInputAction.next,
                 validator: (value) => Validations.emailValidation(email: value),
+                onChanged: (_) {
+                            controller.doIntent(intent: IsEditingFieldIntent());
+                          }
               ),
               const RSizedBox(height: 24),
               CustomTextFormField(
@@ -74,6 +85,9 @@ class EditProfileForm extends StatelessWidget {
                 textInputAction: TextInputAction.next,
                 validator: (value) =>
                     Validations.phoneValidation(phoneNumber: value),
+                    onChanged: (_) {
+                            controller.doIntent(intent: IsEditingFieldIntent());
+                          }
               ),
               const RSizedBox(height: 24),
               Stack(
@@ -100,7 +114,7 @@ class EditProfileForm extends StatelessWidget {
                     onTap: () {
                       //navigate to reset password screen
                     },
-                    child: Text(AppText.changePassword,
+                    child: Text(AppText.changePassword.tr(),
                     style: theme.textTheme.bodySmall?.copyWith(
                       color: AppColors.pink,
                       fontWeight: FontWeight.w600

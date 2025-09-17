@@ -23,7 +23,6 @@ class EditProfileCubit extends Cubit<EditProfileState> {
   final UploadPhotoUseCase _uploadPhotoUseCase;
   final ImagePicker _imagePicker = ImagePicker();
   File _imageFile = File('');
-  //final GetUserProfileDataUseCase getUserData;
 
   EditProfileCubit(this._editProfileUseCase, this._uploadPhotoUseCase)
     : super(const EditProfileState());
@@ -41,10 +40,14 @@ class EditProfileCubit extends Cubit<EditProfileState> {
         break;
       case EditProfileWithDataIntent():
         await _editProfile();
+        break;
 
       case UploadPhotoIntent():
         await _pickAndUploadPhoto();
         break;
+      case IsEditingFieldIntent():
+         _isEdited();
+         break;
     }
   }
 
@@ -73,6 +76,7 @@ class EditProfileCubit extends Cubit<EditProfileState> {
     );
     switch (result) {
       case Success<UserDataEntity>():
+      FloweryMethodHelper.userData = result.data;
         emit(state.copyWith(editProfileState: const StateStatus.success(null)));
       case Failure<UserDataEntity>():
         emit(
@@ -114,7 +118,7 @@ class EditProfileCubit extends Cubit<EditProfileState> {
 
     switch (result) {
       case Success<UploadPhotoResponseEntity>():
-        emit(state.copyWith(uploadPhotoState: StateStatus.success(_imageFile)));
+        emit(state.copyWith(uploadPhotoState: StateStatus.success(photoFile)));
       case Failure<UploadPhotoResponseEntity>():
         emit(
           state.copyWith(
@@ -122,5 +126,21 @@ class EditProfileCubit extends Cubit<EditProfileState> {
           ),
         );
     }
+  }
+
+  void _isEdited() {
+    if(firstNameController.text != FloweryMethodHelper.userData?.firstName ||
+      lastNameController.text != FloweryMethodHelper.userData?.lastName ||
+      emailController.text != FloweryMethodHelper.userData?.email ||
+      phoneNumberController.text != FloweryMethodHelper.userData?.phone){
+      emit(state.copyWith(hasChanges: true));
+    } else {
+      emit(state.copyWith(hasChanges: false));
+    }
+  }
+
+  @visibleForTesting
+  Future<void> testUploadPhoto(File photoFile) async {
+    await _uploadProfilePhoto(photoFile);
   }
 }

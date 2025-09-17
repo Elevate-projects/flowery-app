@@ -1,6 +1,3 @@
-import 'package:flowery_app/core/constants/app_colors.dart';
-import 'package:flowery_app/core/constants/app_icons.dart';
-import 'package:flowery_app/core/constants/app_images.dart';
 import 'package:flowery_app/presentation/edit_profile/view_model/edit_profile_cubit.dart';
 import 'package:flowery_app/presentation/edit_profile/view_model/edit_profile_state.dart';
 import 'package:flowery_app/presentation/edit_profile/views/widget/edit_profile_button.dart';
@@ -11,7 +8,6 @@ import 'package:flowery_app/utils/loaders/loaders.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 
 class EditProfileDetails extends StatelessWidget {
   const EditProfileDetails({super.key});

@@ -18,10 +18,11 @@ class EditProfileRegisterGenderRadioButton extends StatelessWidget {
     return BlocBuilder<EditProfileCubit, EditProfileState>(
       buildWhen: (previous, current) => current is GenderChangedState,
       builder: (context, state) {
-        return Row(
-          children: [
-            Flexible(
-              child: RadioMenuButton<Gender>(
+        return Expanded(
+          flex: 3,
+          child: Row(
+            children: [
+              RadioMenuButton<Gender>(
                 value: Gender.female,
                 groupValue: controller.selectedGender,
                 onChanged: null,
@@ -34,15 +35,19 @@ class EditProfileRegisterGenderRadioButton extends StatelessWidget {
                     theme.colorScheme.primary.withValues(alpha: 0.1),
                   ),
                 ),
-                child: Text(
-                  AppText.genderFemaleDisplay.tr(),
-                  style: const TextStyle(color: Colors.black),
+                child: RSizedBox(
+                  width: 53,
+                  child: FittedBox( 
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      AppText.genderFemaleDisplay.tr(),
+                      style: const TextStyle(color: Colors.black),
+                    ),
+                  ),
                 ),
               ),
-            ),
-            SizedBox(width: 12.w),
-            Flexible(
-              child: RadioMenuButton<Gender>(
+              SizedBox(width: 12.w),
+              RadioMenuButton<Gender>(
                 value: Gender.male,
                 groupValue: controller.selectedGender,
                 onChanged: null,
@@ -55,13 +60,19 @@ class EditProfileRegisterGenderRadioButton extends StatelessWidget {
                     theme.colorScheme.primary.withValues(alpha: 0.1),
                   ),
                 ),
-                child: Text(
-                  AppText.genderMaleDisplay.tr(),
-                  style: TextStyle(color: Colors.black),
+                child: RSizedBox(
+                  width: 53,
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      AppText.genderMaleDisplay.tr(),
+                      style: const TextStyle(color: Colors.black),
+                    ),
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         );
       },
     );

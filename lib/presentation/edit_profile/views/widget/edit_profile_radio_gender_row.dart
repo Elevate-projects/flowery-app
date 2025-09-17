@@ -13,9 +13,11 @@ class EditProfileRadioGenderRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Text(AppText.genderLabel.tr(), style: theme.textTheme.headlineSmall),
+        Expanded(child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(AppText.genderLabel.tr(), style: theme.textTheme.headlineSmall))),
         const RSizedBox(width: 40),
-        const Expanded(child: EditProfileRegisterGenderRadioButton()),
+        const EditProfileRegisterGenderRadioButton(),
       ],
     );
   }

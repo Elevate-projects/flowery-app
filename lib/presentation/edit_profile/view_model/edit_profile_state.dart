@@ -9,11 +9,12 @@ class EditProfileState extends Equatable {
   final StateStatus<void> editProfileState;
   final StateStatus<File> uploadPhotoState;
   final Gender selectedGender;
-
+  final bool hasChanges;
   const EditProfileState({
     this.editProfileState = const StateStatus.initial(),
     this.uploadPhotoState = const StateStatus.initial(),
     this.selectedGender = Gender.male,
+    this.hasChanges = false,
   });
 
   @override
@@ -21,6 +22,7 @@ class EditProfileState extends Equatable {
     editProfileState,
     uploadPhotoState,
     selectedGender,
+    hasChanges,
   ];
 
   EditProfileState copyWith({
@@ -35,6 +37,7 @@ class EditProfileState extends Equatable {
       editProfileState: editProfileState ?? this.editProfileState,
       uploadPhotoState: uploadPhotoState ?? this.uploadPhotoState,
       selectedGender: selectedGender ?? this.selectedGender,
+      hasChanges: hasChanges ?? this.hasChanges,
     );
   }
 }

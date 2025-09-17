@@ -34,6 +34,9 @@
   "createAnAccountYouAgree": "بإنشائك حساب، فإنك توافق على ",
   "termsAndConditions": "الشروط والأحكام",
   "alreadyHaveAnAccount": "لديك حساب بالفعل؟",
+  "editProfile": "تعديل الملف الشخصي",
+  "editProfileUpdateButton": "تحديث",
+  "changePassword": "تغيير كلمة المرور",
 
   "home": "الرئيسية",
   "categories": "التصنيفات",

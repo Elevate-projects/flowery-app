@@ -116,7 +116,7 @@ abstract class RequestMapper {
     );
   }
 
-  static EditProfileRequest toEditProfileRequestEntity({
+  static EditProfileRequest toEditProfileRequest({
     required EditProfileRequestEntity entity,
   }) {
     return EditProfileRequest(

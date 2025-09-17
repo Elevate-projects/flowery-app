@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/presentation/edit_profile/view_model/edit_profile_cubit.dart';
 import 'package:flowery_app/presentation/edit_profile/view_model/edit_profile_intents.dart';
@@ -19,11 +20,11 @@ class EditProfileButton extends StatelessWidget {
         if (state.editProfileState.isLoading) {
           return const LoadingButton();
         }
-        return CustomElevatedButton(
-          onPressed: () async {
+        return  CustomElevatedButton(
+          onPressed: state.hasChanges ?() async {
             await controller.doIntent(intent: EditProfileWithDataIntent());
-          },
-          buttonTitle: AppText.editProfileUpdateButton,
+          } : null,
+          buttonTitle: AppText.editProfileUpdateButton.tr(),
         );
       },
     );

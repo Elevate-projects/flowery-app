@@ -4,3 +4,4 @@ class InitializedEditProfileIntent extends EditProfileIntents {}
 
 class EditProfileWithDataIntent extends EditProfileIntents {}
 class UploadPhotoIntent extends EditProfileIntents {}
+class IsEditingFieldIntent extends EditProfileIntents {}

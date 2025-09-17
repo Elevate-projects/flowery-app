@@ -34,6 +34,9 @@
   "createAnAccountYouAgree": "Creating an account, you agree to our ",
   "termsAndConditions": "Terms and Conditions",
   "alreadyHaveAnAccount": "Already have an account?",
+  "editProfile": "Edit Profile",
+  "editProfileUpdateButton": "Update",
+  "changePassword": "Change",
 
   "home": "Home",
   "categories": "Categories",

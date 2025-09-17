@@ -68,9 +68,9 @@ abstract final class AppText {
   static const String cancel = "cancel";
 
   // Edit Profile
-  static const String editProfile = "Edit Profile";
-  static const String editProfileUpdateButton = "Update";
-  static const String changePassword = "Change";
+  static const String editProfile = "editProfile";
+  static const String editProfileUpdateButton = "editProfileUpdateButton";
+  static const String changePassword = "changePassword";
 
   // Product Details
   static const String status = "status";

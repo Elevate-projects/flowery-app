@@ -1,6 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_colors.dart';
 import 'package:flowery_app/core/constants/app_icons.dart';
-import 'package:flowery_app/core/constants/app_images.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -29,7 +29,7 @@ class EditProfileAppBar extends StatelessWidget {
               ),
               Flexible(
                 child: Text(
-                  AppText.editProfile,
+                  AppText.editProfile.tr(),
                   style: theme.textTheme.headlineMedium?.copyWith(
                     fontFamily: "Roboto",
                   ),
