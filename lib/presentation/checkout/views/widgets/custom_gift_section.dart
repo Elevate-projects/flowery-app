@@ -1,11 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
-import 'package:flowery_app/presentation/checkout_page/view_model/checkout_cubit/checkout_view_model.dart';
-import 'package:flowery_app/presentation/checkout_page/view_model/checkout_cubit/gift_state.dart';
+import 'package:flowery_app/presentation/checkout/views_model/checkout_cubit/checkout_view_model.dart';
+import 'package:flowery_app/presentation/checkout/views_model/checkout_cubit/gift_state.dart';
 import 'package:flowery_app/utils/common_widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 class CustomGiftSection extends StatelessWidget {
   const CustomGiftSection({super.key});
 
@@ -28,7 +29,9 @@ class CustomGiftSection extends StatelessWidget {
                       return Switch.adaptive(
                         value: state.isGift,
                         onChanged: (value) {
-                          context.read<GiftSwitchCubit>().toggleGiftSwitch(value);
+                          context.read<GiftSwitchCubit>().toggleGiftSwitch(
+                            value,
+                          );
                         },
                         padding: EdgeInsets.zero,
                         activeThumbColor: theme.colorScheme.secondary,
@@ -40,10 +43,7 @@ class CustomGiftSection extends StatelessWidget {
                 ),
               ),
               const RSizedBox(width: 10),
-              Text(
-                AppText.itsGift.tr(),
-                style: theme.textTheme.headlineSmall,
-              ),
+              Text(AppText.itsGift.tr(), style: theme.textTheme.headlineSmall),
             ],
           ),
         ),
@@ -52,7 +52,7 @@ class CustomGiftSection extends StatelessWidget {
             if (state is GiftSwitchInitial && state.isGift) {
               return Column(
                 children: [
-                   const RSizedBox(height: 5),
+                  const RSizedBox(height: 5),
                   Padding(
                     padding: REdgeInsets.symmetric(horizontal: 10),
                     child: CustomTextFormField(

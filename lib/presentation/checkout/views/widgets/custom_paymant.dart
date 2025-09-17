@@ -1,13 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
-import 'package:flowery_app/presentation/checkout_page/view_model/payment_cubit/payment_cubit.dart';
+import 'package:flowery_app/presentation/checkout/views_model/payment_cubit/payment_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:group_radio_button/group_radio_button.dart';
 
-class CustomPaymentVise extends StatelessWidget {
-  const CustomPaymentVise({super.key});
+class CustomPayment extends StatelessWidget {
+  const CustomPayment({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +23,8 @@ class CustomPaymentVise extends StatelessWidget {
             border: Border.all(color: theme.colorScheme.shadow),
           ),
           child: RadioButton(
-            description: AppText.paymentCard.tr(),
-            value: AppText.paymentCard.tr(),
+            description: AppText.paymentCash.tr(),
+            value: AppText.paymentCash.tr(),
             groupValue: method,
             onChanged: (val) {
               context.read<PaymentCubit>().selectMethod(val!);
@@ -36,5 +36,3 @@ class CustomPaymentVise extends StatelessWidget {
     );
   }
 }
-
-

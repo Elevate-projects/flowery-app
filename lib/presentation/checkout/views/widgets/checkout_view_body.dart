@@ -1,22 +1,19 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_icons.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
-import 'package:flowery_app/utils/common_widgets/checkout_common_widgets/custom_add_naw_address.dart';
-import 'package:flowery_app/utils/common_widgets/checkout_common_widgets/custom_checkout_summary.dart';
-import 'package:flowery_app/utils/common_widgets/checkout_common_widgets/custom_delivery_address.dart';
-import 'package:flowery_app/utils/common_widgets/checkout_common_widgets/custom_divider.dart';
-import 'package:flowery_app/utils/common_widgets/checkout_common_widgets/custom_gift_section.dart';
-import 'package:flowery_app/utils/common_widgets/custom_paymant.dart';
-import 'package:flowery_app/utils/common_widgets/custom_payment_vise.dart';
+import 'package:flowery_app/presentation/checkout/views/widgets/custom_add_naw_address.dart';
+import 'package:flowery_app/presentation/checkout/views/widgets/custom_checkout_summary.dart';
+import 'package:flowery_app/presentation/checkout/views/widgets/custom_delivery_address.dart';
+import 'package:flowery_app/presentation/checkout/views/widgets/custom_divider.dart';
+import 'package:flowery_app/presentation/checkout/views/widgets/custom_gift_section.dart';
+import 'package:flowery_app/presentation/checkout/views/widgets/custom_paymant.dart';
+import 'package:flowery_app/presentation/checkout/views/widgets/custom_payment_vise.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CheckoutViewBody extends StatelessWidget {
   final int subTotal;
-  const CheckoutViewBody({
-    super.key,
-     required this.subTotal,
-  });
+  const CheckoutViewBody({super.key, required this.subTotal});
 
   @override
   Widget build(BuildContext context) {
