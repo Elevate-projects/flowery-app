@@ -1,6 +1,8 @@
 import 'package:flowery_app/domain/entities/product_card/product_card_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
+
 part 'product_card_model.g.dart';
+
 @JsonSerializable()
 class ProductCardModel {
   @JsonKey(name: "rateAvg")
@@ -39,8 +41,6 @@ class ProductCardModel {
   final bool? isSuperAdmin;
   @JsonKey(name: "sold")
   final int? sold;
-  @JsonKey(name: "id")
-  final String? productId;
 
   ProductCardModel({
     this.rateAvg,
@@ -61,7 +61,6 @@ class ProductCardModel {
     this.v,
     this.isSuperAdmin,
     this.sold,
-    this.productId,
   });
 
   factory ProductCardModel.fromJson(Map<String, dynamic> json) {
@@ -74,7 +73,7 @@ class ProductCardModel {
 
   ProductCardEntity toProductCardEntity() {
     return ProductCardEntity(
-      productId: productId,
+      productId: id,
       title: title,
       slug: slug,
       description: description,
