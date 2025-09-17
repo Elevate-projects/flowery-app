@@ -3,8 +3,8 @@ import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/core/constants/const_keys.dart';
 import 'package:flowery_app/domain/entities/payment/credit/credit_payment_request_entity.dart';
 import 'package:flowery_app/domain/use_cases/payment/credit_payment_use_case.dart';
-import 'package:flowery_app/presentation/payment/credit/views_model/views/credit_payment_intent.dart';
-import 'package:flowery_app/presentation/payment/credit/views_model/views/credit_payment_state.dart';
+import 'package:flowery_app/presentation/payment/credit/view_model/credit_payment_intent.dart';
+import 'package:flowery_app/presentation/payment/credit/view_model/credit_payment_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flowery_app/api/client/api_result.dart';
 import 'package:injectable/injectable.dart';
@@ -36,7 +36,7 @@ class CreditPaymentViewModel extends Cubit<CreditPaymentState> {
   ) async {
     emit(CreditPaymentLoading());
 
-    final result = await _creditPaymentUseCase(request, redirectUrl);
+    final result = await _creditPaymentUseCase.call(request, redirectUrl);
 
     switch (result) {
       case Success(data: final response):

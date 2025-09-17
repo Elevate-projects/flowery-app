@@ -6,8 +6,8 @@ import 'package:flowery_app/presentation/checkout_page/view_model/adress_cubit/a
 import 'package:flowery_app/presentation/checkout_page/view_model/checkout_cubit/gift_state.dart';
 import 'package:flowery_app/presentation/checkout_page/view_model/checkout_cubit/checkout_view_model.dart';
 import 'package:flowery_app/presentation/checkout_page/view_model/payment_cubit/payment_cubit.dart';
-import 'package:flowery_app/presentation/payment/cash/views_model/views/cash_payment_view.dart';
-import 'package:flowery_app/presentation/payment/credit/views_model/views/credit_payment_view.dart';
+import 'package:flowery_app/presentation/payment/cash/view/cash_payment_view.dart';
+import 'package:flowery_app/presentation/payment/credit/view/credit_payment_view.dart';
 import 'package:flowery_app/utils/common_widgets/custom_add_address.dart';
 import 'package:flowery_app/utils/common_widgets/custom_elevated_button.dart';
 import 'package:flowery_app/utils/common_widgets/custom_paymant.dart';

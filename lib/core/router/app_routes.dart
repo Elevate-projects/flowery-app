@@ -2,7 +2,7 @@ import 'package:flowery_app/core/di/di.dart';
 import 'package:flowery_app/core/router/route_names.dart';
 import 'package:flowery_app/domain/entities/address/address_entity.dart';
 import 'package:flowery_app/domain/entities/arguments/occasion_arguments_entity.dart';
-import 'package:flowery_app/domain/entities/product_card/product_card_entity.dart';
+ import 'package:flowery_app/domain/entities/product_card/product_card_entity.dart';
 import 'package:flowery_app/presentation/about_us/views/about_us_view.dart';
 import 'package:flowery_app/presentation/address_details/view/address_details.dart';
 import 'package:flowery_app/presentation/auth/forget_password/views/forget_password_screen.dart';
@@ -16,13 +16,14 @@ import 'package:flowery_app/presentation/flowery_bottom_navigation/flowery_botto
 import 'package:flowery_app/presentation/flowery_bottom_navigation/view_model/flowery_bottom_navigation_cubit.dart';
 import 'package:flowery_app/presentation/home/best_seller/view/best_seller_view.dart';
 import 'package:flowery_app/presentation/home/occasions/view/occasion_view.dart';
-import 'package:flowery_app/presentation/payment/cash/views_model/views/cash_payment_view.dart';
-import 'package:flowery_app/presentation/payment/credit/views_model/views/credit_payment_view.dart';
+import 'package:flowery_app/presentation/order_page/order_page.dart';
+import 'package:flowery_app/presentation/payment/cash/view/cash_payment_view.dart';
+ import 'package:flowery_app/presentation/payment/credit/view/credit_payment_view.dart';
 import 'package:flowery_app/presentation/product_details/views/product_details_view.dart';
 import 'package:flowery_app/presentation/saved_address/views/saved_address_view.dart';
 import 'package:flowery_app/presentation/terms_and_conditions/views/terms_and_conditions_view.dart';
 import 'package:flowery_app/utils/common_cubits/add_product_to_cart/add_product_to_cart_cubit.dart';
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 abstract class AppRoutes {
@@ -93,15 +94,18 @@ abstract class AppRoutes {
         );
       case RouteNames.addressDetails:
         return MaterialPageRoute(builder: (_) => const AddressDetails());
-        case RouteNames.creditPaymentView:
-       return MaterialPageRoute(
-        builder: (_) => const CreditPaymentView(cartItems: [],),
-      );
+      case RouteNames.creditPaymentView:
+        return MaterialPageRoute(
+          builder: (_) => const CreditPaymentView(cartItems: []),
+        );
 
       case RouteNames.cashPaymentView:
-
         return MaterialPageRoute(
-            builder: (_) =>    const CashPaymentView(cartItems: [],)
+          builder: (_) => const CashPaymentView(cartItems: []),
+        );
+      case RouteNames.orderPage:
+         return MaterialPageRoute(
+          builder: (_) => const OrderPage(cartItems:[]),
         );
       default:
         return null;

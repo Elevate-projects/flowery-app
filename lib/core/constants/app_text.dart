@@ -205,4 +205,8 @@ abstract final class AppText {
   static const String pleaseSelectAPaymentMethod = "pleaseSelectAPaymentMethod";
   static const String paymentCompleted = "paymentCompleted";
   static const String invalidSessionURL = "invalidSessionURL";
+  static const String yourPaymentHasBeenSuccessfullyProcessedAndYourOrderHasBeenPlaced =
+      "yourPaymentHasBeenSuccessfullyProcessedAndYourOrderHasBeenPlaced";
+
+
 }
