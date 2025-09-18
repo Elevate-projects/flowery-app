@@ -1,62 +1,19 @@
 import 'package:flowery_app/core/di/di.dart';
-import 'package:flowery_app/presentation/cart/view_model/cart_cubit.dart';
-import 'package:flowery_app/presentation/cart/view_model/cart_intent.dart';
-import 'package:flowery_app/presentation/cart/view_model/delete_cubit/delete_cubit.dart';
-import 'package:flowery_app/presentation/cart/view_model/delete_cubit/delete_state.dart';
-import 'package:flowery_app/presentation/cart/view_model/quantity_cubit/quantity_cubit.dart';
-import 'package:flowery_app/presentation/cart/view_model/quantity_cubit/quantity_state.dart';
-import 'package:flowery_app/presentation/cart/widget/cart_page.dart';
+import 'package:flowery_app/presentation/cart/views/widget/cart_app_bar.dart';
+import 'package:flowery_app/presentation/cart/views/widget/cart_view_body.dart';
+import 'package:flowery_app/presentation/cart/views_model/cart_cubit/cart_cubit.dart';
+import 'package:flowery_app/presentation/cart/views_model/cart_cubit/cart_intent.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 class CartView extends StatelessWidget {
   const CartView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider<CartCubit>(
-          create: (context) => getIt.get<CartCubit>()
-            ..doIntent(
-              LoadCartIntent(
-              ),
-            ),
-        ),
-        BlocProvider<QuantityCubit>(
-          create: (context) => getIt.get<QuantityCubit>(),
-        ),
-        BlocProvider<DeleteCartCubit>(
-          create: (context) => getIt.get<DeleteCartCubit>(),
-        ),
-      ],
-      child: MultiBlocListener(
-        listeners: [
-          BlocListener<QuantityCubit, QuantityState>(
-            listener: (context, state) {
-              if (state.quantityStatus.isSuccess) {
-                context.read<CartCubit>().doIntent(
-                  LoadCartIntent(),
-                );
-              }
-            },
-          ),
-          BlocListener<DeleteCartCubit, DeleteCartState>(
-            listener: (context, state) {
-              if (state.deleteStatus.isSuccess) {
-                context.read<CartCubit>().doIntent(
-                  LoadCartIntent(),
-                );
-              }
-            },
-          ),
-        ],
-        child: const CartPage(),
-      ),
+    return BlocProvider<CartCubit>(
+      create: (context) => getIt.get<CartCubit>()..doIntent(LoadCartIntent()),
+      child: const Scaffold(appBar: CartAppBar(), body: CartViewBody()),
     );
   }
 }
-
-
-
-
-

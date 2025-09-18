@@ -17,6 +17,7 @@ abstract final class AppColors {
     80: Color(0xff7d7d7d),
     90: Color(0xff535353),
     100: Color(0xff323232),
+    101:Color(0xffEAEAEA),
   });
 
   static const MaterialColor pink = MaterialColor(0xffD21E6A, <int, Color>{
