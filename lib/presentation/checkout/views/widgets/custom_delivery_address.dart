@@ -1,9 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
-import 'package:flowery_app/presentation/checkout_page/view_model/adress_cubit/adress_cubit.dart';
-import 'package:flowery_app/utils/common_widgets/custom_add_address.dart';
+import 'package:flowery_app/presentation/checkout/views/widgets/custom_add_address.dart';
+import 'package:flowery_app/presentation/checkout/views_model/adress_cubit/adress_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 class CustomDeliveryAddress extends StatelessWidget {
   const CustomDeliveryAddress({super.key});
 
@@ -32,7 +33,8 @@ class CustomDeliveryAddress extends StatelessWidget {
                 return CustomAddAddress(
                   index: index,
                   isSelected: selectedIndex == index,
-                  onSelect: () => context.read<AddressCubit>().selectAddress(index),
+                  onSelect: () =>
+                      context.read<AddressCubit>().selectAddress(index),
                 );
               },
             );

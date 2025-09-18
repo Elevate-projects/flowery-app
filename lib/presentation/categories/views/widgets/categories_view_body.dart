@@ -46,9 +46,7 @@ class CategoriesViewBody extends StatelessWidget {
                 const CategoriesSliverAppBar(),
                 CategoriesTabBar(categoriesTabs: state.selectedCategories),
               ],
-              body: CategoriesTabBarView(
-                categoriesProductsList: state.categoriesProductsList,
-              ),
+              body: const CategoriesTabBarView(),
             ),
           );
         } else {
