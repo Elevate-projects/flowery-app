@@ -1,14 +1,15 @@
+import 'package:flowery_app/domain/entities/address/address_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flowery_app/core/constants/app_text.dart';
-
 class CustomAddAddress extends StatelessWidget {
   final int index;
   final bool isSelected;
   final VoidCallback onSelect;
+  final AddressEntity address;
 
   const CustomAddAddress({
     super.key,
+    required this.address,
     required this.index,
     required this.isSelected,
     required this.onSelect,
@@ -44,7 +45,7 @@ class CustomAddAddress extends StatelessWidget {
                   Radio(
                     value: index,
                   ),
-                  const Text(AppText.homeAddress),
+                   Text(address.city?? ""),
                   const Spacer(),
                   InkWell(
                     onTap: () {},
@@ -63,7 +64,7 @@ class CustomAddAddress extends StatelessWidget {
                 Padding(
                   padding: REdgeInsets.only(left: 10),
                   child: Text(
-                    AppText.address,
+                    address.street ?? "",
                     style: theme.textTheme.bodyMedium,
                   ),
                 ),

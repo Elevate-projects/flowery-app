@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_icons.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
+import 'package:flowery_app/core/router/route_names.dart';
 import 'package:flowery_app/presentation/checkout/views/widgets/custom_add_naw_address.dart';
 import 'package:flowery_app/presentation/checkout/views/widgets/custom_checkout_summary.dart';
 import 'package:flowery_app/presentation/checkout/views/widgets/custom_delivery_address.dart';
@@ -82,7 +83,7 @@ class CheckoutViewBody extends StatelessWidget {
               const RSizedBox(height: 5),
               CustomAddAddressButton(
                 onPressed: () {
-                  /////Action here
+                  Navigator.pushNamed(context, RouteNames.addressDetails);
                 },
               ),
               const RSizedBox(height: 20),
