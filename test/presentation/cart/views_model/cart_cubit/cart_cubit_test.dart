@@ -4,9 +4,9 @@ import 'package:flowery_app/core/exceptions/response_exception.dart';
 import 'package:flowery_app/domain/entities/cart/delete_cart/delete_cart_item.dart';
 import 'package:flowery_app/domain/entities/cart/get_logged_user_cart/get_logged_user_cart.dart';
 import 'package:flowery_app/domain/entities/cart/update_quantity/update_quantity.dart';
-import 'package:flowery_app/domain/use_cases/cart/quantity_use_case/quantity_use_case.dart';
-import 'package:flowery_app/domain/use_cases/cart/delete_cart_item_use_case/delete_cart_item_use_case.dart';
 import 'package:flowery_app/domain/use_cases/cart/cart_use_case/cart_use_case.dart';
+import 'package:flowery_app/domain/use_cases/cart/delete_cart_item_use_case/delete_cart_item_use_case.dart';
+import 'package:flowery_app/domain/use_cases/cart/quantity_use_case/quantity_use_case.dart';
 import 'package:flowery_app/presentation/cart/views_model/cart_cubit/cart_cubit.dart';
 import 'package:flowery_app/presentation/cart/views_model/cart_cubit/cart_intent.dart';
 import 'package:flowery_app/presentation/cart/views_model/cart_cubit/cart_state.dart';
@@ -15,16 +15,18 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import 'cart_cubit_test.mocks.dart';
-@GenerateMocks([GetLoggedUserCartUseCase, QuantityUseCase, DeleteCartItemUseCase])
-void main (){
+
+@GenerateMocks([
+  GetLoggedUserCartUseCase,
+  QuantityUseCase,
+  DeleteCartItemUseCase,
+])
+void main() {
   late MockGetLoggedUserCartUseCase mockGetLoggedUserCartUseCase;
   late MockQuantityUseCase mockQuantityUseCase;
   late MockDeleteCartItemUseCase mockDeleteCartItemUseCase;
   late CartCubit cartcubit;
   late GetLoggedUserCartEntity fakeCart;
-  late Result<GetLoggedUserCartEntity?> successCartResult;
-  late Result<GetLoggedUserCartEntity?> failureCartResult;
-
 
   setUpAll(() {
     mockGetLoggedUserCartUseCase = MockGetLoggedUserCartUseCase();
@@ -42,7 +44,6 @@ void main (){
     provideDummy<Result<DeleteItemsEntity>>(
       Failure(responseException: const ResponseException(message: "dummy")),
     );
-
   });
   setUp(() {
     cartcubit = CartCubit(
@@ -55,13 +56,6 @@ void main (){
       message: "fake cart",
       numOfCartItems: 1,
       cart: null,
-    );
-
-    successCartResult = Success<GetLoggedUserCartEntity?>(fakeCart);
-    failureCartResult = Failure(
-      responseException: const ResponseException(
-        message: "Failed to load cart",
-      ),
     );
   });
   group("CartCubit Tests", () {
@@ -76,12 +70,12 @@ void main (){
       act: (cubit) => cubit.doIntent(LoadCartIntent()),
       expect: () => [
         isA<CartState>().having(
-              (s) => s.cartStatus.isLoading,
+          (s) => s.cartStatus.isLoading,
           "cartStatus loading",
           true,
         ),
         isA<CartState>().having(
-              (s) => s.cartStatus.isSuccess,
+          (s) => s.cartStatus.isSuccess,
           "cartStatus success",
           true,
         ),
@@ -91,87 +85,82 @@ void main (){
     blocTest<CartCubit, CartState>(
       'emits [loading, failure] when GetLoggedUserCartUseCase returns Failure',
       build: () {
-        when(
-          mockGetLoggedUserCartUseCase(),
-        ).thenAnswer((_) async => Failure(
-          responseException: const ResponseException(
-            message: "Failed to load cart",
+        when(mockGetLoggedUserCartUseCase()).thenAnswer(
+          (_) async => Failure(
+            responseException: const ResponseException(
+              message: "Failed to load cart",
+            ),
           ),
-        ));
+        );
         return cartcubit;
       },
       act: (cubit) => cubit.doIntent(LoadCartIntent()),
       expect: () => [
         isA<CartState>().having(
-              (s) => s.cartStatus.isLoading,
+          (s) => s.cartStatus.isLoading,
           "cartStatus loading",
           true,
         ),
-        isA<CartState>()
-            .having(
-              (s) => s.cartStatus.isFailure,
+        isA<CartState>().having(
+          (s) => s.cartStatus.isFailure,
           "cartStatus failure",
           true,
-        )
+        ),
       ],
     );
 
     blocTest<CartCubit, CartState>(
       'emits [loading, failure] when updateCartQuantity returns Failure',
       build: () {
-        when(
-          mockQuantityUseCase.updateCartQuantity("1", 1),
-        ).thenAnswer((_) async => Failure(
-          responseException: const ResponseException(
-            message: "Failed to update quantity",
+        when(mockQuantityUseCase.updateCartQuantity("1", 1)).thenAnswer(
+          (_) async => Failure(
+            responseException: const ResponseException(
+              message: "Failed to update quantity",
+            ),
           ),
-        ));
+        );
         return cartcubit;
       },
       act: (cubit) => cubit.doIntent(LoadCartIntent()),
       expect: () => [
         isA<CartState>().having(
-              (s) => s.cartStatus.isLoading,
+          (s) => s.cartStatus.isLoading,
           "cartStatus loading",
           true,
         ),
-        isA<CartState>()
-            .having(
-              (s) => s.cartStatus.isFailure,
+        isA<CartState>().having(
+          (s) => s.cartStatus.isFailure,
           "cartStatus failure",
           true,
-        )
+        ),
       ],
     );
 
     blocTest<CartCubit, CartState>(
       'emits [loading, failure] when deleteCartItem returns Failure',
       build: () {
-        when(
-          mockDeleteCartItemUseCase.deleteCartItem("1"),
-        ).thenAnswer((_) async => Failure(
-          responseException: const ResponseException(
-            message: "Failed to Delete Item",
+        when(mockDeleteCartItemUseCase.deleteCartItem("1")).thenAnswer(
+          (_) async => Failure(
+            responseException: const ResponseException(
+              message: "Failed to Delete Item",
+            ),
           ),
-        ));
+        );
         return cartcubit;
       },
       act: (cubit) => cubit.doIntent(DeleteCartItemIntent(productId: '1')),
-        expect: () => [
-          isA<CartState>().having(
-                (s) => s.deleteStatus.isLoading,
-            "deleteItemStatus loading",
-            true,
-          ),
-          isA<CartState>().having(
-                (s) => s.deleteStatus.isFailure,
-            "deleteItemStatus failure",
-            true,
-          ),
-        ]
+      expect: () => [
+        isA<CartState>().having(
+          (s) => s.deleteStatus.isLoading,
+          "deleteItemStatus loading",
+          true,
+        ),
+        isA<CartState>().having(
+          (s) => s.deleteStatus.isFailure,
+          "deleteItemStatus failure",
+          true,
+        ),
+      ],
     );
-
   });
-
-
 }
