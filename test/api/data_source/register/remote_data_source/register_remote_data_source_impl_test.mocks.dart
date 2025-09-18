@@ -13,10 +13,10 @@ import 'package:flowery_app/api/requests/forget_password_request/forget_password
     as _i15;
 import 'package:flowery_app/api/requests/login_request/login_request_model.dart'
     as _i13;
+import 'package:flowery_app/api/requests/profile_reset_password/profile_reset_password_request.dart'
+    as _i16;
 import 'package:flowery_app/api/requests/register_request/register_request.dart'
     as _i14;
-import 'package:flowery_app/api/requests/reset_password/reset_password_request.dart'
-    as _i16;
 import 'package:flowery_app/api/responses/categories_response/categories_response.dart'
     as _i5;
 import 'package:flowery_app/api/responses/forget_password_response/forget_password_response.dart'
@@ -27,12 +27,12 @@ import 'package:flowery_app/api/responses/login_response/login_response.dart'
     as _i3;
 import 'package:flowery_app/api/responses/products_response/products_response.dart'
     as _i6;
+import 'package:flowery_app/api/responses/profile_reset_password/profile_reset_password_response.dart'
+    as _i9;
 import 'package:flowery_app/api/responses/profile_response/profile_response.dart'
     as _i8;
 import 'package:flowery_app/api/responses/register_response/register_response.dart'
     as _i4;
-import 'package:flowery_app/api/responses/reset_password/reset_password_response.dart'
-    as _i9;
 import 'package:flowery_app/core/secure_storage/secure_storage.dart' as _i17;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i10;
 import 'package:mockito/mockito.dart' as _i1;
@@ -92,10 +92,12 @@ class _FakeProfileResponse_6 extends _i1.SmartFake
     : super(parent, parentInvocation);
 }
 
-class _FakeResetPasswordResponse_7 extends _i1.SmartFake
-    implements _i9.ResetPasswordResponse {
-  _FakeResetPasswordResponse_7(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+class _FakeProfileResetPasswordResponse_7 extends _i1.SmartFake
+    implements _i9.ProfileResetPasswordResponse {
+  _FakeProfileResetPasswordResponse_7(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(parent, parentInvocation);
 }
 
 class _FakeFlutterSecureStorage_8 extends _i1.SmartFake
@@ -221,26 +223,26 @@ class MockApiClient extends _i1.Mock implements _i11.ApiClient {
           as _i12.Future<void>);
 
   @override
-  _i12.Future<_i9.ResetPasswordResponse> resetPassword({
+  _i12.Future<_i9.ProfileResetPasswordResponse> profileResetPassword({
     required String? token,
-    required _i16.ResetPasswordRequest? entity,
+    required _i16.ProfileResetPasswordRequest? entity,
   }) =>
       (super.noSuchMethod(
-            Invocation.method(#resetPassword, [], {
+            Invocation.method(#profileResetPassword, [], {
               #token: token,
               #entity: entity,
             }),
-            returnValue: _i12.Future<_i9.ResetPasswordResponse>.value(
-              _FakeResetPasswordResponse_7(
+            returnValue: _i12.Future<_i9.ProfileResetPasswordResponse>.value(
+              _FakeProfileResetPasswordResponse_7(
                 this,
-                Invocation.method(#resetPassword, [], {
+                Invocation.method(#profileResetPassword, [], {
                   #token: token,
                   #entity: entity,
                 }),
               ),
             ),
           )
-          as _i12.Future<_i9.ResetPasswordResponse>);
+          as _i12.Future<_i9.ProfileResetPasswordResponse>);
 }
 
 /// A class which mocks [SecureStorage].

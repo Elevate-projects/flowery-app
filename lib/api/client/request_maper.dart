@@ -1,11 +1,11 @@
 import 'package:flowery_app/api/requests/forget_password_request/forget_password_request.dart';
 import 'package:flowery_app/api/requests/login_request/login_request_model.dart';
 import 'package:flowery_app/api/requests/register_request/register_request.dart';
-import 'package:flowery_app/api/requests/reset_password/reset_password_request.dart';
+import 'package:flowery_app/api/requests/profile_reset_password/profile_reset_password_request.dart';
 import 'package:flowery_app/domain/entities/requests/forget_password_request/forget_password_request_entity.dart';
 import 'package:flowery_app/domain/entities/requests/login_request/login_request_entity.dart';
 import 'package:flowery_app/domain/entities/requests/register_request/register_request_entity.dart';
-import 'package:flowery_app/domain/entities/reset_password/reset_password_request_entity.dart';
+import 'package:flowery_app/domain/entities/profile_reset_password/profile_reset_password_request_entity.dart';
 
 abstract class RequestMapper {
   static LoginRequestModel toLoginRequestModel({
@@ -37,10 +37,10 @@ abstract class RequestMapper {
     return ForgetPasswordRequestDto(email: forgetPasswordRequestEntity.email);
   }
 
-  static ResetPasswordRequest toResetPasswordRequest({
-    required ResetPasswordRequestEntity entity,
+  static ProfileResetPasswordRequest toProfileResetPasswordRequest({
+    required ProfileResetPasswordRequestEntity entity,
   }) {
-    return ResetPasswordRequest(
+    return ProfileResetPasswordRequest(
       password: entity.password,
       newPassword: entity.newPassword,
     );
