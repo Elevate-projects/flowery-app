@@ -97,14 +97,14 @@ abstract final class AppText {
   static const String occasionsText = "occasionsText";
 
   // Reset Password
-  static const String resetPassword = "Reset password";
-  static const String resetPasswordUpdate = "Update";
-  static const String newPasswordLabel = "New password";
-  static const String newPasswordHint = "New password";
-  static const String currentPasswordLabel = "Current password";
-  static const String currentPasswordHint = "Current password";
-  static const String confirmPasswordLabel = "Confirm password";
-  static const String confirmPasswordHintReset = "Confirm password";
+  static const String resetPassword = "resetPassword";
+  static const String resetPasswordUpdate = "resetPasswordUpdate";
+  static const String newPasswordLabel = "newPasswordLabel";
+  static const String newPasswordHint = "newPasswordHint";
+  static const String currentPasswordLabel = "currentPasswordLabel";
+  static const String currentPasswordHint = "currentPasswordHint";
+  static const String confirmPasswordLabel = "confirmPasswordLabel";
+  static const String confirmPasswordHintReset = "confirmPasswordHintReset";
 
   // Exceptions
   static const String connectionError = "connectionError";

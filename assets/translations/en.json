@@ -95,5 +95,14 @@
   "sendTimeout": "Send timeout, please try again later.",
   "connectionTimeout": "Connection timeout, please try again later.",
   "networkError": "Something went wrong. Please check your internet connection.",
-  "anUnknownErrorOccurred": "An unknown error occurred."
+  "anUnknownErrorOccurred": "An unknown error occurred.",
+
+  "resetPassword": "Reset Password",
+  "resetPasswordUpdate": "Update",
+  "newPasswordLabel": "New Password",
+  "newPasswordHint": "New Password",
+  "currentPasswordLabel": "Current Password",
+  "currentPasswordHint": "Current Password",
+  "confirmPasswordLabel": "Confirm Password",
+  "confirmPasswordHintReset": "Confirm Password"
 }

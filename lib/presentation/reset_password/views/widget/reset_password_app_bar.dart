@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_colors.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,7 @@ class ResetPasswordAppBar extends StatelessWidget {
               ),
               Flexible(
                 child: Text(
-                  AppText.resetPassword,
+                  AppText.resetPassword.tr(),
                   style: theme.textTheme.headlineMedium?.copyWith(
                     fontFamily: "Roboto",
                   ),

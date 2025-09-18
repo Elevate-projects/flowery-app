@@ -95,5 +95,14 @@
   "sendTimeout": "انتهت مهلة الإرسال، يرجى المحاولة لاحقًا.",
   "connectionTimeout": "انتهت مهلة الاتصال، يرجى المحاولة لاحقًا.",
   "networkError": "حدث خطأ ما. يرجى التحقق من اتصال الإنترنت.",
-  "anUnknownErrorOccurred": "حدث خطأ غير معروف."
+  "anUnknownErrorOccurred": "حدث خطأ غير معروف.",
+
+  "resetPassword": "إعادة تعيين كلمة المرور",
+  "resetPasswordUpdate": "تحديث",
+  "newPasswordLabel": "كلمة المرور الجديدة",
+  "newPasswordHint": "كلمة المرور الجديدة",
+  "currentPasswordLabel": "كلمة المرور الحالية",
+  "currentPasswordHint": "كلمة المرور الحالية",
+  "confirmPasswordLabel": "تأكيد كلمة المرور",
+  "confirmPasswordHintReset": "تأكيد كلمة المرور"
 }

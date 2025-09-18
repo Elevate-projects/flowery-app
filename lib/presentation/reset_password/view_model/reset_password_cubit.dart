@@ -11,21 +11,25 @@ import 'package:injectable/injectable.dart';
 @injectable
 class ResetPasswordCubit extends Cubit<ResetPasswordState> {
   final ResetPasswordUseCase _resetPasswordUseCase;
-  ResetPasswordCubit(this._resetPasswordUseCase) : super(const ResetPasswordState());
+  ResetPasswordCubit(this._resetPasswordUseCase)
+    : super(const ResetPasswordState());
 
-   late GlobalKey<FormState> resetPasswordFormKey;
+  late GlobalKey<FormState> resetPasswordFormKey;
   late final TextEditingController currentPasswordController;
   late final TextEditingController newPasswordController;
   late final TextEditingController confirmPasswordController;
 
-  Future<void> doIntent({required ResetPasswordIntent intent}) async{
+  Future<void> doIntent({required ResetPasswordIntent intent}) async {
     switch (intent) {
-       case InitializedResertPassword():
-       _init();
+      case InitializedResertPassword():
+        _init();
         break;
 
       case ResetPasswordRequested():
         await _resetPassword();
+        break;
+      case IsTypingIntent():
+        _isTyping();
         break;
     }
   }
@@ -35,25 +39,47 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
     currentPasswordController = TextEditingController();
     newPasswordController = TextEditingController();
     confirmPasswordController = TextEditingController();
+    emit(state.copyWith(autoValidateMode: AutovalidateMode.disabled));
   }
 
   Future<void> _resetPassword() async {
-      emit(state.copyWith(resetPasswordStatus: const StateStatus.loading()));
-      final result = await _resetPasswordUseCase(
-        entity: ResetPasswordRequestEntity(
-          password: currentPasswordController.text,
-          newPassword: newPasswordController.text,
-        ),
-      );
-      switch (result) {
+    if(resetPasswordFormKey.currentState!.validate()){
+   emit(state.copyWith(resetPasswordStatus: const StateStatus.loading()));
+    final result = await _resetPasswordUseCase(
+      entity: ResetPasswordRequestEntity(
+        password: currentPasswordController.text,
+        newPassword: newPasswordController.text,
+      ),
+    );
+    switch (result) {
       case Success():
         emit(state.copyWith(resetPasswordStatus: StateStatus.success(result)));
+        break;
       case Failure():
         emit(
           state.copyWith(
             resetPasswordStatus: StateStatus.failure(result.responseException),
           ),
         );
+        break;
     }
+  } else {
+    _enableAutoValidateMode();
+  }
+  }
+
+  void _isTyping() {
+    if (currentPasswordController.text.isNotEmpty &&
+        newPasswordController.text.isNotEmpty &&
+        confirmPasswordController.text.isNotEmpty) {
+      emit(state.copyWith(isTyping: true));
+      return;
+    } else {
+      emit(state.copyWith(isTyping: false));
+    }
+  }
+
+   void _enableAutoValidateMode() {
+    emit(state.copyWith(autoValidateMode: AutovalidateMode.always));
   }
 }

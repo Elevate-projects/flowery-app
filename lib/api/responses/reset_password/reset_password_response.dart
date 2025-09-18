@@ -1,3 +1,4 @@
+import 'package:flowery_app/domain/entities/reset_password_response_entity.dart/reset_password_response_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'reset_password_response.g.dart';
@@ -19,4 +20,11 @@ class ResetPasswordResponse {
       _$ResetPasswordResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$ResetPasswordResponseToJson(this);
+
+   ResetPasswordResponseEntity toResetPasswordResponseEntity() {
+    return ResetPasswordResponseEntity(
+      message: message,
+      bearerToken: bearerToken,
+    );
+   }
 }
