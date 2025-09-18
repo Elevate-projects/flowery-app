@@ -47,7 +47,7 @@ class UserProfileDetails extends StatelessWidget {
                         FloweryMethodHelper.userData != null)
                     ? () {
                         // Navigate to edit profile
-                        Navigator.of(context).pushNamed(RouteNames.resetPassword);
+                        Navigator.of(context).pushNamed(RouteNames.profileResetPassword);
                       }
                     : () {},
                 child: SvgPicture.asset(AppIcons.edit, fit: BoxFit.contain),

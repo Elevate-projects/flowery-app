@@ -96,15 +96,15 @@ abstract final class AppText {
   static const String bestSellerText = "bestSellerText";
   static const String occasionsText = "occasionsText";
 
-  // Reset Password
-  static const String resetPassword = "resetPassword";
-  static const String resetPasswordUpdate = "resetPasswordUpdate";
-  static const String newPasswordLabel = "newPasswordLabel";
-  static const String newPasswordHint = "newPasswordHint";
-  static const String currentPasswordLabel = "currentPasswordLabel";
-  static const String currentPasswordHint = "currentPasswordHint";
-  static const String confirmPasswordLabel = "confirmPasswordLabel";
-  static const String confirmPasswordHintReset = "confirmPasswordHintReset";
+  // Profile Reset Password
+  static const String profileResetPassword = "profileResetPassword";
+  static const String profileResetPasswordUpdate = "profileResetPasswordUpdate";
+  static const String profileNewPasswordLabel = "profileNewPasswordLabel";
+  static const String profileNewPasswordHint = "profileNewPasswordHint";
+  static const String profileCurrentPasswordLabel = "profileCurrentPasswordLabel";
+  static const String profileCurrentPasswordHint = "profileCurrentPasswordHint";
+  static const String profileConfirmPasswordLabel = "profileConfirmPasswordLabel";
+  static const String profileConfirmPasswordHintReset = "profileConfirmPasswordHintReset";
 
   // Exceptions
   static const String connectionError = "connectionError";

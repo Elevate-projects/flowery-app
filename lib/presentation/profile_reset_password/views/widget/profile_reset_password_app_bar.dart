@@ -27,7 +27,7 @@ class ProfileResetPasswordAppBar extends StatelessWidget {
               ),
               Flexible(
                 child: Text(
-                  AppText.resetPassword.tr(),
+                  AppText.profileResetPassword.tr(),
                   style: theme.textTheme.headlineMedium?.copyWith(
                     fontFamily: "Roboto",
                   ),

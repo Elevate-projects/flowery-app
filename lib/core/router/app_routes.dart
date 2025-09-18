@@ -43,7 +43,7 @@ abstract class AppRoutes {
         );
       case RouteNames.forgetPassword:
         return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen());
-      case RouteNames.resetPassword:
+      case RouteNames.profileResetPassword:
         return MaterialPageRoute(
           builder: (_) => BlocProvider<ProfileResetPasswordCubit>(
             create: (context) => getIt<ProfileResetPasswordCubit>()

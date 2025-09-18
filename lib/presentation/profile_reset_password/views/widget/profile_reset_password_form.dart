@@ -24,8 +24,8 @@ class ProfileResetPasswordForm extends StatelessWidget {
             children: [
               CustomTextFormField(
                 controller: controller.currentPasswordController,
-                label: AppText.currentPasswordLabel.tr(),
-                hintText: AppText.currentPasswordHint.tr(),
+                label: AppText.profileCurrentPasswordLabel.tr(),
+                hintText: AppText.profileCurrentPasswordHint.tr(),
                 keyboardType: TextInputType.visiblePassword,
                 textInputAction: TextInputAction.next,
                 validator: (value) =>
@@ -37,8 +37,8 @@ class ProfileResetPasswordForm extends StatelessWidget {
               const RSizedBox(height: 24),
               CustomTextFormField(
                 controller: controller.newPasswordController,
-                label: AppText.newPasswordLabel.tr(),
-                hintText: AppText.newPasswordHint.tr(),
+                label: AppText.profileNewPasswordLabel.tr(),
+                hintText: AppText.profileNewPasswordHint.tr(),
                 keyboardType: TextInputType.visiblePassword,
                 textInputAction: TextInputAction.next,
                 validator: (value) =>
@@ -50,8 +50,8 @@ class ProfileResetPasswordForm extends StatelessWidget {
               const RSizedBox(height: 24),
               CustomTextFormField(
                 controller: controller.confirmPasswordController,
-                label: AppText.confirmPasswordLabel.tr(),
-                hintText: AppText.confirmPasswordHintReset.tr(),
+                label: AppText.profileConfirmPasswordLabel.tr(),
+                hintText: AppText.profileConfirmPasswordHintReset.tr(),
                 keyboardType: TextInputType.visiblePassword,
                 textInputAction: TextInputAction.done,
                 validator: (value) => Validations.confirmPasswordValidation(

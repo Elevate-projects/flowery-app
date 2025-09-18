@@ -52,7 +52,7 @@ abstract class ApiClient {
   @GET(Endpoints.logout)
   Future<void> logout({@Header("Authorization") required String token});
 
-  @PATCH(Endpoints.resetPassword)
+  @PATCH(Endpoints.profileResetPassword)
   Future<ProfileResetPasswordResponse> profileResetPassword({
     @Header("Authorization") required String token,
     @Body() required ProfileResetPasswordRequest entity,

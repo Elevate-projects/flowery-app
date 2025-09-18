@@ -23,7 +23,7 @@ class ProfileResetPasswordButton extends StatelessWidget {
           onPressed:state.isTyping ? () async {
             controller.doIntent(intent: ProfileResetPasswordRequested());
           }: null,
-          buttonTitle: AppText.resetPasswordUpdate.tr(),
+          buttonTitle: AppText.profileResetPasswordUpdate.tr(),
         );
       },
     );
