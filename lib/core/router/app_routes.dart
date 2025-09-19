@@ -13,11 +13,13 @@ import 'package:flowery_app/presentation/auth/reset_password/views/reset_passwor
 import 'package:flowery_app/presentation/auth/verification/views/email_verfication.dart';
 import 'package:flowery_app/presentation/auth/verification/views_model/verification_screen_cubit.dart';
 import 'package:flowery_app/presentation/checkout/views/checkout_view.dart';
+import 'package:flowery_app/presentation/edit_profile/views/edit_profile_view.dart';
 import 'package:flowery_app/presentation/flowery_bottom_navigation/flowery_bottom_navigation.dart';
 import 'package:flowery_app/presentation/flowery_bottom_navigation/view_model/flowery_bottom_navigation_cubit.dart';
 import 'package:flowery_app/presentation/home/best_seller/view/best_seller_view.dart';
 import 'package:flowery_app/presentation/home/occasions/view/occasion_view.dart';
 import 'package:flowery_app/presentation/product_details/views/product_details_view.dart';
+import 'package:flowery_app/presentation/profile/views_model/profile_cubit.dart';
 import 'package:flowery_app/presentation/profile_reset_password/view_model/profile_reset_password_cubit.dart';
 import 'package:flowery_app/presentation/profile_reset_password/view_model/profile_reset_password_intent.dart';
 import 'package:flowery_app/presentation/profile_reset_password/views/profile_reset_password_view.dart';
@@ -106,6 +108,11 @@ abstract class AppRoutes {
       case RouteNames.checkout:
         return MaterialPageRoute(
           builder: (_) => CheckoutView(subTotal: settings.arguments as int),
+        );
+      case RouteNames.editProfile:
+        return MaterialPageRoute(
+          builder: (_) =>
+              EditProfileView(profileCubit: settings.arguments as ProfileCubit),
         );
       default:
         return null;

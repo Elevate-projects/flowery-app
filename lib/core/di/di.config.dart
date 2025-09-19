@@ -28,6 +28,10 @@ import '../../api/data_source/cart/remote_data_source_quantity_request_imp/remot
     as _i693;
 import '../../api/data_source/categories/remote_data_source/categories_remote_data_source_impl.dart'
     as _i699;
+import '../../api/data_source/edit_profile/edit_profile_data_source_impl.dart'
+    as _i742;
+import '../../api/data_source/edit_profile/upload_photo_data_source_impl.dart'
+    as _i567;
 import '../../api/data_source/forget_password/remote_data_source/forget_password_remote_data_source_impl.dart'
     as _i428;
 import '../../api/data_source/home_products/home_products_data_source_impl.dart'
@@ -60,6 +64,10 @@ import '../../data/data_source/cart/remote_data_source_quantity_request/remote_d
     as _i879;
 import '../../data/data_source/categories/remote_data_source/categories_remote_data_source.dart'
     as _i960;
+import '../../data/data_source/edit_profile/edit_profile_data_source.dart'
+    as _i297;
+import '../../data/data_source/edit_profile/upload_photo_data_source.dart'
+    as _i195;
 import '../../data/data_source/forget_password/forget_password_remote_data_source.dart'
     as _i849;
 import '../../data/data_source/home_products/home_products_data_source.dart'
@@ -91,6 +99,10 @@ import '../../data/repositories/cart/remove_quantity_repo_imp/remove_quantity_re
     as _i954;
 import '../../data/repositories/categories/categories_repository_impl.dart'
     as _i940;
+import '../../data/repositories/edit_profile/edit_profile_repository_impl.dart'
+    as _i216;
+import '../../data/repositories/edit_profile/upload_photo_repository_impl.dart'
+    as _i396;
 import '../../data/repositories/forget_password_repo_impl/forget_password_repo_impl.dart'
     as _i1030;
 import '../../data/repositories/home_products/home_products_repository_impl_.dart'
@@ -118,6 +130,10 @@ import '../../domain/repositories/cart/quantity_repositories/quantity_repositori
     as _i378;
 import '../../domain/repositories/categories/categories_repository.dart'
     as _i660;
+import '../../domain/repositories/edit_profile/edit_profile_repository.dart'
+    as _i157;
+import '../../domain/repositories/edit_profile/upload_photo_repository.dart'
+    as _i234;
 import '../../domain/repositories/forget_password/forget_password_repo.dart'
     as _i72;
 import '../../domain/repositories/home_products/home_products_repository.dart'
@@ -146,6 +162,9 @@ import '../../domain/use_cases/categories/get_all_categories_use_case.dart'
     as _i824;
 import '../../domain/use_cases/categories/get_all_products_use_case.dart'
     as _i969;
+import '../../domain/use_cases/edit_profile/edit_profile_use_case.dart' as _i89;
+import '../../domain/use_cases/edit_profile/upload_photo_use_case.dart'
+    as _i876;
 import '../../domain/use_cases/forget_password/forget_password_use_case.dart'
     as _i150;
 import '../../domain/use_cases/home_products/home_products_use_case.dart'
@@ -180,6 +199,8 @@ import '../../presentation/categories/views_model/categories_cubit.dart'
     as _i200;
 import '../../presentation/checkout/views_model/checkout_cubit/checkout_view_model.dart'
     as _i294;
+import '../../presentation/edit_profile/view_model/edit_profile_cubit.dart'
+    as _i236;
 import '../../presentation/home/home_screen/view_model/home_products_cubit.dart'
     as _i641;
 import '../../presentation/home/occasions/view_model/occasion_view_model.dart'
@@ -223,6 +244,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i361.Dio>(() => apiModule.provideDio());
     gh.singleton<_i23.SecureStorage>(() => _i23.SecureStorage());
     gh.factory<_i508.ApiClient>(() => _i508.ApiClient(gh<_i361.Dio>()));
+    gh.factory<_i195.UploadPhotoDataSource>(
+      () => _i567.UploadPhotoDataSourceImpl(gh<_i508.ApiClient>()),
+    );
     gh.factory<_i523.ResendCodeDataSource>(
       () => _i53.ResendCodeDataSourceImpl(gh<_i508.ApiClient>()),
     );
@@ -238,6 +262,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i475.AddToCartRepository>(
       () =>
           _i585.AddToCartRepositoryImpl(gh<_i819.AddToCartRemoteDataSource>()),
+    );
+    gh.factory<_i234.UploadPhotoRepository>(
+      () => _i396.UploadPhotoRepositoryImpl(gh<_i195.UploadPhotoDataSource>()),
     );
     gh.factory<_i14.VerificationDataSource>(
       () => _i15.VerificationDataSourceImpl(gh<_i508.ApiClient>()),
@@ -278,6 +305,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i334.AddProductToCartUseCase>(
       () => _i334.AddProductToCartUseCase(gh<_i475.AddToCartRepository>()),
     );
+    gh.factory<_i876.UploadPhotoUseCase>(
+      () => _i876.UploadPhotoUseCase(gh<_i234.UploadPhotoRepository>()),
+    );
     gh.factory<_i470.ProfileRemoteDataSource>(
       () => _i913.ProfileRemoteDataSourceImpl(gh<_i508.ApiClient>()),
     );
@@ -307,6 +337,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i691.RemoteDataSourceGetLoggedUser>(
       () => _i874.RemoteDataSourceGetLoggedUserImp(gh<_i508.ApiClient>()),
+    );
+    gh.factory<_i297.EditProfileDataSource>(
+      () => _i742.EditProfileDataSourceImpl(gh<_i508.ApiClient>()),
     );
     gh.factory<_i960.CategoriesRemoteDataSource>(
       () => _i699.CategoriesRemoteDataSourceImpl(gh<_i508.ApiClient>()),
@@ -372,6 +405,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i960.CategoriesRemoteDataSource>(),
       ),
     );
+    gh.factory<_i157.EditProfileRepository>(
+      () => _i216.EditProfileRepositoryImpl(gh<_i297.EditProfileDataSource>()),
+    );
     gh.factory<_i257.GetLoggedUserCartUseCase>(
       () => _i257.GetLoggedUserCartUseCase(gh<_i757.CartRepository>()),
     );
@@ -420,6 +456,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i46.SavedAddressCubit>(
       () => _i46.SavedAddressCubit(gh<_i20.RemoveAddressUseCase>()),
     );
+    gh.factory<_i89.EditProfileUseCase>(
+      () => _i89.EditProfileUseCase(gh<_i157.EditProfileRepository>()),
+    );
     gh.factory<_i349.ResetPasswordCubit>(
       () => _i349.ResetPasswordCubit(gh<_i963.GetResetPasswordUseCase>()),
     );
@@ -444,6 +483,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i195.DeleteCartItemUseCase>(
       () => _i195.DeleteCartItemUseCase(gh<_i330.DeleteItemRepositories>()),
+    );
+    gh.factory<_i236.EditProfileCubit>(
+      () => _i236.EditProfileCubit(
+        gh<_i89.EditProfileUseCase>(),
+        gh<_i876.UploadPhotoUseCase>(),
+      ),
     );
     gh.factory<_i536.RegisterCubit>(
       () => _i536.RegisterCubit(gh<_i950.RegisterUseCase>()),

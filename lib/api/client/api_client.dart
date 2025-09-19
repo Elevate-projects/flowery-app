@@ -1,18 +1,26 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:flowery_app/api/requests/add_address/add_address_request_model.dart';
 import 'package:flowery_app/api/requests/add_to_cart_request/add_to_cart_request_model.dart';
 import 'package:flowery_app/api/requests/cart_request/quintity_request.dart';
+import 'package:flowery_app/api/requests/edit_profile_request/edit_profile_request.dart';
 import 'package:flowery_app/api/requests/forget_password_request/forget_password_request.dart';
 import 'package:flowery_app/api/requests/login_request/login_request_model.dart';
-import 'package:flowery_app/api/requests/register_request/register_request.dart';
 import 'package:flowery_app/api/requests/profile_reset_password/profile_reset_password_request.dart';
+import 'package:flowery_app/api/requests/register_request/register_request.dart';
 import 'package:flowery_app/api/responses/cart_response/delete_items.dart';
 import 'package:flowery_app/api/responses/cart_response/quantity_response.dart';
 import 'package:flowery_app/api/requests/resend_code/resend_code_request_dto.dart';
 import 'package:flowery_app/api/requests/reset_password/reset_password_request_dto.dart';
 import 'package:flowery_app/api/requests/verification/verify_request_dto.dart';
 import 'package:flowery_app/api/responses/add_address_response/add_address_response.dart';
+import 'package:flowery_app/api/responses/cart_response/delete_items.dart';
+import 'package:flowery_app/api/responses/cart_response/get_logged_user_cart.dart';
+import 'package:flowery_app/api/responses/cart_response/quantity_response.dart';
 import 'package:flowery_app/api/responses/categories_response/categories_response.dart';
+import 'package:flowery_app/api/responses/edit_profile_response/edit_profile_response.dart';
+import 'package:flowery_app/api/responses/edit_profile_response/upload_photo_response.dart';
 import 'package:flowery_app/api/responses/forget_password_response/forget_password_response.dart';
 import 'package:flowery_app/api/responses/home_products/products_response_model.dart';
 import 'package:flowery_app/api/responses/login_response/login_response.dart';
@@ -26,7 +34,7 @@ import 'package:flowery_app/api/responses/verification/verify_response_dto.dart'
 import 'package:flowery_app/core/constants/endpoints.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:flowery_app/api/responses/cart_response/get_logged_user_cart.dart';
+
 part 'api_client.g.dart';
 
 @injectable
@@ -105,7 +113,7 @@ abstract class ApiClient {
   @GET(Endpoints.getLoggedUserCart)
   Future<GetLoggedUserCartModel> getLoggedUserCart({
     @Header("Authorization") required String token,
-});
+  });
   @PUT(Endpoints.updateCartQuantity)
   Future<QuantityResponse> updateCartQuantity({
     @Path("productId") required String productId,
@@ -116,5 +124,18 @@ abstract class ApiClient {
   Future<DeleteItem> deleteCartQuantity({
     @Path("productId") required String productId,
     @Header("Authorization") required String token,
+  });
+
+  @PUT(Endpoints.editProfile)
+  Future<EditProfileResponse> editUserProfile({
+    @Header("Authorization") required String token,
+    @Body() required EditProfileRequest request,
+  });
+
+  @PUT(Endpoints.uploadProfileImage)
+  @MultiPart()
+  Future<UploadPhotoResponse> uploadProfilePhoto({
+    @Header("Authorization") required String token,
+    @Part(name: "photo") required File photo,
   });
 }
