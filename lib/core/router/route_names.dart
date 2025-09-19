@@ -10,10 +10,10 @@ abstract class RouteNames {
   static const String occasionView = "/occasionView";
   static const String resetPassword = "/resetPasswordView";
   static const String searchView = "/searchView";
-
   static const String savedAddress = "/savedAddressView";
   static const String addressDetails = "/addressDetailsView";
   static const String bestSeller = "/bestSellerView";
   static const String checkout = "/checkoutView";
   static const String editProfile = '/editProfileView';
+  static const String profileResetPassword = '/profileResetPasswordView';
 }

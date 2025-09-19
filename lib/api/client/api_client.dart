@@ -7,6 +7,7 @@ import 'package:flowery_app/api/requests/cart_request/quintity_request.dart';
 import 'package:flowery_app/api/requests/edit_profile_request/edit_profile_request.dart';
 import 'package:flowery_app/api/requests/forget_password_request/forget_password_request.dart';
 import 'package:flowery_app/api/requests/login_request/login_request_model.dart';
+import 'package:flowery_app/api/requests/profile_reset_password/profile_reset_password_request.dart';
 import 'package:flowery_app/api/requests/register_request/register_request.dart';
 import 'package:flowery_app/api/requests/resend_code/resend_code_request_dto.dart';
 import 'package:flowery_app/api/requests/reset_password/reset_password_request_dto.dart';
@@ -23,6 +24,7 @@ import 'package:flowery_app/api/responses/get_user_order/get_user_order.dart';
 import 'package:flowery_app/api/responses/home_products/products_response_model.dart';
 import 'package:flowery_app/api/responses/login_response/login_response.dart';
 import 'package:flowery_app/api/responses/products_response/products_response.dart';
+import 'package:flowery_app/api/responses/profile_reset_password/profile_reset_password_response.dart';
 import 'package:flowery_app/api/responses/profile_response/profile_response.dart';
 import 'package:flowery_app/api/responses/register_response/register_response.dart';
 import 'package:flowery_app/api/responses/resend_code/resend_code_response_dto.dart';
@@ -138,5 +140,11 @@ abstract class ApiClient {
   Future<UploadPhotoResponse> uploadProfilePhoto({
     @Header("Authorization") required String token,
     @Part(name: "photo") required File photo,
+  });
+
+  @PATCH(Endpoints.profileResetPassword)
+  Future<ProfileResetPasswordResponse> profileResetPassword({
+    @Header("Authorization") required String token,
+    @Body() required ProfileResetPasswordRequest entity,
   });
 }
