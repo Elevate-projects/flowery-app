@@ -21,4 +21,6 @@ abstract class Endpoints {
   static const String addAddress = '/api/v1/addresses';
   static const String profileResetPassword = '/api/v1/auth/change-password';
   static const String getUserOrder = '/api/v1/orders';
+  static const String payment = '/api/v1/orders/checkout';
+  static const String cash = '/api/v1/orders';
 }

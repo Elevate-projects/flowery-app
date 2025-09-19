@@ -19,6 +19,8 @@ import 'package:flowery_app/presentation/flowery_bottom_navigation/view_model/fl
 import 'package:flowery_app/presentation/home/best_seller/view/best_seller_view.dart';
 import 'package:flowery_app/presentation/home/occasions/view/occasion_view.dart';
 import 'package:flowery_app/presentation/notification_list/view/notification_list.dart';
+import 'package:flowery_app/presentation/payment/cash/view/cash_payment_view.dart';
+import 'package:flowery_app/presentation/payment/credit/view/credit_payment_view.dart';
 import 'package:flowery_app/presentation/product_details/views/product_details_view.dart';
 import 'package:flowery_app/presentation/profile/views_model/profile_cubit.dart';
 import 'package:flowery_app/presentation/profile_reset_password/views/profile_reset_password_view.dart';
@@ -99,7 +101,14 @@ abstract class AppRoutes {
         return MaterialPageRoute(builder: (_) => const AddressDetails());
       case RouteNames.checkout:
         return MaterialPageRoute(
-          builder: (_) => CheckoutView(subTotal: settings.arguments as int),
+          builder: (_) => CheckoutView(
+            subTotal: settings.arguments as int,
+            cartItems: const [],
+          ),
+        );
+      case RouteNames.creditPaymentView:
+        return MaterialPageRoute(
+          builder: (_) => const CreditPaymentView(cartItems: []),
         );
       case RouteNames.editProfile:
         return MaterialPageRoute(
@@ -119,6 +128,12 @@ abstract class AppRoutes {
         return MaterialPageRoute(
           builder: (context) => const NotificationList(),
         );
+
+      case RouteNames.cashPaymentView:
+        return MaterialPageRoute(
+          builder: (_) => const CashPaymentView(cartItems: []),
+        );
+
       default:
         return null;
     }
