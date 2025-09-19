@@ -2,6 +2,7 @@ import 'package:flowery_app/core/di/di.dart';
 import 'package:flowery_app/presentation/search/search/view/widgets/search_app_bar.dart';
 import 'package:flowery_app/presentation/search/search/view/widgets/search_body.dart';
 import 'package:flowery_app/presentation/search/search/view_model/search_view_model.dart';
+import 'package:flowery_app/utils/common_cubits/add_product_to_cart/add_product_to_cart_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,13 +11,12 @@ class SearchView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<SearchViewModel>(
-      create: (context) => getIt.get<SearchViewModel>(),
-      child: const Scaffold(appBar: PreferredSize(
-          preferredSize: Size.fromHeight(60),
-          child: SearchAppBar(),
-        ), body: SearchBody(),
-      ),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => getIt.get<SearchViewModel>()),
+        BlocProvider(create: (context) => getIt.get<AddProductToCartCubit>()),
+      ],
+      child: const Scaffold(appBar: SearchAppBar(), body: SearchBody()),
     );
   }
 }

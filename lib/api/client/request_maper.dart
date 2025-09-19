@@ -7,24 +7,21 @@ import 'package:flowery_app/api/requests/register_request/register_request.dart'
 import 'package:flowery_app/api/requests/resend_code/resend_code_request_dto.dart';
 import 'package:flowery_app/api/requests/reset_password/reset_password_request_dto.dart';
 import 'package:flowery_app/api/requests/verification/verify_request_dto.dart';
-import 'package:flowery_app/api/responses/products_response/products_response_dto.dart';
+import 'package:flowery_app/api/responses/products_response/products_response.dart';
 import 'package:flowery_app/api/responses/resend_code/resend_code_response_dto.dart';
 import 'package:flowery_app/api/responses/reset_password/reset_password_response_dto.dart';
- import 'package:flowery_app/api/responses/search/search_response_dto.dart';
 import 'package:flowery_app/api/responses/verification/verify_response_dto.dart';
 import 'package:flowery_app/domain/entities/address/add_address_request_entity.dart';
+import 'package:flowery_app/domain/entities/home_products/products_response_entity.dart';
 import 'package:flowery_app/domain/entities/requests/add_to_cart_request/add_to_cart_request_entity.dart';
 import 'package:flowery_app/domain/entities/requests/edit_profile_request/edit_profile_request_entity.dart';
 import 'package:flowery_app/domain/entities/requests/forget_password_request/forget_password_request_entity.dart';
- import 'package:flowery_app/domain/entities/home_products/products_response_entity.dart';
-import 'package:flowery_app/domain/entities/product_card/product_card_entity.dart';
- import 'package:flowery_app/domain/entities/requests/login_request/login_request_entity.dart';
+import 'package:flowery_app/domain/entities/requests/login_request/login_request_entity.dart';
 import 'package:flowery_app/domain/entities/requests/register_request/register_request_entity.dart';
 import 'package:flowery_app/domain/entities/resend_code/request/resend_code_request.dart';
 import 'package:flowery_app/domain/entities/resend_code/response/resend_code_response.dart';
 import 'package:flowery_app/domain/entities/reset_password/request/reset_password_request.dart';
 import 'package:flowery_app/domain/entities/reset_password/response/reset_password_response.dart';
-import 'package:flowery_app/domain/entities/search/response/search_response_entity.dart';
 import 'package:flowery_app/domain/entities/verification/request/verify_requset.dart';
 import 'package:flowery_app/domain/entities/verification/response/verify_response.dart';
 
@@ -120,18 +117,15 @@ abstract class RequestMapper {
       quantity: addToCartRequestEntity.quantity ?? 1,
     );
   }
-  static ProductsResponseEntity productsToEntity(ProductsResponseDto dto){
+
+  static ProductsResponseEntity productsToEntity(ProductsResponse dto) {
     return ProductsResponseEntity(
       message: dto.message,
-      products: dto.products ?.map((product) => product.toProductCardEntity())
+      products: dto.products
+          ?.map((product) => product.toProductCardEntity())
           .toList(),
     );
   }
-static SearchResponseEntity searchToEntity (SearchResponseDto dto){
-    return SearchResponseEntity(
-        message:dto.message??'',
-    products: dto.products?.map((p) => p.toEntity()).toList() ?? [],
-    metadata: dto.metadata?.toEntity()??MetadataEntity(currentPage: 1, totalPages: 1, limit: 20, totalItems: 0));
 
   static EditProfileRequest toEditProfileRequest({
     required EditProfileRequestEntity entity,
@@ -144,27 +138,3 @@ static SearchResponseEntity searchToEntity (SearchResponseDto dto){
     );
   }
 }
-
-
-
-}
-extension ProductEntityMapper on ProductEntity {
-  ProductCardEntity toCardEntity() {
-    return ProductCardEntity(
-      productId: id,
-      title: title,
-      slug: slug,
-      description: description,
-      imgCover: imgCover,
-      images: images,
-      price: price,
-      priceAfterDiscount: priceAfterDiscount,
-      quantity: quantity,
-      categoryId: category,
-      occasionId: occasion,
-      sold: sold,
-        discountPercentage: "${(((price - priceAfterDiscount) / price) * 100).toStringAsFixed(0)}%",
-     );
-  }
-}
-

@@ -211,8 +211,10 @@ abstract final class AppText {
   static const String productName = "productName";
 
   //search text
-  static const String searchForAnyProductsYouWent = 'searchForAnyProductsYouWent';
+  static const String searchForAnyProductsYouWant =
+      'searchForAnyProductsYouWant';
   static const String noProductsFound = 'noProductsFound';
   static const String notFound = 'notFound';
-  static const String noProductsFoundForYourSearch = "noProductsFoundForYourSearch";
+  static const String noProductsFoundForYourSearch =
+      "noProductsFoundForYourSearch";
 }

@@ -1,8 +1,7 @@
 import 'dart:async';
 
 import 'package:flowery_app/api/client/api_result.dart';
-import 'package:flowery_app/api/client/request_maper.dart';
-import 'package:flowery_app/domain/entities/search/response/search_response_entity.dart';
+import 'package:flowery_app/domain/entities/product_card/product_card_entity.dart';
 import 'package:flowery_app/domain/use_cases/search/search_use_case.dart';
 import 'package:flowery_app/presentation/search/search/view_model/search_intent.dart';
 import 'package:flowery_app/presentation/search/search/view_model/search_state.dart';
@@ -34,20 +33,16 @@ class SearchViewModel extends Cubit<SearchState> {
 
   Future<void> _search(String search) async {
     emit(SearchLoadingState());
-    final res = await _searchUseCase.call(search: search);
-    switch (res) {
-      case Success<SearchResponseEntity>():
-        if (res.data.products.isEmpty) {
+    final result = await _searchUseCase.invoke(search: search);
+    switch (result) {
+      case Success<List<ProductCardEntity>>():
+        if (result.data.isEmpty) {
           emit(SearchEmptyState());
         } else {
-          emit(
-            SearchSuccessState(
-              products: res.data.products.map((p) => p.toCardEntity()).toList(),
-            ),
-          );
+          emit(SearchSuccessState(products: result.data));
         }
-      case Failure<SearchResponseEntity>():
-        emit(SearchFailureState(error: res.responseException.message));
+      case Failure<List<ProductCardEntity>>():
+        emit(SearchFailureState(error: result.responseException.message));
     }
   }
 
