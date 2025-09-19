@@ -7,6 +7,8 @@ abstract class Endpoints {
   static const String register = '/api/v1/auth/signup';
   static const String categories = '/api/v1/categories';
   static const String products = '/api/v1/products';
+  static const String editProfile = '/api/v1/auth/editProfile';
+  static const String uploadProfileImage = '/api/v1/auth/upload-photo';
   static const String logout = '/api/v1/auth/logout';
   static const String addProductToCart = '/api/v1/cart';
   static const String resendCode = '/api/v1/auth/forgotPassword';
