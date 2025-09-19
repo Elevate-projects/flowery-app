@@ -1,5 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flowery_app/core/constants/app_icons.dart';
-import 'package:flowery_app/core/constants/app_images.dart';
+import 'package:flowery_app/core/router/route_names.dart';
 import 'package:flowery_app/presentation/profile/views_model/profile_cubit.dart';
 import 'package:flowery_app/presentation/profile/views_model/profile_state.dart';
 import 'package:flowery_app/utils/common_widgets/shimmer_effect.dart';
@@ -15,6 +16,7 @@ class UserProfileDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final profileCubit = BlocProvider.of<ProfileCubit>(context);
     return BlocBuilder<ProfileCubit, ProfileState>(
       buildWhen: (previous, current) =>
           current.profileStatus.isLoading || current.profileStatus.isSuccess,
@@ -23,7 +25,12 @@ class UserProfileDetails extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 40.5.r,
-            backgroundImage: const AssetImage(AppImages.defaultProfile),
+            backgroundColor: theme.colorScheme.onPrimary,
+            backgroundImage: CachedNetworkImageProvider(
+              FloweryMethodHelper.userData?.photo ?? "",
+            ),
+            onBackgroundImageError: (exception, stackTrace) =>
+                const Icon(Icons.info),
           ),
           const RSizedBox(height: 8),
           Row(
@@ -45,7 +52,11 @@ class UserProfileDetails extends StatelessWidget {
                     (!state.profileStatus.isLoading &&
                         FloweryMethodHelper.userData != null)
                     ? () {
-                        // Navigate to edit profile
+                        Navigator.pushNamed(
+                          context,
+                          RouteNames.editProfile,
+                          arguments: profileCubit,
+                        );
                       }
                     : () {},
                 child: SvgPicture.asset(AppIcons.edit, fit: BoxFit.contain),
