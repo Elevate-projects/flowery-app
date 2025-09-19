@@ -1,4 +1,3 @@
-import 'package:flowery_app/presentation/profile_reset_password/view_model/profile_reset_password_intent.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'profile_reset_password_request.g.dart';

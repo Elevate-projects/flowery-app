@@ -133,15 +133,6 @@
   "connectionTimeout": "Connection timeout, please try again later.",
   "networkError": "Something went wrong. Please check your internet connection.",
   "anUnknownErrorOccurred": "An unknown error occurred.",
-
-  "profileResetPassword": "Reset Password",
-  "profileResetPasswordUpdate": "Update",
-  "profileNewPasswordLabel": "New Password",
-  "profileNewPasswordHint": "New Password",
-  "profileCurrentPasswordLabel": "Current Password",
-  "profileCurrentPasswordHint": "Current Password",
-  "profileConfirmPasswordLabel": "Confirm Password",
-  "profileConfirmPasswordHintReset": "Confirm Password",
   "addressWord": "Address",
   "addressHint": "Enter the Address",
   "recipientName": "Recipient Name",
@@ -199,5 +190,14 @@
   "productName": "Product Name",
   "pickingImageFailureMessage": "Failed to pick image: ",
   "profilePicSuccessMessage": "Profile picture updated successfully",
-  "profileUpdateSuccessMessage": "Profile updated successfully"
+  "profileUpdateSuccessMessage": "Profile updated successfully",
+  "profileResetPassword": "Reset Password",
+  "profileResetPasswordUpdate": "Update",
+  "profileNewPasswordLabel": "New Password",
+  "profileNewPasswordHint": "New Password",
+  "profileCurrentPasswordLabel": "Current Password",
+  "profileCurrentPasswordHint": "Current Password",
+  "profileConfirmPasswordLabel": "Confirm Password",
+  "profileConfirmPasswordHintReset": "Confirm Password",
+  "passwordResetSuccessMessage": "Your password has been reset successfully"
 }

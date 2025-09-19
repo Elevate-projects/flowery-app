@@ -9,8 +9,6 @@ import 'package:flowery_app/api/requests/forget_password_request/forget_password
 import 'package:flowery_app/api/requests/login_request/login_request_model.dart';
 import 'package:flowery_app/api/requests/profile_reset_password/profile_reset_password_request.dart';
 import 'package:flowery_app/api/requests/register_request/register_request.dart';
-import 'package:flowery_app/api/responses/cart_response/delete_items.dart';
-import 'package:flowery_app/api/responses/cart_response/quantity_response.dart';
 import 'package:flowery_app/api/requests/resend_code/resend_code_request_dto.dart';
 import 'package:flowery_app/api/requests/reset_password/reset_password_request_dto.dart';
 import 'package:flowery_app/api/requests/verification/verify_request_dto.dart';
@@ -25,9 +23,9 @@ import 'package:flowery_app/api/responses/forget_password_response/forget_passwo
 import 'package:flowery_app/api/responses/home_products/products_response_model.dart';
 import 'package:flowery_app/api/responses/login_response/login_response.dart';
 import 'package:flowery_app/api/responses/products_response/products_response.dart';
+import 'package:flowery_app/api/responses/profile_reset_password/profile_reset_password_response.dart';
 import 'package:flowery_app/api/responses/profile_response/profile_response.dart';
 import 'package:flowery_app/api/responses/register_response/register_response.dart';
-import 'package:flowery_app/api/responses/profile_reset_password/profile_reset_password_response.dart';
 import 'package:flowery_app/api/responses/resend_code/resend_code_response_dto.dart';
 import 'package:flowery_app/api/responses/reset_password/reset_password_response_dto.dart';
 import 'package:flowery_app/api/responses/search/search_response.dart';
@@ -79,15 +77,8 @@ abstract class ApiClient {
   @GET(Endpoints.logout)
   Future<void> logout({@Header("Authorization") required String token});
 
-  @PATCH(Endpoints.profileResetPassword)
-  Future<ProfileResetPasswordResponse> profileResetPassword({
-    @Header("Authorization") required String token,
-    @Body() required ProfileResetPasswordRequest entity,
-  });
-  
   @POST(Endpoints.verification)
   Future<VerifyResponseDto> verificationCode(@Body() VerifyRequestDto request);
-  
 
   @PUT(Endpoints.resetPassword)
   Future<ResetPasswordResponseDto> resetPassword(
@@ -144,5 +135,11 @@ abstract class ApiClient {
   Future<UploadPhotoResponse> uploadProfilePhoto({
     @Header("Authorization") required String token,
     @Part(name: "photo") required File photo,
+  });
+
+  @PATCH(Endpoints.profileResetPassword)
+  Future<ProfileResetPasswordResponse> profileResetPassword({
+    @Header("Authorization") required String token,
+    @Body() required ProfileResetPasswordRequest entity,
   });
 }

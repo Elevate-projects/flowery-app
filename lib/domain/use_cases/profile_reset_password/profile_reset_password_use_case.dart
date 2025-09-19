@@ -4,10 +4,9 @@ import 'package:flowery_app/domain/entities/profile_reset_password_response_enti
 import 'package:flowery_app/domain/repositories/profile_reset_password/profile_reset_password_repository.dart';
 import 'package:injectable/injectable.dart';
 
-@Injectable()
-class ProfileResetPasswordUseCase  {
+@injectable
+class ProfileResetPasswordUseCase {
   final ProfileResetPasswordRepository repository;
-
 
   ProfileResetPasswordUseCase({required this.repository});
 

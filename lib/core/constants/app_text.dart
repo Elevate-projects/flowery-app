@@ -114,17 +114,6 @@ abstract final class AppText {
   static const String bestSellerText = "bestSellerText";
   static const String occasionsText = "occasionsText";
 
-  // Profile Reset Password
-  static const String profileResetPassword = "profileResetPassword";
-  static const String profileResetPasswordUpdate = "profileResetPasswordUpdate";
-  static const String profileNewPasswordLabel = "profileNewPasswordLabel";
-  static const String profileNewPasswordHint = "profileNewPasswordHint";
-  static const String profileCurrentPasswordLabel = "profileCurrentPasswordLabel";
-  static const String profileCurrentPasswordHint = "profileCurrentPasswordHint";
-  static const String profileConfirmPasswordLabel = "profileConfirmPasswordLabel";
-  static const String profileConfirmPasswordHintReset = "profileConfirmPasswordHintReset";
-
-  // Exceptions
   //Occasion
   static const String occasion = "occasion";
   static const String titleBar = "titleBar";
@@ -228,4 +217,17 @@ abstract final class AppText {
   static const String notFound = 'notFound';
   static const String noProductsFoundForYourSearch =
       "noProductsFoundForYourSearch";
+
+  // Profile Reset Password
+  static const String profileResetPassword = "profileResetPassword";
+  static const String profileResetPasswordUpdate = "profileResetPasswordUpdate";
+  static const String profileNewPasswordLabel = "profileNewPasswordLabel";
+  static const String profileNewPasswordHint = "profileNewPasswordHint";
+  static const String profileCurrentPasswordLabel =
+      "profileCurrentPasswordLabel";
+  static const String profileCurrentPasswordHint = "profileCurrentPasswordHint";
+  static const String profileConfirmPasswordLabel =
+      "profileConfirmPasswordLabel";
+  static const String profileConfirmPasswordHintReset =
+      "profileConfirmPasswordHintReset";
 }

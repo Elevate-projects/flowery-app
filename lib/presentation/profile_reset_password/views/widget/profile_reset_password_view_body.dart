@@ -1,3 +1,4 @@
+import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/presentation/profile_reset_password/view_model/profile_reset_password_cubit.dart';
 import 'package:flowery_app/presentation/profile_reset_password/view_model/profile_reset_password_state.dart';
 import 'package:flowery_app/presentation/profile_reset_password/views/widget/profile_reset_password_app_bar.dart';
@@ -16,11 +17,17 @@ class ProfileResetPasswordViewBody extends StatelessWidget {
     return BlocConsumer<ProfileResetPasswordCubit, ProfileResetPasswordState>(
       listener: (context, state) {
         if (state.resetPasswordStatus.isSuccess) {
-          Loaders.showSuccessMessage(message: "Password reset successful", context: context);
-          // logout the user or navigate to login screen
-          Navigator.of(context).pushReplacementNamed('/login');
+          Navigator.of(context).pop();
+          Loaders.showSuccessMessage(
+            message: AppText.profileConfirmPasswordHintReset,
+            context: context,
+          );
         } else if (state.resetPasswordStatus.isFailure) {
-          Loaders.showErrorMessage(message: state.resetPasswordStatus.error?.message ?? "Unknown error", context: context);
+          Loaders.showErrorMessage(
+            message:
+                state.resetPasswordStatus.error?.message ?? AppText.anUnknownErrorOccurred,
+            context: context,
+          );
         }
       },
       builder: (context, state) {

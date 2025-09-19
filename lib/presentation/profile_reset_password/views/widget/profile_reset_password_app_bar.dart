@@ -22,7 +22,7 @@ class ProfileResetPasswordAppBar extends StatelessWidget {
                 icon: Icon(
                   Icons.arrow_back_ios_new,
                   color: AppColors.black,
-                  size: 24.r,
+                  size: 24.sp,
                 ),
               ),
               Flexible(
@@ -38,7 +38,7 @@ class ProfileResetPasswordAppBar extends StatelessWidget {
             ],
           ),
         ),
-      ]
+      ],
     );
   }
 }

@@ -10,8 +10,7 @@ abstract class Endpoints {
   static const String editProfile = '/api/v1/auth/editProfile';
   static const String uploadProfileImage = '/api/v1/auth/upload-photo';
   static const String logout = '/api/v1/auth/logout';
-  static const String profileResetPassword = '/api/v1/auth/change-password';
-   static const String addProductToCart = '/api/v1/cart';
+  static const String addProductToCart = '/api/v1/cart';
   static const String resendCode = '/api/v1/auth/forgotPassword';
   static const String verification = '/api/v1/auth/verifyResetCode';
   static const String resetPassword = '/api/v1/auth/resetPassword';
@@ -20,4 +19,5 @@ abstract class Endpoints {
   static const String updateCartQuantity = '/api/v1/cart/{productId}';
   static const String deleteCartQuantity = '/api/v1/cart/{productId}';
   static const String addAddress = '/api/v1/addresses';
+  static const String profileResetPassword = '/api/v1/auth/change-password';
 }

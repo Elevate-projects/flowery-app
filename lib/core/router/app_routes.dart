@@ -20,8 +20,6 @@ import 'package:flowery_app/presentation/home/best_seller/view/best_seller_view.
 import 'package:flowery_app/presentation/home/occasions/view/occasion_view.dart';
 import 'package:flowery_app/presentation/product_details/views/product_details_view.dart';
 import 'package:flowery_app/presentation/profile/views_model/profile_cubit.dart';
-import 'package:flowery_app/presentation/profile_reset_password/view_model/profile_reset_password_cubit.dart';
-import 'package:flowery_app/presentation/profile_reset_password/view_model/profile_reset_password_intent.dart';
 import 'package:flowery_app/presentation/profile_reset_password/views/profile_reset_password_view.dart';
 import 'package:flowery_app/presentation/saved_address/views/saved_address_view.dart';
 import 'package:flowery_app/presentation/search/search/view/search_view.dart';
@@ -58,14 +56,6 @@ abstract class AppRoutes {
         );
       case RouteNames.forgetPassword:
         return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen());
-      case RouteNames.profileResetPassword:
-        return MaterialPageRoute(
-          builder: (_) => BlocProvider<ProfileResetPasswordCubit>(
-            create: (context) => getIt<ProfileResetPasswordCubit>()
-              ..doIntent(intent: InitializedProfileResetPassword()),
-            child: const ProfileResetPasswordView(),
-          ),
-        );
       case RouteNames.bestSeller:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
@@ -118,6 +108,11 @@ abstract class AppRoutes {
 
       case RouteNames.searchView:
         return MaterialPageRoute(builder: (context) => const SearchView());
+
+      case RouteNames.profileResetPassword:
+        return MaterialPageRoute(
+          builder: (context) => const ProfileResetPasswordView(),
+        );
       default:
         return null;
     }
