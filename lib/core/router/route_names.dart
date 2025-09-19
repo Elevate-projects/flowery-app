@@ -22,5 +22,4 @@ abstract class RouteNames {
   static const String notificationList = '/notificationListView';
   static const String profileResetPassword = '/profileResetPasswordView';
   static const String orderPage = "/orderPage";
-
 }

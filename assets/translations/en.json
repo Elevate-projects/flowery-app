@@ -191,9 +191,8 @@
   "pleaseSelectAPaymentMethod": "Please Select a Payment Method",
   "paymentCompleted": "Payment Completed",
   "invalidSessionURL": "Invalid Session URL",
-  "yourPaymentHasBeenSuccessfullyProcessedAndYourOrderHasBeenPlaced" :"Your payment has been successfully processed, and your order has been placed"
+  "yourPaymentHasBeenSuccessfullyProcessedAndYourOrderHasBeenPlaced" :"Your payment has been successfully processed, and your order has been placed",
 
-  "productName": "Product Name",
   "pickingImageFailureMessage": "Failed to pick image: ",
   "profilePicSuccessMessage": "Profile picture updated successfully",
   "profileUpdateSuccessMessage": "Profile updated successfully",

@@ -186,8 +186,7 @@
   "pleaseSelectAPaymentMethod": "من فضلك اختر طريقة الدفع",
   "paymentCompleted": "تم الدفع بنجاح",
   "invalidSessionURL": "رابط الجلسة غير صالح",
-  "yourPaymentHasBeenSuccessfullyProcessedAndYourOrderHasBeenPlaced" :"لقد تم معالجة الدفع الخاص بك بنجاح وتم تقديم طلبك"
-  "productName": "اسم المنتج",
+  "yourPaymentHasBeenSuccessfullyProcessedAndYourOrderHasBeenPlaced" :"لقد تم معالجة الدفع الخاص بك بنجاح وتم تقديم طلبك",
   "pickingImageFailureMessage": "فشل في اختيار الصورة: ",
   "profilePicSuccessMessage": "تم تحديث صورة الملف الشخصي بنجاح",
   "profileUpdateSuccessMessage": "تم تحديث الملف الشخصي بنجاح",

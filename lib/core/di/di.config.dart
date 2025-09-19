@@ -34,14 +34,22 @@ import '../../api/data_source/edit_profile/upload_photo_data_source_impl.dart'
     as _i567;
 import '../../api/data_source/forget_password/remote_data_source/forget_password_remote_data_source_impl.dart'
     as _i428;
+import '../../api/data_source/get_user_order/get_user_order_remote_data_source/get_user_order_data_source_imp.dart'
+    as _i470;
 import '../../api/data_source/home_products/home_products_data_source_impl.dart'
     as _i81;
 import '../../api/data_source/login/remote_data_source/login_remote_data_source_impl.dart'
     as _i221;
 import '../../api/data_source/logout/remote_data_source/logout_remote_data_source_impl.dart'
     as _i340;
+import '../../api/data_source/payment_data_source/cash_payment_data_source_impl.dart'
+    as _i841;
+import '../../api/data_source/payment_data_source/credit_payment_data_source_impl.dart'
+    as _i454;
 import '../../api/data_source/profile/remote_data_source/profile_remote_data_source_impl.dart'
     as _i913;
+import '../../api/data_source/profile_reset_password/profile_reset_password_data_source_impl.dart'
+    as _i436;
 import '../../api/data_source/register/remote_data_source/register_remote_data_source_impl.dart'
     as _i281;
 import '../../api/data_source/resend_code/resend_code_data_source_impl.dart'
@@ -70,14 +78,22 @@ import '../../data/data_source/edit_profile/upload_photo_data_source.dart'
     as _i195;
 import '../../data/data_source/forget_password/forget_password_remote_data_source.dart'
     as _i849;
+import '../../data/data_source/get_user_order/remote_data_source/get_user_order_data_source.dart'
+    as _i392;
 import '../../data/data_source/home_products/home_products_data_source.dart'
     as _i950;
 import '../../data/data_source/login/remote_data_source/login_remote_data_source.dart'
     as _i684;
 import '../../data/data_source/logout/remote_data_source/logout_remote_data_source.dart'
     as _i924;
+import '../../data/data_source/payment_data_source/cash_payment_data_source.dart'
+    as _i256;
+import '../../data/data_source/payment_data_source/credit_payment_data_source.dart'
+    as _i122;
 import '../../data/data_source/profile/remote_data_source/profile_remote_data_source.dart'
     as _i470;
+import '../../data/data_source/profile_reset_password/profile_reset_password_data_source.dart'
+    as _i838;
 import '../../data/data_source/register/remote_data_source/register_remote_data_source.dart'
     as _i233;
 import '../../data/data_source/resend_code/resend_code_data_source.dart'
@@ -105,11 +121,18 @@ import '../../data/repositories/edit_profile/upload_photo_repository_impl.dart'
     as _i396;
 import '../../data/repositories/forget_password_repo_impl/forget_password_repo_impl.dart'
     as _i1030;
+import '../../data/repositories/get_user_order/get_user_order_repositories_imp.dart'
+    as _i431;
 import '../../data/repositories/home_products/home_products_repository_impl_.dart'
     as _i713;
 import '../../data/repositories/login/login_repository_impl.dart' as _i722;
 import '../../data/repositories/logout/logout_repository_impl.dart' as _i463;
+import '../../data/repositories/payment/cash_payment_repo_impl.dart' as _i177;
+import '../../data/repositories/payment/credit_payment_repo_impl.dart'
+    as _i1029;
 import '../../data/repositories/profile/profile_repository_impl.dart' as _i770;
+import '../../data/repositories/profile_reset_password/profile_reset_password_repository_impl.dart'
+    as _i485;
 import '../../data/repositories/register/register_repository_impl.dart' as _i40;
 import '../../data/repositories/resend_code/resend_code_repository_impl.dart'
     as _i622;
@@ -135,11 +158,17 @@ import '../../domain/repositories/edit_profile/upload_photo_repository.dart'
     as _i234;
 import '../../domain/repositories/forget_password/forget_password_repo.dart'
     as _i72;
+import '../../domain/repositories/get_user_order/get_user_order_repositories.dart'
+    as _i997;
 import '../../domain/repositories/home_products/home_products_repository.dart'
     as _i168;
 import '../../domain/repositories/login/login_repository.dart' as _i300;
 import '../../domain/repositories/logout/logout_repository.dart' as _i6;
+import '../../domain/repositories/payment/cash_payment_repo.dart' as _i1013;
+import '../../domain/repositories/payment/credit_payment_repo.dart' as _i27;
 import '../../domain/repositories/profile/profile_repository.dart' as _i445;
+import '../../domain/repositories/profile_reset_password/profile_reset_password_repository.dart'
+    as _i571;
 import '../../domain/repositories/register/register_repository.dart' as _i638;
 import '../../domain/repositories/resend_code/resend_code.dart' as _i673;
 import '../../domain/repositories/reset_password/reset_password_repository.dart'
@@ -165,13 +194,19 @@ import '../../domain/use_cases/edit_profile/upload_photo_use_case.dart'
     as _i876;
 import '../../domain/use_cases/forget_password/forget_password_use_case.dart'
     as _i150;
+import '../../domain/use_cases/get_user_order/get_user_order_usecase.dart'
+    as _i148;
 import '../../domain/use_cases/home_products/home_products_use_case.dart'
     as _i627;
 import '../../domain/use_cases/login/login_with_email_and_password_use_case.dart'
     as _i197;
 import '../../domain/use_cases/logout/logout_use_case.dart' as _i242;
+import '../../domain/use_cases/payment/cash_payment_use_case.dart' as _i686;
+import '../../domain/use_cases/payment/credit_payment_use_case.dart' as _i346;
 import '../../domain/use_cases/profile/get_user_profile_data_use_case.dart'
     as _i306;
+import '../../domain/use_cases/profile_reset_password/profile_reset_password_use_case.dart'
+    as _i265;
 import '../../domain/use_cases/register/register_use_case.dart' as _i950;
 import '../../domain/use_cases/resend_code/resend_code_usecase.dart' as _i335;
 import '../../domain/use_cases/reset_password/reset_password_usecase.dart'
@@ -202,9 +237,17 @@ import '../../presentation/home/home_screen/view_model/home_products_cubit.dart'
     as _i641;
 import '../../presentation/home/occasions/view_model/occasion_view_model.dart'
     as _i694;
+import '../../presentation/order_page/view_model/order_page_cubit.dart'
+    as _i876;
+import '../../presentation/payment/cash/view_model/cash_payment_view_model.dart'
+    as _i34;
+import '../../presentation/payment/credit/view_model/credit_payment_view_model.dart'
+    as _i430;
 import '../../presentation/product_details/views_model/product_details_cubit.dart'
     as _i586;
 import '../../presentation/profile/views_model/profile_cubit.dart' as _i1028;
+import '../../presentation/profile_reset_password/view_model/profile_reset_password_cubit.dart'
+    as _i582;
 import '../../presentation/saved_address/views_model/saved_address_cubit.dart'
     as _i46;
 import '../../presentation/search/search/view_model/search_view_model.dart'
@@ -241,6 +284,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i361.Dio>(() => apiModule.provideDio());
     gh.singleton<_i23.SecureStorage>(() => _i23.SecureStorage());
     gh.factory<_i508.ApiClient>(() => _i508.ApiClient(gh<_i361.Dio>()));
+    gh.factory<_i122.CreditPaymentDataSource>(
+      () => _i454.CreditPaymentDataSourceImpl(gh<_i508.ApiClient>()),
+    );
+    gh.factory<_i27.CreditPaymentRepo>(
+      () => _i1029.CreditPaymentRepoImpl(gh<_i122.CreditPaymentDataSource>()),
+    );
     gh.factory<_i195.UploadPhotoDataSource>(
       () => _i567.UploadPhotoDataSourceImpl(gh<_i508.ApiClient>()),
     );
@@ -252,6 +301,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.singleton<_i686.SharedPreferencesHelper>(
       () => _i686.SharedPreferencesHelper(gh<_i460.SharedPreferences>()),
+    );
+    gh.factory<_i838.ProfileResetPasswordDataSource>(
+      () => _i436.ProfileResetPasswordDataSourceImpl(gh<_i508.ApiClient>()),
     );
     gh.factory<_i475.AddToCartRepository>(
       () =>
@@ -284,6 +336,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i686.SharedPreferencesHelper>(),
       ),
     );
+    gh.factory<_i392.GetUserOrderDataSource>(
+      () => _i470.GetUserOrderDataSourceImp(gh<_i508.ApiClient>()),
+    );
     gh.factory<_i926.ResetPasswordDataSource>(
       () => _i783.ResetPasswordDataSourceImpl(gh<_i508.ApiClient>()),
     );
@@ -312,11 +367,22 @@ extension GetItInjectableX on _i174.GetIt {
       () =>
           _i618.RemoteDataSourceDeleteItemImp(apiClient: gh<_i508.ApiClient>()),
     );
+    gh.factory<_i571.ProfileResetPasswordRepository>(
+      () => _i485.ProfileResetPasswordRepositoryImpl(
+        gh<_i838.ProfileResetPasswordDataSource>(),
+      ),
+    );
+    gh.factory<_i256.CashPaymentDataSource>(
+      () => _i841.CashPaymentDataSourceImpl(gh<_i508.ApiClient>()),
+    );
     gh.factory<_i1025.AddressRemoteDataSource>(
       () => _i188.AddressRemoteDataSourceImpl(gh<_i508.ApiClient>()),
     );
     gh.factory<_i119.AddressRepository>(
       () => _i444.AddressRepositoryImpl(gh<_i1025.AddressRemoteDataSource>()),
+    );
+    gh.factory<_i346.CreditPaymentUseCase>(
+      () => _i346.CreditPaymentUseCase(gh<_i27.CreditPaymentRepo>()),
     );
     gh.factory<_i924.LogoutRemoteDataSource>(
       () => _i340.LogoutRemoteDataSourceImpl(gh<_i508.ApiClient>()),
@@ -349,9 +415,17 @@ extension GetItInjectableX on _i174.GetIt {
       () =>
           _i1003.VerificationRepositoryImpl(gh<_i14.VerificationDataSource>()),
     );
+    gh.factory<_i430.CreditPaymentViewModel>(
+      () => _i430.CreditPaymentViewModel(gh<_i346.CreditPaymentUseCase>()),
+    );
     gh.factory<_i168.HomeProductsRepository>(
       () =>
           _i713.HomeProductsRepositoryImpl(gh<_i950.HomeProductsDataSource>()),
+    );
+    gh.factory<_i265.ProfileResetPasswordUseCase>(
+      () => _i265.ProfileResetPasswordUseCase(
+        repository: gh<_i571.ProfileResetPasswordRepository>(),
+      ),
     );
     gh.factory<_i378.RemoveQuantityRepositories>(
       () => _i954.QuantityRepositoriesImp(
@@ -380,12 +454,19 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i197.LoginWithEmailAndPasswordUseCase>(
       () => _i197.LoginWithEmailAndPasswordUseCase(gh<_i300.LoginRepository>()),
     );
+    gh.factory<_i1013.CashPaymentRepo>(
+      () => _i177.CashPaymentRepoImpl(gh<_i256.CashPaymentDataSource>()),
+    );
     gh.factory<_i189.ResetPasswordRepository>(
       () =>
           _i50.ResetPasswordRepositoryImpl(gh<_i926.ResetPasswordDataSource>()),
     );
     gh.factory<_i618.QuantityUseCase>(
       () => _i618.QuantityUseCase(gh<_i378.RemoveQuantityRepositories>()),
+    );
+    gh.factory<_i997.GetUserOrderRepositories>(
+      () =>
+          _i431.GetUserOrderRepositoriesImp(gh<_i392.GetUserOrderDataSource>()),
     );
     gh.factory<_i660.CategoriesRepository>(
       () => _i940.CategoriesRepositoryImpl(
@@ -413,6 +494,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i510.GetVerificationUseCase>(),
       ),
     );
+    gh.factory<_i686.CashPaymentUseCase>(
+      () => _i686.CashPaymentUseCase(gh<_i1013.CashPaymentRepo>()),
+    );
     gh.factory<_i330.DeleteItemRepositories>(
       () =>
           _i6.DeleteItemRepositoriesImp(gh<_i631.RemoteDataSourceDeleteItem>()),
@@ -425,6 +509,11 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i612.SearchUseCase>(
       () => _i612.SearchUseCase(gh<_i800.SearchRepo>()),
+    );
+    gh.factory<_i582.ProfileResetPasswordCubit>(
+      () => _i582.ProfileResetPasswordCubit(
+        gh<_i265.ProfileResetPasswordUseCase>(),
+      ),
     );
     gh.factory<_i92.AddAddressCubit>(
       () => _i92.AddAddressCubit(gh<_i1000.GetAddAddressUseCase>()),
@@ -450,6 +539,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i349.ResetPasswordCubit>(
       () => _i349.ResetPasswordCubit(gh<_i963.GetResetPasswordUseCase>()),
     );
+    gh.factory<_i34.CashPaymentViewModel>(
+      () => _i34.CashPaymentViewModel(gh<_i686.CashPaymentUseCase>()),
+    );
     gh.factory<_i484.SearchViewModel>(
       () => _i484.SearchViewModel(gh<_i612.SearchUseCase>()),
     );
@@ -462,6 +554,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i23.SecureStorage>(),
         gh<_i686.SharedPreferencesHelper>(),
       ),
+    );
+    gh.factory<_i148.GetUserUseCase>(
+      () => _i148.GetUserUseCase(gh<_i997.GetUserOrderRepositories>()),
     );
     gh.factory<_i242.LogoutUseCase>(
       () => _i242.LogoutUseCase(gh<_i6.LogoutRepository>()),
@@ -497,6 +592,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i618.QuantityUseCase>(),
         gh<_i195.DeleteCartItemUseCase>(),
       ),
+    );
+    gh.factory<_i876.GetUserOrderCubit>(
+      () => _i876.GetUserOrderCubit(gh<_i148.GetUserUseCase>()),
     );
     gh.factory<_i457.ForgetPasswordViewModel>(
       () => _i457.ForgetPasswordViewModel(gh<_i150.ForgetPasswordUseCase>()),

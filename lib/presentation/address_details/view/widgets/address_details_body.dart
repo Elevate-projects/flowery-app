@@ -29,6 +29,7 @@ class AddressDetailsBody extends StatelessWidget {
             break;
           case Status.success:
             Navigator.pop(context);
+            Navigator.pop(context);
             Loaders.showSuccessMessage(
               message: AppText.addressSavedSuccessfully.tr(),
               context: context,
@@ -43,10 +44,16 @@ class AddressDetailsBody extends StatelessWidget {
             break;
         }
       },
-      child: Padding(
-        padding: REdgeInsets.all(16),
-        child: const Column(
-          children: [MapSection(), RSizedBox(height: 25), AddressDetailsForm()],
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: REdgeInsets.all(16),
+          child: const Column(
+            children: [
+              MapSection(),
+              RSizedBox(height: 25),
+              AddressDetailsForm(),
+            ],
+          ),
         ),
       ),
     );
