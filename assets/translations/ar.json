@@ -34,6 +34,9 @@
   "createAnAccountYouAgree": "بإنشائك حساب، فإنك توافق على ",
   "termsAndConditions": "الشروط والأحكام",
   "alreadyHaveAnAccount": "لديك حساب بالفعل؟",
+  "editProfile": "تعديل الملف الشخصي",
+  "editProfileUpdateButton": "تحديث",
+  "changePassword": "تغيير كلمة المرور",
 
   "home": "الرئيسية",
   "categories": "التصنيفات",
@@ -185,4 +188,12 @@
   "paymentCompleted": "تم الدفع بنجاح",
   "invalidSessionURL": "رابط الجلسة غير صالح",
   "yourPaymentHasBeenSuccessfullyProcessedAndYourOrderHasBeenPlaced" :"لقد تم معالجة الدفع الخاص بك بنجاح وتم تقديم طلبك"
+  "productName": "اسم المنتج",
+  "pickingImageFailureMessage": "فشل في اختيار الصورة: ",
+  "profilePicSuccessMessage": "تم تحديث صورة الملف الشخصي بنجاح",
+  "profileUpdateSuccessMessage": "تم تحديث الملف الشخصي بنجاح",
+
+  "searchForAnyProductsYouWant": "ابحث عن أي منتج تريده",
+  "notFound": "غير موجود",
+  "noProductsFoundForYourSearch": "لم يتم العثور على منتجات لبحثك"
 }

@@ -30,6 +30,8 @@ class CustomTextFormField extends StatelessWidget {
     this.labelStyle,
     this.borderRadius = 4,
     this.disabledBorderColor,
+    this.isReadOnly = false,
+    this.floatingLabelBehavior = FloatingLabelBehavior.auto,
   });
   final String? hintText;
   final String label;
@@ -55,6 +57,8 @@ class CustomTextFormField extends StatelessWidget {
   final int? maxLength;
   final double borderRadius;
   final Color? disabledBorderColor;
+  final bool? isReadOnly;
+  final FloatingLabelBehavior floatingLabelBehavior;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -69,9 +73,10 @@ class CustomTextFormField extends StatelessWidget {
       obscureText: obscureText,
       obscuringCharacter: obscuringCharacter,
       textInputAction: textInputAction,
+      readOnly: isReadOnly ?? false,
       decoration: InputDecoration(
+        floatingLabelBehavior: floatingLabelBehavior,
         contentPadding: contentPadding ?? REdgeInsets.all(16),
-        floatingLabelBehavior: FloatingLabelBehavior.always,
         filled: false,
         label: Text(
           label.tr(),
@@ -125,12 +130,10 @@ class CustomTextFormField extends StatelessWidget {
       maxLines: maxLines,
       validator: validator,
       enabled: enabled,
-
-
     );
   }
 
- static OutlineInputBorder buildOutlinedBorder({
+  static OutlineInputBorder buildOutlinedBorder({
     required Color borderColor,
     required double borderRadius,
   }) {

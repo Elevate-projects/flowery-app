@@ -1,6 +1,7 @@
 import 'package:flowery_app/core/constants/app_colors.dart';
 import 'package:flowery_app/core/constants/app_icons.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
+import 'package:flowery_app/core/router/route_names.dart';
 import 'package:flowery_app/presentation/categories/views/widgets/categories_filter_content.dart';
 import 'package:flowery_app/presentation/categories/views_model/categories_cubit.dart';
 import 'package:flowery_app/presentation/categories/views_model/categories_state.dart';
@@ -30,7 +31,9 @@ class CategoriesSliverAppBar extends StatelessWidget {
                   Expanded(
                     child: GestureDetector(
                       onTap: () {
-                        // Navigate To Search Screen
+                      Navigator.pushNamed(context,
+                        RouteNames.searchView,
+                      );
                       },
                       child: CustomTextFormField(
                         label: AppText.search,

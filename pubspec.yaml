@@ -47,6 +47,7 @@ dependencies:
   dropdown_textfield: ^1.2.0
   geolocator: ^14.0.2
   group_radio_button: ^1.3.0
+  image_picker: ^1.2.0
   webview_flutter: ^4.13.0
 dev_dependencies:
   flutter_launcher_icons: "^0.14.4"
@@ -98,3 +99,8 @@ flutter:
           weight: 800
         - asset: assets/fonts/inter/Inter_18pt-Black.ttf
           weight: 900
+
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Italic-VariableFont_wdth,wght.ttf
+        - asset: assets/fonts/Roboto-VariableFont_wdth,wght.ttf

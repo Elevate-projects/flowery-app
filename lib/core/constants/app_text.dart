@@ -67,6 +67,15 @@ abstract final class AppText {
   static const String confirmLogout = "confirmLogout";
   static const String cancel = "cancel";
 
+  // Edit Profile
+  static const String editProfile = "editProfile";
+  static const String editProfileUpdateButton = "editProfileUpdateButton";
+  static const String changePassword = "changePassword";
+  static const String pickingImageFailureMessage = "pickingImageFailureMessage";
+  static const String profilePicSuccessMessage = "profilePicSuccessMessage";
+  static const String profileUpdateSuccessMessage =
+      "profileUpdateSuccessMessage";
+
   // Product Details
   static const String status = "status";
   static const String inStock = "inStock";
@@ -174,7 +183,7 @@ abstract final class AppText {
   static const String cartPage = "cart";
   static const String deleteCart = "deleteCart";
 
-  ///
+  // Checkout
   static const String checkout = "checkout";
   static const String deliveryTime = "deliveryTime";
   static const String schedule = "schedule";
@@ -209,4 +218,11 @@ abstract final class AppText {
       "yourPaymentHasBeenSuccessfullyProcessedAndYourOrderHasBeenPlaced";
 
 
+  //search text
+  static const String searchForAnyProductsYouWant =
+      'searchForAnyProductsYouWant';
+  static const String noProductsFound = 'noProductsFound';
+  static const String notFound = 'notFound';
+  static const String noProductsFoundForYourSearch =
+      "noProductsFoundForYourSearch";
 }

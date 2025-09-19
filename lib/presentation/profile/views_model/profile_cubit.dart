@@ -37,6 +37,8 @@ class ProfileCubit extends Cubit<ProfileState> {
         );
       case LogoutIntent():
         await _logout();
+      case GetUserProfileDataIntent():
+        await _getUserProfileData(isEdited: true);
     }
   }
 
@@ -53,8 +55,8 @@ class ProfileCubit extends Cubit<ProfileState> {
     }
   }
 
-  Future<void> _getUserProfileData() async {
-    if (FloweryMethodHelper.userData == null) {
+  Future<void> _getUserProfileData({bool? isEdited}) async {
+    if (FloweryMethodHelper.userData == null || isEdited == true) {
       emit(state.copyWith(profileStatus: const StateStatus.loading()));
       final result = await _getUserProfileDataUseCase.invoke();
       if (isClosed) return;

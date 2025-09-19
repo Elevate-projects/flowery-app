@@ -34,6 +34,9 @@
   "createAnAccountYouAgree": "Creating an account, you agree to our ",
   "termsAndConditions": "Terms and Conditions",
   "alreadyHaveAnAccount": "Already have an account?",
+  "editProfile": "Edit Profile",
+  "editProfileUpdateButton": "Update",
+  "changePassword": "Change",
 
   "home": "Home",
   "categories": "Categories",
@@ -156,6 +159,13 @@
 
   "bestSellerAppbar": "Best Seller",
   "bestSellerAppbarHint": "Bloom with our exquisite best sellers",
+
+
+  "searchForAnyProductsYouWant": "Search for any product you want",
+  "noProductsFound": "no products found",
+  "notFound": "Not Found",
+  "noProductsFoundForYourSearch": "No products found for your search",
+
   "deliveryTime": "Delivery Time",
   "schedule": "schedule",
   "instant": "instant,",
@@ -183,4 +193,8 @@
   "invalidSessionURL": "Invalid Session URL",
   "yourPaymentHasBeenSuccessfullyProcessedAndYourOrderHasBeenPlaced" :"Your payment has been successfully processed, and your order has been placed"
 
+  "productName": "Product Name",
+  "pickingImageFailureMessage": "Failed to pick image: ",
+  "profilePicSuccessMessage": "Profile picture updated successfully",
+  "profileUpdateSuccessMessage": "Profile updated successfully"
 }

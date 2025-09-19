@@ -1,5 +1,6 @@
 import 'package:flowery_app/api/requests/add_address/add_address_request_model.dart';
 import 'package:flowery_app/api/requests/add_to_cart_request/add_to_cart_request_model.dart';
+import 'package:flowery_app/api/requests/edit_profile_request/edit_profile_request.dart';
 import 'package:flowery_app/api/requests/forget_password_request/forget_password_request.dart';
 import 'package:flowery_app/api/requests/login_request/login_request_model.dart';
 import 'package:flowery_app/api/requests/payment/payment_request_dto.dart';
@@ -8,12 +9,17 @@ import 'package:flowery_app/api/requests/resend_code/resend_code_request_dto.dar
 import 'package:flowery_app/api/requests/reset_password/reset_password_request_dto.dart';
 import 'package:flowery_app/api/requests/verification/verify_request_dto.dart';
  import 'package:flowery_app/api/responses/resend_code/resend_code_response_dto.dart';
+import 'package:flowery_app/api/responses/products_response/products_response.dart';
+import 'package:flowery_app/api/responses/resend_code/resend_code_response_dto.dart';
 import 'package:flowery_app/api/responses/reset_password/reset_password_response_dto.dart';
 import 'package:flowery_app/api/responses/verification/verify_response_dto.dart';
 import 'package:flowery_app/domain/entities/payment/credit/credit_payment_request_entity.dart';
   import 'package:flowery_app/domain/entities/requests/forget_password_request/forget_password_request_entity.dart';
 import 'package:flowery_app/domain/entities/address/add_address_request_entity.dart';
+import 'package:flowery_app/domain/entities/home_products/products_response_entity.dart';
 import 'package:flowery_app/domain/entities/requests/add_to_cart_request/add_to_cart_request_entity.dart';
+import 'package:flowery_app/domain/entities/requests/edit_profile_request/edit_profile_request_entity.dart';
+import 'package:flowery_app/domain/entities/requests/forget_password_request/forget_password_request_entity.dart';
 import 'package:flowery_app/domain/entities/requests/login_request/login_request_entity.dart';
 import 'package:flowery_app/domain/entities/requests/register_request/register_request_entity.dart';
 import 'package:flowery_app/domain/entities/resend_code/request/resend_code_request.dart';
@@ -124,6 +130,26 @@ abstract class RequestMapper {
     return AddToCartRequestModel(
       productId: addToCartRequestEntity.productId,
       quantity: addToCartRequestEntity.quantity ?? 1,
+    );
+  }
+
+  static ProductsResponseEntity productsToEntity(ProductsResponse dto) {
+    return ProductsResponseEntity(
+      message: dto.message,
+      products: dto.products
+          ?.map((product) => product.toProductCardEntity())
+          .toList(),
+    );
+  }
+
+  static EditProfileRequest toEditProfileRequest({
+    required EditProfileRequestEntity entity,
+  }) {
+    return EditProfileRequest(
+      firstName: entity.firstName,
+      lastName: entity.lastName,
+      email: entity.email,
+      phone: entity.phone,
     );
   }
 }

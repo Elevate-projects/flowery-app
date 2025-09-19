@@ -104,5 +104,12 @@ abstract class AppTheme {
       visualDensity: VisualDensity.compact,
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
     ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        disabledBackgroundColor: AppColors.white[60],
+        disabledForegroundColor: AppColors.white,
+        
+      ),
+    ),
   );
 }

@@ -13,6 +13,7 @@ import 'package:flowery_app/presentation/auth/reset_password/views/reset_passwor
 import 'package:flowery_app/presentation/auth/verification/views/email_verfication.dart';
 import 'package:flowery_app/presentation/auth/verification/views_model/verification_screen_cubit.dart';
 import 'package:flowery_app/presentation/checkout/views/checkout_view.dart';
+import 'package:flowery_app/presentation/edit_profile/views/edit_profile_view.dart';
 import 'package:flowery_app/presentation/flowery_bottom_navigation/flowery_bottom_navigation.dart';
 import 'package:flowery_app/presentation/flowery_bottom_navigation/view_model/flowery_bottom_navigation_cubit.dart';
 import 'package:flowery_app/presentation/home/best_seller/view/best_seller_view.dart';
@@ -20,7 +21,9 @@ import 'package:flowery_app/presentation/home/occasions/view/occasion_view.dart'
  import 'package:flowery_app/presentation/payment/cash/view/cash_payment_view.dart';
  import 'package:flowery_app/presentation/payment/credit/view/credit_payment_view.dart';
 import 'package:flowery_app/presentation/product_details/views/product_details_view.dart';
+import 'package:flowery_app/presentation/profile/views_model/profile_cubit.dart';
 import 'package:flowery_app/presentation/saved_address/views/saved_address_view.dart';
+import 'package:flowery_app/presentation/search/search/view/search_view.dart';
 import 'package:flowery_app/presentation/terms_and_conditions/views/terms_and_conditions_view.dart';
 import 'package:flowery_app/utils/common_cubits/add_product_to_cart/add_product_to_cart_cubit.dart';
  import 'package:flutter/material.dart';
@@ -102,6 +105,14 @@ abstract class AppRoutes {
         return MaterialPageRoute(
           builder: (_) => const CreditPaymentView(cartItems: []),
         );
+      case RouteNames.editProfile:
+        return MaterialPageRoute(
+          builder: (_) =>
+              EditProfileView(profileCubit: settings.arguments as ProfileCubit),
+        );
+
+      case RouteNames.searchView:
+        return MaterialPageRoute(builder: (context) => const SearchView());
 
       case RouteNames.cashPaymentView:
         return MaterialPageRoute(
