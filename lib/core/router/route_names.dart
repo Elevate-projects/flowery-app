@@ -3,7 +3,6 @@ abstract class RouteNames {
   static const String aboutUs = "/aboutUsView";
   static const String termsAndConditions = "/termsAndConditionsView";
   static const String forgetPassword = "/forgetPassword";
-
   static const String register = "/registerView";
   static const String floweryBottomNavigation = "/floweryBottomNavigation";
   static const String productDetails = "/productDetailsView";
@@ -15,4 +14,6 @@ abstract class RouteNames {
   static const String savedAddress = "/savedAddressView";
   static const String addressDetails = "/addressDetailsView";
   static const String bestSeller = "/bestSellerView";
+  static const String checkout = "/checkoutView";
+  static const String editProfile = '/editProfileView';
 }

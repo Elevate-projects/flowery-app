@@ -5,12 +5,12 @@ class CartEntity {
   final String? user;
   final List<CartItemEntity>? cartItems;
   final List<dynamic>? appliedCoupons;
-  final int? totalPrice;
+  int? totalPrice;
   final String? createdAt;
   final String? updatedAt;
   final int? v;
 
-  const CartEntity({
+  CartEntity({
     this.id,
     this.user,
     this.cartItems,

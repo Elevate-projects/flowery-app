@@ -3,38 +3,38 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i19;
+import 'dart:async' as _i18;
 
-import 'package:connectivity_plus/connectivity_plus.dart' as _i30;
+import 'package:connectivity_plus/connectivity_plus.dart' as _i29;
 import 'package:connectivity_plus_platform_interface/connectivity_plus_platform_interface.dart'
-    as _i31;
-import 'package:flowery_app/api/client/api_client.dart' as _i18;
+    as _i30;
+import 'package:flowery_app/api/client/api_client.dart' as _i17;
 import 'package:flowery_app/api/requests/add_address/add_address_request_model.dart'
-    as _i26;
-import 'package:flowery_app/api/requests/add_to_cart_request/add_to_cart_request_model.dart'
-    as _i27;
-import 'package:flowery_app/api/requests/cart_request/quintity_request.dart'
-    as _i28;
-import 'package:flowery_app/api/requests/forget_password_request/forget_password_request.dart'
-    as _i22;
-import 'package:flowery_app/api/requests/login_request/login_request_model.dart'
-    as _i20;
-import 'package:flowery_app/api/requests/register_request/register_request.dart'
-    as _i21;
-import 'package:flowery_app/api/requests/resend_code/resend_code_request_dto.dart'
-    as _i23;
-import 'package:flowery_app/api/requests/reset_password/reset_password_request_dto.dart'
     as _i25;
-import 'package:flowery_app/api/requests/verification/verify_request_dto.dart'
+import 'package:flowery_app/api/requests/add_to_cart_request/add_to_cart_request_model.dart'
+    as _i26;
+import 'package:flowery_app/api/requests/cart_request/quintity_request.dart'
+    as _i27;
+import 'package:flowery_app/api/requests/forget_password_request/forget_password_request.dart'
+    as _i21;
+import 'package:flowery_app/api/requests/login_request/login_request_model.dart'
+    as _i19;
+import 'package:flowery_app/api/requests/register_request/register_request.dart'
+    as _i20;
+import 'package:flowery_app/api/requests/resend_code/resend_code_request_dto.dart'
+    as _i22;
+import 'package:flowery_app/api/requests/reset_password/reset_password_request_dto.dart'
     as _i24;
+import 'package:flowery_app/api/requests/verification/verify_request_dto.dart'
+    as _i23;
 import 'package:flowery_app/api/responses/add_address_response/add_address_response.dart'
-    as _i13;
+    as _i12;
 import 'package:flowery_app/api/responses/cart_response/delete_items.dart'
-    as _i16;
-import 'package:flowery_app/api/responses/cart_response/get_logged_user_cart.dart'
-    as _i14;
-import 'package:flowery_app/api/responses/cart_response/quantity_response.dart'
     as _i15;
+import 'package:flowery_app/api/responses/cart_response/get_logged_user_cart.dart'
+    as _i13;
+import 'package:flowery_app/api/responses/cart_response/quantity_response.dart'
+    as _i14;
 import 'package:flowery_app/api/responses/categories_response/categories_response.dart'
     as _i5;
 import 'package:flowery_app/api/responses/forget_password_response/forget_password_response.dart'
@@ -43,7 +43,7 @@ import 'package:flowery_app/api/responses/home_products/products_response_model.
     as _i2;
 import 'package:flowery_app/api/responses/login_response/login_response.dart'
     as _i3;
-import 'package:flowery_app/api/responses/products_response/products_response_dto.dart'
+import 'package:flowery_app/api/responses/products_response/products_response.dart'
     as _i6;
 import 'package:flowery_app/api/responses/profile_response/profile_response.dart'
     as _i9;
@@ -53,12 +53,10 @@ import 'package:flowery_app/api/responses/resend_code/resend_code_response_dto.d
     as _i8;
 import 'package:flowery_app/api/responses/reset_password/reset_password_response_dto.dart'
     as _i11;
-import 'package:flowery_app/api/responses/search/search_response_dto.dart'
-    as _i12;
 import 'package:flowery_app/api/responses/verification/verify_response_dto.dart'
     as _i10;
-import 'package:flowery_app/core/secure_storage/secure_storage.dart' as _i29;
-import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i17;
+import 'package:flowery_app/core/secure_storage/secure_storage.dart' as _i28;
+import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i16;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -98,9 +96,9 @@ class _FakeCategoriesResponse_3 extends _i1.SmartFake
     : super(parent, parentInvocation);
 }
 
-class _FakeProductsResponseDto_4 extends _i1.SmartFake
-    implements _i6.ProductsResponseDto {
-  _FakeProductsResponseDto_4(Object parent, Invocation parentInvocation)
+class _FakeProductsResponse_4 extends _i1.SmartFake
+    implements _i6.ProductsResponse {
+  _FakeProductsResponse_4(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
@@ -134,219 +132,198 @@ class _FakeResetPasswordResponseDto_9 extends _i1.SmartFake
     : super(parent, parentInvocation);
 }
 
-class _FakeSearchResponseDto_10 extends _i1.SmartFake
-    implements _i12.SearchResponseDto {
-  _FakeSearchResponseDto_10(Object parent, Invocation parentInvocation)
+class _FakeAddAddressResponse_10 extends _i1.SmartFake
+    implements _i12.AddAddressResponse {
+  _FakeAddAddressResponse_10(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
-class _FakeAddAddressResponse_11 extends _i1.SmartFake
-    implements _i13.AddAddressResponse {
-  _FakeAddAddressResponse_11(Object parent, Invocation parentInvocation)
+class _FakeGetLoggedUserCartModel_11 extends _i1.SmartFake
+    implements _i13.GetLoggedUserCartModel {
+  _FakeGetLoggedUserCartModel_11(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
-class _FakeGetLoggedUserCartModel_12 extends _i1.SmartFake
-    implements _i14.GetLoggedUserCartModel {
-  _FakeGetLoggedUserCartModel_12(Object parent, Invocation parentInvocation)
+class _FakeQuantityResponse_12 extends _i1.SmartFake
+    implements _i14.QuantityResponse {
+  _FakeQuantityResponse_12(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
-class _FakeQuantityResponse_13 extends _i1.SmartFake
-    implements _i15.QuantityResponse {
-  _FakeQuantityResponse_13(Object parent, Invocation parentInvocation)
+class _FakeDeleteItem_13 extends _i1.SmartFake implements _i15.DeleteItem {
+  _FakeDeleteItem_13(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
-class _FakeDeleteItem_14 extends _i1.SmartFake implements _i16.DeleteItem {
-  _FakeDeleteItem_14(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
-}
-
-class _FakeFlutterSecureStorage_15 extends _i1.SmartFake
-    implements _i17.FlutterSecureStorage {
-  _FakeFlutterSecureStorage_15(Object parent, Invocation parentInvocation)
+class _FakeFlutterSecureStorage_14 extends _i1.SmartFake
+    implements _i16.FlutterSecureStorage {
+  _FakeFlutterSecureStorage_14(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
 /// A class which mocks [ApiClient].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockApiClient extends _i1.Mock implements _i18.ApiClient {
+class MockApiClient extends _i1.Mock implements _i17.ApiClient {
   MockApiClient() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i19.Future<_i2.ProductsResponseModel> getHomeData({
+  _i18.Future<_i2.ProductsResponseModel> getHomeData({
     required String? token,
   }) =>
       (super.noSuchMethod(
             Invocation.method(#getHomeData, [], {#token: token}),
-            returnValue: _i19.Future<_i2.ProductsResponseModel>.value(
+            returnValue: _i18.Future<_i2.ProductsResponseModel>.value(
               _FakeProductsResponseModel_0(
                 this,
                 Invocation.method(#getHomeData, [], {#token: token}),
               ),
             ),
           )
-          as _i19.Future<_i2.ProductsResponseModel>);
+          as _i18.Future<_i2.ProductsResponseModel>);
 
   @override
-  _i19.Future<_i3.LoginResponse> login({
-    required _i20.LoginRequestModel? request,
+  _i18.Future<_i3.LoginResponse> login({
+    required _i19.LoginRequestModel? request,
   }) =>
       (super.noSuchMethod(
             Invocation.method(#login, [], {#request: request}),
-            returnValue: _i19.Future<_i3.LoginResponse>.value(
+            returnValue: _i18.Future<_i3.LoginResponse>.value(
               _FakeLoginResponse_1(
                 this,
                 Invocation.method(#login, [], {#request: request}),
               ),
             ),
           )
-          as _i19.Future<_i3.LoginResponse>);
+          as _i18.Future<_i3.LoginResponse>);
 
   @override
-  _i19.Future<_i4.RegisterResponse> register({
-    required _i21.RegisterRequest? request,
+  _i18.Future<_i4.RegisterResponse> register({
+    required _i20.RegisterRequest? request,
   }) =>
       (super.noSuchMethod(
             Invocation.method(#register, [], {#request: request}),
-            returnValue: _i19.Future<_i4.RegisterResponse>.value(
+            returnValue: _i18.Future<_i4.RegisterResponse>.value(
               _FakeRegisterResponse_2(
                 this,
                 Invocation.method(#register, [], {#request: request}),
               ),
             ),
           )
-          as _i19.Future<_i4.RegisterResponse>);
+          as _i18.Future<_i4.RegisterResponse>);
 
   @override
-  _i19.Future<_i5.CategoriesResponse> fetchAllCategories() =>
+  _i18.Future<_i5.CategoriesResponse> fetchAllCategories() =>
       (super.noSuchMethod(
             Invocation.method(#fetchAllCategories, []),
-            returnValue: _i19.Future<_i5.CategoriesResponse>.value(
+            returnValue: _i18.Future<_i5.CategoriesResponse>.value(
               _FakeCategoriesResponse_3(
                 this,
                 Invocation.method(#fetchAllCategories, []),
               ),
             ),
           )
-          as _i19.Future<_i5.CategoriesResponse>);
+          as _i18.Future<_i5.CategoriesResponse>);
 
   @override
-  _i19.Future<_i6.ProductsResponseDto> fetchAllProducts() =>
+  _i18.Future<_i6.ProductsResponse> fetchAllProducts() =>
       (super.noSuchMethod(
             Invocation.method(#fetchAllProducts, []),
-            returnValue: _i19.Future<_i6.ProductsResponseDto>.value(
-              _FakeProductsResponseDto_4(
+            returnValue: _i18.Future<_i6.ProductsResponse>.value(
+              _FakeProductsResponse_4(
                 this,
                 Invocation.method(#fetchAllProducts, []),
               ),
             ),
           )
-          as _i19.Future<_i6.ProductsResponseDto>);
+          as _i18.Future<_i6.ProductsResponse>);
 
   @override
-  _i19.Future<_i7.ForgetPasswordResponseModel> forgetPassword({
-    required _i22.ForgetPasswordRequestDto? request,
+  _i18.Future<_i7.ForgetPasswordResponseModel> forgetPassword({
+    required _i21.ForgetPasswordRequestDto? request,
   }) =>
       (super.noSuchMethod(
             Invocation.method(#forgetPassword, [], {#request: request}),
-            returnValue: _i19.Future<_i7.ForgetPasswordResponseModel>.value(
+            returnValue: _i18.Future<_i7.ForgetPasswordResponseModel>.value(
               _FakeForgetPasswordResponseModel_5(
                 this,
                 Invocation.method(#forgetPassword, [], {#request: request}),
               ),
             ),
           )
-          as _i19.Future<_i7.ForgetPasswordResponseModel>);
+          as _i18.Future<_i7.ForgetPasswordResponseModel>);
 
   @override
-  _i19.Future<_i8.ResendCodeResponseDto> resendCode(
-    _i23.ResendCodeRequestDto? request,
+  _i18.Future<_i8.ResendCodeResponseDto> resendCode(
+    _i22.ResendCodeRequestDto? request,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#resendCode, [request]),
-            returnValue: _i19.Future<_i8.ResendCodeResponseDto>.value(
+            returnValue: _i18.Future<_i8.ResendCodeResponseDto>.value(
               _FakeResendCodeResponseDto_6(
                 this,
                 Invocation.method(#resendCode, [request]),
               ),
             ),
           )
-          as _i19.Future<_i8.ResendCodeResponseDto>);
+          as _i18.Future<_i8.ResendCodeResponseDto>);
 
   @override
-  _i19.Future<_i9.ProfileResponse> getUserData({required String? token}) =>
+  _i18.Future<_i9.ProfileResponse> getUserData({required String? token}) =>
       (super.noSuchMethod(
             Invocation.method(#getUserData, [], {#token: token}),
-            returnValue: _i19.Future<_i9.ProfileResponse>.value(
+            returnValue: _i18.Future<_i9.ProfileResponse>.value(
               _FakeProfileResponse_7(
                 this,
                 Invocation.method(#getUserData, [], {#token: token}),
               ),
             ),
           )
-          as _i19.Future<_i9.ProfileResponse>);
+          as _i18.Future<_i9.ProfileResponse>);
 
   @override
-  _i19.Future<void> logout({required String? token}) =>
+  _i18.Future<void> logout({required String? token}) =>
       (super.noSuchMethod(
             Invocation.method(#logout, [], {#token: token}),
-            returnValue: _i19.Future<void>.value(),
-            returnValueForMissingStub: _i19.Future<void>.value(),
+            returnValue: _i18.Future<void>.value(),
+            returnValueForMissingStub: _i18.Future<void>.value(),
           )
-          as _i19.Future<void>);
+          as _i18.Future<void>);
 
   @override
-  _i19.Future<_i10.VerifyResponseDto> verificationCode(
-    _i24.VerifyRequestDto? request,
+  _i18.Future<_i10.VerifyResponseDto> verificationCode(
+    _i23.VerifyRequestDto? request,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#verificationCode, [request]),
-            returnValue: _i19.Future<_i10.VerifyResponseDto>.value(
+            returnValue: _i18.Future<_i10.VerifyResponseDto>.value(
               _FakeVerifyResponseDto_8(
                 this,
                 Invocation.method(#verificationCode, [request]),
               ),
             ),
           )
-          as _i19.Future<_i10.VerifyResponseDto>);
+          as _i18.Future<_i10.VerifyResponseDto>);
 
   @override
-  _i19.Future<_i11.ResetPasswordResponseDto> resetPassword(
-    _i25.ResetPasswordRequestDto? request,
+  _i18.Future<_i11.ResetPasswordResponseDto> resetPassword(
+    _i24.ResetPasswordRequestDto? request,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#resetPassword, [request]),
-            returnValue: _i19.Future<_i11.ResetPasswordResponseDto>.value(
+            returnValue: _i18.Future<_i11.ResetPasswordResponseDto>.value(
               _FakeResetPasswordResponseDto_9(
                 this,
                 Invocation.method(#resetPassword, [request]),
               ),
             ),
           )
-          as _i19.Future<_i11.ResetPasswordResponseDto>);
+          as _i18.Future<_i11.ResetPasswordResponseDto>);
 
   @override
-  _i19.Future<_i12.SearchResponseDto> searchProducts({
-    required String? search,
-  }) =>
-      (super.noSuchMethod(
-            Invocation.method(#searchProducts, [], {#search: search}),
-            returnValue: _i19.Future<_i12.SearchResponseDto>.value(
-              _FakeSearchResponseDto_10(
-                this,
-                Invocation.method(#searchProducts, [], {#search: search}),
-              ),
-            ),
-          )
-          as _i19.Future<_i12.SearchResponseDto>);
-
-  @override
-  _i19.Future<void> removeAddress({
+  _i18.Future<void> removeAddress({
     required String? addressId,
     required String? token,
   }) =>
@@ -355,14 +332,14 @@ class MockApiClient extends _i1.Mock implements _i18.ApiClient {
               #addressId: addressId,
               #token: token,
             }),
-            returnValue: _i19.Future<void>.value(),
-            returnValueForMissingStub: _i19.Future<void>.value(),
+            returnValue: _i18.Future<void>.value(),
+            returnValueForMissingStub: _i18.Future<void>.value(),
           )
-          as _i19.Future<void>);
+          as _i18.Future<void>);
 
   @override
-  _i19.Future<_i13.AddAddressResponse> addAddress({
-    required _i26.AddAddressRequestModel? request,
+  _i18.Future<_i12.AddAddressResponse> addAddress({
+    required _i25.AddAddressRequestModel? request,
     required String? token,
   }) =>
       (super.noSuchMethod(
@@ -370,8 +347,8 @@ class MockApiClient extends _i1.Mock implements _i18.ApiClient {
               #request: request,
               #token: token,
             }),
-            returnValue: _i19.Future<_i13.AddAddressResponse>.value(
-              _FakeAddAddressResponse_11(
+            returnValue: _i18.Future<_i12.AddAddressResponse>.value(
+              _FakeAddAddressResponse_10(
                 this,
                 Invocation.method(#addAddress, [], {
                   #request: request,
@@ -380,43 +357,43 @@ class MockApiClient extends _i1.Mock implements _i18.ApiClient {
               ),
             ),
           )
-          as _i19.Future<_i13.AddAddressResponse>);
+          as _i18.Future<_i12.AddAddressResponse>);
 
   @override
-  _i19.Future<void> addProductToCart({
+  _i18.Future<void> addProductToCart({
     required String? token,
-    required _i27.AddToCartRequestModel? request,
+    required _i26.AddToCartRequestModel? request,
   }) =>
       (super.noSuchMethod(
             Invocation.method(#addProductToCart, [], {
               #token: token,
               #request: request,
             }),
-            returnValue: _i19.Future<void>.value(),
-            returnValueForMissingStub: _i19.Future<void>.value(),
+            returnValue: _i18.Future<void>.value(),
+            returnValueForMissingStub: _i18.Future<void>.value(),
           )
-          as _i19.Future<void>);
+          as _i18.Future<void>);
 
   @override
-  _i19.Future<_i14.GetLoggedUserCartModel> getLoggedUserCart({
+  _i18.Future<_i13.GetLoggedUserCartModel> getLoggedUserCart({
     required String? token,
   }) =>
       (super.noSuchMethod(
             Invocation.method(#getLoggedUserCart, [], {#token: token}),
-            returnValue: _i19.Future<_i14.GetLoggedUserCartModel>.value(
-              _FakeGetLoggedUserCartModel_12(
+            returnValue: _i18.Future<_i13.GetLoggedUserCartModel>.value(
+              _FakeGetLoggedUserCartModel_11(
                 this,
                 Invocation.method(#getLoggedUserCart, [], {#token: token}),
               ),
             ),
           )
-          as _i19.Future<_i14.GetLoggedUserCartModel>);
+          as _i18.Future<_i13.GetLoggedUserCartModel>);
 
   @override
-  _i19.Future<_i15.QuantityResponse> updateCartQuantity({
+  _i18.Future<_i14.QuantityResponse> updateCartQuantity({
     required String? productId,
     required String? token,
-    required _i28.QuantityRequest? request,
+    required _i27.QuantityRequest? request,
   }) =>
       (super.noSuchMethod(
             Invocation.method(#updateCartQuantity, [], {
@@ -424,8 +401,8 @@ class MockApiClient extends _i1.Mock implements _i18.ApiClient {
               #token: token,
               #request: request,
             }),
-            returnValue: _i19.Future<_i15.QuantityResponse>.value(
-              _FakeQuantityResponse_13(
+            returnValue: _i18.Future<_i14.QuantityResponse>.value(
+              _FakeQuantityResponse_12(
                 this,
                 Invocation.method(#updateCartQuantity, [], {
                   #productId: productId,
@@ -435,10 +412,10 @@ class MockApiClient extends _i1.Mock implements _i18.ApiClient {
               ),
             ),
           )
-          as _i19.Future<_i15.QuantityResponse>);
+          as _i18.Future<_i14.QuantityResponse>);
 
   @override
-  _i19.Future<_i16.DeleteItem> deleteCartQuantity({
+  _i18.Future<_i15.DeleteItem> deleteCartQuantity({
     required String? productId,
     required String? token,
   }) =>
@@ -447,8 +424,8 @@ class MockApiClient extends _i1.Mock implements _i18.ApiClient {
               #productId: productId,
               #token: token,
             }),
-            returnValue: _i19.Future<_i16.DeleteItem>.value(
-              _FakeDeleteItem_14(
+            returnValue: _i18.Future<_i15.DeleteItem>.value(
+              _FakeDeleteItem_13(
                 this,
                 Invocation.method(#deleteCartQuantity, [], {
                   #productId: productId,
@@ -457,87 +434,87 @@ class MockApiClient extends _i1.Mock implements _i18.ApiClient {
               ),
             ),
           )
-          as _i19.Future<_i16.DeleteItem>);
+          as _i18.Future<_i15.DeleteItem>);
 }
 
 /// A class which mocks [SecureStorage].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockSecureStorage extends _i1.Mock implements _i29.SecureStorage {
+class MockSecureStorage extends _i1.Mock implements _i28.SecureStorage {
   MockSecureStorage() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i17.FlutterSecureStorage get storage =>
+  _i16.FlutterSecureStorage get storage =>
       (super.noSuchMethod(
             Invocation.getter(#storage),
-            returnValue: _FakeFlutterSecureStorage_15(
+            returnValue: _FakeFlutterSecureStorage_14(
               this,
               Invocation.getter(#storage),
             ),
           )
-          as _i17.FlutterSecureStorage);
+          as _i16.FlutterSecureStorage);
 
   @override
-  _i19.Future<void> saveData({required String? key, required String? value}) =>
+  _i18.Future<void> saveData({required String? key, required String? value}) =>
       (super.noSuchMethod(
             Invocation.method(#saveData, [], {#key: key, #value: value}),
-            returnValue: _i19.Future<void>.value(),
-            returnValueForMissingStub: _i19.Future<void>.value(),
+            returnValue: _i18.Future<void>.value(),
+            returnValueForMissingStub: _i18.Future<void>.value(),
           )
-          as _i19.Future<void>);
+          as _i18.Future<void>);
 
   @override
-  _i19.Future<void> saveUserToken({required String? token}) =>
+  _i18.Future<void> saveUserToken({required String? token}) =>
       (super.noSuchMethod(
             Invocation.method(#saveUserToken, [], {#token: token}),
-            returnValue: _i19.Future<void>.value(),
-            returnValueForMissingStub: _i19.Future<void>.value(),
+            returnValue: _i18.Future<void>.value(),
+            returnValueForMissingStub: _i18.Future<void>.value(),
           )
-          as _i19.Future<void>);
+          as _i18.Future<void>);
 
   @override
-  _i19.Future<String?> getData({required String? key}) =>
+  _i18.Future<String?> getData({required String? key}) =>
       (super.noSuchMethod(
             Invocation.method(#getData, [], {#key: key}),
-            returnValue: _i19.Future<String?>.value(),
+            returnValue: _i18.Future<String?>.value(),
           )
-          as _i19.Future<String?>);
+          as _i18.Future<String?>);
 
   @override
-  _i19.Future<void> deleteData({required String? key}) =>
+  _i18.Future<void> deleteData({required String? key}) =>
       (super.noSuchMethod(
             Invocation.method(#deleteData, [], {#key: key}),
-            returnValue: _i19.Future<void>.value(),
-            returnValueForMissingStub: _i19.Future<void>.value(),
+            returnValue: _i18.Future<void>.value(),
+            returnValueForMissingStub: _i18.Future<void>.value(),
           )
-          as _i19.Future<void>);
+          as _i18.Future<void>);
 }
 
 /// A class which mocks [Connectivity].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockConnectivity extends _i1.Mock implements _i30.Connectivity {
+class MockConnectivity extends _i1.Mock implements _i29.Connectivity {
   MockConnectivity() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i19.Stream<List<_i31.ConnectivityResult>> get onConnectivityChanged =>
+  _i18.Stream<List<_i30.ConnectivityResult>> get onConnectivityChanged =>
       (super.noSuchMethod(
             Invocation.getter(#onConnectivityChanged),
-            returnValue: _i19.Stream<List<_i31.ConnectivityResult>>.empty(),
+            returnValue: _i18.Stream<List<_i30.ConnectivityResult>>.empty(),
           )
-          as _i19.Stream<List<_i31.ConnectivityResult>>);
+          as _i18.Stream<List<_i30.ConnectivityResult>>);
 
   @override
-  _i19.Future<List<_i31.ConnectivityResult>> checkConnectivity() =>
+  _i18.Future<List<_i30.ConnectivityResult>> checkConnectivity() =>
       (super.noSuchMethod(
             Invocation.method(#checkConnectivity, []),
-            returnValue: _i19.Future<List<_i31.ConnectivityResult>>.value(
-              <_i31.ConnectivityResult>[],
+            returnValue: _i18.Future<List<_i30.ConnectivityResult>>.value(
+              <_i30.ConnectivityResult>[],
             ),
           )
-          as _i19.Future<List<_i31.ConnectivityResult>>);
+          as _i18.Future<List<_i30.ConnectivityResult>>);
 }

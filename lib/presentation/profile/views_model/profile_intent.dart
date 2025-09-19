@@ -17,4 +17,6 @@ class ToggleLanguageIntent extends ProfileIntent {
   final Languages newSelectedLanguage;
 }
 
+class GetUserProfileDataIntent extends ProfileIntent {}
+
 class LogoutIntent extends ProfileIntent {}

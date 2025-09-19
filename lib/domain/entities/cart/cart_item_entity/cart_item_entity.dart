@@ -3,9 +3,9 @@ import 'package:flowery_app/domain/entities/product_card/product_card_entity.dar
 class CartItemEntity {
   final ProductCardEntity? product;
   final int? price;
-  final int? quantity;
+  int? quantity;
   final String? id;
-  const CartItemEntity({
+  CartItemEntity({
     this.product,
     this.price,
     this.quantity,
