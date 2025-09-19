@@ -155,5 +155,10 @@
   "deleteCart": "Item removed successfully",
 
   "bestSellerAppbar": "Best Seller",
-  "bestSellerAppbarHint": "Bloom with our exquisite best sellers"
+  "bestSellerAppbarHint": "Bloom with our exquisite best sellers",
+  "orderPage": "My Orders",
+  "trackOrder": "Track Order",
+  "active": "Active",
+  "completed": "Completed",
+  "productName": "Product Name"
 }

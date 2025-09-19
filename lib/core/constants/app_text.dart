@@ -173,4 +173,9 @@ abstract final class AppText {
   static const String price = "price";
   static const String cartPage = "cart";
   static const String deleteCart = "deleteCart";
+  static const String orderPage = "orderPage";
+  static const String trackOrder = "trackOrder";
+  static const String active = "active";
+  static const String completed = "completed";
+  static const String productName = "productName";
 }
