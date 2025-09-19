@@ -32,8 +32,10 @@ class OrderViewBody extends StatelessWidget {
 
         if (state.orderStatus.isSuccess) {
           final orders = state.orderStatus.data?.orders ?? [];
-          final activeOrders = orders.where((o) => o.isDelivered == false).toList();
-          final completedOrders = orders.where((o) => o.isDelivered == true).toList();
+          final activeOrders = orders.where((o) => o.isPaid == false).toList();
+          final completedOrders = orders
+              .where((o) => o.isPaid == true)
+              .toList();
 
           return DefaultTabController(
             length: 2,
@@ -55,7 +57,7 @@ class OrderViewBody extends StatelessWidget {
                       /// Active Orders
                       ListView.builder(
                         itemCount: activeOrders.length,
-                        padding:  REdgeInsets.all(12),
+                        padding: REdgeInsets.all(12),
                         itemBuilder: (context, index) {
                           final order = activeOrders[index];
                           return Padding(
@@ -64,14 +66,15 @@ class OrderViewBody extends StatelessWidget {
                           );
                         },
                       ),
+
                       /// Completed Orders
                       ListView.builder(
                         itemCount: completedOrders.length,
-                        padding:  REdgeInsets.all(12),
+                        padding: REdgeInsets.all(12),
                         itemBuilder: (context, index) {
                           final order = completedOrders[index];
                           return Padding(
-                            padding:  REdgeInsets.only(bottom: 10),
+                            padding: REdgeInsets.only(bottom: 10),
                             child: CustomOrder(order: order),
                           );
                         },
