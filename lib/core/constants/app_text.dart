@@ -194,7 +194,7 @@ abstract final class AppText {
   static const String cartPage = "cart";
   static const String deleteCart = "deleteCart";
 
-  ///
+  // Checkout
   static const String checkout = "checkout";
   static const String deliveryTime = "deliveryTime";
   static const String schedule = "schedule";
@@ -213,10 +213,19 @@ abstract final class AppText {
   static const String enterName = "enterName";
   static const String enterPhoneNumber = "enterPhoneNumber";
   static const String placeOrder = "placeOrder";
+
   // order page
   static const String trackOrder = "trackOrder";
   static const String orderPage = "orderPage";
   static const String active = "active";
   static const String completed = "completed";
   static const String productName = "productName";
+
+  //search text
+  static const String searchForAnyProductsYouWant =
+      'searchForAnyProductsYouWant';
+  static const String noProductsFound = 'noProductsFound';
+  static const String notFound = 'notFound';
+  static const String noProductsFoundForYourSearch =
+      "noProductsFoundForYourSearch";
 }

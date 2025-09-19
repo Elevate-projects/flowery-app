@@ -194,5 +194,9 @@
   "productName": "اسم المنتج",
   "pickingImageFailureMessage": "فشل في اختيار الصورة: ",
   "profilePicSuccessMessage": "تم تحديث صورة الملف الشخصي بنجاح",
-  "profileUpdateSuccessMessage": "تم تحديث الملف الشخصي بنجاح"
+  "profileUpdateSuccessMessage": "تم تحديث الملف الشخصي بنجاح",
+
+  "searchForAnyProductsYouWant": "ابحث عن أي منتج تريده",
+  "notFound": "غير موجود",
+  "noProductsFoundForYourSearch": "لم يتم العثور على منتجات لبحثك"
 }
