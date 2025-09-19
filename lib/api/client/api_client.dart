@@ -20,6 +20,7 @@ import 'package:flowery_app/api/responses/categories_response/categories_respons
 import 'package:flowery_app/api/responses/edit_profile_response/edit_profile_response.dart';
 import 'package:flowery_app/api/responses/edit_profile_response/upload_photo_response.dart';
 import 'package:flowery_app/api/responses/forget_password_response/forget_password_response.dart';
+import 'package:flowery_app/api/responses/get_user_order/get_user_order.dart';
 import 'package:flowery_app/api/responses/home_products/products_response_model.dart';
 import 'package:flowery_app/api/responses/login_response/login_response.dart';
 import 'package:flowery_app/api/responses/products_response/products_response.dart';
@@ -121,6 +122,10 @@ abstract class ApiClient {
   @DELETE(Endpoints.deleteCartQuantity)
   Future<DeleteItem> deleteCartQuantity({
     @Path("productId") required String productId,
+    @Header("Authorization") required String token,
+  });
+  @GET(Endpoints.getUserOrder)
+  Future<GetUserOrder> getUserOrder({
     @Header("Authorization") required String token,
   });
 
