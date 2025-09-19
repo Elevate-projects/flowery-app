@@ -160,8 +160,13 @@
   "noItems": "سلة التسوق الخاصة بك فارغة",
   "noToken": "أنت غير مسجل الدخول، اضغط على السهم للعودة لتسجيل الدخول",
   "cartPage": "عربة التسوق",
-
   "deleteCart": "تم حذف العنصر بنجاح",
+  "trackOrder": "تتبع الطلب",
+  "orderPage": "الطلبات",
+  "active": "نشط",
+  "completed": "اكتمل",
+  "productName": "اسم المنتج",
+
   "deliveryTime": "وقت التوصيل",
   "schedule": "جدولة",
   "instant": "فوري،",
@@ -191,5 +196,14 @@
   "searchForAnyProductsYouWant": "ابحث عن أي منتج تريده",
   "notFound": "غير موجود",
   "noProductsFoundForYourSearch": "لم يتم العثور على منتجات لبحثك",
+  "profileResetPassword": "إعادة تعيين كلمة المرور",
+  "profileResetPasswordUpdate": "تحديث",
+  "profileNewPasswordLabel": "كلمة المرور الجديدة",
+  "profileNewPasswordHint": "كلمة المرور الجديدة",
+  "profileCurrentPasswordLabel": "كلمة المرور الحالية",
+  "profileCurrentPasswordHint": "كلمة المرور الحالية",
+  "profileConfirmPasswordLabel": "تأكيد كلمة المرور",
+  "profileConfirmPasswordHintReset": "تأكيد كلمة المرور",
+  "passwordResetSuccessMessage": "لقد تم إعادة تعيين كلمة المرور الخاصة بك بنجاح",
   "noNotificationsFounded": "لا توجد إشعارات"
 }

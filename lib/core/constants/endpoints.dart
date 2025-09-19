@@ -19,4 +19,6 @@ abstract class Endpoints {
   static const String updateCartQuantity = '/api/v1/cart/{productId}';
   static const String deleteCartQuantity = '/api/v1/cart/{productId}';
   static const String addAddress = '/api/v1/addresses';
+  static const String profileResetPassword = '/api/v1/auth/change-password';
+  static const String getUserOrder = '/api/v1/orders';
 }

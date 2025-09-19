@@ -217,5 +217,19 @@ abstract final class AppText {
   static const String notFound = 'notFound';
   static const String noProductsFoundForYourSearch =
       "noProductsFoundForYourSearch";
+
+  // Profile Reset Password
+  static const String profileResetPassword = "profileResetPassword";
+  static const String profileResetPasswordUpdate = "profileResetPasswordUpdate";
+  static const String profileNewPasswordLabel = "profileNewPasswordLabel";
+  static const String profileNewPasswordHint = "profileNewPasswordHint";
+  static const String profileCurrentPasswordLabel =
+      "profileCurrentPasswordLabel";
+  static const String profileCurrentPasswordHint = "profileCurrentPasswordHint";
+  static const String profileConfirmPasswordLabel =
+      "profileConfirmPasswordLabel";
+  static const String profileConfirmPasswordHintReset =
+      "profileConfirmPasswordHintReset";
+
   static const String noNotificationsFounded = "noNotificationsFounded";
 }

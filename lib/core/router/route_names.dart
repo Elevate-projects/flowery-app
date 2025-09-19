@@ -17,4 +17,5 @@ abstract class RouteNames {
   static const String checkout = "/checkoutView";
   static const String editProfile = '/editProfileView';
   static const String notificationList = '/notificationListView';
+  static const String profileResetPassword = '/profileResetPasswordView';
 }

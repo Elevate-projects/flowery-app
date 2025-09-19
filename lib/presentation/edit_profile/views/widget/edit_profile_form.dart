@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_colors.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
+import 'package:flowery_app/core/router/route_names.dart';
 import 'package:flowery_app/presentation/edit_profile/view_model/edit_profile_cubit.dart';
 import 'package:flowery_app/presentation/edit_profile/view_model/edit_profile_intents.dart';
 import 'package:flowery_app/presentation/edit_profile/view_model/edit_profile_state.dart';
@@ -18,7 +19,8 @@ class EditProfileForm extends StatelessWidget {
     final theme = Theme.of(context);
     final controller = BlocProvider.of<EditProfileCubit>(context);
     return BlocBuilder<EditProfileCubit, EditProfileState>(
-      buildWhen: (previous, current) => current.editProfileState.isLoading ||
+      buildWhen: (previous, current) =>
+          current.editProfileState.isLoading ||
           current.editProfileState.isFailure,
       builder: (context, state) {
         return Form(
@@ -39,9 +41,9 @@ class EditProfileForm extends StatelessWidget {
                       textInputAction: TextInputAction.next,
                       validator: (value) =>
                           Validations.validateEmptyText(value),
-                          onChanged: (_) {
-                            controller.doIntent(intent: IsEditingFieldIntent());
-                          },
+                      onChanged: (_) {
+                        controller.doIntent(intent: IsEditingFieldIntent());
+                      },
                     ),
                   ),
                   const RSizedBox(width: 17),
@@ -55,9 +57,9 @@ class EditProfileForm extends StatelessWidget {
                       textInputAction: TextInputAction.next,
                       validator: (value) =>
                           Validations.validateEmptyText(value),
-                          onChanged: (_) {
-                            controller.doIntent(intent: IsEditingFieldIntent());
-                          }
+                      onChanged: (_) {
+                        controller.doIntent(intent: IsEditingFieldIntent());
+                      },
                     ),
                   ),
                 ],
@@ -72,8 +74,8 @@ class EditProfileForm extends StatelessWidget {
                 textInputAction: TextInputAction.next,
                 validator: (value) => Validations.emailValidation(email: value),
                 onChanged: (_) {
-                            controller.doIntent(intent: IsEditingFieldIntent());
-                          }
+                  controller.doIntent(intent: IsEditingFieldIntent());
+                },
               ),
               const RSizedBox(height: 24),
               CustomTextFormField(
@@ -85,9 +87,9 @@ class EditProfileForm extends StatelessWidget {
                 textInputAction: TextInputAction.next,
                 validator: (value) =>
                     Validations.phoneValidation(phoneNumber: value),
-                    onChanged: (_) {
-                            controller.doIntent(intent: IsEditingFieldIntent());
-                          }
+                onChanged: (_) {
+                  controller.doIntent(intent: IsEditingFieldIntent());
+                },
               ),
               const RSizedBox(height: 24),
               Stack(
@@ -97,30 +99,35 @@ class EditProfileForm extends StatelessWidget {
                       label: AppText.password,
                       hintText: "★★★★★★",
                       hintStyle: theme.textTheme.labelLarge?.copyWith(
-                      color: AppColors.black,
+                        color: AppColors.black,
+                      ),
+                      keyboardType: TextInputType.visiblePassword,
+                      textInputAction: TextInputAction.done,
+                      isReadOnly: true,
+                      obscureText: true,
+                      obscuringCharacter: '★',
+                      floatingLabelBehavior: FloatingLabelBehavior.always,
                     ),
-                    keyboardType: TextInputType.visiblePassword,
-                    textInputAction: TextInputAction.done,
-                    isReadOnly: true,
-                    obscureText: true,
-                    obscuringCharacter: '★',
-                    floatingLabelBehavior: FloatingLabelBehavior.always,
                   ),
-                ),
-                 PositionedDirectional(
-                  end: 8,
-                  top: 20,
-                  child: GestureDetector(
-                    onTap: () {
-                      //navigate to reset password screen
-                    },
-                    child: Text(AppText.changePassword.tr(),
-                    style: theme.textTheme.bodySmall?.copyWith(
-                      color: AppColors.pink,
-                      fontWeight: FontWeight.w600
-                    ),),
-                  ))
-                ]
+                  PositionedDirectional(
+                    end: 16.r,
+                    top: 20.r,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.of(
+                          context,
+                        ).pushNamed(RouteNames.profileResetPassword);
+                      },
+                      child: Text(
+                        AppText.changePassword.tr(),
+                        style: theme.textTheme.bodySmall?.copyWith(
+                          color: AppColors.pink,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
