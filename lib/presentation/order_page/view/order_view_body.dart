@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
-import 'package:flowery_app/presentation/cart/widget/custom_cart_shimmer.dart';
+import 'package:flowery_app/presentation/cart/views/widget/custom_cart_shimmer.dart';
 import 'package:flowery_app/presentation/order_page/view_model/order_page_cubit.dart';
 import 'package:flowery_app/presentation/order_page/view_model/order_page_status.dart';
 import 'package:flowery_app/presentation/order_page/widget/custom_order_card.dart';
