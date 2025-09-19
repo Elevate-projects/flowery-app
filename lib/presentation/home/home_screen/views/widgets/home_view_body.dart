@@ -40,6 +40,9 @@ class HomeViewBody extends StatelessWidget {
                   const LocationSelector(),
                   const RSizedBox(height: 16),
                   BlocBuilder<HomeProductsCubit, HomeProductsState>(
+                    buildWhen: (previous, current) =>
+                        current.homeState.isLoading ||
+                        current.homeState.isSuccess,
                     builder: (context, state) => state.homeState.isLoading
                         ? const Column(
                             crossAxisAlignment: CrossAxisAlignment.start,

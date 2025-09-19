@@ -8,8 +8,10 @@ class LoadingButton extends StatelessWidget {
     this.width,
     this.height,
     this.backgroundColor,
+    this.loadingCircleWidth,
+    this.loadingCircleHeight,
   });
-  final double? width, height;
+  final double? width, height, loadingCircleWidth, loadingCircleHeight;
   final Color? backgroundColor;
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,10 @@ class LoadingButton extends StatelessWidget {
       buttonTitle: "",
       isText: false,
       backgroundColor: backgroundColor,
-      child: const LoadingCircle(),
+      child: LoadingCircle(
+        height: loadingCircleHeight,
+        width: loadingCircleWidth,
+      ),
     );
   }
 }

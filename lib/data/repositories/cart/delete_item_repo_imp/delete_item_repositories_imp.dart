@@ -1,0 +1,14 @@
+import 'package:flowery_app/api/client/api_result.dart';
+import 'package:flowery_app/data/data_source/cart/remote_data_source_delete_item/remote_data_source_delete_item.dart';
+import 'package:flowery_app/domain/entities/cart/delete_cart/delete_cart_item.dart';
+import 'package:flowery_app/domain/repositories/cart/delete_item_repositories/delete_item_repositories.dart';
+import 'package:injectable/injectable.dart';
+@Injectable(as: DeleteItemRepositories)
+class DeleteItemRepositoriesImp implements DeleteItemRepositories{
+  final RemoteDataSourceDeleteItem _sourceDeleteItem;
+ DeleteItemRepositoriesImp(this._sourceDeleteItem);
+  @override
+  Future<Result<DeleteItemsEntity>> deleteCartItem(String productId) {
+    return _sourceDeleteItem.deleteCartItem(productId);
+  }
+}

@@ -111,7 +111,7 @@ void main() {
           ProductCardModel(
             rateAvg: 4,
             rateCount: 120,
-            id: "64a1f9c1b1234567890abcd1",
+            id: "P001",
             title: "Red Rose Bouquet",
             slug: "red-rose-bouquet",
             description:
@@ -131,12 +131,11 @@ void main() {
             v: 1,
             isSuperAdmin: false,
             sold: 20,
-            productId: "P001",
           ),
           ProductCardModel(
             rateAvg: 5,
             rateCount: 200,
-            id: "64a1f9c1b1234567890abcd2",
+            id: "P002",
             title: "Luxury Chocolate Box",
             slug: "luxury-chocolate-box",
             description:
@@ -156,7 +155,6 @@ void main() {
             v: 1,
             isSuperAdmin: false,
             sold: 45,
-            productId: "P002",
           ),
         ];
         final expectedProductsResponse = ProductsResponse(

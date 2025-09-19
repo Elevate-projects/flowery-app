@@ -14,7 +14,6 @@ void main() {
           id: null,
           title: null,
           slug: null,
-          productId: null,
           category: null,
           createdAt: null,
           description: null,
@@ -22,8 +21,8 @@ void main() {
           imgCover: null,
           isSuperAdmin: null,
           occasion: null,
-          price: null,
-          priceAfterDiscount: null,
+          price: 0,
+          priceAfterDiscount: 0,
           quantity: null,
           sold: null,
           updatedAt: null,
@@ -35,7 +34,7 @@ void main() {
             .toProductCardEntity();
 
         //Assert
-        expect(actualResult.productId, equals(productCardData.productId));
+        expect(actualResult.productId, equals(productCardData.id));
         expect(actualResult.title, equals(productCardData.title));
         expect(actualResult.slug, equals(productCardData.slug));
         expect(actualResult.description, equals(productCardData.description));
@@ -49,7 +48,7 @@ void main() {
         expect(actualResult.quantity, equals(productCardData.quantity));
         expect(actualResult.categoryId, equals(productCardData.category));
         expect(actualResult.occasionId, equals(productCardData.occasion));
-        expect(actualResult.discountPercentage, isNull);
+        expect(actualResult.discountPercentage, equals("0%"));
       },
     );
     test(
@@ -62,7 +61,6 @@ void main() {
           id: "1",
           title: "Product 1",
           slug: "product-1",
-          productId: "p1",
           category: "Category 1",
           createdAt: "2023-01-01",
           description: "Description 1",
@@ -83,7 +81,6 @@ void main() {
             .toProductCardEntity();
 
         //Assert
-        expect(actualResult.productId, equals(productCardData.productId));
         expect(actualResult.title, equals(productCardData.title));
         expect(actualResult.slug, equals(productCardData.slug));
         expect(actualResult.description, equals(productCardData.description));

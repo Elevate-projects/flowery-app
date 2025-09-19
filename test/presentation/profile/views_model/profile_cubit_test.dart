@@ -3,6 +3,7 @@ import 'package:flowery_app/api/client/api_result.dart';
 import 'package:flowery_app/core/exceptions/response_exception.dart';
 import 'package:flowery_app/core/global_cubit/global_cubit.dart';
 import 'package:flowery_app/core/secure_storage/secure_storage.dart';
+import 'package:flowery_app/domain/entities/address/address_entity.dart';
 import 'package:flowery_app/domain/entities/user_data/user_data_entity.dart';
 import 'package:flowery_app/domain/use_cases/logout/logout_use_case.dart';
 import 'package:flowery_app/domain/use_cases/profile/get_user_profile_data_use_case.dart';
@@ -51,7 +52,26 @@ void main() {
       lastName: "tarek",
       gender: "male",
       photo: "profilePic",
-      addresses: const ["address1", "address2"],
+      addresses: [
+        AddressEntity(
+          street: "123 Nile Street",
+          phone: "+201234567890",
+          city: "Cairo",
+          lat: "30.0444",
+          long: "31.2357",
+          username: "ahmed_tarek",
+          id: "addr_001",
+        ),
+        AddressEntity(
+          street: "45 King Fahd Road",
+          phone: "+966501234567",
+          city: "Riyadh",
+          lat: "24.7136",
+          long: "46.6753",
+          username: "sara_khaled",
+          id: "addr_002",
+        ),
+      ],
       wishlist: const ["item1", "item2"],
       role: "developer",
       passwordResetCode: "password code",
@@ -60,6 +80,7 @@ void main() {
 
   setUp(() {
     FloweryMethodHelper.userData = null;
+    FloweryMethodHelper.currentUserToken = "fakeToken";
     cubit = ProfileCubit(
       mockGetUserProfileDataUseCase,
       mockLogoutUseCase,
