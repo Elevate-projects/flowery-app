@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_icons.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/core/router/route_names.dart';
+import 'package:flowery_app/domain/entities/cart/cart_item_entity/cart_item_entity.dart';
 import 'package:flowery_app/presentation/checkout/views/widgets/custom_add_naw_address.dart';
 import 'package:flowery_app/presentation/checkout/views/widgets/custom_checkout_summary.dart';
 import 'package:flowery_app/presentation/checkout/views/widgets/custom_delivery_address.dart';
@@ -9,17 +10,28 @@ import 'package:flowery_app/presentation/checkout/views/widgets/custom_divider.d
 import 'package:flowery_app/presentation/checkout/views/widgets/custom_gift_section.dart';
 import 'package:flowery_app/presentation/checkout/views/widgets/custom_paymant.dart';
 import 'package:flowery_app/presentation/checkout/views/widgets/custom_payment_vise.dart';
+import 'package:flowery_app/presentation/checkout/views_model/payment_cubit/payment_cubit.dart';
+import 'package:flowery_app/presentation/payment/cash/view/cash_payment_view.dart';
+import 'package:flowery_app/presentation/payment/credit/view/credit_payment_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CheckoutViewBody extends StatelessWidget {
   final int subTotal;
-  const CheckoutViewBody({super.key, required this.subTotal});
+  final List<CartItemEntity> cartItems;
+
+  const CheckoutViewBody({super.key, required this.subTotal, required this.cartItems});
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Scaffold(
+    return Stack(
+      children: [
+      CashPaymentView(cartItems:cartItems,),
+    CreditPaymentView(cartItems:cartItems,),
+
+      Scaffold(
       appBar: AppBar(
         actionsPadding: EdgeInsets.zero,
         titleSpacing: 0,
@@ -119,7 +131,7 @@ class CheckoutViewBody extends StatelessWidget {
                     CustomCheckoutSummary(
                       subTotal: subTotal.toDouble(),
                       onPlaceOrder: () {
-                        /////Action here
+                        context.read<PaymentCubit>().confirmOrder(context: context);
                       },
                     ),
                   ],
@@ -129,6 +141,8 @@ class CheckoutViewBody extends StatelessWidget {
           ),
         ),
       ),
-    );
+
+    ),
+     ]);
   }
 }

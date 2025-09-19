@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flowery_app/presentation/payment/credit/view_model/credit_payment_view_model.dart';
 import 'package:flowery_app/presentation/payment/credit/view_model/credit_payment_state.dart';
-import 'package:flowery_app/presentation/order_page/order_page.dart';
 
 class CreditPaymentView extends StatelessWidget {
   final List<CartItemEntity> cartItems;
@@ -16,7 +15,7 @@ class CreditPaymentView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<CreditPaymentViewModel, CreditPaymentState>(
       listener: (context, state) {
-        if (state is CreditPaymentRedirect) {
+         if (state is CreditPaymentRedirect) {
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -33,11 +32,11 @@ class CreditPaymentView extends StatelessWidget {
           Loaders.showErrorMessage(message: state.message, context: context);
         }
         else if (state is CreditPaymentCompleted) {
-
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (_) => OrderPage(cartItems: cartItems)),
-          );
+          //
+          // Navigator.pushReplacement(
+          //   context,
+          //   MaterialPageRoute(builder: (_) => OrderPage(cartItems: cartItems)),
+          // );
         }
       },
       child: const SizedBox.shrink(),

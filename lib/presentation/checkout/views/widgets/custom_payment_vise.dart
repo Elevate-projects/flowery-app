@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/domain/entities/payment/enum/payment_method.dart';
-import 'package:flowery_app/presentation/checkout_page/view_model/payment_cubit/payment_cubit.dart';
-import 'package:flutter/material.dart';
+import 'package:flowery_app/presentation/checkout/views_model/payment_cubit/payment_cubit.dart';
+ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:group_radio_button/group_radio_button.dart';

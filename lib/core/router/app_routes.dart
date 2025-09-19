@@ -17,8 +17,7 @@ import 'package:flowery_app/presentation/flowery_bottom_navigation/flowery_botto
 import 'package:flowery_app/presentation/flowery_bottom_navigation/view_model/flowery_bottom_navigation_cubit.dart';
 import 'package:flowery_app/presentation/home/best_seller/view/best_seller_view.dart';
 import 'package:flowery_app/presentation/home/occasions/view/occasion_view.dart';
-import 'package:flowery_app/presentation/order_page/order_page.dart';
-import 'package:flowery_app/presentation/payment/cash/view/cash_payment_view.dart';
+ import 'package:flowery_app/presentation/payment/cash/view/cash_payment_view.dart';
  import 'package:flowery_app/presentation/payment/credit/view/credit_payment_view.dart';
 import 'package:flowery_app/presentation/product_details/views/product_details_view.dart';
 import 'package:flowery_app/presentation/saved_address/views/saved_address_view.dart';
@@ -97,7 +96,7 @@ abstract class AppRoutes {
         return MaterialPageRoute(builder: (_) => const AddressDetails());
       case RouteNames.checkout:
         return MaterialPageRoute(
-          builder: (_) => CheckoutView(subTotal: settings.arguments as int),
+          builder: (_) => CheckoutView(subTotal: settings.arguments as int, cartItems: [],),
         );
       case RouteNames.creditPaymentView:
         return MaterialPageRoute(
@@ -108,10 +107,7 @@ abstract class AppRoutes {
         return MaterialPageRoute(
           builder: (_) => const CashPaymentView(cartItems: []),
         );
-      case RouteNames.orderPage:
-         return MaterialPageRoute(
-          builder: (_) => const OrderPage(cartItems:[]),
-        );
+
       default:
         return null;
     }
