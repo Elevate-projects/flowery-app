@@ -199,5 +199,6 @@
   "profileCurrentPasswordHint": "Current Password",
   "profileConfirmPasswordLabel": "Confirm Password",
   "profileConfirmPasswordHintReset": "Confirm Password",
-  "passwordResetSuccessMessage": "Your password has been reset successfully"
+  "passwordResetSuccessMessage": "Your password has been reset successfully",
+  "noNotificationsFounded": "No Notifications Founded"
 }

@@ -230,4 +230,6 @@ abstract final class AppText {
       "profileConfirmPasswordLabel";
   static const String profileConfirmPasswordHintReset =
       "profileConfirmPasswordHintReset";
+
+  static const String noNotificationsFounded = "noNotificationsFounded";
 }

@@ -18,6 +18,7 @@ import 'package:flowery_app/presentation/flowery_bottom_navigation/flowery_botto
 import 'package:flowery_app/presentation/flowery_bottom_navigation/view_model/flowery_bottom_navigation_cubit.dart';
 import 'package:flowery_app/presentation/home/best_seller/view/best_seller_view.dart';
 import 'package:flowery_app/presentation/home/occasions/view/occasion_view.dart';
+import 'package:flowery_app/presentation/notification_list/view/notification_list.dart';
 import 'package:flowery_app/presentation/product_details/views/product_details_view.dart';
 import 'package:flowery_app/presentation/profile/views_model/profile_cubit.dart';
 import 'package:flowery_app/presentation/profile_reset_password/views/profile_reset_password_view.dart';
@@ -112,6 +113,11 @@ abstract class AppRoutes {
       case RouteNames.profileResetPassword:
         return MaterialPageRoute(
           builder: (context) => const ProfileResetPasswordView(),
+        );
+
+      case RouteNames.notificationList:
+        return MaterialPageRoute(
+          builder: (context) => const NotificationList(),
         );
       default:
         return null;

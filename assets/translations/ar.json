@@ -199,5 +199,6 @@
   "profileCurrentPasswordHint": "كلمة المرور الحالية",
   "profileConfirmPasswordLabel": "تأكيد كلمة المرور",
   "profileConfirmPasswordHintReset": "تأكيد كلمة المرور",
-  "passwordResetSuccessMessage": "لقد تم إعادة تعيين كلمة المرور الخاصة بك بنجاح"
+  "passwordResetSuccessMessage": "لقد تم إعادة تعيين كلمة المرور الخاصة بك بنجاح",
+  "noNotificationsFounded": "لا توجد إشعارات"
 }
