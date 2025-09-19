@@ -20,35 +20,39 @@ void main() {
       final getLoggedUserCartUseCase = GetLoggedUserCartUseCase(
         mockedCartRepository,
       );
-      final expectedGetLoggedUserCartEntity = const GetLoggedUserCartEntity(
+      final expectedGetLoggedUserCartEntity = GetLoggedUserCartEntity(
         message: "ok",
         numOfCartItems: 1,
-        cart:  CartEntity(
+        cart: CartEntity(
           id: "cart123",
           user: "user123",
           cartItems: [
             CartItemEntity(
-              product: ProductCardEntity(
+              product: const ProductCardEntity(
                 productId: "product123",
                 title: "product title",
               ),
-            )
-          ]
-        )
+            ),
+          ],
+        ),
       );
-    final expectedGetLoggedUserCartResult = Success(expectedGetLoggedUserCartEntity);
-    provideDummy<Result<GetLoggedUserCartEntity>>(expectedGetLoggedUserCartResult);
-    when(
-      mockedCartRepository.getLoggedUserCart(),
-    ).thenAnswer((_) async => expectedGetLoggedUserCartResult);
-    final result = await getLoggedUserCartUseCase.call();
-    final successResult = result as Success<GetLoggedUserCartEntity>;
-    expect(result, isA<Success<GetLoggedUserCartEntity>>());
-    verify(mockedCartRepository.getLoggedUserCart()).called(1);
-    expect(
-      expectedGetLoggedUserCartResult.data.message,
-      equals(successResult.data.message),
-    );
+      final expectedGetLoggedUserCartResult = Success(
+        expectedGetLoggedUserCartEntity,
+      );
+      provideDummy<Result<GetLoggedUserCartEntity>>(
+        expectedGetLoggedUserCartResult,
+      );
+      when(
+        mockedCartRepository.getLoggedUserCart(),
+      ).thenAnswer((_) async => expectedGetLoggedUserCartResult);
+      final result = await getLoggedUserCartUseCase.call();
+      final successResult = result as Success<GetLoggedUserCartEntity>;
+      expect(result, isA<Success<GetLoggedUserCartEntity>>());
+      verify(mockedCartRepository.getLoggedUserCart()).called(1);
+      expect(
+        expectedGetLoggedUserCartResult.data.message,
+        equals(successResult.data.message),
+      );
     },
   );
 }

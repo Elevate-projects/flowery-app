@@ -183,15 +183,14 @@ import '../../presentation/auth/reset_password/view_model/reset_password_cubit.d
     as _i349;
 import '../../presentation/auth/verification/views_model/verification_screen_cubit.dart'
     as _i988;
-import '../../presentation/cart/view_model/cart_cubit.dart' as _i764;
-import '../../presentation/cart/view_model/delete_cubit/delete_cubit.dart'
-    as _i28;
-import '../../presentation/cart/view_model/quantity_cubit/quantity_cubit.dart'
-    as _i46;
+import '../../presentation/cart/views_model/cart_cubit/cart_cubit.dart'
+    as _i406;
 import '../../presentation/categories/views_model/categories_cubit.dart'
     as _i200;
 import '../../presentation/edit_profile/view_model/edit_profile_cubit.dart'
     as _i236;
+import '../../presentation/checkout/views_model/checkout_cubit/checkout_view_model.dart'
+    as _i294;
 import '../../presentation/home/home_screen/view_model/home_products_cubit.dart'
     as _i641;
 import '../../presentation/home/occasions/view_model/occasion_view_model.dart'
@@ -224,6 +223,7 @@ extension GetItInjectableX on _i174.GetIt {
       preResolve: true,
     );
     gh.factory<_i225.AboutUsCubit>(() => _i225.AboutUsCubit());
+    gh.factory<_i294.GiftSwitchCubit>(() => _i294.GiftSwitchCubit());
     gh.factory<_i694.OccasionsViewModel>(() => _i694.OccasionsViewModel());
     gh.factory<_i586.ProductDetailsCubit>(() => _i586.ProductDetailsCubit());
     gh.factory<_i297.TermsAndConditionsCubit>(
@@ -389,9 +389,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i510.GetVerificationUseCase>(
       () => _i510.GetVerificationUseCase(gh<_i550.VerificationRepository>()),
     );
-    gh.factory<_i46.QuantityCubit>(
-      () => _i46.QuantityCubit(gh<_i618.QuantityUseCase>()),
-    );
     gh.factory<_i6.LogoutRepository>(
       () => _i463.LogoutRepositoryImpl(gh<_i924.LogoutRemoteDataSource>()),
     );
@@ -410,9 +407,6 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i963.GetResetPasswordUseCase>(
       () => _i963.GetResetPasswordUseCase(gh<_i189.ResetPasswordRepository>()),
-    );
-    gh.factory<_i764.CartCubit>(
-      () => _i764.CartCubit(gh<_i257.GetLoggedUserCartUseCase>()),
     );
     gh.factory<_i92.AddAddressCubit>(
       () => _i92.AddAddressCubit(gh<_i1000.GetAddAddressUseCase>()),
@@ -476,11 +470,15 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i23.SecureStorage>(),
       ),
     );
+    gh.factory<_i406.CartCubit>(
+      () => _i406.CartCubit(
+        gh<_i257.GetLoggedUserCartUseCase>(),
+        gh<_i618.QuantityUseCase>(),
+        gh<_i195.DeleteCartItemUseCase>(),
+      ),
+    );
     gh.factory<_i457.ForgetPasswordViewModel>(
       () => _i457.ForgetPasswordViewModel(gh<_i150.ForgetPasswordUseCase>()),
-    );
-    gh.factory<_i28.DeleteCartCubit>(
-      () => _i28.DeleteCartCubit(gh<_i195.DeleteCartItemUseCase>()),
     );
     return this;
   }

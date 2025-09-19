@@ -12,6 +12,7 @@ import 'package:flowery_app/presentation/auth/reset_password/view_model/reset_pa
 import 'package:flowery_app/presentation/auth/reset_password/views/reset_password.dart';
 import 'package:flowery_app/presentation/auth/verification/views/email_verfication.dart';
 import 'package:flowery_app/presentation/auth/verification/views_model/verification_screen_cubit.dart';
+import 'package:flowery_app/presentation/checkout/views/checkout_view.dart';
 import 'package:flowery_app/presentation/edit_profile/views/edit_profile_view.dart';
 import 'package:flowery_app/presentation/flowery_bottom_navigation/flowery_bottom_navigation.dart';
 import 'package:flowery_app/presentation/flowery_bottom_navigation/view_model/flowery_bottom_navigation_cubit.dart';
@@ -93,6 +94,10 @@ abstract class AppRoutes {
         );
       case RouteNames.addressDetails:
         return MaterialPageRoute(builder: (_) => const AddressDetails());
+      case RouteNames.checkout:
+        return MaterialPageRoute(
+          builder: (_) => CheckoutView(subTotal: settings.arguments as int),
+        );
       case RouteNames.editProfile:
         return MaterialPageRoute(
           builder: (_) =>

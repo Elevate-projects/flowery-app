@@ -30,7 +30,11 @@ class AddProductToCartCubit extends Cubit<AddProductToCartState> {
     if (isClosed) return;
     switch (result) {
       case Success<void>():
-        emit(state.copyWith(addToCartStatus: const StateStatus.success(null)));
+        emit(
+          state.copyWith(
+            addToCartStatus: StateStatus.success(request.productId ?? ""),
+          ),
+        );
       case Failure<void>():
         emit(
           state.copyWith(
@@ -41,6 +45,11 @@ class AddProductToCartCubit extends Cubit<AddProductToCartState> {
   }
 
   void _changeSelectedProductId({required String productId}) {
-    emit(state.copyWith(currentProductId: productId));
+    emit(
+      state.copyWith(
+        currentProductId: productId,
+        addToCartStatus: const StateStatus.initial(),
+      ),
+    );
   }
 }
