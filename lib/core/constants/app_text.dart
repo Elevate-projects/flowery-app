@@ -217,4 +217,5 @@ abstract final class AppText {
   static const String notFound = 'notFound';
   static const String noProductsFoundForYourSearch =
       "noProductsFoundForYourSearch";
+  static const String noNotificationsFounded = "noNotificationsFounded";
 }

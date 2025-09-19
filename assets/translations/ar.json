@@ -190,5 +190,6 @@
 
   "searchForAnyProductsYouWant": "ابحث عن أي منتج تريده",
   "notFound": "غير موجود",
-  "noProductsFoundForYourSearch": "لم يتم العثور على منتجات لبحثك"
+  "noProductsFoundForYourSearch": "لم يتم العثور على منتجات لبحثك",
+  "noNotificationsFounded": "لا توجد إشعارات"
 }
