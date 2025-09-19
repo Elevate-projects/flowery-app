@@ -187,10 +187,10 @@ import '../../presentation/cart/views_model/cart_cubit/cart_cubit.dart'
     as _i406;
 import '../../presentation/categories/views_model/categories_cubit.dart'
     as _i200;
-import '../../presentation/edit_profile/view_model/edit_profile_cubit.dart'
-    as _i236;
 import '../../presentation/checkout/views_model/checkout_cubit/checkout_view_model.dart'
     as _i294;
+import '../../presentation/edit_profile/view_model/edit_profile_cubit.dart'
+    as _i236;
 import '../../presentation/home/home_screen/view_model/home_products_cubit.dart'
     as _i641;
 import '../../presentation/home/occasions/view_model/occasion_view_model.dart'

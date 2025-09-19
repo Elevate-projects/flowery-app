@@ -24,7 +24,7 @@ class EditProfileAppBar extends StatelessWidget {
                 icon: Icon(
                   Icons.arrow_back_ios_new,
                   color: AppColors.black,
-                  size: 24.r,
+                  size: 24.sp,
                 ),
               ),
               Flexible(
@@ -45,8 +45,8 @@ class EditProfileAppBar extends StatelessWidget {
           children: [
             SvgPicture.asset(AppIcons.notification, width: 24.r, height: 24.r),
             PositionedDirectional(
-              end: -2,
-              top: -4,
+              end: -2.r,
+              top: -4.r,
               child: Container(
                 width: 16.r,
                 height: 16.r,

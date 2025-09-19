@@ -183,5 +183,8 @@
   "orderPage": "الطلبات",
   "active": "نشط",
   "completed": "اكتمل",
-  "productName": "اسم المنتج"
+  "productName": "اسم المنتج",
+  "pickingImageFailureMessage": "فشل في اختيار الصورة: ",
+  "profilePicSuccessMessage": "تم تحديث صورة الملف الشخصي بنجاح",
+  "profileUpdateSuccessMessage": "تم تحديث الملف الشخصي بنجاح"
 }

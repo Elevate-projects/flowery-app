@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flowery_app/core/constants/app_colors.dart';
 import 'package:flowery_app/core/constants/app_icons.dart';
 import 'package:flowery_app/presentation/edit_profile/view_model/edit_profile_cubit.dart';
 import 'package:flowery_app/presentation/edit_profile/view_model/edit_profile_intents.dart';
@@ -55,22 +54,22 @@ class EditProfilePicture extends StatelessWidget {
                         : null,
                   ),
                   PositionedDirectional(
-                    bottom: 5,
-                    end: -6,
+                    bottom: 5.r,
+                    end: -6.r,
                     child: Container(
                       padding: EdgeInsets.all(5.r),
                       width: 24.r,
                       height: 24.r,
-                      decoration: const BoxDecoration(
-                        color: AppColors.lightPink,
-                        borderRadius: BorderRadius.all(Radius.circular(6)),
+                      decoration: BoxDecoration(
+                        color: theme.colorScheme.onPrimary,
+                        borderRadius: BorderRadius.all(Radius.circular(6.r)),
                       ),
                       child: SvgPicture.asset(
                         AppIcons.camera,
                         width: 16.r,
                         height: 16.r,
-                        colorFilter: const ColorFilter.mode(
-                          AppColors.gray,
+                        colorFilter: ColorFilter.mode(
+                          theme.colorScheme.shadow,
                           BlendMode.srcIn,
                         ),
                       ),

@@ -1,3 +1,4 @@
+import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/presentation/edit_profile/view_model/edit_profile_cubit.dart';
 import 'package:flowery_app/presentation/edit_profile/view_model/edit_profile_state.dart';
 import 'package:flowery_app/presentation/edit_profile/views/widget/edit_profile_button.dart';
@@ -18,25 +19,28 @@ class EditProfileDetails extends StatelessWidget {
       listener: (context, state) {
         if (state.uploadPhotoState.isSuccess) {
           Loaders.showSuccessMessage(
-            message: "Profile picture updated successfully",
+            message: AppText.profilePicSuccessMessage,
             context: context,
           );
         }
         if (state.uploadPhotoState.isFailure) {
           Loaders.showErrorMessage(
-            message: state.uploadPhotoState.error?.message ?? "Unknown error occurred",
+            message:
+                state.uploadPhotoState.error?.message ??
+                AppText.anUnknownErrorOccurred,
             context: context,
           );
         }
         if (state.editProfileState.isSuccess) {
           Loaders.showSuccessMessage(
-            message: "Profile updated successfully",
+            message: AppText.profileUpdateSuccessMessage,
             context: context,
           );
-        //  Navigator.pop(context);
         } else if (state.editProfileState.isFailure) {
           Loaders.showErrorMessage(
-            message: state.editProfileState.error?.message ?? "Unknown error occurred",
+            message:
+                state.editProfileState.error?.message ??
+                AppText.anUnknownErrorOccurred,
             context: context,
           );
         }

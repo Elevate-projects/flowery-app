@@ -1,6 +1,8 @@
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/api/client/api_result.dart';
+import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/core/enum/gender.dart';
 import 'package:flowery_app/core/exceptions/response_exception.dart';
 import 'package:flowery_app/core/state_status/state_status.dart';
@@ -46,8 +48,8 @@ class EditProfileCubit extends Cubit<EditProfileState> {
         await _pickAndUploadPhoto();
         break;
       case IsEditingFieldIntent():
-         _isEdited();
-         break;
+        _isEdited();
+        break;
     }
   }
 
@@ -76,7 +78,7 @@ class EditProfileCubit extends Cubit<EditProfileState> {
     );
     switch (result) {
       case Success<UserDataEntity>():
-      FloweryMethodHelper.userData = result.data;
+        FloweryMethodHelper.userData = result.data;
         emit(state.copyWith(editProfileState: const StateStatus.success(null)));
       case Failure<UserDataEntity>():
         emit(
@@ -104,7 +106,9 @@ class EditProfileCubit extends Cubit<EditProfileState> {
       emit(
         state.copyWith(
           uploadPhotoState: StateStatus.failure(
-            ResponseException(message: 'Failed to pick image: $e'),
+            ResponseException(
+              message: '${AppText.pickingImageFailureMessage.tr()} $e',
+            ),
           ),
         ),
       );
@@ -129,10 +133,10 @@ class EditProfileCubit extends Cubit<EditProfileState> {
   }
 
   void _isEdited() {
-    if(firstNameController.text != FloweryMethodHelper.userData?.firstName ||
-      lastNameController.text != FloweryMethodHelper.userData?.lastName ||
-      emailController.text != FloweryMethodHelper.userData?.email ||
-      phoneNumberController.text != FloweryMethodHelper.userData?.phone){
+    if (firstNameController.text != FloweryMethodHelper.userData?.firstName ||
+        lastNameController.text != FloweryMethodHelper.userData?.lastName ||
+        emailController.text != FloweryMethodHelper.userData?.email ||
+        phoneNumberController.text != FloweryMethodHelper.userData?.phone) {
       emit(state.copyWith(hasChanges: true));
     } else {
       emit(state.copyWith(hasChanges: false));

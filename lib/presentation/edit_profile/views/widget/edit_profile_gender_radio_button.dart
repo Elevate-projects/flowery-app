@@ -37,11 +37,13 @@ class EditProfileRegisterGenderRadioButton extends StatelessWidget {
                 ),
                 child: RSizedBox(
                   width: 53,
-                  child: FittedBox( 
+                  child: FittedBox(
                     fit: BoxFit.scaleDown,
                     child: Text(
                       AppText.genderFemaleDisplay.tr(),
-                      style: const TextStyle(color: Colors.black),
+                      style: theme.textTheme.bodyLarge?.copyWith(
+                        color: theme.colorScheme.onSecondary,
+                      ),
                     ),
                   ),
                 ),
@@ -66,7 +68,9 @@ class EditProfileRegisterGenderRadioButton extends StatelessWidget {
                     fit: BoxFit.scaleDown,
                     child: Text(
                       AppText.genderMaleDisplay.tr(),
-                      style: const TextStyle(color: Colors.black),
+                      style: theme.textTheme.bodyLarge?.copyWith(
+                        color: theme.colorScheme.onSecondary,
+                      ),
                     ),
                   ),
                 ),
