@@ -1,5 +1,9 @@
 import 'package:flowery_app/api/client/api_result.dart';
 import 'package:flowery_app/domain/entities/get_user_order/get_user_order_entity.dart';
+import 'package:flowery_app/domain/entities/get_user_order/mata_data_get_user_order_entity.dart';
+import 'package:flowery_app/domain/entities/get_user_order/order_entity.dart';
+import 'package:flowery_app/domain/entities/get_user_order/order_item_entity.dart';
+import 'package:flowery_app/domain/entities/product_card/product_card_entity.dart';
 import 'package:flowery_app/domain/repositories/get_user_order/get_user_order_repositories.dart';
 import 'package:flowery_app/domain/use_cases/get_user_order/get_user_order_usecase.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -28,8 +32,8 @@ void main() {
           user: "user123",
           orderItems: [
             OrderItemEntity(
-              product: ProductEntity(
-                id: "product123",
+              product: const ProductCardEntity(
+                categoryId: "category123",
                 title: "product title",
               ),
             )

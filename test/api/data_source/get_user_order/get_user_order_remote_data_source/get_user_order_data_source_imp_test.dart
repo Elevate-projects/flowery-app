@@ -1,5 +1,9 @@
 import 'package:flowery_app/api/client/api_result.dart';
+import 'package:flowery_app/api/models/product_card/product_card_model.dart';
 import 'package:flowery_app/api/responses/get_user_order/get_user_order.dart';
+import 'package:flowery_app/api/responses/get_user_order/mata_data_get_user_order.dart';
+import 'package:flowery_app/api/responses/get_user_order/order_get_user_order.dart';
+import 'package:flowery_app/api/responses/get_user_order/order_items_get_user_order.dart';
 import 'package:flowery_app/core/connection_manager/connection_manager.dart';
 import 'package:flowery_app/domain/entities/get_user_order/get_user_order_entity.dart';
 import 'package:flowery_app/utils/flowery_method_helper.dart';
@@ -41,7 +45,7 @@ void main() {
             user: "123",
             orderItems: [
               OrderItems(
-                product: Product(
+                product: ProductCardModel(
                   id: "123",
                   title: "123",
                   slug: "123",
@@ -55,7 +59,6 @@ void main() {
                   occasion: "123",
                   createdAt: "123",
                   updatedAt: "123",
-                  V: 123,
                   isSuperAdmin: true,
                   sold: 123,
                   rateAvg: 123,

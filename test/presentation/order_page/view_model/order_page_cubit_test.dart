@@ -1,4 +1,8 @@
 import 'package:bloc_test/bloc_test.dart';
+import 'package:flowery_app/domain/entities/get_user_order/mata_data_get_user_order_entity.dart';
+import 'package:flowery_app/domain/entities/get_user_order/order_entity.dart';
+import 'package:flowery_app/domain/entities/get_user_order/order_item_entity.dart';
+import 'package:flowery_app/domain/entities/product_card/product_card_entity.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -32,8 +36,8 @@ void main() {
           user: "user1",
           orderItems: [
             OrderItemEntity(
-              product: ProductEntity(
-                id: "product1",
+              product: const ProductCardEntity(
+                categoryId: "product1",
                 title: "Red Rose",
                 imgCover: "image.png",
                 price: 100,

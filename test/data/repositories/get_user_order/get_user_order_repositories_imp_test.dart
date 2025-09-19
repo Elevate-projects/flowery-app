@@ -2,6 +2,10 @@ import 'package:flowery_app/api/client/api_result.dart';
 import 'package:flowery_app/data/data_source/get_user_order/remote_data_source/get_user_order_data_source.dart';
 import 'package:flowery_app/data/repositories/get_user_order/get_user_order_repositories_imp.dart';
 import 'package:flowery_app/domain/entities/get_user_order/get_user_order_entity.dart';
+import 'package:flowery_app/domain/entities/get_user_order/mata_data_get_user_order_entity.dart';
+import 'package:flowery_app/domain/entities/get_user_order/order_entity.dart';
+import 'package:flowery_app/domain/entities/get_user_order/order_item_entity.dart';
+import 'package:flowery_app/domain/entities/product_card/product_card_entity.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -33,8 +37,8 @@ void main() {
             user: "673c46fd1159920185",
             orderItems: [
               OrderItemEntity(
-                product: ProductEntity(
-                  id: "673c46fd1159920185",
+                product: const ProductCardEntity(
+                  categoryId: "r",
                   title: "Red Rose Bouquet",
                   imgCover: "https://example.com/images/red_rose_cover.jpg",
                   price: 0,
