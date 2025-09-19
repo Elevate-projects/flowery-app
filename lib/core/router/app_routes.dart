@@ -99,7 +99,7 @@ abstract class AppRoutes {
         return MaterialPageRoute(builder: (_) => const AddressDetails());
       case RouteNames.checkout:
         return MaterialPageRoute(
-          builder: (_) => CheckoutView(subTotal: settings.arguments as int, cartItems: [],),
+          builder: (_) => CheckoutView(subTotal: settings.arguments as int, cartItems: const [],),
         );
       case RouteNames.creditPaymentView:
         return MaterialPageRoute(
