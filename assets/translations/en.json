@@ -159,6 +159,13 @@
 
   "bestSellerAppbar": "Best Seller",
   "bestSellerAppbarHint": "Bloom with our exquisite best sellers",
+
+
+  "searchForAnyProductsYouWant": "Search for any product you want",
+  "noProductsFound": "no products found",
+  "notFound": "Not Found",
+  "noProductsFoundForYourSearch": "No products found for your search",
+
   "deliveryTime": "Delivery Time",
   "schedule": "schedule",
   "instant": "instant,",

@@ -26,6 +26,7 @@ import 'package:flowery_app/api/responses/profile_response/profile_response.dart
 import 'package:flowery_app/api/responses/register_response/register_response.dart';
 import 'package:flowery_app/api/responses/resend_code/resend_code_response_dto.dart';
 import 'package:flowery_app/api/responses/reset_password/reset_password_response_dto.dart';
+import 'package:flowery_app/api/responses/search/search_response.dart';
 import 'package:flowery_app/api/responses/verification/verify_response_dto.dart';
 import 'package:flowery_app/core/constants/endpoints.dart';
 import 'package:injectable/injectable.dart';
@@ -82,7 +83,12 @@ abstract class ApiClient {
     @Body() ResetPasswordRequestDto request,
   );
 
-  @DELETE("/api/v1/addresses/{addressId}")
+  @GET(Endpoints.products)
+  Future<SearchResponse> searchProducts({
+    @Query("keyword") required String search,
+  });
+
+  @DELETE(Endpoints.removeAddress)
   Future<void> removeAddress({
     @Path("addressId") required String addressId,
     @Header("Authorization") required String token,
@@ -109,6 +115,7 @@ abstract class ApiClient {
     @Header("Authorization") required String token,
     @Body() required QuantityRequest request,
   });
+
   @DELETE(Endpoints.deleteCartQuantity)
   Future<DeleteItem> deleteCartQuantity({
     @Path("productId") required String productId,

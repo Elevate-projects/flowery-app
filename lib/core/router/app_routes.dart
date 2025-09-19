@@ -21,6 +21,7 @@ import 'package:flowery_app/presentation/home/occasions/view/occasion_view.dart'
 import 'package:flowery_app/presentation/product_details/views/product_details_view.dart';
 import 'package:flowery_app/presentation/profile/views_model/profile_cubit.dart';
 import 'package:flowery_app/presentation/saved_address/views/saved_address_view.dart';
+import 'package:flowery_app/presentation/search/search/view/search_view.dart';
 import 'package:flowery_app/presentation/terms_and_conditions/views/terms_and_conditions_view.dart';
 import 'package:flowery_app/utils/common_cubits/add_product_to_cart/add_product_to_cart_cubit.dart';
 import 'package:flutter/material.dart';
@@ -103,6 +104,9 @@ abstract class AppRoutes {
           builder: (_) =>
               EditProfileView(profileCubit: settings.arguments as ProfileCubit),
         );
+
+      case RouteNames.searchView:
+        return MaterialPageRoute(builder: (context) => const SearchView());
       default:
         return null;
     }
