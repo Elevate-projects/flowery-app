@@ -7,6 +7,7 @@ import 'package:flowery_app/api/requests/cart_request/quintity_request.dart';
 import 'package:flowery_app/api/requests/edit_profile_request/edit_profile_request.dart';
 import 'package:flowery_app/api/requests/forget_password_request/forget_password_request.dart';
 import 'package:flowery_app/api/requests/login_request/login_request_model.dart';
+import 'package:flowery_app/api/requests/profile_reset_password/profile_reset_password_request.dart';
 import 'package:flowery_app/api/requests/payment/payment_request_dto.dart';
 import 'package:flowery_app/api/requests/register_request/register_request.dart';
 import 'package:flowery_app/api/requests/resend_code/resend_code_request_dto.dart';
@@ -20,11 +21,13 @@ import 'package:flowery_app/api/responses/categories_response/categories_respons
 import 'package:flowery_app/api/responses/edit_profile_response/edit_profile_response.dart';
 import 'package:flowery_app/api/responses/edit_profile_response/upload_photo_response.dart';
 import 'package:flowery_app/api/responses/forget_password_response/forget_password_response.dart';
+import 'package:flowery_app/api/responses/get_user_order/get_user_order.dart';
 import 'package:flowery_app/api/responses/home_products/products_response_model.dart';
 import 'package:flowery_app/api/responses/login_response/login_response.dart';
 import 'package:flowery_app/api/responses/payment/cash/cash_payment_response_dto.dart';
  import 'package:flowery_app/api/responses/payment/credit/credit_payment_response_dto.dart';
 import 'package:flowery_app/api/responses/products_response/products_response.dart';
+import 'package:flowery_app/api/responses/profile_reset_password/profile_reset_password_response.dart';
 import 'package:flowery_app/api/responses/profile_response/profile_response.dart';
 import 'package:flowery_app/api/responses/register_response/register_response.dart';
 import 'package:flowery_app/api/responses/resend_code/resend_code_response_dto.dart';
@@ -42,6 +45,7 @@ part 'api_client.g.dart';
 abstract class ApiClient {
   @factoryMethod
   factory ApiClient(Dio dio) = _ApiClient;
+
   @GET(Endpoints.home)
   Future<ProductsResponseModel> getHomeData({
     @Header("Authorization") required String token,
@@ -76,6 +80,7 @@ abstract class ApiClient {
 
   @GET(Endpoints.logout)
   Future<void> logout({@Header("Authorization") required String token});
+
   @POST(Endpoints.verification)
   Future<VerifyResponseDto> verificationCode(@Body() VerifyRequestDto request);
 
@@ -122,19 +127,11 @@ abstract class ApiClient {
     @Path("productId") required String productId,
     @Header("Authorization") required String token,
   });
-  @POST(Endpoints.payment)
-  Future<CreditPaymentResponseDto> creditPayment(
-      {
-    @Body() required PaymentRequestDto request,
-    @Header('Authorization') required String token,
-    @Query("url")required String redirectUrl,
-  });
-  @POST(Endpoints.cash)
-  Future<CashPaymentResponseDto> cashPayment({
 
-    @Body() required PaymentRequestDto request,
-    @Header('Authorization') required String token,
- });
+  @GET(Endpoints.getUserOrder)
+  Future<GetUserOrder> getUserOrder({
+    @Header("Authorization") required String token,
+  });
 
   @PUT(Endpoints.editProfile)
   Future<EditProfileResponse> editUserProfile({
@@ -147,5 +144,25 @@ abstract class ApiClient {
   Future<UploadPhotoResponse> uploadProfilePhoto({
     @Header("Authorization") required String token,
     @Part(name: "photo") required File photo,
+  });
+
+  @PATCH(Endpoints.profileResetPassword)
+  Future<ProfileResetPasswordResponse> profileResetPassword({
+    @Header("Authorization") required String token,
+    @Body() required ProfileResetPasswordRequest entity,
+  });
+
+  @POST(Endpoints.payment)
+  Future<CreditPaymentResponseDto> creditPayment(
+      {
+        @Body() required PaymentRequestDto request,
+        @Header('Authorization') required String token,
+        @Query("url")required String redirectUrl,
+      });
+
+  @POST(Endpoints.cash)
+  Future<CashPaymentResponseDto> cashPayment({
+    @Body() required PaymentRequestDto request,
+    @Header('Authorization') required String token,
   });
 }

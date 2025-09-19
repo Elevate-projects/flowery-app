@@ -196,5 +196,15 @@
   "productName": "Product Name",
   "pickingImageFailureMessage": "Failed to pick image: ",
   "profilePicSuccessMessage": "Profile picture updated successfully",
-  "profileUpdateSuccessMessage": "Profile updated successfully"
+  "profileUpdateSuccessMessage": "Profile updated successfully",
+  "profileResetPassword": "Reset Password",
+  "profileResetPasswordUpdate": "Update",
+  "profileNewPasswordLabel": "New Password",
+  "profileNewPasswordHint": "New Password",
+  "profileCurrentPasswordLabel": "Current Password",
+  "profileCurrentPasswordHint": "Current Password",
+  "profileConfirmPasswordLabel": "Confirm Password",
+  "profileConfirmPasswordHintReset": "Confirm Password",
+  "passwordResetSuccessMessage": "Your password has been reset successfully",
+  "noNotificationsFounded": "No Notifications Founded"
 }

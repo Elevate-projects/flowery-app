@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_icons.dart';
 import 'package:flowery_app/core/constants/app_images.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
+import 'package:flowery_app/core/router/route_names.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -51,7 +52,16 @@ class ProfileAppBar extends StatelessWidget {
         Stack(
           clipBehavior: Clip.none,
           children: [
-            SvgPicture.asset(AppIcons.notification, width: 24.r, height: 24.r),
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, RouteNames.notificationList);
+              },
+              child: SvgPicture.asset(
+                AppIcons.notification,
+                width: 24.r,
+                height: 24.r,
+              ),
+            ),
             PositionedDirectional(
               end: -2,
               top: -4,

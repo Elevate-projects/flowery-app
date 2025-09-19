@@ -19,6 +19,8 @@ abstract class RouteNames {
   static const String bestSeller = "/bestSellerView";
   static const String checkout = "/checkoutView";
   static const String editProfile = '/editProfileView';
+  static const String notificationList = '/notificationListView';
+  static const String profileResetPassword = '/profileResetPasswordView';
   static const String orderPage = "/orderPage";
 
 }
