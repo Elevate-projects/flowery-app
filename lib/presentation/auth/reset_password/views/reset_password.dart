@@ -24,7 +24,7 @@ class _ResetPasswordState extends State<ResetPassword> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(AppText.password),
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
       ),
       body: BlocListener<ResetPasswordCubit, ResetPasswordState>(
         listener: (context, state) {

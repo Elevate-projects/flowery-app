@@ -1,6 +1,7 @@
 import 'package:flowery_app/core/di/di.dart';
 import 'package:flowery_app/core/router/route_names.dart';
 import 'package:flowery_app/domain/entities/address/address_entity.dart';
+import 'package:flowery_app/domain/entities/arguments/address_argument_entity.dart';
 import 'package:flowery_app/domain/entities/arguments/occasion_arguments_entity.dart';
 import 'package:flowery_app/domain/entities/product_card/product_card_entity.dart';
 import 'package:flowery_app/presentation/about_us/views/about_us_view.dart';
@@ -98,7 +99,11 @@ abstract class AppRoutes {
           ),
         );
       case RouteNames.addressDetails:
-        return MaterialPageRoute(builder: (_) => const AddressDetails());
+        return MaterialPageRoute(
+          builder: (_) => AddressDetails(
+            addressArgumentEntity: settings.arguments as AddressArgumentEntity,
+          ),
+        );
       case RouteNames.checkout:
         return MaterialPageRoute(
           builder: (_) => CheckoutView(
