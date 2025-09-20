@@ -1,0 +1,77 @@
+import 'package:flowery_app/core/cache/shared_preferences_helper.dart';
+import 'package:flowery_app/core/constants/const_keys.dart';
+import 'package:flowery_app/core/global_cubit/global_intent.dart';
+import 'package:flowery_app/core/global_cubit/global_state.dart';
+import 'package:flowery_app/core/router/route_names.dart';
+import 'package:flowery_app/core/secure_storage/secure_storage.dart';
+import 'package:flowery_app/utils/flowery_method_helper.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:injectable/injectable.dart';
+
+@injectable
+class GlobalCubit extends Cubit<GlobalState> {
+  final SecureStorage _secureStorage;
+  final SharedPreferencesHelper _sharedPreferencesHelper;
+  GlobalCubit(this._secureStorage, this._sharedPreferencesHelper)
+    : super(GlobalInitial());
+  String? redirectedScreen;
+  late bool isArLanguage;
+  late int languageSelectedIndex;
+
+  Future<void> doIntent({required GlobalIntent intent}) async {
+    switch (intent) {
+      case GlobalInitializationIntent():
+        await _onInit();
+      case ChangeLanguageIntent():
+        await _changedLanguageIndex(index: intent.index);
+    }
+  }
+
+  Future<void> _onInit() async {
+    _getSelectedLanguage();
+    await _setRedirectedScreen();
+  }
+
+  void _getSelectedLanguage() {
+    isArLanguage = _sharedPreferencesHelper.getBool(
+      key: ConstKeys.isArLanguage,
+    );
+    languageSelectedIndex = isArLanguage ? 1 : 0;
+  }
+
+  Future<void> _setRedirectedScreen() async {
+    final userToken = await _secureStorage.getData(key: ConstKeys.tokenKey);
+    final isRemembered = _sharedPreferencesHelper.getBool(
+      key: ConstKeys.rememberMe,
+    );
+    FlutterNativeSplash.remove();
+    if (userToken != null && isRemembered) {
+      FloweryMethodHelper.currentUserToken = userToken;
+      redirectedScreen = RouteNames.floweryBottomNavigation;
+    } else {
+      redirectedScreen = RouteNames.login;
+    }
+    emit(LoadedRedirectedScreen());
+  }
+
+  Future<void> _changedLanguageIndex({required int index}) async {
+    if (languageSelectedIndex != index && index == 0) {
+      languageSelectedIndex = index;
+      await _sharedPreferencesHelper.saveBool(
+        key: ConstKeys.isArLanguage,
+        value: false,
+      );
+      isArLanguage = false;
+      emit(ChangeLanguageIndexState());
+    } else if (languageSelectedIndex != index && index == 1) {
+      languageSelectedIndex = index;
+      await _sharedPreferencesHelper.saveBool(
+        key: ConstKeys.isArLanguage,
+        value: true,
+      );
+      isArLanguage = true;
+      emit(ChangeLanguageIndexState());
+    }
+  }
+}
