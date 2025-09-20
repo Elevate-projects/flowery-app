@@ -1,4 +1,5 @@
 import 'package:flowery_app/core/di/di.dart';
+import 'package:flowery_app/presentation/categories/views/widgets/categories_filter.dart';
 import 'package:flowery_app/presentation/categories/views/widgets/categories_view_body.dart';
 import 'package:flowery_app/presentation/categories/views_model/categories_cubit.dart';
 import 'package:flowery_app/presentation/categories/views_model/categories_intent.dart';
@@ -21,7 +22,11 @@ class CategoriesView extends StatelessWidget {
           create: (context) => getIt.get<AddProductToCartCubit>(),
         ),
       ],
-      child: const SafeArea(child: CategoriesViewBody()),
+      child: const Scaffold(
+        floatingActionButton: CategoriesFilter(),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        body: SafeArea(child: CategoriesViewBody()),
+      ),
     );
   }
 }

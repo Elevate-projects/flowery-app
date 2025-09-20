@@ -11,3 +11,5 @@ class RemoveAddressIntent extends SavedAddressIntent {
   final String addressId;
   RemoveAddressIntent({required this.addressId});
 }
+
+class AddNewAddressIntent extends SavedAddressIntent {}

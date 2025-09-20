@@ -18,8 +18,13 @@ class SavedAddressCubit extends Cubit<SavedAddressState> {
     switch (intent) {
       case SavedAddressInitializationIntent():
         _initializingAddressesList(addresses: intent.addresses);
+        break;
       case RemoveAddressIntent():
         await _removeAddress(addressId: intent.addressId);
+        break;
+      case AddNewAddressIntent():
+        _updateAddressesList();
+        break;
     }
   }
 
@@ -46,5 +51,9 @@ class SavedAddressCubit extends Cubit<SavedAddressState> {
           ),
         );
     }
+  }
+
+  void _updateAddressesList() {
+    emit(state.copyWith(addresses: state.addresses));
   }
 }

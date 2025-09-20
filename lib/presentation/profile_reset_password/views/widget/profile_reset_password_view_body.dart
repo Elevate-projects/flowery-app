@@ -25,25 +25,24 @@ class ProfileResetPasswordViewBody extends StatelessWidget {
         } else if (state.resetPasswordStatus.isFailure) {
           Loaders.showErrorMessage(
             message:
-                state.resetPasswordStatus.error?.message ?? AppText.anUnknownErrorOccurred,
+                state.resetPasswordStatus.error?.message ??
+                AppText.anUnknownErrorOccurred,
             context: context,
           );
         }
       },
       builder: (context, state) {
-        return const SafeArea(
+        return const SingleChildScrollView(
           child: RPadding(
             padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Expanded(
-              child: Column(
-                children: [
-                  ProfileResetPasswordAppBar(),
-                  RSizedBox(height: 32),
-                  ProfileResetPasswordForm(),
-                  RSizedBox(height: 48),
-                  ProfileResetPasswordButton(),
-                ],
-              ),
+            child: Column(
+              children: [
+                ProfileResetPasswordAppBar(),
+                RSizedBox(height: 32),
+                ProfileResetPasswordForm(),
+                RSizedBox(height: 48),
+                ProfileResetPasswordButton(),
+              ],
             ),
           ),
         );
