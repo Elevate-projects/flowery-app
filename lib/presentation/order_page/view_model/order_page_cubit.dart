@@ -12,7 +12,6 @@ class GetUserOrderCubit extends Cubit<GetUserOrderState> {
 
   Future<void> fetchUserOrders() async {
     emit(state.copyWith(orderStatus: const StateStatus.loading()));
-
     final result = await getUserUseCase.getUserOrder();
     if (isClosed) return;
     switch (result) {

@@ -1,9 +1,9 @@
-import 'package:flowery_app/api/responses/get_user_order/order_items_get_user_order.dart';
-import 'package:flowery_app/domain/entities/get_user_order/order_entity.dart';
+import 'package:flowery_app/api/responses/get_user_order/orders_items_get_user_order/order_items_get_user_order.dart';
+import 'package:flowery_app/domain/entities/get_user_order/order_entity/order_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
-part 'order_get_user_order.g.dart';
+part 'get_user_order_model.g.dart';
 @JsonSerializable()
-class Orders {
+class GetUsersOrdersModel {
   @JsonKey(name: "_id")
   final String? id;
   @JsonKey(name: "user")
@@ -29,7 +29,7 @@ class Orders {
   @JsonKey(name: "__v")
   final int? V;
 
-  Orders ({
+  GetUsersOrdersModel ({
     this.id,
     this.user,
     this.orderItems,
@@ -44,12 +44,12 @@ class Orders {
     this.V,
   });
 
-  factory Orders.fromJson(Map<String, dynamic> json) {
-    return _$OrdersFromJson(json);
+  factory GetUsersOrdersModel.fromJson(Map<String, dynamic> json) {
+    return _$GetUsersOrdersModelFromJson(json);
   }
 
   Map<String, dynamic> toJson() {
-    return _$OrdersToJson(this);
+    return _$GetUsersOrdersModelToJson(this);
   }
   OrderEntity toEntity() {
     return OrderEntity(

@@ -129,7 +129,7 @@ abstract class ApiClient {
   });
 
   @GET(Endpoints.getUserOrder)
-  Future<GetUserOrder> getUserOrder({
+  Future<GetUserOrderResponse> getUserOrder({
     @Header("Authorization") required String token,
   });
 

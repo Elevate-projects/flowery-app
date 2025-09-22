@@ -1,4 +1,4 @@
-import 'package:flowery_app/domain/entities/get_user_order/order_item_entity.dart';
+import 'package:flowery_app/domain/entities/get_user_order/order_item_entity/order_item_entity.dart';
 
 class OrderEntity {
   final String? id;

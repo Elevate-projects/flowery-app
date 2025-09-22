@@ -181,8 +181,9 @@ class _FakeDeleteItem_14 extends _i1.SmartFake implements _i16.DeleteItem {
     : super(parent, parentInvocation);
 }
 
-class _FakeGetUserOrder_15 extends _i1.SmartFake implements _i17.GetUserOrder {
-  _FakeGetUserOrder_15(Object parent, Invocation parentInvocation)
+class _FakeGetUserOrderResponse_15 extends _i1.SmartFake
+    implements _i17.GetUserOrderResponse {
+  _FakeGetUserOrderResponse_15(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
@@ -513,17 +514,19 @@ class MockApiClient extends _i1.Mock implements _i24.ApiClient {
           as _i25.Future<_i16.DeleteItem>);
 
   @override
-  _i25.Future<_i17.GetUserOrder> getUserOrder({required String? token}) =>
+  _i25.Future<_i17.GetUserOrderResponse> getUserOrder({
+    required String? token,
+  }) =>
       (super.noSuchMethod(
             Invocation.method(#getUserOrder, [], {#token: token}),
-            returnValue: _i25.Future<_i17.GetUserOrder>.value(
-              _FakeGetUserOrder_15(
+            returnValue: _i25.Future<_i17.GetUserOrderResponse>.value(
+              _FakeGetUserOrderResponse_15(
                 this,
                 Invocation.method(#getUserOrder, [], {#token: token}),
               ),
             ),
           )
-          as _i25.Future<_i17.GetUserOrder>);
+          as _i25.Future<_i17.GetUserOrderResponse>);
 
   @override
   _i25.Future<_i18.EditProfileResponse> editUserProfile({
