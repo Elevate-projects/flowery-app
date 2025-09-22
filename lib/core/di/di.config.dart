@@ -229,6 +229,8 @@ import '../../presentation/cart/views_model/cart_cubit/cart_cubit.dart'
     as _i406;
 import '../../presentation/categories/views_model/categories_cubit.dart'
     as _i200;
+import '../../presentation/checkout/views_model/address_cubit/address_cubit.dart'
+    as _i760;
 import '../../presentation/checkout/views_model/checkout_cubit/checkout_view_model.dart'
     as _i294;
 import '../../presentation/edit_profile/view_model/edit_profile_cubit.dart'
@@ -467,6 +469,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i997.GetUserOrderRepositories>(
       () =>
           _i431.GetUserOrderRepositoriesImp(gh<_i392.GetUserOrderDataSource>()),
+    );
+    gh.factory<_i760.AddressCubit>(
+      () => _i760.AddressCubit(gh<_i306.GetUserProfileDataUseCase>()),
     );
     gh.factory<_i660.CategoriesRepository>(
       () => _i940.CategoriesRepositoryImpl(

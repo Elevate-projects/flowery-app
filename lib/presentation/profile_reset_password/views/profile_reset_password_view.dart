@@ -14,7 +14,9 @@ class ProfileResetPasswordView extends StatelessWidget {
       create: (context) =>
           getIt.get<ProfileResetPasswordCubit>()
             ..doIntent(intent: InitializedProfileResetPassword()),
-      child: const Scaffold(body: ProfileResetPasswordViewBody()),
+      child: const Scaffold(
+        body: SafeArea(child: ProfileResetPasswordViewBody()),
+      ),
     );
   }
 }

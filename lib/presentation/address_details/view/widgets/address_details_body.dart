@@ -1,10 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/core/state_status/state_status.dart';
+import 'package:flowery_app/domain/entities/arguments/address_argument_entity.dart';
 import 'package:flowery_app/presentation/address_details/view/widgets/address_details_form.dart';
 import 'package:flowery_app/presentation/address_details/view/widgets/map_section.dart';
 import 'package:flowery_app/presentation/address_details/view_model/add_address_cubit.dart';
 import 'package:flowery_app/presentation/address_details/view_model/add_address_state.dart';
+import 'package:flowery_app/presentation/saved_address/views_model/saved_address_intent.dart';
 import 'package:flowery_app/utils/common_widgets/loading_dialog.dart';
 import 'package:flowery_app/utils/loaders/loaders.dart';
 import 'package:flutter/material.dart';
@@ -12,8 +14,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AddressDetailsBody extends StatelessWidget {
-  const AddressDetailsBody({super.key});
-
+  const AddressDetailsBody({super.key, required this.addressArgumentEntity});
+  final AddressArgumentEntity addressArgumentEntity;
   @override
   Widget build(BuildContext context) {
     return BlocListener<AddAddressCubit, AddAddressState>(
@@ -28,6 +30,14 @@ class AddressDetailsBody extends StatelessWidget {
             );
             break;
           case Status.success:
+            if (addressArgumentEntity.isAddedFromCheckout) {
+              addressArgumentEntity.addressCubit!.updateAddress();
+            } else {
+              addressArgumentEntity.savedAddressCubit!.doIntent(
+                intent: AddNewAddressIntent(),
+              );
+              Navigator.pop(context);
+            }
             Navigator.pop(context);
             Navigator.pop(context);
             Loaders.showSuccessMessage(
