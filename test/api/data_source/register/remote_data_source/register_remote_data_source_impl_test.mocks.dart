@@ -50,7 +50,7 @@ import 'package:flowery_app/api/responses/edit_profile_response/upload_photo_res
     as _i19;
 import 'package:flowery_app/api/responses/forget_password_response/forget_password_response.dart'
     as _i7;
-import 'package:flowery_app/api/responses/get_user_order/get_user_order.dart'
+import 'package:flowery_app/api/responses/get_user_order/get_user_order_response.dart'
     as _i17;
 import 'package:flowery_app/api/responses/home_products/products_response_model.dart'
     as _i2;
@@ -181,8 +181,9 @@ class _FakeDeleteItem_14 extends _i1.SmartFake implements _i16.DeleteItem {
     : super(parent, parentInvocation);
 }
 
-class _FakeGetUserOrder_15 extends _i1.SmartFake implements _i17.GetUserOrder {
-  _FakeGetUserOrder_15(Object parent, Invocation parentInvocation)
+class _FakeGetUserOrderResponse_15 extends _i1.SmartFake
+    implements _i17.GetUserOrderResponse {
+  _FakeGetUserOrderResponse_15(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
@@ -513,17 +514,19 @@ class MockApiClient extends _i1.Mock implements _i24.ApiClient {
           as _i25.Future<_i16.DeleteItem>);
 
   @override
-  _i25.Future<_i17.GetUserOrder> getUserOrder({required String? token}) =>
+  _i25.Future<_i17.GetUserOrderResponse> getUserOrder({
+    required String? token,
+  }) =>
       (super.noSuchMethod(
             Invocation.method(#getUserOrder, [], {#token: token}),
-            returnValue: _i25.Future<_i17.GetUserOrder>.value(
-              _FakeGetUserOrder_15(
+            returnValue: _i25.Future<_i17.GetUserOrderResponse>.value(
+              _FakeGetUserOrderResponse_15(
                 this,
                 Invocation.method(#getUserOrder, [], {#token: token}),
               ),
             ),
           )
-          as _i25.Future<_i17.GetUserOrder>);
+          as _i25.Future<_i17.GetUserOrderResponse>);
 
   @override
   _i25.Future<_i18.EditProfileResponse> editUserProfile({

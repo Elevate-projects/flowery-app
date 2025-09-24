@@ -1,5 +1,5 @@
 import 'package:flowery_app/api/models/product_card/product_card_model.dart';
-import 'package:flowery_app/domain/entities/get_user_order/order_item_entity.dart';
+import 'package:flowery_app/domain/entities/get_user_order/order_item_entity/order_item_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'order_items_get_user_order.g.dart';

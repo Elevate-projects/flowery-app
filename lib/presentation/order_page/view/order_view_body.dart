@@ -31,7 +31,7 @@ class OrderViewBody extends StatelessWidget {
         }
 
         if (state.orderStatus.isSuccess) {
-          final orders = state.orderStatus.data?.orders ?? [];
+          final orders = state.orderStatus.data ?? [];
           final activeOrders = orders.where((o) => o.isPaid == false).toList();
           final completedOrders = orders
               .where((o) => o.isPaid == true)

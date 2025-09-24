@@ -1,15 +1,12 @@
 import 'package:bloc_test/bloc_test.dart';
-import 'package:flowery_app/domain/entities/get_user_order/mata_data_get_user_order_entity.dart';
-import 'package:flowery_app/domain/entities/get_user_order/order_entity.dart';
-import 'package:flowery_app/domain/entities/get_user_order/order_item_entity.dart';
+import 'package:flowery_app/domain/entities/get_user_order/order_entity/order_entity.dart';
+import 'package:flowery_app/domain/entities/get_user_order/order_item_entity/order_item_entity.dart';
 import 'package:flowery_app/domain/entities/product_card/product_card_entity.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-
 import 'package:flowery_app/api/client/api_result.dart';
 import 'package:flowery_app/core/exceptions/response_exception.dart';
-import 'package:flowery_app/domain/entities/get_user_order/get_user_order_entity.dart';
 import 'package:flowery_app/domain/use_cases/get_user_order/get_user_order_usecase.dart';
 import 'package:flowery_app/presentation/order_page/view_model/order_page_cubit.dart';
 import 'package:flowery_app/presentation/order_page/view_model/order_page_status.dart';
@@ -19,38 +16,25 @@ import 'order_page_cubit_test.mocks.dart';
 void main() {
   late MockGetUserUseCase mockGetUserUseCase;
   late GetUserOrderCubit cubit;
-  late GetUserOrderEntity fakeOrder;
-
+  late OrderEntity orderEntity;
   setUpAll(() {
-    fakeOrder = GetUserOrderEntity(
-      message: "success",
-      metadata: MetadataEntity(
-        currentPage: 1,
-        totalPages: 5,
-        limit: 10,
-        totalItems: 50,
-      ),
-      orders: [
-        OrderEntity(
-          id: "order1",
-          user: "user1",
-          orderItems: [
-            OrderItemEntity(
-              product: const ProductCardEntity(
-                categoryId: "product1",
-                title: "Red Rose",
-                imgCover: "image.png",
-                price: 100,
-                priceAfterDiscount: 90,
-                quantity: 1,
-              ),
-            ),
-          ],
-        ),
+    orderEntity = OrderEntity(
+      id: "123",
+      user: "123",
+      orderItems: [
+        OrderItemEntity(
+            id: "www",
+            price: 0,
+            product: const ProductCardEntity(
+              productId: "ss",
+              title: "123",
+              imgCover: "123",
+              description: "123",
+            )
+    )
       ],
     );
-
-    provideDummy<Result<GetUserOrderEntity>>(Success(fakeOrder));
+    provideDummy<Result<List<OrderEntity>>>(Success([orderEntity]));
   });
 
   setUp(() {
@@ -65,8 +49,9 @@ void main() {
   blocTest<GetUserOrderCubit, GetUserOrderState>(
     'emits [loading, success] when usecase returns Success',
     build: () {
-      when(mockGetUserUseCase.getUserOrder())
-          .thenAnswer((_) async => Success(fakeOrder));
+      when(mockGetUserUseCase.getUserOrder()).thenAnswer(
+            (_) async => Success([orderEntity]),
+      );
       return cubit;
     },
     act: (cubit) => cubit.fetchUserOrders(),
@@ -74,12 +59,15 @@ void main() {
       isA<GetUserOrderState>().having((s) => s.orderStatus.isLoading, 'isLoading', true),
       isA<GetUserOrderState>()
           .having((s) => s.orderStatus.isSuccess, 'isSuccess', true)
-          .having((s) => s.orderStatus.data, 'order data', fakeOrder),
+          .having((s) => s.orderStatus.data, 'order data', [orderEntity]),
     ],
     verify: (_) {
       verify(mockGetUserUseCase.getUserOrder()).called(1);
+      verifyNoMoreInteractions(mockGetUserUseCase);
+      expect(cubit.state.orderStatus.isSuccess, true);
     },
   );
+
 
   blocTest<GetUserOrderCubit, GetUserOrderState>(
     'emits [loading, failure] when usecase returns Failure',
