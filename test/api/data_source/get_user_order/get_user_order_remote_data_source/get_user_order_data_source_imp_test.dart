@@ -1,9 +1,9 @@
 import 'package:flowery_app/api/client/api_result.dart';
 import 'package:flowery_app/api/data_source/get_user_order/get_user_order_remote_data_source/get_user_order_data_source_imp.dart';
-import 'package:flowery_app/api/models/get_user_order/get_user_order_model.dart';
+import 'package:flowery_app/api/models/order_Item_model/get_user_order_model.dart';
+import 'package:flowery_app/api/models/orders_items_get_user_order/order_items_get_user_order.dart';
 import 'package:flowery_app/api/models/product_card/product_card_model.dart';
-import 'package:flowery_app/api/responses/get_user_order/get_user_order.dart';
-import 'package:flowery_app/api/responses/get_user_order/orders_items_get_user_order/order_items_get_user_order.dart';
+import 'package:flowery_app/api/responses/get_user_order/get_user_order_response.dart';
 import 'package:flowery_app/core/connection_manager/connection_manager.dart';
 import 'package:flowery_app/domain/entities/get_user_order/order_entity/order_entity.dart';
 import 'package:flowery_app/utils/flowery_method_helper.dart';
@@ -35,7 +35,7 @@ void main() {
     final mockResponse = GetUserOrderResponse(
       message: "success",
       orders: [
-        GetUsersOrdersModel(
+        OrderItemModel(
           id: "123",
           user: "123",
           orderItems: [

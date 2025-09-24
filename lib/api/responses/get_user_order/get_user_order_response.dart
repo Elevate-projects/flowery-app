@@ -1,13 +1,13 @@
-import 'package:flowery_app/api/models/get_user_order/get_user_order_model.dart';
+import 'package:flowery_app/api/models/order_Item_model/get_user_order_model.dart';
 import 'package:flowery_app/domain/entities/get_user_order/get_user_entity/get_user_order_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
-part 'get_user_order.g.dart';
+part 'get_user_order_response.g.dart';
 @JsonSerializable()
 class GetUserOrderResponse {
   @JsonKey(name: "message")
   final String? message;
   @JsonKey(name: "orders")
-  final List<GetUsersOrdersModel>? orders;
+  final List<OrderItemModel>? orders;
 
   GetUserOrderResponse ({
     this.message,
