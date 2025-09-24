@@ -205,5 +205,7 @@
   "profileConfirmPasswordLabel": "Confirm Password",
   "profileConfirmPasswordHintReset": "Confirm Password",
   "passwordResetSuccessMessage": "Your password has been reset successfully",
-  "noNotificationsFounded": "No Notifications Founded"
+  "noNotificationsFounded": "No Notifications Founded",
+  "appleyNow": "Appley Now"
+
 }

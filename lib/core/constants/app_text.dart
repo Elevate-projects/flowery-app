@@ -240,4 +240,8 @@ abstract final class AppText {
       "profileConfirmPasswordHintReset";
 
   static const String noNotificationsFounded = "noNotificationsFounded";
+  /// on boarding text
+  static const String welcome = "welcome to\nFlowery rider app";
+  static const String appleyNow = "appleyNow";
+  static const String appVersion = "v 6.3.0 - (446)";
 }
