@@ -1,24 +1,38 @@
+import 'package:equatable/equatable.dart';
+import 'package:flowery_app/core/state_status/state_status.dart';
 import 'package:flowery_app/domain/entities/payment/credit/credit_payment_response_entity.dart';
 
-sealed class CreditPaymentState {}
+class CreditPaymentState extends Equatable {
+  final StateStatus<CreditPaymentResponseEntity?> paymentStatus;
+  final String? redirectUrl;
+  final bool isCompleted;
+  final bool isCancelled;
 
-class CreditPaymentInitial extends CreditPaymentState {}
 
-class CreditPaymentLoading extends CreditPaymentState {}
+  const CreditPaymentState({
+    this.paymentStatus = const StateStatus.initial(),
+    this.redirectUrl,
+    this.isCompleted = false,
+    this.isCancelled = false,
 
-class CreditPaymentRedirect extends CreditPaymentState {
-  final String url;
-  CreditPaymentRedirect(this.url);
+  });
+
+  CreditPaymentState copyWith({
+    StateStatus<CreditPaymentResponseEntity?>? paymentStatus,
+    String? redirectUrl,
+    bool? isCompleted,
+    bool? isCancelled,
+
+  }) {
+    return CreditPaymentState(
+      paymentStatus: paymentStatus ?? this.paymentStatus,
+      redirectUrl: redirectUrl ?? this.redirectUrl,
+      isCompleted: isCompleted ?? this.isCompleted,
+      isCancelled: isCancelled ?? this.isCancelled,
+
+    );
+  }
+
+  @override
+  List<Object?> get props => [paymentStatus, redirectUrl, isCompleted,isCancelled];
 }
-
-class CreditPaymentSuccess extends CreditPaymentState {
-  final CreditPaymentResponseEntity response;
-  CreditPaymentSuccess(this.response);
-}
-
-class CreditPaymentFailure extends CreditPaymentState {
-  final String message;
-  CreditPaymentFailure(this.message);
-}
-
-class CreditPaymentCompleted extends CreditPaymentState {}
