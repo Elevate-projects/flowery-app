@@ -86,7 +86,7 @@ void main() {
 
           // Assert
           expect(result, isA<Failure<CreditPaymentResponseEntity>>());
-          final failure = result as Failure<CreditPaymentResponseEntity>;
+
 
           verify(mockCreditPaymentRepo.creditPayment(
             request: request,

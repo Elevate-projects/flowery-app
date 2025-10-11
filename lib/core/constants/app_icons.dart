@@ -25,7 +25,7 @@ abstract final class AppIcons {
   static const String location2 = "assets/icons/location2.svg";
   static const String delete = "assets/icons/delete.svg";
   static const String edit2 = "assets/icons/edit2.svg";
-  static const String Apartment = "assets/icons/Apartment.png";
+  static const String apartment = "assets/icons/Apartment.png";
   static const String filter2 = "assets/icons/filter2.svg";
   static const String motorcycle = "assets/icons/Motorcycle Delivery.png";
   static const String whatsApp = "assets/icons/whatsapp.png";

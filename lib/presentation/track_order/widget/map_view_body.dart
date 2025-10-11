@@ -95,7 +95,7 @@ class MapViewBody extends StatelessWidget {
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Image.asset(
-                                    AppIcons.Apartment,
+                                    AppIcons.apartment,
                                     height: 16.h,
                                     width: 16.w,
                                   ),
