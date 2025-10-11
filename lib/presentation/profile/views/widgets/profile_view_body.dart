@@ -6,6 +6,7 @@ import 'package:flowery_app/presentation/profile/views/widgets/profile_navigatio
 import 'package:flowery_app/presentation/profile/views/widgets/user_profile_details.dart';
 import 'package:flowery_app/presentation/profile/views_model/profile_cubit.dart';
 import 'package:flowery_app/presentation/profile/views_model/profile_state.dart';
+import 'package:flowery_app/presentation/track_order/widget/track_order_page.dart';
 import 'package:flowery_app/utils/flowery_method_helper.dart';
 import 'package:flowery_app/utils/loaders/loaders.dart';
 import 'package:flutter/material.dart';
@@ -65,6 +66,14 @@ class ProfileViewBody extends StatelessWidget {
                   color: theme.colorScheme.shadow,
                 ),
               ),
+              const RSizedBox(height: 12),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const TrackOrderPage(),));
+                },
+                child: null,
+
+              )
             ],
           ),
         ),

@@ -37,9 +37,18 @@ dependencies:
   equatable: ^2.0.7
   smooth_page_indicator: ^1.2.1
   url_launcher: ^6.2.6
-
+  polyline_codec:
+  firebase_core:
+  cloud_firestore:
 
   dio: any
+  flutter_polyline_points:
+  flutter_map:
+  flutter_map_location_marker:
+  http:
+  latlong2:
+  mocktail:
+
   easy_localization: ^3.0.8
   google_maps_flutter: ^2.13.1
   geocoding: ^4.0.0

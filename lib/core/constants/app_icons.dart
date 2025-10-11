@@ -25,6 +25,13 @@ abstract final class AppIcons {
   static const String location2 = "assets/icons/location2.svg";
   static const String delete = "assets/icons/delete.svg";
   static const String edit2 = "assets/icons/edit2.svg";
+  static const String Apartment = "assets/icons/Apartment.png";
   static const String filter2 = "assets/icons/filter2.svg";
+  static const String motorcycle = "assets/icons/Motorcycle Delivery.png";
+  static const String whatsApp = "assets/icons/whatsapp.png";
+  static const String car = "assets/icons/car.png";
+  static const String flower = "assets/icons/Flower.png";
+  static const String floweryStore = "assets/icons/Flowery location (1).png";
+  static const String floweryUserApartment = "assets/icons/Flowery location.png";
   static const String clock = "assets/icons/schedule_24dp_5F6368_FILL0_wght400_GRAD0_opsz24 1.png";
 }
