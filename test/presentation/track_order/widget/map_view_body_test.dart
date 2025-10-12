@@ -1,6 +1,6 @@
 import 'package:flowery_app/presentation/track_order/view_model/map_cubit.dart';
 import 'package:flowery_app/presentation/track_order/view_model/map_state.dart';
-import 'package:flowery_app/presentation/track_order/widget/map_view_body.dart';
+import 'package:flowery_app/presentation/track_order/view/map_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';

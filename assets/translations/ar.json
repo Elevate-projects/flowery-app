@@ -206,5 +206,6 @@
   "noNotificationsFounded": "لا توجد إشعارات",
   "estimatedArrival": "وقت الوصول المتوقع",
   "orderDetails": "تفاصيل الطلب",
-  "apartment" : "شقه"
+  "apartment" : "شقه",
+  "deliveryHero": "انه بطل توصيلك اليوم"
 }
