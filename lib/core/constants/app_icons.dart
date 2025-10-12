@@ -27,11 +27,15 @@ abstract final class AppIcons {
   static const String edit2 = "assets/icons/edit2.svg";
   static const String apartment = "assets/icons/Apartment.png";
   static const String filter2 = "assets/icons/filter2.svg";
+  static const String clock =
+      "assets/icons/schedule_24dp_5F6368_FILL0_wght400_GRAD0_opsz24 1.png";
+  static const String phone = "assets/icons/phone.svg";
+  static const String whatsapp = "assets/icons/whatsapp.svg";
+  static const String deliveryBoy = "assets/icons/delivery_boy.svg";
   static const String motorcycle = "assets/icons/Motorcycle Delivery.png";
   static const String whatsApp = "assets/icons/whatsapp.png";
   static const String car = "assets/icons/car.png";
   static const String flower = "assets/icons/Flower.png";
   static const String floweryStore = "assets/icons/Flowery location (1).png";
   static const String floweryUserApartment = "assets/icons/Flowery location.png";
-  static const String clock = "assets/icons/schedule_24dp_5F6368_FILL0_wght400_GRAD0_opsz24 1.png";
 }

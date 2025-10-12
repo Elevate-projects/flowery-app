@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCKPkJ5kLCiVw2gZBxQZA7NYH4Hy_RPp7I',
-    appId: '1:234986519193:android:611366cc07815f4c1fd608',
+    appId: '1:234986519193:android:9aa79857fc4f7eed1fd608',
     messagingSenderId: '234986519193',
     projectId: 'flowery-58975',
     storageBucket: 'flowery-58975.firebasestorage.app',
@@ -59,7 +59,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyDXAaUL2fMQocmnkELyR1UtMo9D9LmI3e4',
-    appId: '1:234986519193:ios:38b786b2ef55aa7c1fd608',
+    appId: '1:234986519193:ios:6fcd37fff71ed9181fd608',
     messagingSenderId: '234986519193',
     projectId: 'flowery-58975',
     storageBucket: 'flowery-58975.firebasestorage.app',
