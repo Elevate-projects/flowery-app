@@ -1,4 +1,3 @@
-
 import 'package:flowery_app/core/exceptions/response_exception.dart';
 
 enum Status { initial, loading, success, failure }
@@ -12,7 +11,7 @@ class StateStatus<T> {
 
   const StateStatus.initial() : this._(status: Status.initial);
   const StateStatus.loading() : this._(status: Status.loading);
-  const StateStatus.success(T data)
+  const StateStatus.success(T? data)
     : this._(status: Status.success, data: data);
   const StateStatus.failure(ResponseException error)
     : this._(status: Status.failure, error: error);

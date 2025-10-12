@@ -26,5 +26,9 @@ abstract final class AppIcons {
   static const String delete = "assets/icons/delete.svg";
   static const String edit2 = "assets/icons/edit2.svg";
   static const String filter2 = "assets/icons/filter2.svg";
-  static const String clock = "assets/icons/schedule_24dp_5F6368_FILL0_wght400_GRAD0_opsz24 1.png";
+  static const String clock =
+      "assets/icons/schedule_24dp_5F6368_FILL0_wght400_GRAD0_opsz24 1.png";
+  static const String phone = "assets/icons/phone.svg";
+  static const String whatsapp = "assets/icons/whatsapp.svg";
+  static const String deliveryBoy = "assets/icons/delivery_boy.svg";
 }
