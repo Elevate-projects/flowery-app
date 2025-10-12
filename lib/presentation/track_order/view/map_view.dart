@@ -7,7 +7,6 @@ class MapToView extends StatelessWidget {
   final double destinationLat;
   final double destinationLon;
   const MapToView({super.key, required this.destinationLat, required this.destinationLon});
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

@@ -327,10 +327,8 @@ abstract final class AppText {
 
   static const String noNotificationsFounded = "noNotificationsFounded";
   // Track order
-  static const String estimatedArrival = "estimatedArrival";
   static const String time = "03 Sep 2024, 11:00 AM";
   static const String orderDetails = "orderDetails";
   static const String apartment = "apartment";
   static const String driverName = "driverName";
-  static const String deliveryHero = "deliveryHero";
 }
