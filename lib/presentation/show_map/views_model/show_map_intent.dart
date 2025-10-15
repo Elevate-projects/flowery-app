@@ -1,15 +1,11 @@
-import 'package:latlong2/latlong.dart';
+import 'package:flowery_app/domain/entities/order/order_entity.dart';
 
 sealed class ShowMapIntent {
   const ShowMapIntent();
 }
 
 final class ShowMapInitializationIntent extends ShowMapIntent {
-  LatLng userLocation;
-  LatLng storeLocation;
+  final OrderEntity orderData;
 
-  ShowMapInitializationIntent({
-    required this.userLocation,
-    required this.storeLocation,
-  });
+  ShowMapInitializationIntent({required this.orderData});
 }

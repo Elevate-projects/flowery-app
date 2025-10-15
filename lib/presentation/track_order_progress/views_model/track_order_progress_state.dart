@@ -11,6 +11,7 @@ final class TrackOrderProgressState extends Equatable {
   final int currentOrderStateIndex;
   final bool isOpeningWhatsapp;
   final bool isOpeningPhone;
+  final bool isShowMap;
   final List<String> orderStates = const [
     AppText.receivedYourOrder,
     AppText.preparingYourOrder,
@@ -27,6 +28,7 @@ final class TrackOrderProgressState extends Equatable {
     this.orderProgressDates = const ["", "", "", ""],
     this.isOpeningWhatsapp = false,
     this.isOpeningPhone = false,
+    this.isShowMap = false,
   });
   TrackOrderProgressState copyWith({
     StateStatus<OrderEntity>? currentOrderStatus,
@@ -38,6 +40,7 @@ final class TrackOrderProgressState extends Equatable {
     String? selectedPhoneNumber,
     bool? isOpeningWhatsapp,
     bool? isOpeningPhone,
+    bool? isShowMap,
   }) {
     return TrackOrderProgressState(
       currentOrderStatus: currentOrderStatus ?? this.currentOrderStatus,
@@ -49,6 +52,7 @@ final class TrackOrderProgressState extends Equatable {
           currentOrderStateIndex ?? this.currentOrderStateIndex,
       isOpeningWhatsapp: isOpeningWhatsapp ?? this.isOpeningWhatsapp,
       isOpeningPhone: isOpeningPhone ?? this.isOpeningPhone,
+      isShowMap: isShowMap ?? this.isShowMap,
     );
   }
 
@@ -63,5 +67,6 @@ final class TrackOrderProgressState extends Equatable {
     orderProgressDates,
     isOpeningWhatsapp,
     isOpeningPhone,
+    isShowMap,
   ];
 }

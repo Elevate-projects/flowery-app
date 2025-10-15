@@ -3,7 +3,6 @@ import 'package:flowery_app/core/router/route_names.dart';
 import 'package:flowery_app/domain/entities/address/address_entity.dart';
 import 'package:flowery_app/domain/entities/arguments/address_argument_entity.dart';
 import 'package:flowery_app/domain/entities/arguments/occasion_arguments_entity.dart';
-import 'package:flowery_app/domain/entities/order/order_entity.dart';
 import 'package:flowery_app/domain/entities/product_card/product_card_entity.dart';
 import 'package:flowery_app/presentation/about_us/views/about_us_view.dart';
 import 'package:flowery_app/presentation/address_details/view/address_details.dart';
@@ -28,7 +27,6 @@ import 'package:flowery_app/presentation/profile/views_model/profile_cubit.dart'
 import 'package:flowery_app/presentation/profile_reset_password/views/profile_reset_password_view.dart';
 import 'package:flowery_app/presentation/saved_address/views/saved_address_view.dart';
 import 'package:flowery_app/presentation/search/search/view/search_view.dart';
-import 'package:flowery_app/presentation/show_map/views/show_map_screen.dart';
 import 'package:flowery_app/presentation/terms_and_conditions/views/terms_and_conditions_view.dart';
 import 'package:flowery_app/presentation/track_order_progress/views/track_order_progress_view.dart';
 import 'package:flowery_app/utils/common_cubits/add_product_to_cart/add_product_to_cart_cubit.dart';
@@ -146,11 +144,6 @@ abstract class AppRoutes {
         return MaterialPageRoute(
           builder: (_) =>
               TrackOrderProgressView(orderId: settings.arguments as String),
-        );
-      case RouteNames.showMap:
-        return MaterialPageRoute(
-          builder: (_) =>
-              ShowMapScreen(orderData: settings.arguments as OrderEntity),
         );
       default:
         return null;

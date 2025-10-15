@@ -3,6 +3,10 @@ import 'dart:developer';
 import 'package:flowery_app/core/constants/app_colors.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/core/constants/const_keys.dart';
+import 'package:flowery_app/core/di/di.dart';
+import 'package:flowery_app/presentation/show_map/views/widgets/map_section.dart';
+import 'package:flowery_app/presentation/show_map/views_model/show_map_cubit.dart';
+import 'package:flowery_app/presentation/show_map/views_model/show_map_intent.dart';
 import 'package:flowery_app/presentation/track_order_progress/views/widgets/driver_details.dart';
 import 'package:flowery_app/presentation/track_order_progress/views/widgets/estimated_arrive.dart';
 import 'package:flowery_app/presentation/track_order_progress/views/widgets/order_placed.dart';
@@ -22,6 +26,7 @@ class TrackOrderProgressViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final trackOrderCubit = BlocProvider.of<TrackOrderProgressCubit>(context);
     final theme = Theme.of(context);
     return BlocConsumer<TrackOrderProgressCubit, TrackOrderProgressState>(
       listenWhen: (previous, current) =>
@@ -52,9 +57,23 @@ class TrackOrderProgressViewBody extends StatelessWidget {
       builder: (context, state) {
         log(state.currentOrderStateIndex.toString());
         if (state.currentOrderStatus.isSuccess) {
-          final order = state.currentOrderStatus.data;
           return state.currentOrderStatus.data == null
               ? const OrderPlaced()
+              : state.isShowMap
+              ? MultiBlocProvider(
+                  providers: [
+                    BlocProvider.value(value: trackOrderCubit),
+                    BlocProvider<ShowMapCubit>(
+                      create: (context) => getIt.get<ShowMapCubit>()
+                        ..doIntent(
+                          ShowMapInitializationIntent(
+                            orderData: state.currentOrderStatus.data!,
+                          ),
+                        ),
+                    ),
+                  ],
+                  child: const MapSection(),
+                )
               : SingleChildScrollView(
                   child: RPadding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -74,7 +93,7 @@ class TrackOrderProgressViewBody extends StatelessWidget {
                         state.currentOrderStatus.data?.state ==
                                 ConstKeys.deliveredToTheUser
                             ? const ReceivedTheOrderButton()
-                            : ShowMapButton(orderData: order!),
+                            : const ShowMapButton(),
                         const RSizedBox(height: 12),
                       ],
                     ),

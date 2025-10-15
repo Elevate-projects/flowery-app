@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:flowery_app/domain/entities/order/order_entity.dart';
 import 'package:flowery_app/presentation/show_map/views_model/show_map_intent.dart';
 import 'package:flowery_app/presentation/show_map/views_model/show_map_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,17 +20,19 @@ class ShowMapCubit extends Cubit<ShowMapState> {
   Future<void> doIntent(ShowMapIntent intent) {
     switch (intent) {
       case ShowMapInitializationIntent():
-        return _initMap(
-          userLocation: intent.userLocation,
-          storeLocation: intent.storeLocation,
-        );
+        return _initMap(orderData: intent.orderData);
     }
   }
 
-  Future<void> _initMap({
-    required LatLng userLocation,
-    required LatLng storeLocation,
-  }) async {
+  Future<void> _initMap({required OrderEntity orderData}) async {
+    final LatLng userLocation = LatLng(
+      double.parse(orderData.shippingAddress!.lat.toString()),
+      double.parse(orderData.shippingAddress!.long.toString()),
+    );
+    final LatLng storeLocation = LatLng(
+      double.parse(orderData.driverLatitude!.toString()),
+      double.parse(orderData.driverLongitude!.toString()),
+    );
     emit(
       state.copyWith(userLocation: userLocation, storeLocation: storeLocation),
     );

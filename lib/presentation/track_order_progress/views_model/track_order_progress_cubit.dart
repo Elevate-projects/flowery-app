@@ -44,6 +44,8 @@ class TrackOrderProgressCubit extends Cubit<TrackOrderProgressState> {
       case OrderReceivedIntent():
         await _receivedOrder();
         break;
+      case ShowMapIntent():
+        _showMap();
     }
   }
 
@@ -257,6 +259,13 @@ class TrackOrderProgressCubit extends Cubit<TrackOrderProgressState> {
           isOpeningPhone: false,
         ),
       );
+    }
+  }
+
+  void _showMap() {
+    if (state.currentOrderStatus.data?.driverLatitude != null &&
+        state.currentOrderStatus.data?.driverLongitude != null) {
+      emit(state.copyWith(isShowMap: !state.isShowMap));
     }
   }
 
