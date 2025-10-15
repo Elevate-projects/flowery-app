@@ -52,6 +52,7 @@ class TrackOrderProgressViewBody extends StatelessWidget {
       builder: (context, state) {
         log(state.currentOrderStateIndex.toString());
         if (state.currentOrderStatus.isSuccess) {
+          final order = state.currentOrderStatus.data;
           return state.currentOrderStatus.data == null
               ? const OrderPlaced()
               : SingleChildScrollView(
@@ -73,7 +74,7 @@ class TrackOrderProgressViewBody extends StatelessWidget {
                         state.currentOrderStatus.data?.state ==
                                 ConstKeys.deliveredToTheUser
                             ? const ReceivedTheOrderButton()
-                            : const ShowMapButton(),
+                            : ShowMapButton(orderData: order!),
                         const RSizedBox(height: 12),
                       ],
                     ),

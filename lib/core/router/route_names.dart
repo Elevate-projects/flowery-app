@@ -23,4 +23,6 @@ abstract class RouteNames {
   static const String profileResetPassword = '/profileResetPasswordView';
   static const String orderPage = "/orderPage";
   static const String trackOrderProgress = "/trackOrderProgressView";
+  static const String showMap = "/showMapView";
+
 }
