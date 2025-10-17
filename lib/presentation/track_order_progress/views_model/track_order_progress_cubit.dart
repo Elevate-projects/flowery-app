@@ -14,6 +14,8 @@ import 'package:flowery_app/presentation/track_order_progress/views_model/track_
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:intl/intl.dart';
+import 'package:latlong2/latlong.dart' as latlong;
+import 'package:latlong2/latlong.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 @injectable
@@ -21,6 +23,7 @@ class TrackOrderProgressCubit extends Cubit<TrackOrderProgressState> {
   final GetTrackedOrderUseCase _getTrackedOrderUseCase;
   final OrderReceivedUseCase _orderReceivedUseCase;
   final SharedPreferencesHelper _sharedPreferencesHelper;
+
   TrackOrderProgressCubit(
     this._getTrackedOrderUseCase,
     this._orderReceivedUseCase,
@@ -54,49 +57,75 @@ class TrackOrderProgressCubit extends Cubit<TrackOrderProgressState> {
     isArLanguage = _sharedPreferencesHelper.getBool(
       key: ConstKeys.isArLanguage,
     );
-    _orderSubscription = _getTrackedOrderUseCase
-        .invoke(orderId: orderId)
-        .listen((orderData) {
-          switch (orderData) {
-            case Success<OrderEntity?>():
-              {
-                if (orderData.data != null) {
-                  final orderState = _getCurrentOrderState(
-                    orderData: orderData.data,
-                  );
-                  final orderProgressDates = _loadOrderDates(
-                    orderData: orderData.data,
-                  );
-                  emit(
-                    state.copyWith(
-                      currentOrderStatus: StateStatus.success(orderData.data),
-                      currentOrderStateIndex: orderState,
-                      orderProgressDates: orderProgressDates,
-                    ),
-                  );
-                } else {
-                  emit(
-                    state.copyWith(
-                      currentOrderStatus: const StateStatus.success(null),
-                    ),
-                  );
-                }
+    _orderSubscription = _getTrackedOrderUseCase.invoke(orderId: orderId).listen((
+      orderData,
+    ) {
+      switch (orderData) {
+        case Success<OrderEntity?>():
+          {
+            if (orderData.data != null) {
+              // 1. Get the previous location from the *current* state
+              final previousOrderData = state.currentOrderStatus.data;
+              double newBearing =
+                  state.bearing; // Default to the last known bearing
+
+              // 2. Check if we have a previous location and if the location has changed
+              if (previousOrderData != null &&
+                  (previousOrderData.driverLatitude !=
+                          orderData.data!.driverLatitude ||
+                      previousOrderData.driverLongitude !=
+                          orderData.data!.driverLongitude)) {
+                final prevPoint = LatLng(
+                  double.parse(previousOrderData.driverLatitude.toString()),
+                  double.parse(previousOrderData.driverLongitude.toString()),
+                );
+
+                final newPoint = LatLng(
+                  double.parse(orderData.data!.driverLatitude.toString()),
+                  double.parse(orderData.data!.driverLongitude.toString()),
+                );
+
+                // 3. Calculate the new bearing in degrees
+                newBearing = const latlong.Distance().bearing(
+                  prevPoint,
+                  newPoint,
+                );
               }
-              break;
-            case Failure<OrderEntity?>():
+              final orderState = _getCurrentOrderState(
+                orderData: orderData.data,
+              );
+              final orderProgressDates = _loadOrderDates(
+                orderData: orderData.data,
+              );
               emit(
                 state.copyWith(
-                  currentOrderStatus: StateStatus.failure(
-                    orderData.responseException,
-                  ),
+                  currentOrderStatus: StateStatus.success(orderData.data),
+                  currentOrderStateIndex: orderState,
+                  orderProgressDates: orderProgressDates,
+                  bearing: newBearing,
                 ),
               );
+            } else {
               emit(
-                state.copyWith(currentOrderStatus: const StateStatus.initial()),
+                state.copyWith(
+                  currentOrderStatus: const StateStatus.success(null),
+                ),
               );
-              break;
+            }
           }
-        });
+          break;
+        case Failure<OrderEntity?>():
+          emit(
+            state.copyWith(
+              currentOrderStatus: StateStatus.failure(
+                orderData.responseException,
+              ),
+            ),
+          );
+          emit(state.copyWith(currentOrderStatus: const StateStatus.initial()));
+          break;
+      }
+    });
   }
 
   Future<void> _receivedOrder() async {

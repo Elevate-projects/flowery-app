@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flowery_app/core/constants/app_colors.dart';
 import 'package:flowery_app/core/constants/app_icons.dart';
 import 'package:flowery_app/presentation/show_map/views/widgets/driver_information.dart';
@@ -6,6 +8,7 @@ import 'package:flowery_app/presentation/show_map/views_model/show_map_state.dar
 import 'package:flowery_app/presentation/track_order_progress/views/widgets/estimated_arrive.dart';
 import 'package:flowery_app/presentation/track_order_progress/views_model/track_order_progress_cubit.dart';
 import 'package:flowery_app/presentation/track_order_progress/views_model/track_order_progress_intent.dart';
+import 'package:flowery_app/presentation/track_order_progress/views_model/track_order_progress_state.dart';
 import 'package:flowery_app/utils/common_widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -51,31 +54,64 @@ class MapSection extends StatelessWidget {
                         ),
                       ],
                     ),
-                  MarkerLayer(
-                    markers: [
-                      if (user != null)
-                        Marker(
-                          point: user,
-                          alignment: Alignment.center,
-                          child: AnimatedScale(
-                            duration: const Duration(milliseconds: 200),
-                            curve: Curves.easeOut,
-                            scale: 1.0,
-                            child: SvgPicture.asset(AppIcons.mark),
-                          ),
-                        ),
-                      if (store != null)
-                        Marker(
-                          point: store,
-                          alignment: Alignment.center,
-                          child: AnimatedScale(
-                            scale: 1.0,
-                            duration: const Duration(milliseconds: 200),
-                            curve: Curves.easeOut,
-                            child: SvgPicture.asset(AppIcons.mark),
-                          ),
-                        ),
-                    ],
+                  BlocBuilder<TrackOrderProgressCubit, TrackOrderProgressState>(
+                    builder: (context, state) {
+                      return MarkerLayer(
+                        markers: [
+                          if (user != null)
+                            Marker(
+                              point: user,
+                              width: 50.w,
+                              height: 50.h,
+                              alignment: Alignment.center,
+                              child: AnimatedScale(
+                                duration: const Duration(milliseconds: 200),
+                                curve: Curves.easeOut,
+                                scale: 1.0,
+                                child: SvgPicture.asset(AppIcons.mark),
+                              ),
+                            ),
+                          if (store != null)
+                            Marker(
+                              point: store,
+                              width: 50.w,
+                              height: 50.h,
+                              alignment: Alignment.center,
+                              child: AnimatedScale(
+                                scale: 1.0,
+                                duration: const Duration(milliseconds: 200),
+                                curve: Curves.easeOut,
+                                child: SvgPicture.asset(AppIcons.mark),
+                              ),
+                            ),
+                          if (state.currentOrderStatus.data != null)
+                            Marker(
+                              point: LatLng(
+                                double.parse(
+                                  state.currentOrderStatus.data!.driverLatitude
+                                      .toString(),
+                                ),
+                                double.parse(
+                                  state.currentOrderStatus.data!.driverLongitude
+                                      .toString(),
+                                ),
+                              ),
+                              width: 50.w,
+                              height: 50.h,
+                              alignment: Alignment.center,
+                              child: AnimatedScale(
+                                scale: 1.0,
+                                duration: const Duration(milliseconds: 200),
+                                curve: Curves.easeOut,
+                                child: Transform.rotate(
+                                  angle: state.bearing * (math.pi / 180),
+                                  child: SvgPicture.asset(AppIcons.motorCycle),
+                                ),
+                              ),
+                            ),
+                        ],
+                      );
+                    },
                   ),
                 ],
               ),
@@ -141,21 +177,6 @@ class MapSection extends StatelessWidget {
                 );
               },
             ),
-            // BlocBuilder<TrackOrderProgressCubit, TrackOrderProgressState>(
-            //   builder: (context, state) {
-            //     return Positioned(
-            //       left: 50,
-            //       top: 50,
-            //       child: Container(
-            //         padding: REdgeInsets.all(16),
-            //         color: Colors.red,
-            //         child: Text(
-            //           "${state.currentOrderStatus.data!.driverLatitude.toString()} , ${state.currentOrderStatus.data!.driverLongitude.toString()}",
-            //         ),
-            //       ),
-            //     );
-            //   },
-            // ),
           ],
         );
       },

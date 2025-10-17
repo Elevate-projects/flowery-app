@@ -32,4 +32,5 @@ abstract final class AppIcons {
   static const String whatsapp = "assets/icons/whatsapp.svg";
   static const String deliveryBoy = "assets/icons/delivery_boy.svg";
   static const String mark = "assets/icons/mark.svg";
+  static const String motorCycle = "assets/icons/Delivery Motorcycle.svg";
 }
