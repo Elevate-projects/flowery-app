@@ -36,7 +36,7 @@ class OrderViewBody extends StatelessWidget {
           final activeOrders = orders
               .where(
                 (o) =>
-                    o.state != ConstKeys.completed ||
+                    o.state != ConstKeys.completed &&
                     o.state != ConstKeys.canceled,
               )
               .toList();

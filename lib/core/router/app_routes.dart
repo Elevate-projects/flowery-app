@@ -145,7 +145,6 @@ abstract class AppRoutes {
           builder: (_) =>
               TrackOrderProgressView(orderId: settings.arguments as String),
         );
-
       default:
         return null;
     }

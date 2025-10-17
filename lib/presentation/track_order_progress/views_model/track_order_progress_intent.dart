@@ -18,3 +18,7 @@ final class OpenPhoneIntent extends TrackOrderProgressIntent {
 final class OrderReceivedIntent extends TrackOrderProgressIntent {
   const OrderReceivedIntent();
 }
+
+final class ShowMapIntent extends TrackOrderProgressIntent {
+  const ShowMapIntent();
+}
