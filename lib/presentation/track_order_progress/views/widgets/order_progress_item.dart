@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timelines_plus/timelines_plus.dart';
@@ -27,7 +28,7 @@ class OrderProgressItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
-              title,
+              title.tr(),
               style: theme.textTheme.bodyLarge?.copyWith(
                 color: theme.colorScheme.onSecondary,
               ),

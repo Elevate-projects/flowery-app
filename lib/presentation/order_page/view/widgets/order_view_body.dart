@@ -1,10 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/core/constants/const_keys.dart';
-import 'package:flowery_app/presentation/cart/views/widget/custom_cart_shimmer.dart';
+import 'package:flowery_app/presentation/order_page/view/widgets/custom_order_card.dart';
+import 'package:flowery_app/presentation/order_page/view/widgets/shimmer/orders_list_shimmer.dart';
 import 'package:flowery_app/presentation/order_page/view_model/order_page_cubit.dart';
 import 'package:flowery_app/presentation/order_page/view_model/order_page_status.dart';
-import 'package:flowery_app/presentation/order_page/widget/custom_order_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,7 +19,7 @@ class OrderViewBody extends StatelessWidget {
     return BlocBuilder<GetUserOrderCubit, GetUserOrderState>(
       builder: (context, state) {
         if (state.orderStatus.isLoading) {
-          return const Center(child: CustomCartDetailsShimmer());
+          return const OrdersListShimmer();
         }
 
         if (state.orderStatus.isFailure) {
@@ -68,7 +68,10 @@ class OrderViewBody extends StatelessWidget {
                       /// Active Orders
                       ListView.builder(
                         itemCount: activeOrders.length,
-                        padding: REdgeInsets.all(12),
+                        padding: REdgeInsets.symmetric(
+                          horizontal: 28,
+                          vertical: 24,
+                        ),
                         itemBuilder: (context, index) {
                           final order = activeOrders[index];
                           return Padding(
@@ -81,7 +84,10 @@ class OrderViewBody extends StatelessWidget {
                       /// Completed Orders
                       ListView.builder(
                         itemCount: completedOrders.length,
-                        padding: REdgeInsets.all(12),
+                        padding: REdgeInsets.symmetric(
+                          horizontal: 28,
+                          vertical: 24,
+                        ),
                         itemBuilder: (context, index) {
                           final order = completedOrders[index];
                           return Padding(

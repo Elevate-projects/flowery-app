@@ -14,12 +14,14 @@ class OrderPlaced extends StatelessWidget {
       child: RPadding(
         padding: const EdgeInsets.all(32),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             const RSizedBox(height: 100),
             Image.asset(
               AppImages.orderPlaced,
               fit: BoxFit.contain,
               height: 150.h,
+              alignment: AlignmentDirectional.center,
             ),
             const RSizedBox(height: 56),
             Text(
