@@ -28,6 +28,7 @@ import 'package:flowery_app/presentation/profile_reset_password/views/profile_re
 import 'package:flowery_app/presentation/saved_address/views/saved_address_view.dart';
 import 'package:flowery_app/presentation/search/search/view/search_view.dart';
 import 'package:flowery_app/presentation/terms_and_conditions/views/terms_and_conditions_view.dart';
+import 'package:flowery_app/presentation/track_order_progress/views/track_order_progress_view.dart';
 import 'package:flowery_app/utils/common_cubits/add_product_to_cart/add_product_to_cart_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -139,6 +140,11 @@ abstract class AppRoutes {
           builder: (_) => const CashPaymentView(cartItems: []),
         );
 
+      case RouteNames.trackOrderProgress:
+        return MaterialPageRoute(
+          builder: (_) =>
+              TrackOrderProgressView(orderId: settings.arguments as String),
+        );
       default:
         return null;
     }

@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
+import 'package:flowery_app/core/constants/const_keys.dart';
 import 'package:flowery_app/presentation/cart/views/widget/custom_cart_shimmer.dart';
 import 'package:flowery_app/presentation/order_page/view_model/order_page_cubit.dart';
 import 'package:flowery_app/presentation/order_page/view_model/order_page_status.dart';
@@ -32,9 +33,19 @@ class OrderViewBody extends StatelessWidget {
 
         if (state.orderStatus.isSuccess) {
           final orders = state.orderStatus.data?.orders ?? [];
-          final activeOrders = orders.where((o) => o.isPaid == false).toList();
+          final activeOrders = orders
+              .where(
+                (o) =>
+                    o.state != ConstKeys.completed &&
+                    o.state != ConstKeys.canceled,
+              )
+              .toList();
           final completedOrders = orders
-              .where((o) => o.isPaid == true)
+              .where(
+                (o) =>
+                    o.state == ConstKeys.completed ||
+                    o.state == ConstKeys.canceled,
+              )
               .toList();
 
           return DefaultTabController(
@@ -75,7 +86,7 @@ class OrderViewBody extends StatelessWidget {
                           final order = completedOrders[index];
                           return Padding(
                             padding: REdgeInsets.only(bottom: 10),
-                            child: CustomOrder(order: order),
+                            child: CustomOrder(order: order, isCompleted: true),
                           );
                         },
                       ),

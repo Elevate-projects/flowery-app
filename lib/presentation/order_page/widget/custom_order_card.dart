@@ -2,14 +2,15 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_colors.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
+import 'package:flowery_app/core/router/route_names.dart';
 import 'package:flowery_app/domain/entities/get_user_order/order_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomOrder extends StatelessWidget {
   final OrderEntity order;
-
-  const CustomOrder({super.key, required this.order});
+  final bool isCompleted;
+  const CustomOrder({super.key, required this.order, this.isCompleted = false});
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +53,7 @@ class CustomOrder extends StatelessWidget {
               padding: REdgeInsets.only(top: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Flexible(
                     child: Text(
@@ -73,23 +75,34 @@ class CustomOrder extends StatelessWidget {
                     ),
                   const RSizedBox(height: 5),
                   Text("Order Number: #${order.orderNumber ?? ''}"),
-                  const RSizedBox(height: 10),
-                  RSizedBox(
-                    width: 152,
-                    height: 30,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: theme.colorScheme.primary,
-                      ),
-                      onPressed: () {
-                        /// Action here
-                      },
-                      child: Text(
-                        AppText.trackOrder.tr(),
-                        style: theme.textTheme.bodyMedium?.copyWith(
-                          color: theme.colorScheme.secondary,
+                  Visibility(
+                    visible: !isCompleted,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const RSizedBox(height: 10),
+                        RSizedBox(
+                          width: 152,
+                          height: 30,
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: theme.colorScheme.primary,
+                            ),
+                            onPressed: () {
+                              Navigator.of(context).pushNamed(
+                                RouteNames.trackOrderProgress,
+                                arguments: order.id,
+                              );
+                            },
+                            child: Text(
+                              AppText.trackOrder.tr(),
+                              style: theme.textTheme.bodyMedium?.copyWith(
+                                color: theme.colorScheme.secondary,
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
+                      ],
                     ),
                   ),
                 ],
