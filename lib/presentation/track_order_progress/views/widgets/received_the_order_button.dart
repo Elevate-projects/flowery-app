@@ -67,7 +67,7 @@ class ReceivedTheOrderButton extends StatelessWidget {
                             fontWeight: FontWeight.w500,
                             letterSpacing: 0.1,
                           ),
-                          buttonTitle: AppText.back.tr(),
+                          buttonTitle: AppText.back,
                           height: 40.h,
                         ),
                       ),

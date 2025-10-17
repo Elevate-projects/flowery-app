@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/core/global_cubit/global_cubit.dart';
 import 'package:flowery_app/presentation/track_order_progress/views_model/track_order_progress_cubit.dart';
@@ -20,7 +21,7 @@ class EstimatedArrive extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            AppText.estimatedArrival,
+            AppText.estimatedArrival.tr(),
             style: theme.textTheme.bodyLarge?.copyWith(
               color: theme.colorScheme.shadow,
             ),

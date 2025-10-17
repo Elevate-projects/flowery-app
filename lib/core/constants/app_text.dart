@@ -126,6 +126,7 @@ abstract final class AppText {
   static const String deleteAddressSuccessMessage =
       "deleteAddressSuccessMessage";
   static const String emptyAddressesMessage = "emptyAddressesMessage";
+  static const String orderNumber = "orderNumber";
 
   //Exceptions
   static const String connectionError = "connectionError";
@@ -145,25 +146,23 @@ abstract final class AppText {
   static const String bestSellerAppbarHint = "bestSellerAppbarHint";
 
   // Track Order Progress
-  static const String orderPlacedMessage = "Your order placed successfully!";
-  static const String estimatedArrival = "Estimated arrival";
-  static const String deliveryHero = "Is your delivery hero for today";
-  static const String receivedYourOrder = "Received your order";
-  static const String preparingYourOrder = "Preparing your order";
-  static const String outForDelivery = "Out for delivery";
-  static const String delivered = "Delivered";
-  static const String showMap = "Show map";
-  static const String orderReceived = "Order Received";
-  static const String openPhoneFailureMessage = "Could not open phone dialer";
-  static const String openWhatsappFailureMessage = "Could not open WhatsApp";
-  static const String receivedTheOrder = "Received the order";
-  static const String receivedTheOrderDialog =
-      "Has the driver arrived, and have you received your order?";
-  static const String received = "Received";
-  static const String back = "Back";
-  static const String receivedOrderMessage =
-      "Your order has been received and completed successfully";
-  static const String orderDetails = "Order Details";
+  static const String orderPlacedMessage = "orderPlacedMessage";
+  static const String estimatedArrival = "estimatedArrival";
+  static const String deliveryHero = "deliveryHero";
+  static const String receivedYourOrder = "receivedYourOrder";
+  static const String preparingYourOrder = "preparingYourOrder";
+  static const String outForDelivery = "outForDelivery";
+  static const String delivered = "delivered";
+  static const String showMap = "showMap";
+  static const String orderReceived = "orderReceived";
+  static const String openPhoneFailureMessage = "openPhoneFailureMessage";
+  static const String openWhatsappFailureMessage = "openWhatsappFailureMessage";
+  static const String receivedTheOrder = "receivedTheOrder";
+  static const String receivedTheOrderDialog = "receivedTheOrderDialog";
+  static const String received = "received";
+  static const String back = "back";
+  static const String receivedOrderMessage = "receivedOrderMessage";
+  static const String orderDetails = "orderDetails";
 
   // Firebase Exceptions
   static const String emailAlreadyInUse = "emailAlreadyInUse";
