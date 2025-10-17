@@ -163,6 +163,7 @@ abstract final class AppText {
   static const String back = "Back";
   static const String receivedOrderMessage =
       "Your order has been received and completed successfully";
+  static const String orderDetails = "Order Details";
 
   // Firebase Exceptions
   static const String emailAlreadyInUse = "emailAlreadyInUse";

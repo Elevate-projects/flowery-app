@@ -79,13 +79,11 @@ void main() {
             redirectUrl: redirectUrl,
           ),
         ).thenAnswer((_) async => mockResult);
-
         // Act
         final result = await creditPaymentUseCase.call(request, redirectUrl);
 
         // Assert
         expect(result, isA<Failure<CreditPaymentResponseEntity>>());
-        // final failure = result as Failure<CreditPaymentResponseEntity>;
 
         verify(
           mockCreditPaymentRepo.creditPayment(
