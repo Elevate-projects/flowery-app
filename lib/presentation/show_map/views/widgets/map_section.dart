@@ -168,7 +168,7 @@ class MapSection extends StatelessWidget {
                                 intent: const ShowMapIntent(),
                               );
                             },
-                            buttonTitle: 'Order Details',
+                            buttonTitle: AppText.orderDetails,
                           ),
                         ],
                       ),
