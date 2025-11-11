@@ -1,9 +1,10 @@
 import 'package:flowery_app/api/client/api_result.dart';
+import 'package:flowery_app/core/state_status/state_status.dart';
 import 'package:flowery_app/domain/use_cases/get_user_order/get_user_order_usecase.dart';
 import 'package:flowery_app/presentation/order_page/view_model/order_page_status.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:flowery_app/core/state_status/state_status.dart';
+
 @injectable
 class GetUserOrderCubit extends Cubit<GetUserOrderState> {
   final GetUserUseCase getUserUseCase;
@@ -19,9 +20,11 @@ class GetUserOrderCubit extends Cubit<GetUserOrderState> {
       case Success():
         emit(state.copyWith(orderStatus: StateStatus.success(result.data)));
       case Failure():
-        emit(state.copyWith(
-          orderStatus: StateStatus.failure(result.responseException),
-        ));
+        emit(
+          state.copyWith(
+            orderStatus: StateStatus.failure(result.responseException),
+          ),
+        );
     }
   }
 }

@@ -3,75 +3,59 @@ import 'package:flowery_app/core/constants/app_text.dart';
 import 'package:flowery_app/core/router/route_names.dart';
 import 'package:flowery_app/utils/loaders/loaders.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:flowery_app/presentation/payment/credit/view_model/credit_payment_view_model.dart';
+import 'package:flowery_app/presentation/payment/credit/view_model/credit_payment_intent.dart';
 
-class CreditCheckoutWebView extends StatefulWidget {
+class CreditCheckoutWebView extends StatelessWidget {
   final String url;
 
   const CreditCheckoutWebView({super.key, required this.url});
 
   @override
-  State<CreditCheckoutWebView> createState() => _CreditCheckoutWebViewState();
-}
-
-class _CreditCheckoutWebViewState extends State<CreditCheckoutWebView> {
-  bool isLoading = true;
-  late final WebViewController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = WebViewController()
+  Widget build(BuildContext context) {
+    final controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setNavigationDelegate(
         NavigationDelegate(
-          onPageStarted: (_) => setState(() => isLoading = true),
-          onPageFinished: (_) => setState(() => isLoading = false),
           onNavigationRequest: (request) {
-            if (request.url.contains("allOrders")) {
+            final url = request.url;
+
+            if (url.contains("allOrders") || url.contains("success")) {
               Navigator.pushNamedAndRemoveUntil(
                 context,
                 RouteNames.floweryBottomNavigation,
-                    (route) => route.isFirst,
+                (route) => false,
               );
-              Loaders.showSuccessMessage(message: AppText.yourPaymentHasBeenSuccessfullyProcessedAndYourOrderHasBeenPlaced.tr(), context: context);
-
-
+              // context.read<CreditPaymentViewModel>().doIntent(
+              //   OnPaymentRedirect(url: url),
+              // );
+              Loaders.showSuccessMessage(
+                message: AppText
+                    .yourPaymentHasBeenSuccessfullyProcessedAndYourOrderHasBeenPlaced
+                    .tr(),
+                context: context,
+              );
               return NavigationDecision.prevent;
             }
-            if (request.url.contains("cancel") ||
-                request.url.contains("fail")) {
-              Navigator.pop(context, false);
+
+            if (url.contains("cancel") || url.contains("fail")) {
+              context.read<CreditPaymentViewModel>().doIntent(
+                OnPaymentCancel(),
+              );
               return NavigationDecision.prevent;
             }
+
             return NavigationDecision.navigate;
           },
         ),
       )
-      ..loadRequest(Uri.parse(widget.url));
-  }
+      ..loadRequest(Uri.parse(url));
 
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Credit Checkout'),
-        bottom: isLoading
-            ? const PreferredSize(
-                preferredSize: Size.fromHeight(3.0),
-                child: LinearProgressIndicator(
-                  backgroundColor: Colors.transparent,
-                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                ),
-              )
-            : null,
-      ),
-      body: Stack(
-        children: [
-          WebViewWidget(controller: _controller),
-          if (isLoading) const Center(child: CircularProgressIndicator()),
-        ],
-      ),
+      appBar: AppBar(title: const Text('Credit Checkout')),
+      body: WebViewWidget(controller: controller),
     );
   }
 }

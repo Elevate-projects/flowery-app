@@ -43,8 +43,9 @@ void main() {
     act: (cubit) => cubit.doIntent(
         OnCreditCheckoutClick(request: paymentRequest, redirectUrl: redirectUrl)),
     expect: () => [
-      isA<CreditPaymentLoading>(),
-      isA<CreditPaymentRedirect>().having((s) => s.url, 'url', sessionUrl),
+      predicate<CreditPaymentState>((state) => state.paymentStatus.isLoading),
+      predicate<CreditPaymentState>((state) =>
+      state.paymentStatus.isSuccess && state.redirectUrl == sessionUrl),
     ],
   );
 
@@ -59,18 +60,31 @@ void main() {
     act: (cubit) => cubit.doIntent(
         OnCreditCheckoutClick(request: paymentRequest, redirectUrl: redirectUrl)),
     expect: () => [
-      isA<CreditPaymentLoading>(),
-      isA<CreditPaymentFailure>().having((f) => f.message, 'message', 'API error'),
+
+    predicate<CreditPaymentState>((state) => state.paymentStatus.isLoading),
+    predicate<CreditPaymentState>((state) =>
+    state.paymentStatus.isFailure &&
+        state.paymentStatus.error?.message == 'API error'),
     ],
   );
 
   blocTest<CreditPaymentViewModel, CreditPaymentState>(
-    'should emit [Completed] when redirect URL contains correct key',
+    'should emit [IsCompleted] when redirect URL contains correct key',
     build: () => creditPaymentViewModel,
-    act: (cubit) => cubit.doIntent(OnPaymentRedirect(url: redirectUrl)),
+    act: (cubit) => cubit.doIntent(OnPaymentRedirect(url: 'https://example.com/allOrders')),
     expect: () => [
-      isA<CreditPaymentCompleted>(),
+      predicate<CreditPaymentState>((state) => state.isCompleted),
     ],
   );
+
+  blocTest<CreditPaymentViewModel, CreditPaymentState>(
+    'should emit [isCancelled] when redirect URL contains cancel key',
+    build: () => creditPaymentViewModel,
+    act: (cubit) => cubit.doIntent(OnPaymentRedirect(url: 'https://example.com/cancel')),
+    expect: () => [
+      predicate<CreditPaymentState>((state) => state.isCancelled),
+    ],
+  );
+
 }
 

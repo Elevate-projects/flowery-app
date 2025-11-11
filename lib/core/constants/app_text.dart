@@ -126,6 +126,7 @@ abstract final class AppText {
   static const String deleteAddressSuccessMessage =
       "deleteAddressSuccessMessage";
   static const String emptyAddressesMessage = "emptyAddressesMessage";
+  static const String orderNumber = "orderNumber";
 
   //Exceptions
   static const String connectionError = "connectionError";
@@ -143,6 +144,91 @@ abstract final class AppText {
   static const String success = "success";
   static const String bestSellerAppbar = "bestSellerAppbar";
   static const String bestSellerAppbarHint = "bestSellerAppbarHint";
+
+  // Track Order Progress
+  static const String orderPlacedMessage = "orderPlacedMessage";
+  static const String estimatedArrival = "estimatedArrival";
+  static const String deliveryHero = "deliveryHero";
+  static const String receivedYourOrder = "receivedYourOrder";
+  static const String preparingYourOrder = "preparingYourOrder";
+  static const String outForDelivery = "outForDelivery";
+  static const String delivered = "delivered";
+  static const String showMap = "showMap";
+  static const String orderReceived = "orderReceived";
+  static const String openPhoneFailureMessage = "openPhoneFailureMessage";
+  static const String openWhatsappFailureMessage = "openWhatsappFailureMessage";
+  static const String receivedTheOrder = "receivedTheOrder";
+  static const String receivedTheOrderDialog = "receivedTheOrderDialog";
+  static const String received = "received";
+  static const String back = "back";
+  static const String receivedOrderMessage = "receivedOrderMessage";
+  static const String orderDetails = "orderDetails";
+
+  // Firebase Exceptions
+  static const String emailAlreadyInUse = "emailAlreadyInUse";
+  static const String invalidEmail = "invalidEmail";
+  static const String networkRequestFailed = "networkRequestFailed";
+  static const String weakPassword = "weakPassword";
+  static const String userDisabled = "userDisabled";
+  static const String userNotFound = "userNotFound";
+  static const String invalidVerificationCode = "invalidVerificationCode";
+  static const String invalidVerificationId = "invalidVerificationId";
+  static const String quotaExceeded = "quotaExceeded";
+  static const String emailAlreadyExists = "emailAlreadyExists";
+  static const String providerAlreadyLinked = "providerAlreadyLinked";
+  static const String requiresRecentLogin = "requiresRecentLogin";
+  static const String credentialAlreadyInUse = "credentialAlreadyInUse";
+  static const String userMismatch = "userMismatch";
+  static const String accountExistsWithDifferentCredential =
+      "accountExistsWithDifferentCredential";
+  static const String operationNotAllowed = "operationNotAllowed";
+  static const String expiredActionCode = "expiredActionCode";
+  static const String invalidActionCode = "invalidActionCode";
+  static const String missingActionCode = "missingActionCode";
+  static const String userTokenExpired = "userTokenExpired";
+  static const String wrongPassword = "wrongPassword";
+  static const String userTokenRevoked = "userTokenRevoked";
+  static const String invalidMessagePayload = "invalidMessagePayload";
+  static const String invalidSender = "invalidSender";
+  static const String invalidRecipientEmail = "invalidRecipientEmail";
+  static const String missingIframeStart = "missingIframeStart";
+  static const String missingIframeEnd = "missingIframeEnd";
+  static const String missingIframeSrc = "missingIframeSrc";
+  static const String authDomainConfigRequired = "authDomainConfigRequired";
+  static const String missingAppCredential = "missingAppCredential";
+  static const String invalidAppCredential = "invalidAppCredential";
+  static const String sessionCookieExpired = "sessionCookieExpired";
+  static const String uidAlreadyExists = "uidAlreadyExists";
+  static const String invalidCordovaConfiguration =
+      "invalidCordovaConfiguration";
+  static const String appDeleted = "appDeleted";
+  static const String userTokenMismatch = "userTokenMismatch";
+  static const String webStorageUnsupported = "webStorageUnsupported";
+  static const String invalidCredential = "invalidCredential";
+  static const String appNotAuthorized = "appNotAuthorized";
+  static const String keychainError = "keychainError";
+  static const String internalError = "internalError";
+  static const String invalidLoginCredentials = "invalidLoginCredentials";
+  static const String unknownAuthError = "unknownAuthError";
+  static const String unknownFirebaseError = "unknownFirebaseError";
+  static const String invalidCustomToken = "invalidCustomToken";
+  static const String customTokenMismatch = "customTokenMismatch";
+  static const String captchaCheckFailed = "captchaCheckFailed";
+  static const String googleLoginCanceled = "googleLoginCanceled";
+
+  // Firestore-related errors
+  static const String permissionDenied = "permissionDenied";
+  static const String unavailable = "unavailable";
+  static const String notFound = "notFound";
+  static const String alreadyExists = "alreadyExists";
+  static const String resourceExhausted = "resourceExhausted";
+  static const String cancelled = "cancelled";
+  static const String deadlineExceeded = "deadlineExceeded";
+  static const String dataLoss = "dataLoss";
+  static const String invalidArgument = "invalidArgument";
+  static const String aborted = "aborted";
+  static const String outOfRange = "outOfRange";
+  static const String unknownErrorMessage = "unknownErrorMessage";
 
   // Password verification
   static const String enter6DigitCode = "enter6DigitCode";
@@ -210,19 +296,19 @@ abstract final class AppText {
   static const String completed = "completed";
   static const String productName = "productName";
 
-// payment
+  // payment
   static const String pleaseSelectAPaymentMethod = "pleaseSelectAPaymentMethod";
   static const String paymentCompleted = "paymentCompleted";
   static const String invalidSessionURL = "invalidSessionURL";
-  static const String yourPaymentHasBeenSuccessfullyProcessedAndYourOrderHasBeenPlaced =
+  static const String
+  yourPaymentHasBeenSuccessfullyProcessedAndYourOrderHasBeenPlaced =
       "yourPaymentHasBeenSuccessfullyProcessedAndYourOrderHasBeenPlaced";
-
 
   //search text
   static const String searchForAnyProductsYouWant =
       'searchForAnyProductsYouWant';
   static const String noProductsFound = 'noProductsFound';
-  static const String notFound = 'notFound';
+  static const String notFound2 = 'notFound2';
   static const String noProductsFoundForYourSearch =
       "noProductsFoundForYourSearch";
 

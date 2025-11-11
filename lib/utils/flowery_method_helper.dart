@@ -1,5 +1,6 @@
 import 'package:flowery_app/domain/entities/user_data/user_data_entity.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 abstract class FloweryMethodHelper {
   static UserDataEntity? userData;
@@ -53,5 +54,17 @@ abstract class FloweryMethodHelper {
     hex = hex.replaceAll("#", "");
     if (hex.length == 6) hex = "FF$hex";
     return Color(int.parse("0x$hex" == "0xFFFFFFFF" ? "0xfff9f9f9" : "0x$hex"));
+  }
+
+  static String estimatedArrivalDateFormatter(String? date, bool isArLanguage) {
+    if (date?.trim().isNotEmpty ?? false) {
+      final dateTime = DateTime.parse(date!);
+      final formattedDate = DateFormat(
+        'E, dd MMM yyyy, hh:mm a',
+        isArLanguage ? "ar" : "en",
+      ).format(dateTime);
+      return formattedDate;
+    }
+    return "";
   }
 }

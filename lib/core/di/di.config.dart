@@ -9,6 +9,7 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:cloud_firestore/cloud_firestore.dart' as _i974;
 import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
@@ -16,6 +17,7 @@ import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
 import '../../api/client/api_client.dart' as _i508;
 import '../../api/client/api_module.dart' as _i272;
+import '../../api/client/firebase_module.dart' as _i769;
 import '../../api/data_source/add_to_cart/remote_data_source/add_to_cart_remote_data_source_impl.dart'
     as _i187;
 import '../../api/data_source/address/remote_data_source/address_remote_data_source_impl.dart'
@@ -58,6 +60,8 @@ import '../../api/data_source/reset_password/reset_password_data_source_impl.dar
     as _i783;
 import '../../api/data_source/search_data_source/search_data_source_impl.dart'
     as _i553;
+import '../../api/data_source/track_order_progress/remote_data_source/track_order_progress_remote_data_source_impl.dart'
+    as _i926;
 import '../../api/data_source/verification/verification_data_source_impl.dart'
     as _i15;
 import '../../data/data_source/add_to_cart/remote_data_source/add_to_cart_remote_data_source.dart'
@@ -102,6 +106,8 @@ import '../../data/data_source/reset_password/reset_password_data_source.dart'
     as _i926;
 import '../../data/data_source/search_data_source/search_data_source.dart'
     as _i40;
+import '../../data/data_source/track_order_progress/remote_data_source/track_order_progress_remote_data_source.dart'
+    as _i639;
 import '../../data/data_source/verification/verification_data_source.dart'
     as _i14;
 import '../../data/repositories/add_to_cart/add_to_cart_repository_impl.dart'
@@ -139,6 +145,8 @@ import '../../data/repositories/resend_code/resend_code_repository_impl.dart'
 import '../../data/repositories/reset_password/reset_password_repository_impl.dart'
     as _i50;
 import '../../data/repositories/search/search_repo_impl.dart' as _i754;
+import '../../data/repositories/track_order_progress/track_order_progress_repository_impl.dart'
+    as _i713;
 import '../../data/repositories/verification/verification_repository_impl.dart'
     as _i1003;
 import '../../domain/repositories/add_to_cart/add_to_cart_repository.dart'
@@ -174,6 +182,8 @@ import '../../domain/repositories/resend_code/resend_code.dart' as _i673;
 import '../../domain/repositories/reset_password/reset_password_repository.dart'
     as _i189;
 import '../../domain/repositories/search/search_repo.dart' as _i800;
+import '../../domain/repositories/track_order_progress/track_order_progress_repository.dart'
+    as _i1006;
 import '../../domain/repositories/verification/verification_repository.dart'
     as _i550;
 import '../../domain/use_cases/add_to_cart/add_product_to_cart_use_case.dart'
@@ -194,6 +204,8 @@ import '../../domain/use_cases/edit_profile/upload_photo_use_case.dart'
     as _i876;
 import '../../domain/use_cases/forget_password/forget_password_use_case.dart'
     as _i150;
+import '../../domain/use_cases/get_tracked_order/get_tracked_order_use_case.dart'
+    as _i977;
 import '../../domain/use_cases/get_user_order/get_user_order_usecase.dart'
     as _i148;
 import '../../domain/use_cases/home_products/home_products_use_case.dart'
@@ -201,6 +213,8 @@ import '../../domain/use_cases/home_products/home_products_use_case.dart'
 import '../../domain/use_cases/login/login_with_email_and_password_use_case.dart'
     as _i197;
 import '../../domain/use_cases/logout/logout_use_case.dart' as _i242;
+import '../../domain/use_cases/order_received/order_received_use_case.dart'
+    as _i224;
 import '../../domain/use_cases/payment/cash_payment_use_case.dart' as _i686;
 import '../../domain/use_cases/payment/credit_payment_use_case.dart' as _i346;
 import '../../domain/use_cases/profile/get_user_profile_data_use_case.dart'
@@ -254,8 +268,11 @@ import '../../presentation/saved_address/views_model/saved_address_cubit.dart'
     as _i46;
 import '../../presentation/search/search/view_model/search_view_model.dart'
     as _i484;
+import '../../presentation/show_map/views_model/show_map_cubit.dart' as _i1065;
 import '../../presentation/terms_and_conditions/views_model/terms_and_conditions_cubit.dart'
     as _i297;
+import '../../presentation/track_order_progress/views_model/track_order_progress_cubit.dart'
+    as _i835;
 import '../../utils/common_cubits/add_product_to_cart/add_product_to_cart_cubit.dart'
     as _i1028;
 import '../cache/shared_preferences_helper.dart' as _i686;
@@ -272,6 +289,7 @@ extension GetItInjectableX on _i174.GetIt {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final sharedPreferencesModule = _$SharedPreferencesModule();
     final apiModule = _$ApiModule();
+    final firebaseModule = _$FirebaseModule();
     await gh.factoryAsync<_i460.SharedPreferences>(
       () => sharedPreferencesModule.prefs,
       preResolve: true,
@@ -280,11 +298,13 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i294.GiftSwitchCubit>(() => _i294.GiftSwitchCubit());
     gh.factory<_i694.OccasionsViewModel>(() => _i694.OccasionsViewModel());
     gh.factory<_i586.ProductDetailsCubit>(() => _i586.ProductDetailsCubit());
+    gh.factory<_i1065.ShowMapCubit>(() => _i1065.ShowMapCubit());
     gh.factory<_i297.TermsAndConditionsCubit>(
       () => _i297.TermsAndConditionsCubit(),
     );
     gh.singleton<_i361.Dio>(() => apiModule.provideDio());
     gh.singleton<_i23.SecureStorage>(() => _i23.SecureStorage());
+    gh.lazySingleton<_i974.FirebaseFirestore>(() => firebaseModule.firestore);
     gh.factory<_i508.ApiClient>(() => _i508.ApiClient(gh<_i361.Dio>()));
     gh.factory<_i122.CreditPaymentDataSource>(
       () => _i454.CreditPaymentDataSourceImpl(gh<_i508.ApiClient>()),
@@ -324,6 +344,11 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i281.RegisterRemoteDataSourceImpl(
         gh<_i508.ApiClient>(),
         gh<_i23.SecureStorage>(),
+      ),
+    );
+    gh.factory<_i639.TrackOrderProgressRemoteDataSource>(
+      () => _i926.TrackOrderProgressRemoteDataSourceImpl(
+        gh<_i974.FirebaseFirestore>(),
       ),
     );
     gh.factory<_i684.LoginRemoteDataSource>(
@@ -398,6 +423,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i691.RemoteDataSourceGetLoggedUser>(
       () => _i874.RemoteDataSourceGetLoggedUserImp(gh<_i508.ApiClient>()),
     );
+    gh.factory<_i1006.TrackOrderProgressRepository>(
+      () => _i713.TrackOrderProgressRepositoryImpl(
+        gh<_i639.TrackOrderProgressRemoteDataSource>(),
+      ),
+    );
     gh.factory<_i297.EditProfileDataSource>(
       () => _i742.EditProfileDataSourceImpl(gh<_i508.ApiClient>()),
     );
@@ -428,6 +458,15 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i265.ProfileResetPasswordUseCase(
         repository: gh<_i571.ProfileResetPasswordRepository>(),
       ),
+    );
+    gh.factory<_i977.GetTrackedOrderUseCase>(
+      () => _i977.GetTrackedOrderUseCase(
+        gh<_i1006.TrackOrderProgressRepository>(),
+      ),
+    );
+    gh.factory<_i224.OrderReceivedUseCase>(
+      () =>
+          _i224.OrderReceivedUseCase(gh<_i1006.TrackOrderProgressRepository>()),
     );
     gh.factory<_i378.RemoveQuantityRepositories>(
       () => _i954.QuantityRepositoriesImp(
@@ -518,6 +557,13 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i582.ProfileResetPasswordCubit>(
       () => _i582.ProfileResetPasswordCubit(
         gh<_i265.ProfileResetPasswordUseCase>(),
+      ),
+    );
+    gh.factory<_i835.TrackOrderProgressCubit>(
+      () => _i835.TrackOrderProgressCubit(
+        gh<_i977.GetTrackedOrderUseCase>(),
+        gh<_i224.OrderReceivedUseCase>(),
+        gh<_i686.SharedPreferencesHelper>(),
       ),
     );
     gh.factory<_i92.AddAddressCubit>(
@@ -611,3 +657,5 @@ extension GetItInjectableX on _i174.GetIt {
 class _$SharedPreferencesModule extends _i912.SharedPreferencesModule {}
 
 class _$ApiModule extends _i272.ApiModule {}
+
+class _$FirebaseModule extends _i769.FirebaseModule {}
