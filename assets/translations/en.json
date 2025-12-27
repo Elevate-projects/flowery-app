@@ -56,6 +56,8 @@
   "version": "v 6.3.0 - (446)",
   "changeLanguage": "Change Language",
 
+    "apartment": "Apartment",
+
   "status": "Status: ",
   "inStock": "In stock",
   "outStock": "Out stock",
