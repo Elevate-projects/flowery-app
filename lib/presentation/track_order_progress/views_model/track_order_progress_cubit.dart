@@ -49,6 +49,7 @@ class TrackOrderProgressCubit extends Cubit<TrackOrderProgressState> {
         break;
       case ShowMapIntent():
         _showMap();
+        break;
     }
   }
 

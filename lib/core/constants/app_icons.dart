@@ -33,4 +33,6 @@ abstract final class AppIcons {
   static const String deliveryBoy = "assets/icons/delivery_boy.svg";
   static const String mark = "assets/icons/mark.svg";
   static const String motorCycle = "assets/icons/Delivery Motorcycle.svg";
+  static const String reversedTriangle = "assets/icons/reversed_triangle.svg";
+  static const String userLocation = "assets/icons/home_location.svg";
 }

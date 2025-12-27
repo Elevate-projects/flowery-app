@@ -1,7 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:developer';
 
+import 'package:flowery_app/core/exceptions/response_exception.dart';
+import 'package:flowery_app/core/state_status/state_status.dart';
 import 'package:flowery_app/domain/entities/order/order_entity.dart';
 import 'package:flowery_app/presentation/show_map/views_model/show_map_intent.dart';
 import 'package:flowery_app/presentation/show_map/views_model/show_map_state.dart';
@@ -14,13 +15,16 @@ import 'package:latlong2/latlong.dart';
 @injectable
 class ShowMapCubit extends Cubit<ShowMapState> {
   final MapController mapController = MapController();
-
   ShowMapCubit() : super(const ShowMapState());
 
-  Future<void> doIntent(ShowMapIntent intent) {
+  Future<void> doIntent(ShowMapIntent intent) async {
     switch (intent) {
       case ShowMapInitializationIntent():
-        return _initMap(orderData: intent.orderData);
+        await _initMap(orderData: intent.orderData);
+        break;
+      case UpdateRouteIntent():
+        await _updatePolyline(state.userLocation!, intent.driverLocation);
+        break;
     }
   }
 
@@ -29,14 +33,18 @@ class ShowMapCubit extends Cubit<ShowMapState> {
       double.parse(orderData.shippingAddress!.lat.toString()),
       double.parse(orderData.shippingAddress!.long.toString()),
     );
-    final LatLng storeLocation = LatLng(
+    final LatLng driverLocation = LatLng(
       double.parse(orderData.driverLatitude!.toString()),
       double.parse(orderData.driverLongitude!.toString()),
     );
     emit(
-      state.copyWith(userLocation: userLocation, storeLocation: storeLocation),
+      state.copyWith(
+        mapStatus: const StateStatus.loading(),
+        userLocation: userLocation,
+        driverLocation: driverLocation,
+      ),
     );
-    await _updatePolyline(userLocation, storeLocation);
+    await _updatePolyline(userLocation, driverLocation);
   }
 
   /// 🛣️ Draw route between driver and user
@@ -55,10 +63,22 @@ class ShowMapCubit extends Cubit<ShowMapState> {
             .map<LatLng>((c) => LatLng(c[1], c[0]))
             .toList();
 
-        emit(state.copyWith(polylinePoints: coords));
+        emit(
+          state.copyWith(
+            polylinePoints: coords,
+            mapStatus: const StateStatus.success(null),
+          ),
+        );
       }
-    } catch (e) {
-      log('🚨 Route error: $e');
+    } catch (error) {
+      emit(
+        state.copyWith(
+          mapStatus: StateStatus.failure(
+            ResponseException(message: "Route error: $error"),
+          ),
+        ),
+      );
+      emit(state.copyWith(mapStatus: const StateStatus.initial()));
     }
   }
 }
