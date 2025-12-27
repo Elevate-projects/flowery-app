@@ -12,4 +12,7 @@ abstract final class ConstKeys {
   static const String startDeliver = "startDeliver";
   static const String deliveredToTheUser = "deliveredToTheUser";
   static const String arrivedToTheUser = "arrivedToTheUser";
+  static const String mapUrlTemplate =
+      "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
+  static const String appPackageName = "com.example.floweryApp";
 }

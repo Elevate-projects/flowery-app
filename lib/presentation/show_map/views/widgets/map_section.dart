@@ -1,16 +1,24 @@
 import 'dart:math' as math;
 
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flowery_app/core/constants/app_animations.dart';
 import 'package:flowery_app/core/constants/app_colors.dart';
 import 'package:flowery_app/core/constants/app_icons.dart';
 import 'package:flowery_app/core/constants/app_text.dart';
+import 'package:flowery_app/core/constants/const_keys.dart';
 import 'package:flowery_app/presentation/show_map/views/widgets/driver_information.dart';
 import 'package:flowery_app/presentation/show_map/views_model/show_map_cubit.dart';
+import 'package:flowery_app/presentation/show_map/views_model/show_map_intent.dart';
 import 'package:flowery_app/presentation/show_map/views_model/show_map_state.dart';
 import 'package:flowery_app/presentation/track_order_progress/views/widgets/estimated_arrive.dart';
 import 'package:flowery_app/presentation/track_order_progress/views_model/track_order_progress_cubit.dart';
-import 'package:flowery_app/presentation/track_order_progress/views_model/track_order_progress_intent.dart';
+import 'package:flowery_app/presentation/track_order_progress/views_model/track_order_progress_intent.dart'
+    as track_intent;
 import 'package:flowery_app/presentation/track_order_progress/views_model/track_order_progress_state.dart';
 import 'package:flowery_app/utils/common_widgets/custom_elevated_button.dart';
+import 'package:flowery_app/utils/common_widgets/location_indicator.dart';
+import 'package:flowery_app/utils/loaders/animation_loader_widget.dart';
+import 'package:flowery_app/utils/loaders/loaders.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -25,69 +33,70 @@ class MapSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final cubit = context.read<ShowMapCubit>();
     final trackOrderCubit = BlocProvider.of<TrackOrderProgressCubit>(context);
-    return BlocBuilder<ShowMapCubit, ShowMapState>(
+    return BlocConsumer<ShowMapCubit, ShowMapState>(
+      listenWhen: (previous, current) => current.mapStatus.isFailure,
+      listener: (context, state) {
+        if (state.mapStatus.isFailure) {
+          Loaders.showErrorMessage(
+            message: state.mapStatus.error?.message ?? "",
+            context: context,
+          );
+        }
+      },
       builder: (context, state) {
         final theme = Theme.of(context);
-        final store = state.storeLocation;
+        final driver = state.driverLocation;
         final user = state.userLocation;
         return Stack(
           children: [
-            SizedBox.expand(
-              child: FlutterMap(
-                mapController: cubit.mapController,
-                options: MapOptions(
-                  initialCenter: store ?? user ?? const LatLng(0, 0),
-                  initialZoom: 15.sp,
-                ),
-                children: [
-                  TileLayer(
-                    urlTemplate:
-                        'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
-                    subdomains: const ['a', 'b', 'c'],
-                  ),
-                  if (state.polylinePoints.isNotEmpty)
-                    PolylineLayer(
-                      polylines: [
-                        Polyline(
-                          points: state.polylinePoints,
-                          color: theme.primaryColor,
-                          strokeWidth: 5.w,
+            state.mapStatus.isLoading
+                ? const AnimationLoaderWidget(
+                    text: "",
+                    animation: AppAnimations.loadingAnimationBlue,
+                  )
+                : SizedBox.expand(
+                    child: FlutterMap(
+                      mapController: cubit.mapController,
+                      options: MapOptions(
+                        initialCenter: driver ?? user ?? const LatLng(0, 0),
+                        initialZoom: 13,
+                      ),
+                      children: [
+                        TileLayer(
+                          urlTemplate: ConstKeys.mapUrlTemplate,
+                          userAgentPackageName: ConstKeys.appPackageName,
                         ),
-                      ],
-                    ),
-                  BlocBuilder<TrackOrderProgressCubit, TrackOrderProgressState>(
-                    builder: (context, state) {
-                      return MarkerLayer(
-                        markers: [
-                          if (user != null)
-                            Marker(
-                              point: user,
-                              width: 50.w,
-                              height: 50.h,
-                              alignment: Alignment.center,
-                              child: AnimatedScale(
-                                duration: const Duration(milliseconds: 200),
-                                curve: Curves.easeOut,
-                                scale: 1.0,
-                                child: SvgPicture.asset(AppIcons.mark),
+                        if (state.polylinePoints.isNotEmpty)
+                          PolylineLayer(
+                            polylines: [
+                              Polyline(
+                                points: state.polylinePoints,
+                                color: theme.primaryColor,
+                                strokeWidth: 5.w,
                               ),
-                            ),
-                          if (store != null)
-                            Marker(
-                              point: store,
-                              width: 50.w,
-                              height: 50.h,
-                              alignment: Alignment.center,
-                              child: AnimatedScale(
-                                scale: 1.0,
-                                duration: const Duration(milliseconds: 200),
-                                curve: Curves.easeOut,
-                                child: SvgPicture.asset(AppIcons.mark),
-                              ),
-                            ),
-                          if (state.currentOrderStatus.data != null)
-                            Marker(
-                              point: LatLng(
+                            ],
+                          ),
+                        BlocConsumer<
+                          TrackOrderProgressCubit,
+                          TrackOrderProgressState
+                        >(
+                          listenWhen: (previous, current) =>
+                              current.currentOrderStatus.data?.driverLatitude !=
+                                  previous
+                                      .currentOrderStatus
+                                      .data
+                                      ?.driverLatitude ||
+                              current
+                                      .currentOrderStatus
+                                      .data
+                                      ?.driverLongitude !=
+                                  previous
+                                      .currentOrderStatus
+                                      .data
+                                      ?.driverLongitude,
+                          listener: (context, state) async {
+                            if (state.currentOrderStatus.data != null) {
+                              final newDriverLocation = LatLng(
                                 double.parse(
                                   state.currentOrderStatus.data!.driverLatitude
                                       .toString(),
@@ -96,31 +105,78 @@ class MapSection extends StatelessWidget {
                                   state.currentOrderStatus.data!.driverLongitude
                                       .toString(),
                                 ),
-                              ),
-                              width: 50.w,
-                              height: 50.h,
-                              alignment: Alignment.center,
-                              child: AnimatedScale(
-                                scale: 1.0,
-                                duration: const Duration(milliseconds: 200),
-                                curve: Curves.easeOut,
-                                child: Transform.rotate(
-                                  angle: state.bearing * (math.pi / 180),
-                                  child: SvgPicture.asset(AppIcons.motorCycle),
+                              );
+                              await cubit.doIntent(
+                                UpdateRouteIntent(
+                                  driverLocation: newDriverLocation,
                                 ),
-                              ),
-                            ),
-                        ],
-                      );
-                    },
+                              );
+                            }
+                          },
+                          builder: (context, state) {
+                            return MarkerLayer(
+                              markers: [
+                                if (user != null)
+                                  Marker(
+                                    point: user,
+                                    width: 150.w,
+                                    height: 90.h,
+                                    alignment: Alignment.center,
+                                    child: FittedBox(
+                                      fit: BoxFit.scaleDown,
+                                      child: LocationIndicator(
+                                        title: AppText.apartment.tr(),
+                                        isNetworkImage: false,
+                                        imagePath: AppIcons.userLocation,
+                                      ),
+                                    ),
+                                  ),
+                                if (state.currentOrderStatus.data != null)
+                                  Marker(
+                                    point: LatLng(
+                                      double.parse(
+                                        state
+                                            .currentOrderStatus
+                                            .data!
+                                            .driverLatitude
+                                            .toString(),
+                                      ),
+                                      double.parse(
+                                        state
+                                            .currentOrderStatus
+                                            .data!
+                                            .driverLongitude
+                                            .toString(),
+                                      ),
+                                    ),
+                                    width: 50.w,
+                                    height: 50.h,
+                                    alignment: Alignment.center,
+                                    child: AnimatedScale(
+                                      scale: 1.0,
+                                      duration: const Duration(
+                                        milliseconds: 200,
+                                      ),
+                                      curve: Curves.easeOut,
+                                      child: Transform.rotate(
+                                        angle: state.bearing * (math.pi / 180),
+                                        child: SvgPicture.asset(
+                                          AppIcons.motorCycle,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                              ],
+                            );
+                          },
+                        ),
+                      ],
+                    ),
                   ),
-                ],
-              ),
-            ),
             DraggableScrollableSheet(
-              maxChildSize: 0.38.sp,
+              maxChildSize: 0.34.sp,
               minChildSize: 0.04.sp,
-              initialChildSize: 0.38.sp,
+              initialChildSize: 0.04.sp,
               snap: true,
               builder: (context, scrollController) {
                 return Container(
@@ -166,7 +222,7 @@ class MapSection extends StatelessWidget {
                           CustomElevatedButton(
                             onPressed: () {
                               trackOrderCubit.doIntent(
-                                intent: const ShowMapIntent(),
+                                intent: const track_intent.ShowMapIntent(),
                               );
                             },
                             buttonTitle: AppText.orderDetails,
