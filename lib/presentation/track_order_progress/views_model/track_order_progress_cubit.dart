@@ -69,13 +69,13 @@ class TrackOrderProgressCubit extends Cubit<TrackOrderProgressState> {
               final previousOrderData = state.currentOrderStatus.data;
               double newBearing =
                   state.bearing; // Default to the last known bearing
-
               // 2. Check if we have a previous location and if the location has changed
               if (previousOrderData != null &&
                   (previousOrderData.driverLatitude !=
                           orderData.data!.driverLatitude ||
                       previousOrderData.driverLongitude !=
-                          orderData.data!.driverLongitude)) {
+                          orderData.data!.driverLongitude) &&
+                  state.currentOrderStateIndex >= 2) {
                 final prevPoint = LatLng(
                   double.parse(previousOrderData.driverLatitude.toString()),
                   double.parse(previousOrderData.driverLongitude.toString()),
